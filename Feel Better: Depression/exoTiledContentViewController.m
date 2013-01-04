@@ -10,12 +10,12 @@
 
 
 @implementation exoTiledContentViewController
-@synthesize tileSize = _tileSize, tileMarginSize = _tileMarginSize ,maxTileRows = _maxTileRows, maxTileColumns=_maxTileColumns, layoutStartPoint = _layoutStartPoint, tileDisplayFrame = _tileDisplayFrame, displayedTiles = _displayedTiles, currentPage = _currentPage, delegate = _delegate, loadingStatusView = _loadingStatusView;
+@synthesize tileSize = _tileSize, tileMarginSize = _tileMarginSize ,maxTileRows = _maxTileRows, maxTileColumns=_maxTileColumns, layoutStartPoint = _layoutStartPoint, tileDisplayFrame = _tileDisplayFrame, displayedTiles = _displayedTiles, currentPage = _currentPage, delegate, loadingStatusView = _loadingStatusView;
 
 #pragma mark layout 
 
 -(NSInteger)	tilePageCount{
-	NSInteger totalTiles	= [_delegate tileCountForTiledContentController:self];
+	NSInteger totalTiles	= [self.delegate tileCountForTiledContentController:self];
 	NSInteger maxPageTiles	= _maxTileRows * _maxTileColumns;
 	
 	if (totalTiles <= maxPageTiles){
@@ -54,7 +54,7 @@
 
 //	pageNumber zero delimited whereas tilePageCount is 1 page = 1 count
 -(NSRange)	tileRangeForPage:(NSInteger)pageNumber needsForwardPagination:(BOOL*)forwardPaginationNeeded needsBackwardPagination:(BOOL*)backwardPaginationNeeded{
-	NSInteger totalTiles	= [_delegate tileCountForTiledContentController:self];
+	NSInteger totalTiles	= [self.delegate tileCountForTiledContentController:self];
 	NSInteger maxPageTiles	= _maxTileRows * _maxTileColumns;
 
 	*forwardPaginationNeeded	= NO;
@@ -150,24 +150,26 @@
 		CGPoint pagingOrigin = CGPointMake(leftForwardMargin, upperForwardMargin);
 		reversePagingImage.origin = pagingOrigin;
 		[previousTilePageButtonContainerView addSubview:reversePagingImage];
-		SRELS(reversePagingImage);
-		
+//		SRELS(reversePagingImage);
+		reversePagingImage = nil;
 		
 		UITapGestureRecognizer *pageFlipPressRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(flipTilePageBack:)];
 		[previousTilePageButtonContainerView addGestureRecognizer:pageFlipPressRecognizer];
-		SRELS(pageFlipPressRecognizer);
+//		SRELS(pageFlipPressRecognizer)
+		pageFlipPressRecognizer = nil;
 		
 		
 		[self.view addSubview:previousTilePageButtonContainerView];
 		[_displayedTileViews addObject:previousTilePageButtonContainerView];
 		[tilesToRemove removeObject:previousTilePageButtonContainerView];
 
-		SRELS(previousTilePageButtonContainerView);
+//		SRELS(previousTilePageButtonContainerView);
+		previousTilePageButtonContainerView = nil;
 	}
 
 	for (int nextTileIndex = pageTileRange.location; nextTileIndex < pageTileRange.location + pageTileRange.length; nextTileIndex ++){
 		
-		UIView *nextTile = [_delegate tileViewAtIndex:nextTileIndex forTiledContentController:self];
+		UIView *nextTile = [self.delegate tileViewAtIndex:nextTileIndex forTiledContentController:self];
 		if (nextTile == nil){
 			[NSException raise:@"NSYou'reTryingToScamThisClassException" format:@"you told my class you'd give a tile at index %i, but it's nil-- what kind of game are you trying to pull here?",nextTileIndex];
 
@@ -214,20 +216,22 @@
 		CGPoint pagingOrigin = CGPointMake(leftForwardMargin, upperForwardMargin);
 		forwardPagingImage.origin = pagingOrigin;
 		[nextTilePageButtonContainerView addSubview:forwardPagingImage];
-		SRELS(forwardPagingImage);
+//		SRELS(forwardPagingImage);
+		forwardPagingImage = nil;
 		
 		
 		UITapGestureRecognizer *pageFlipPressRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(flipTilePageForward:)];
 		[nextTilePageButtonContainerView addGestureRecognizer:pageFlipPressRecognizer];
-		SRELS(pageFlipPressRecognizer);
-		
+//		SRELS(pageFlipPressRecognizer);
+		pageFlipPressRecognizer = nil;
 		
 		[self.view addSubview:nextTilePageButtonContainerView];
 		[_displayedTileViews addObject:nextTilePageButtonContainerView];
 		[tilesToRemove removeObject:nextTilePageButtonContainerView];
 
-		SRELS(nextTilePageButtonContainerView);		
-
+//		SRELS(nextTilePageButtonContainerView);		
+		nextTilePageButtonContainerView = nil;
+		
 		tileLayoutIndex++;
 	}
 	
@@ -291,7 +295,7 @@
 	[UIView performPageSwitchAnimationWithExistingView:self.view viewUpdateBlock:^(void){
 		[self setCurrentPage:_currentPage -1 ];
 	}
-									 nextViewGrabBlock:nil direction:UIViewAnimationDirectionRight];
+									 nextViewGrabBlock:nil direction:UIViewPageAnimationDirectionRight];
 	
 }
 
@@ -306,7 +310,7 @@
 				[self setCurrentPage:_currentPage +1 ];
 		
 	}
-						nextViewGrabBlock:nil direction:UIViewAnimationDirectionLeft];	
+						nextViewGrabBlock:nil direction:UIViewPageAnimationDirectionLeft];	
 }
 
 
@@ -323,7 +327,8 @@
 -(void)showLoadingStatusViewWithLabelText:(NSString*)labelText withIndicatorAnimating:(BOOL)animate{
 	if (_loadingStatusView != nil){
 		[_loadingStatusView removeFromSuperview];
-		SRELS(_loadingStatusView);
+//		SRELS(_loadingStatusView);
+		_loadingStatusView = nil;
 	}
 	
 	if (labelText == nil && animate == FALSE)
@@ -343,7 +348,6 @@
 	activityindicatorview5.clearsContextBeforeDrawing = YES;
 	activityindicatorview5.clipsToBounds = NO;
 	activityindicatorview5.contentMode = UIViewContentModeScaleToFill;
-	activityindicatorview5.contentStretch = CGRectFromString(@"{{0, 0}, {1, 1}}");
 	activityindicatorview5.hidden = NO;
 	activityindicatorview5.hidesWhenStopped = NO;
 	activityindicatorview5.multipleTouchEnabled = NO;
@@ -362,11 +366,10 @@
 	loadingStatusViewLabel.clearsContextBeforeDrawing = YES;
 	loadingStatusViewLabel.clipsToBounds = YES;
 	loadingStatusViewLabel.contentMode = UIViewContentModeLeft;
-	loadingStatusViewLabel.contentStretch = CGRectFromString(@"{{0, 0}, {1, 1}}");
 	loadingStatusViewLabel.enabled = YES;
 	loadingStatusViewLabel.hidden = NO;
 	loadingStatusViewLabel.highlightedTextColor = [UIColor colorWithWhite:1.000 alpha:1.000];
-	loadingStatusViewLabel.lineBreakMode = UILineBreakModeTailTruncation;
+	loadingStatusViewLabel.lineBreakMode = NSLineBreakByTruncatingTail;
 	loadingStatusViewLabel.minimumFontSize = 10.000;
 	loadingStatusViewLabel.font	=	[UIFont fontWithName:@"Marker Felt" size:17];
 	loadingStatusViewLabel.multipleTouchEnabled = NO;
@@ -375,7 +378,7 @@
 	loadingStatusViewLabel.shadowOffset = CGSizeMake(0.0, -1.0);
 	loadingStatusViewLabel.tag = 0;
 	loadingStatusViewLabel.text = labelText;
-	loadingStatusViewLabel.textAlignment = UITextAlignmentLeft;
+	loadingStatusViewLabel.textAlignment = NSTextAlignmentLeft;
 	loadingStatusViewLabel.textColor = [UIColor colorWithRed:0.000 green:0.000 blue:0.000 alpha:1.000];
 	loadingStatusViewLabel.backgroundColor = [UIColor clearColor];
 	loadingStatusViewLabel.userInteractionEnabled = NO;
@@ -385,7 +388,7 @@
 		preRect.size							= CGSizeMake(346, 24.0);;
 		preRect.origin.x						= (_loadingStatusView.size.width - preRect.size.width)/2;
 		loadingStatusViewLabel.frame			= preRect;
-		loadingStatusViewLabel.textAlignment	= UITextAlignmentCenter;
+		loadingStatusViewLabel.textAlignment	= NSTextAlignmentCenter;
 	}
 	
 	
@@ -405,15 +408,18 @@
 		[loadingStatusViewIndicator startAnimating];
 		
 		[_loadingStatusView addSubview:loadingStatusViewIndicator];
-		SRELS(loadingStatusViewIndicator);
+//		SRELS(loadingStatusViewIndicator);
+		_loadingStatusView = nil;
 
 		
 	}
 	[_loadingStatusView addSubview:loadingStatusViewLabel];
 	
-	SRELS(loadingStatusViewLabel);
-	SRELS(activityindicatorview5);
-	
+//	SRELS(loadingStatusViewLabel);
+//	SRELS(activityindicatorview5);
+	loadingStatusViewLabel = nil;
+	activityindicatorview5 = nil;
+
 	[self.view addSubview:_loadingStatusView];
 	
 }
@@ -427,27 +433,27 @@
 	UISwipeGestureRecognizer *swipeLeftGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(flipTilePageForward:)];
 	[swipeLeftGesture setDirection:UISwipeGestureRecognizerDirectionLeft];
 	[self.view addGestureRecognizer:swipeLeftGesture];
-	SRELS(swipeLeftGesture);
+//	SRELS(swipeLeftGesture);
 	
 	UISwipeGestureRecognizer *swipeRightGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(flipTilePageBack:)];
 	[swipeRightGesture setDirection:UISwipeGestureRecognizerDirectionRight];
 	[self.view addGestureRecognizer:swipeRightGesture];
-	SRELS(swipeRightGesture);
+//	SRELS(swipeRightGesture);
 	
 	[self setCurrentPage:1];
 }
 
--(id)	initWithDisplayFrame:(CGRect)tileDisplayFrame tileContentControllerDelegate:(id<exoTiledContentViewControllerContentDelegate>)delegate{
+-(id)	initWithDisplayFrame:(CGRect)tileDisplayFrame tileContentControllerDelegate:(id<exoTiledContentViewControllerContentDelegate>)del{
 	if (self = [super init]){
 		_tileDisplayFrame = tileDisplayFrame;
-		_delegate = delegate;
+		self.delegate = del;
 		
 		_displayedTileViews = [[NSMutableSet alloc] init];
 	}
 	return self;
 }
--(id)	initWithDisplayFrame:(CGRect)tileDisplayFrame tileContentControllerDelegate:(id<exoTiledContentViewControllerContentDelegate>)delegate withCenteredTilesSized:(CGSize)tileSize andMargins:(CGSize)tileMargins{
-	if (self = [self initWithDisplayFrame:tileDisplayFrame tileContentControllerDelegate:delegate]){
+-(id)	initWithDisplayFrame:(CGRect)tileDisplayFrame tileContentControllerDelegate:(id<exoTiledContentViewControllerContentDelegate>)del withCenteredTilesSized:(CGSize)tileSize andMargins:(CGSize)tileMargins{
+	if (self = [self initWithDisplayFrame:tileDisplayFrame tileContentControllerDelegate:del]){
 		_tileSize		= tileSize;
 		_tileMarginSize	= tileMargins;
 		_maxTileRows	= tileDisplayFrame.size.height / (tileSize.height + tileMargins.height);
@@ -460,13 +466,13 @@
 	}
 	return self;
 }
--(id)	initWithDisplayFrame:(CGRect)tileDisplayFrame tileContentControllerDelegate:(id<exoTiledContentViewControllerContentDelegate>)delegate withCenteredTilesSized:(CGSize)tileSize withMaxRows:(double)maxRows maxColumns:(double)maxColumns{
+-(id)	initWithDisplayFrame:(CGRect)tileDisplayFrame tileContentControllerDelegate:(id<exoTiledContentViewControllerContentDelegate>)del withCenteredTilesSized:(CGSize)tileSize withMaxRows:(double)maxRows maxColumns:(double)maxColumns{
 	double widthMarginTotal		= tileDisplayFrame.size.width - maxColumns * tileSize.width;
 	double marginWidth			= widthMarginTotal/ maxColumns;
 	
 	double heightMarginTotal	= tileDisplayFrame.size.height - maxRows * tileSize.height;
 	double marginHeight			= heightMarginTotal / maxColumns;	
-	if (self = [self initWithDisplayFrame:tileDisplayFrame tileContentControllerDelegate:delegate withCenteredTilesSized:tileSize andMargins:CGSizeMake(marginWidth, marginHeight)]){
+	if (self = [self initWithDisplayFrame:tileDisplayFrame tileContentControllerDelegate:del withCenteredTilesSized:tileSize andMargins:CGSizeMake(marginWidth, marginHeight)]){
 		
 	}
 	return self;
@@ -475,11 +481,13 @@
 
 
 -(void)dealloc{
-	_delegate = nil;
-	SRELS(_displayedTileViews);
-	SRELS(_loadingStatusView);
-	
-	[super dealloc];
+	self.delegate = nil;
+	_displayedTileViews = nil;
+//	SRELS(_displayedTileViews);
+	_loadingStatusView = nil;
+//	SRELS(_loadingStatusView);
+//	
+//	[super dealloc];
 }
 
 

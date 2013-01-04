@@ -17,8 +17,6 @@
 
 
 @interface exoTiledContentViewController : UIViewController {
-
-	id<exoTiledContentViewControllerContentDelegate> _delegate;
 	
 	CGSize	_tileSize;
 	CGSize	_tileMarginSize;
@@ -34,7 +32,7 @@
 	
 	NSMutableSet*	_displayedTileViews;
 }
-@property (nonatomic, assign) id<exoTiledContentViewControllerContentDelegate>	delegate;
+@property (nonatomic, weak) id<exoTiledContentViewControllerContentDelegate>	delegate;
 
 @property (nonatomic, assign) CGSize	tileSize;
 @property (nonatomic, assign) CGSize	tileMarginSize;
