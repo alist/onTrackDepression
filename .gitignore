@@ -1,0 +1,26 @@
+#coreplot project specific
+/core-plot/framework/build/*
+
+# xcode noise
+build/*
+*.pbxuser
+*.mode1v3
+
+# old skool
+.svn
+
+# osx noise
+.DS_Store
+profile
+
+*.xcodeproj/project.xcworkspace/xcuserdata/*
+*.xcworkspace/xcuserdata/*
+*.xcodeproj/project.xcworkspace/xcuserdata
+*.xcodeproj/xcuserdata
+*.xcodeproj/xcuserdata*
+
+*.perspective
+*.perspectivev3
+*.swp
+*~.nib
+
