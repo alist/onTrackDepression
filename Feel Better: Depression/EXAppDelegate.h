@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CKSideBarController.h"
+#import "EXTrackVC.h"
+#import "EXAnalyzeVC.h"
+#import "EXImproveVC.h"
 
 @interface EXAppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -15,6 +19,13 @@
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+
+
+@property (strong, nonatomic)	UITabBarController *	navTabBarPod; //possibly JBTabBarController later
+@property (strong, nonatomic)	CKSideBarController *	navSideBarPad;
+@property (strong, nonatomic)	EXTrackVC *				trackVC;
+@property (strong, nonatomic)	EXAnalyzeVC *			analyzeVC;
+@property (strong, nonatomic)	EXImproveVC *			improveVC;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

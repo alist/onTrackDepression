@@ -10,17 +10,40 @@
 
 @implementation EXAppDelegate
 
+@synthesize navSideBarPad, navTabBarPod;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+@synthesize trackVC, analyzeVC, improveVC;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+	
+	self.trackVC = [[EXTrackVC alloc] init];
+	self.analyzeVC = [[EXAnalyzeVC alloc] init];
+	self.improveVC = [[EXImproveVC alloc] init];
+	
+	
+	NSArray * VCs = @[self.trackVC, self.analyzeVC,self.improveVC];
+	if (deviceIsPad){
+		self.navSideBarPad	= [[CKSideBarController alloc] init];
+		[self.navSideBarPad setViewControllers:VCs];
+		[self.window setRootViewController:self.navSideBarPad];
+
+	}else{
+		self.navTabBarPod	= [[UITabBarController alloc] init];
+		[self.navTabBarPod setViewControllers:VCs];		
+		[self.window setRootViewController:self.navTabBarPod];
+	}
+	
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+-(void) dealloc{
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

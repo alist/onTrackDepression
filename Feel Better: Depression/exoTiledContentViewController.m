@@ -144,7 +144,7 @@
 		UIView *previousTilePageButtonContainerView = [[UIView alloc] initWithFrame:[self frameForTileNumber:tileLayoutIndex]];
 		tileLayoutIndex++;
 		
-		UIImageView *reversePagingImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"homepagePreviousTilesImage.png"]];
+		UIImageView *reversePagingImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"previousPageButton"]];
 		float leftForwardMargin = (previousTilePageButtonContainerView.frame.size.width - reversePagingImage.frame.size.width)/2;
 		float upperForwardMargin = (previousTilePageButtonContainerView.frame.size.height - reversePagingImage.frame.size.height)/2;
 		CGPoint pagingOrigin = CGPointMake(leftForwardMargin, upperForwardMargin);
@@ -210,7 +210,7 @@
 		
 		UIView *nextTilePageButtonContainerView = [[UIView alloc] initWithFrame:[self frameForTileNumber:tileLayoutIndex]];
 		
-		UIImageView *forwardPagingImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"homepageMoreTilesImage.png"]];
+		UIImageView *forwardPagingImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nextPageButton"]];
 		float leftForwardMargin = (nextTilePageButtonContainerView.frame.size.width - forwardPagingImage.frame.size.width)/2;
 		float upperForwardMargin = (nextTilePageButtonContainerView.frame.size.height - forwardPagingImage.frame.size.height)/2;
 		CGPoint pagingOrigin = CGPointMake(leftForwardMargin, upperForwardMargin);
