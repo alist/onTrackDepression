@@ -12,7 +12,13 @@
 
 @protocol exoTiledContentViewControllerContentDelegate<NSObject>
 -(NSInteger)tileCountForTiledContentController:(exoTiledContentViewController*)tileContentController;
--(UIView*)tileViewAtIndex:(NSInteger)tileIndex forTiledContentController:(exoTiledContentViewController*)tileContentController;
+-(UIView*)tileViewAtIndex:(NSInteger)tileIndex orientation:(UIDeviceOrientation)orientation forTiledContentController:(exoTiledContentViewController*)tileContentController;
+
+// Will immediately remove all views, requst all views anew when TRUE is returned
+// you should reset layout params BEFORE returning true
+// Not implementing or returning false causes nothign to happen when device rotates regarding tiles
+@optional
+-(BOOL) shouldReLayoutViewsForNewOrientaion: (UIDeviceOrientation)orientation forTiledContentController:(exoTiledContentViewController*)tileContentController;;
 @end
 
 
@@ -66,5 +72,6 @@
 -(id)	initWithDisplayFrame:(CGRect)tileDisplayFrame tileContentControllerDelegate:(id<exoTiledContentViewControllerContentDelegate>)delegate withCenteredTilesSized:(CGSize)tileSize andMargins:(CGSize)tileMargins;
 -(id)	initWithDisplayFrame:(CGRect)tileDisplayFrame tileContentControllerDelegate:(id<exoTiledContentViewControllerContentDelegate>)delegate withCenteredTilesSized:(CGSize)tileSize withMaxRows:(double)maxRows maxColumns:(double)maxColumns;
 
+-(void) setParamsFromCenteredTilesSized:(CGSize)tileSize andMargins:(CGSize)tileMargins;
 
 @end

@@ -10,7 +10,6 @@
 #import "exoTiledContentViewController.h"
 #import "MNMRadioGroup.h"
 
-
 typedef enum{
 	EXQuestionnaireTypeNone,
 	EXQuestionnaireTypeQIDS
@@ -20,5 +19,8 @@ typedef enum{
 
 @property (nonatomic, assign) EXQuestionnaireType				currentQuestionnaire;
 @property (nonatomic, strong) exoTiledContentViewController *	questionTileController;
+@property (nonatomic, strong) NSManagedObjectContext *			objectContext;
+
+-(id)initWithManagedObjectContext:(NSManagedObjectContext*)context;
 
 @end

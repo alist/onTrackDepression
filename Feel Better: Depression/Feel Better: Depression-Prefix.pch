@@ -6,6 +6,7 @@
 
 
 #import "UIViewAdditions+EX.h"
+#import "EXAuthor.h"
 
 #define deviceIsPad ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
 #define ArrayHasItems(array) (array != nil && [array count] > 0)

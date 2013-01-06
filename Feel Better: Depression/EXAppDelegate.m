@@ -8,12 +8,17 @@
 
 #import "EXAppDelegate.h"
 
+@interface EXAppDelegate ()
+-(EXAuthor*) generateLocalUser;
+@end
+
 @implementation EXAppDelegate
 
 @synthesize navSideBarPad, navTabBarPod;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize authorForCurrentUser = _authorForCurrentUser;
 
 @synthesize trackVC, analyzeVC, improveVC;
 
@@ -21,7 +26,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
-	self.trackVC = [[EXTrackVC alloc] init];
+	self.trackVC = [[EXTrackVC alloc] initWithManagedObjectContext:self.managedObjectContext];
 	self.analyzeVC = [[EXAnalyzeVC alloc] init];
 	self.improveVC = [[EXImproveVC alloc] init];
 	
@@ -42,6 +47,56 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+#pragma mark - user data
+-(EXAuthor*)authorForCurrentUser{
+	if (_authorForCurrentUser != nil && [NSThread isMainThread]){
+		return _authorForCurrentUser;
+	}else {
+		EXAuthor * author = nil;
+		NSString* userID = [[NSUserDefaults standardUserDefaults] stringForKey:@"localAuthorUserID"];
+		if (userID >0 ){
+			NSArray * authors = [self.managedObjectContext executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"name"] error:nil]; //[EXAuthor objectsWithPredicate:[NSPredicate predicateWithFormat:@"authorID == %@", userID]];
+			
+			if ([authors count] > 0){
+				author = [authors objectAtIndex:0];
+			}else{
+				author = [self generateLocalUser];
+			}
+		}else{
+			_authorForCurrentUser = nil;
+			return nil;
+		}
+		
+		if (_authorForCurrentUser == nil && [NSThread isMainThread]){
+			_authorForCurrentUser = author;
+			[self setAuthorForCurrentUser:author];
+			return _authorForCurrentUser;
+		}else{
+			return author;
+		}
+	}
+}
+
+-(EXAuthor*) generateLocalUser{
+	NSString* userID = @"101";
+	
+	EXAuthor * newAuthor = [[EXAuthor alloc] initWithEntity:[NSEntityDescription entityForName:@"EXAuthor" inManagedObjectContext:self.managedObjectContext] insertIntoManagedObjectContext:self.managedObjectContext];
+	
+	[newAuthor setAuthorID:userID];
+	[newAuthor setDisplayName:@"newAuthor 101"];
+	
+	[[NSUserDefaults standardUserDefaults] setValue:[newAuthor authorID] forKey:@"localAuthorUserID"];
+	
+	[self.managedObjectContext save:nil];
+	return newAuthor;
+	
+}
+
+
+
+
+#pragma mark - app junk
 
 -(void) dealloc{
 }

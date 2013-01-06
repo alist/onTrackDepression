@@ -26,19 +26,17 @@
 	NSInteger	remainingTiles	= totalTiles;
 	
 	//forward controls
-	NSInteger	firstPageTiles	= maxPageTiles -1;
+	NSInteger	firstPageTiles	= maxPageTiles;
 	totalPages ++;
 	remainingTiles	-=	firstPageTiles;
 	
-	//forward and back
-	NSInteger	middlePageTiles	= maxPageTiles -2; 
+	NSInteger	middlePageTiles	= maxPageTiles;
 	NSInteger	middlePages		= remainingTiles/ middlePageTiles;
-	middlePages --; //perhaps it's the last page, in which case we'll need only a back button
 	
 	totalPages		+=	middlePages;
 	remainingTiles	-= middlePageTiles * middlePages;
 	
-	NSInteger	lastPageTiles	= maxPageTiles -1;
+	NSInteger	lastPageTiles	= maxPageTiles;
 	
 	if (remainingTiles > lastPageTiles){
 		totalPages ++;
@@ -53,7 +51,10 @@
 }
 
 //	pageNumber zero delimited whereas tilePageCount is 1 page = 1 count
--(NSRange)	tileRangeForPage:(NSInteger)pageNumber needsForwardPagination:(BOOL*)forwardPaginationNeeded needsBackwardPagination:(BOOL*)backwardPaginationNeeded{
+-(NSRange)	tileRangeForPage:(NSInteger)pageNumber needsForwardPagination:(BOOL*)forwardPaginationNeeded
+	needsBackwardPagination:(BOOL*)backwardPaginationNeeded{
+	//this function calculates tiles for every page in layout, and returns when current page is the calculated page
+	
 	NSInteger totalTiles	= [self.delegate tileCountForTiledContentController:self];
 	NSInteger maxPageTiles	= _maxTileRows * _maxTileColumns;
 
@@ -73,7 +74,8 @@
 	NSInteger	pageBeginningTile			=0;
 	
 	//forward controls
-	NSInteger	firstPageTiles	= maxPageTiles -1;
+	//calculating tiles used on first page
+	NSInteger	firstPageTiles	= maxPageTiles;
 	*forwardPaginationNeeded	= YES;
 	currentCalculatedPage ++;
 	remainingTiles				-=	firstPageTiles;
@@ -84,14 +86,13 @@
 	*backwardPaginationNeeded	= YES;
 	
 	//forward and back
-	NSInteger	middlePageTiles	= maxPageTiles -2; 
-	NSInteger	middlePages		= remainingTiles/ middlePageTiles;
-	middlePages --; //perhaps it's the last page, in which case we'll need only a back button
+	NSInteger	middlePageTiles	= maxPageTiles; 
+	NSInteger	middlePages		= (int) floor((double)remainingTiles/ (double)middlePageTiles);
 	
 	currentCalculatedPage		+=	middlePages;
 	remainingTiles	-= middlePageTiles * middlePages;
 	if (pageNumber <= currentCalculatedPage){
-		pageBeginningTile		+=	middlePageTiles * (pageNumber-1); //not the first page, it's already included in pageBeginningTile
+		pageBeginningTile		+=	middlePageTiles * (pageNumber-2); //not the first page, it's already included in pageBeginningTile -- middle pages start on page 2
 		return NSMakeRange(pageBeginningTile, middlePageTiles);
 	}else {
 		pageBeginningTile += middlePageTiles * middlePages; //move beginning past middle pages
@@ -137,39 +138,11 @@
 	
 	NSInteger tileLayoutIndex	=	0;
 	NSMutableSet *	tilesToRemove	= [NSMutableSet setWithSet:_displayedTileViews];
-	
-	if (needsReversePaging){
-		
-		
-		UIView *previousTilePageButtonContainerView = [[UIView alloc] initWithFrame:[self frameForTileNumber:tileLayoutIndex]];
-		tileLayoutIndex++;
-		
-		UIImageView *reversePagingImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"previousPageButton"]];
-		float leftForwardMargin = (previousTilePageButtonContainerView.frame.size.width - reversePagingImage.frame.size.width)/2;
-		float upperForwardMargin = (previousTilePageButtonContainerView.frame.size.height - reversePagingImage.frame.size.height)/2;
-		CGPoint pagingOrigin = CGPointMake(leftForwardMargin, upperForwardMargin);
-		reversePagingImage.origin = pagingOrigin;
-		[previousTilePageButtonContainerView addSubview:reversePagingImage];
-//		SRELS(reversePagingImage);
-		reversePagingImage = nil;
-		
-		UITapGestureRecognizer *pageFlipPressRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(flipTilePageBack:)];
-		[previousTilePageButtonContainerView addGestureRecognizer:pageFlipPressRecognizer];
-//		SRELS(pageFlipPressRecognizer)
-		pageFlipPressRecognizer = nil;
-		
-		
-		[self.view addSubview:previousTilePageButtonContainerView];
-		[_displayedTileViews addObject:previousTilePageButtonContainerView];
-		[tilesToRemove removeObject:previousTilePageButtonContainerView];
 
-//		SRELS(previousTilePageButtonContainerView);
-		previousTilePageButtonContainerView = nil;
-	}
 
 	for (int nextTileIndex = pageTileRange.location; nextTileIndex < pageTileRange.location + pageTileRange.length; nextTileIndex ++){
 		
-		UIView *nextTile = [self.delegate tileViewAtIndex:nextTileIndex forTiledContentController:self];
+		UIView *nextTile = [self.delegate tileViewAtIndex:nextTileIndex orientation:[[UIDevice currentDevice] orientation] forTiledContentController:self];
 		if (nextTile == nil){
 			[NSException raise:@"NSYou'reTryingToScamThisClassException" format:@"you told my class you'd give a tile at index %i, but it's nil-- what kind of game are you trying to pull here?",nextTileIndex];
 
@@ -204,36 +177,6 @@
 		tileLayoutIndex++;
 	}
 	
-
-	if (needsForwardPaging){
-		
-		
-		UIView *nextTilePageButtonContainerView = [[UIView alloc] initWithFrame:[self frameForTileNumber:tileLayoutIndex]];
-		
-		UIImageView *forwardPagingImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nextPageButton"]];
-		float leftForwardMargin = (nextTilePageButtonContainerView.frame.size.width - forwardPagingImage.frame.size.width)/2;
-		float upperForwardMargin = (nextTilePageButtonContainerView.frame.size.height - forwardPagingImage.frame.size.height)/2;
-		CGPoint pagingOrigin = CGPointMake(leftForwardMargin, upperForwardMargin);
-		forwardPagingImage.origin = pagingOrigin;
-		[nextTilePageButtonContainerView addSubview:forwardPagingImage];
-//		SRELS(forwardPagingImage);
-		forwardPagingImage = nil;
-		
-		
-		UITapGestureRecognizer *pageFlipPressRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(flipTilePageForward:)];
-		[nextTilePageButtonContainerView addGestureRecognizer:pageFlipPressRecognizer];
-//		SRELS(pageFlipPressRecognizer);
-		pageFlipPressRecognizer = nil;
-		
-		[self.view addSubview:nextTilePageButtonContainerView];
-		[_displayedTileViews addObject:nextTilePageButtonContainerView];
-		[tilesToRemove removeObject:nextTilePageButtonContainerView];
-
-//		SRELS(nextTilePageButtonContainerView);		
-		nextTilePageButtonContainerView = nil;
-		
-		tileLayoutIndex++;
-	}
 	
 	for (UIView * removeTileView in tilesToRemove){
 		[removeTileView removeFromSuperview];
@@ -428,17 +371,18 @@
 -(void)	viewDidLoad{
 	[super viewDidLoad];
 	
+	self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+	self.view.autoresizesSubviews = TRUE;
+	
 	[self.view setFrame:_tileDisplayFrame];
-		
+	
 	UISwipeGestureRecognizer *swipeLeftGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(flipTilePageForward:)];
 	[swipeLeftGesture setDirection:UISwipeGestureRecognizerDirectionLeft];
 	[self.view addGestureRecognizer:swipeLeftGesture];
-//	SRELS(swipeLeftGesture);
 	
 	UISwipeGestureRecognizer *swipeRightGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(flipTilePageBack:)];
 	[swipeRightGesture setDirection:UISwipeGestureRecognizerDirectionRight];
 	[self.view addGestureRecognizer:swipeRightGesture];
-//	SRELS(swipeRightGesture);
 	
 	[self setCurrentPage:1];
 }
@@ -449,23 +393,11 @@
 		self.delegate = del;
 		
 		_displayedTileViews = [[NSMutableSet alloc] init];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
 	}
 	return self;
 }
--(id)	initWithDisplayFrame:(CGRect)tileDisplayFrame tileContentControllerDelegate:(id<exoTiledContentViewControllerContentDelegate>)del withCenteredTilesSized:(CGSize)tileSize andMargins:(CGSize)tileMargins{
-	if (self = [self initWithDisplayFrame:tileDisplayFrame tileContentControllerDelegate:del]){
-		_tileSize		= tileSize;
-		_tileMarginSize	= tileMargins;
-		_maxTileRows	= tileDisplayFrame.size.height / (tileSize.height + tileMargins.height);
-		_maxTileColumns	= tileDisplayFrame.size.width / (tileSize.width + tileMargins.width);
-		
-		double	xStartPoint	=	(_tileMarginSize.width)/2; 
-		double	yStartPoint	=	(_tileMarginSize.height)/2; 
 
-		_layoutStartPoint	=	CGPointMake(xStartPoint, yStartPoint);
-	}
-	return self;
-}
 -(id)	initWithDisplayFrame:(CGRect)tileDisplayFrame tileContentControllerDelegate:(id<exoTiledContentViewControllerContentDelegate>)del withCenteredTilesSized:(CGSize)tileSize withMaxRows:(double)maxRows maxColumns:(double)maxColumns{
 	double widthMarginTotal		= tileDisplayFrame.size.width - maxColumns * tileSize.width;
 	double marginWidth			= widthMarginTotal/ maxColumns;
@@ -473,21 +405,50 @@
 	double heightMarginTotal	= tileDisplayFrame.size.height - maxRows * tileSize.height;
 	double marginHeight			= heightMarginTotal / maxColumns;	
 	if (self = [self initWithDisplayFrame:tileDisplayFrame tileContentControllerDelegate:del withCenteredTilesSized:tileSize andMargins:CGSizeMake(marginWidth, marginHeight)]){
-		
+
 	}
 	return self;
 }
+
+-(id)	initWithDisplayFrame:(CGRect)tileDisplayFrame tileContentControllerDelegate:(id<exoTiledContentViewControllerContentDelegate>)del withCenteredTilesSized:(CGSize)tileSize andMargins:(CGSize)tileMargins{
+	if (self = [self initWithDisplayFrame:tileDisplayFrame tileContentControllerDelegate:del]){
+		
+		[self setParamsFromCenteredTilesSized:tileSize andMargins:tileMargins];
+	}
+	return self;
+}
+
+-(void) setParamsFromCenteredTilesSized:(CGSize)tileSize andMargins:(CGSize)tileMargins{
+	_tileSize		= tileSize;
+	_tileMarginSize	= tileMargins;
+	_maxTileRows	= floor(self.tileDisplayFrame.size.height / (tileSize.height + tileMargins.height));
+	_maxTileColumns	= floor(self.tileDisplayFrame.size.width / (tileSize.width + tileMargins.width));
+	
+	double	xStartPoint	=	(_tileMarginSize.width)/2;
+	double	yStartPoint	=	(_tileMarginSize.height)/2;
+	
+	_layoutStartPoint	=	CGPointMake(xStartPoint, yStartPoint);
+
+}
+
+-(void)didRotate:(id)data{
+	NSLog(@"%@",[data description]);
+	if ([self.delegate respondsToSelector:@selector(shouldReLayoutViewsForNewOrientaion:forTiledContentController:)]){
+		if ([self.delegate shouldReLayoutViewsForNewOrientaion:[[UIDevice currentDevice] orientation] forTiledContentController:self]){
+			[self layoutTilePageNumber:self.currentPage];
+		}
+	}
+}
+
 
 
 
 -(void)dealloc{
 	self.delegate = nil;
 	_displayedTileViews = nil;
-//	SRELS(_displayedTileViews);
 	_loadingStatusView = nil;
-//	SRELS(_loadingStatusView);
-//	
-//	[super dealloc];
+	
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 

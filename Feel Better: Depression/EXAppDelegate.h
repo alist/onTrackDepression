@@ -30,4 +30,6 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 
+@property (nonatomic, strong) EXAuthor* authorForCurrentUser;
+
 @end
