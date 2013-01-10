@@ -133,24 +133,24 @@
 		7935E5D41698882200FA871F /* greyfloral.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greyfloral.png; sourceTree = "<group>"; };
 		7935E5D91698882D00FA871F /* crisp_paper_ruffles@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "crisp_paper_ruffles@2X.png"; sourceTree = "<group>"; };
 		7935E5DA1698882E00FA871F /* crisp_paper_ruffles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crisp_paper_ruffles.png; sourceTree = "<group>"; };
-		79A6E3BE16973E5B00AA68D7 /* Feel Better: Depression.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Feel Better: Depression.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		79A6E3BE16973E5B00AA68D7 /* Domo Depression.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Domo Depression.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79A6E3C216973E5B00AA68D7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		79A6E3C416973E5B00AA68D7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		79A6E3C616973E5B00AA68D7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		79A6E3C816973E5B00AA68D7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		79A6E3CC16973E5B00AA68D7 /* Feel Better: Depression-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Feel Better: Depression-Info.plist"; sourceTree = "<group>"; };
+		79A6E3CC16973E5B00AA68D7 /* Domo Depression-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Domo Depression-Info.plist"; sourceTree = "<group>"; };
 		79A6E3CE16973E5B00AA68D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		79A6E3D016973E5B00AA68D7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		79A6E3D216973E5B00AA68D7 /* Feel Better: Depression-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Feel Better: Depression-Prefix.pch"; sourceTree = "<group>"; };
+		79A6E3D216973E5B00AA68D7 /* Domo Depression-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Domo Depression-Prefix.pch"; sourceTree = "<group>"; };
 		79A6E3D316973E5B00AA68D7 /* EXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EXAppDelegate.h; sourceTree = "<group>"; };
 		79A6E3D416973E5B00AA68D7 /* EXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EXAppDelegate.m; sourceTree = "<group>"; };
 		79A6E3D616973E5B00AA68D7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		79A6E3D816973E5B00AA68D7 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		79A6E3DA16973E5B00AA68D7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		79A6E3DD16973E5B00AA68D7 /* Feel_Better__Depression.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Feel_Better__Depression.xcdatamodel; sourceTree = "<group>"; };
-		79A6E3E416973E5B00AA68D7 /* Feel Better: DepressionTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Feel Better: DepressionTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		79A6E3E416973E5B00AA68D7 /* Domo DepressionTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Domo DepressionTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79A6E3E516973E5B00AA68D7 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		79A6E3EE16973E5B00AA68D7 /* Feel Better: DepressionTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Feel Better: DepressionTests-Info.plist"; sourceTree = "<group>"; };
+		79A6E3EE16973E5B00AA68D7 /* Domo DepressionTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Domo DepressionTests-Info.plist"; sourceTree = "<group>"; };
 		79A6E3F016973E5B00AA68D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		79A6E3F216973E5B00AA68D7 /* Feel_Better__DepressionTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Feel_Better__DepressionTests.h; sourceTree = "<group>"; };
 		79A6E3F316973E5B00AA68D7 /* Feel_Better__DepressionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Feel_Better__DepressionTests.m; sourceTree = "<group>"; };
@@ -359,8 +359,8 @@
 		79A6E3BF16973E5B00AA68D7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				79A6E3BE16973E5B00AA68D7 /* Feel Better: Depression.app */,
-				79A6E3E416973E5B00AA68D7 /* Feel Better: DepressionTests.octest */,
+				79A6E3BE16973E5B00AA68D7 /* Domo Depression.app */,
+				79A6E3E416973E5B00AA68D7 /* Domo DepressionTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -391,9 +391,9 @@
 		79A6E3CB16973E5B00AA68D7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				79A6E3CC16973E5B00AA68D7 /* Feel Better: Depression-Info.plist */,
+				79A6E3CC16973E5B00AA68D7 /* Domo Depression-Info.plist */,
 				79A6E3D016973E5B00AA68D7 /* main.m */,
-				79A6E3D216973E5B00AA68D7 /* Feel Better: Depression-Prefix.pch */,
+				79A6E3D216973E5B00AA68D7 /* Domo Depression-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -411,7 +411,7 @@
 		79A6E3ED16973E5B00AA68D7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				79A6E3EE16973E5B00AA68D7 /* Feel Better: DepressionTests-Info.plist */,
+				79A6E3EE16973E5B00AA68D7 /* Domo DepressionTests-Info.plist */,
 				79A6E3EF16973E5B00AA68D7 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -442,9 +442,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		79A6E3BD16973E5B00AA68D7 /* Feel Better: Depression */ = {
+		79A6E3BD16973E5B00AA68D7 /* Domo Depression */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 79A6E3F716973E5B00AA68D7 /* Build configuration list for PBXNativeTarget "Feel Better: Depression" */;
+			buildConfigurationList = 79A6E3F716973E5B00AA68D7 /* Build configuration list for PBXNativeTarget "Domo Depression" */;
 			buildPhases = (
 				79A6E3BA16973E5B00AA68D7 /* Sources */,
 				79A6E3BB16973E5B00AA68D7 /* Frameworks */,
@@ -454,14 +454,14 @@
 			);
 			dependencies = (
 			);
-			name = "Feel Better: Depression";
+			name = "Domo Depression";
 			productName = "Feel Better: Depression";
-			productReference = 79A6E3BE16973E5B00AA68D7 /* Feel Better: Depression.app */;
+			productReference = 79A6E3BE16973E5B00AA68D7 /* Domo Depression.app */;
 			productType = "com.apple.product-type.application";
 		};
-		79A6E3E316973E5B00AA68D7 /* Feel Better: DepressionTests */ = {
+		79A6E3E316973E5B00AA68D7 /* Domo DepressionTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 79A6E3FA16973E5B00AA68D7 /* Build configuration list for PBXNativeTarget "Feel Better: DepressionTests" */;
+			buildConfigurationList = 79A6E3FA16973E5B00AA68D7 /* Build configuration list for PBXNativeTarget "Domo DepressionTests" */;
 			buildPhases = (
 				79A6E3DF16973E5B00AA68D7 /* Sources */,
 				79A6E3E016973E5B00AA68D7 /* Frameworks */,
@@ -473,9 +473,9 @@
 			dependencies = (
 				79A6E3EB16973E5B00AA68D7 /* PBXTargetDependency */,
 			);
-			name = "Feel Better: DepressionTests";
+			name = "Domo DepressionTests";
 			productName = "Feel Better: DepressionTests";
-			productReference = 79A6E3E416973E5B00AA68D7 /* Feel Better: DepressionTests.octest */;
+			productReference = 79A6E3E416973E5B00AA68D7 /* Domo DepressionTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -488,7 +488,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = ExoMachina;
 			};
-			buildConfigurationList = 79A6E3B816973E5B00AA68D7 /* Build configuration list for PBXProject "Feel Better: Depression" */;
+			buildConfigurationList = 79A6E3B816973E5B00AA68D7 /* Build configuration list for PBXProject "Domo Depression" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -501,8 +501,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				79A6E3BD16973E5B00AA68D7 /* Feel Better: Depression */,
-				79A6E3E316973E5B00AA68D7 /* Feel Better: DepressionTests */,
+				79A6E3BD16973E5B00AA68D7 /* Domo Depression */,
+				79A6E3E316973E5B00AA68D7 /* Domo DepressionTests */,
 			);
 		};
 /* End PBXProject section */
@@ -629,7 +629,7 @@
 /* Begin PBXTargetDependency section */
 		79A6E3EB16973E5B00AA68D7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 79A6E3BD16973E5B00AA68D7 /* Feel Better: Depression */;
+			target = 79A6E3BD16973E5B00AA68D7 /* Domo Depression */;
 			targetProxy = 79A6E3EA16973E5B00AA68D7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -728,9 +728,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Feel Better: Depression/Feel Better: Depression-Prefix.pch";
-				INFOPLIST_FILE = "Feel Better: Depression/Feel Better: Depression-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Feel Better: Depression/Domo Depression-Prefix.pch";
+				INFOPLIST_FILE = "Feel Better: Depression/Domo Depression-Info.plist";
+				PRODUCT_NAME = "Domo Depression";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -739,9 +739,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Feel Better: Depression/Feel Better: Depression-Prefix.pch";
-				INFOPLIST_FILE = "Feel Better: Depression/Feel Better: Depression-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Feel Better: Depression/Domo Depression-Prefix.pch";
+				INFOPLIST_FILE = "Feel Better: Depression/Domo Depression-Info.plist";
+				PRODUCT_NAME = "Domo Depression";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -756,8 +756,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Feel Better: Depression/Feel Better: Depression-Prefix.pch";
-				INFOPLIST_FILE = "Feel Better: DepressionTests/Feel Better: DepressionTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "Feel Better: DepressionTests/Domo DepressionTests-Info.plist";
+				PRODUCT_NAME = "Domo DepressionTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -773,8 +773,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Feel Better: Depression/Feel Better: Depression-Prefix.pch";
-				INFOPLIST_FILE = "Feel Better: DepressionTests/Feel Better: DepressionTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "Feel Better: DepressionTests/Domo DepressionTests-Info.plist";
+				PRODUCT_NAME = "Domo DepressionTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -783,7 +783,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		79A6E3B816973E5B00AA68D7 /* Build configuration list for PBXProject "Feel Better: Depression" */ = {
+		79A6E3B816973E5B00AA68D7 /* Build configuration list for PBXProject "Domo Depression" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				79A6E3F516973E5B00AA68D7 /* Debug */,
@@ -792,7 +792,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		79A6E3F716973E5B00AA68D7 /* Build configuration list for PBXNativeTarget "Feel Better: Depression" */ = {
+		79A6E3F716973E5B00AA68D7 /* Build configuration list for PBXNativeTarget "Domo Depression" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				79A6E3F816973E5B00AA68D7 /* Debug */,
@@ -801,7 +801,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		79A6E3FA16973E5B00AA68D7 /* Build configuration list for PBXNativeTarget "Feel Better: DepressionTests" */ = {
+		79A6E3FA16973E5B00AA68D7 /* Build configuration list for PBXNativeTarget "Domo DepressionTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				79A6E3FB16973E5B00AA68D7 /* Debug */,
