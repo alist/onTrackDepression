@@ -13,6 +13,7 @@
 #import "EXImproveVC.h"
 
 #import "EXAuthor.h"
+#import "EXUserComManager.h"
 
 @interface EXAppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -29,9 +30,10 @@
 @property (strong, nonatomic)	EXAnalyzeVC *			analyzeVC;
 @property (strong, nonatomic)	EXImproveVC *			improveVC;
 
+
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 
 @property (nonatomic, strong) EXAuthor* authorForCurrentUser;
-
+@property (nonatomic, strong) EXUserComManager * userComManager;
 @end

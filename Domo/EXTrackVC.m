@@ -20,8 +20,29 @@ static const CGRect formQuestionDimensionsLandscape = {{0,0},{400, 200}};
 @implementation EXTrackVC
 @synthesize currentQuestionnaire, questionTileController;
 
+#pragma mark - content 
+-(NSArray*)detailBoxes{
+	// make the table
+	MGTableBoxStyled *layout = MGTableBoxStyled.box;
+	
+	// header
+	MGLineStyled *head = [MGLineStyled lineWithLeft:NSLocalizedString(@"Tracking Mood", @"track tab header for tracking options") right:nil size:self.rowSize];
+	[layout.topLines addObject:head];
+	head.font = self.headerFont;
+	
+	//need to add author
+	MGLineStyled *grids = [MGLineStyled lineWithLeft:NSLocalizedString(@"Start Form Series", @"track tab text for beginning regimine") right:[UIImage imageNamed:@"disclosureArrow"] size:self.rowSize];
+	[layout.topLines addObject:grids];
+	grids.onTap = ^{
+		NSLog(@"Will dispaly qids");
+	};
+	
+	return @[layout];
+}
+
+#pragma mark - setup
 -(id)initWithManagedObjectContext:(NSManagedObjectContext*)context{
-	if (self = [super initWithManagedObjectContext:context]){
+	if (self = [super initWithManagedObjectContext:context presentedAppTab:domoAppTabTrack]){
 		[self setTitle:NSLocalizedString(@"Track", @"navigation bar title")];
 		
 		self.qidsManager = [[EXQIDSManager alloc] initWithManagedObjectContext:self.objectContext];

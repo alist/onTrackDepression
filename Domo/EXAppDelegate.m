@@ -18,13 +18,16 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-@synthesize authorForCurrentUser = _authorForCurrentUser;
+@synthesize authorForCurrentUser = _authorForCurrentUser, userComManager;
 
 @synthesize trackVC, analyzeVC, improveVC;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	
+	self.userComManager = [EXUserComManager sharedUserComManager];
+	[self.userComManager setAuthor:	self.authorForCurrentUser];
 	
 	self.trackVC = [[EXTrackVC alloc] initWithManagedObjectContext:self.managedObjectContext];
 	self.analyzeVC = [[EXAnalyzeVC alloc] init];
@@ -57,7 +60,7 @@
 		EXAuthor * author = nil;
 		NSString* userID = [[NSUserDefaults standardUserDefaults] stringForKey:@"localAuthorUserID"];
 		if (userID >0 ){
-			NSArray * authors = [self.managedObjectContext executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"name"] error:nil]; //[EXAuthor objectsWithPredicate:[NSPredicate predicateWithFormat:@"authorID == %@", userID]];
+			NSArray * authors = [self.managedObjectContext executeFetchRequest:[NSFetchRequest fetchRequestWithEntityName:@"EXAuthor"] error:nil]; //[EXAuthor objectsWithPredicate:[NSPredicate predicateWithFormat:@"authorID == %@", userID]];
 			
 			if ([authors count] > 0){
 				author = [authors objectAtIndex:0];
@@ -65,8 +68,7 @@
 				author = [self generateLocalUser];
 			}
 		}else{
-			_authorForCurrentUser = nil;
-			return nil;
+			author = [self generateLocalUser];
 		}
 		
 		if (_authorForCurrentUser == nil && [NSThread isMainThread]){
@@ -86,12 +88,12 @@
 	
 	[newAuthor setAuthorID:userID];
 	[newAuthor setDisplayName:@"newAuthor 101"];
+	[newAuthor setIsOnboarding:@(TRUE)];
 	
 	[[NSUserDefaults standardUserDefaults] setValue:[newAuthor authorID] forKey:@"localAuthorUserID"];
 	
 	[self.managedObjectContext save:nil];
 	return newAuthor;
-	
 }
 
 

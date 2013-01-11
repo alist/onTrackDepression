@@ -14,6 +14,7 @@
 
 //vars
 typedef enum{
+	domoAppTabNone = 0,
 	domoAppTabTrack,
 	domoAppTabReview,
 	domoAppTabImprove,

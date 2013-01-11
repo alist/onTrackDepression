@@ -31,4 +31,8 @@ static NSString * const EXUserComManagerChangedUIText = @"EXUserComManagerChange
 */ 
 -(NSArray*) messagesForUIAppTab:(domoAppTab)appTab;
 
+
+//app delegate should set author on finished launching
++(EXUserComManager*) sharedUserComManager;
+
 @end 

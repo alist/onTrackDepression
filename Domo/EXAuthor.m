@@ -1,8 +1,8 @@
 //
 //  EXAuthor.m
-//  Feel Better: Depression
+//  Domo Depression
 //
-//  Created by Alexander List on 1/5/13.
+//  Created by Alexander List on 1/11/13.
 //  Copyright (c) 2013 ExoMachina. All rights reserved.
 //
 
@@ -15,6 +15,11 @@
 @dynamic accessToken;
 @dynamic authorID;
 @dynamic displayName;
+@dynamic firstQIDSDate;
+@dynamic isOnboarding;
+@dynamic lastQIDSDate;
+@dynamic nextQIDSDate;
+@dynamic qidsSpacingInterval;
 @dynamic qidsSubmissions;
 
 @end

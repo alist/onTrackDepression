@@ -1,8 +1,8 @@
 //
 //  EXAuthor.h
-//  Feel Better: Depression
+//  Domo Depression
 //
-//  Created by Alexander List on 1/5/13.
+//  Created by Alexander List on 1/11/13.
 //  Copyright (c) 2013 ExoMachina. All rights reserved.
 //
 
@@ -16,8 +16,12 @@
 @property (nonatomic, retain) NSString * accessToken;
 @property (nonatomic, retain) NSString * authorID;
 @property (nonatomic, retain) NSString * displayName;
+@property (nonatomic, retain) NSDate * firstQIDSDate;
+@property (nonatomic, retain) NSNumber * isOnboarding;
+@property (nonatomic, retain) NSDate * lastQIDSDate;
+@property (nonatomic, retain) NSDate * nextQIDSDate;
+@property (nonatomic, retain) NSNumber * qidsSpacingInterval;
 @property (nonatomic, retain) NSSet *qidsSubmissions;
-
 @end
 
 @interface EXAuthor (CoreDataGeneratedAccessors)

@@ -5,6 +5,7 @@
         <attribute name="authorID" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="displayName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstQIDSDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="isOnboarding" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="lastQIDSDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="nextQIDSDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="qidsSpacingInterval" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
@@ -37,7 +38,7 @@
         <relationship name="author" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="EXAuthor" inverseName="qidsSubmissions" inverseEntity="EXAuthor" syncable="YES"/>
     </entity>
     <elements>
-        <element name="EXAuthor" positionX="160" positionY="192" width="128" height="165"/>
+        <element name="EXAuthor" positionX="160" positionY="192" width="128" height="180"/>
         <element name="EXQIDSSubmission" positionX="160" positionY="192" width="128" height="405"/>
     </elements>
 </model>

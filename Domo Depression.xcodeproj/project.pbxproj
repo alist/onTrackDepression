@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7935E40B16975CE700FA871F /* exoTiledContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7935E40A16975CE700FA871F /* exoTiledContentViewController.m */; };
 		7935E41316975E6900FA871F /* UIViewAdditions+EX.m in Sources */ = {isa = PBXBuildFile; fileRef = 7935E41216975E6900FA871F /* UIViewAdditions+EX.m */; };
 		7935E41416975EC000FA871F /* UIViewAdditions+EX.m in Sources */ = {isa = PBXBuildFile; fileRef = 7935E41216975E6900FA871F /* UIViewAdditions+EX.m */; };
-		7935E41516975ECA00FA871F /* exoTiledContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7935E40A16975CE700FA871F /* exoTiledContentViewController.m */; };
 		7935E5011697669B00FA871F /* CKSideBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7935E4AF1697669B00FA871F /* CKSideBarController.m */; };
 		7935E5021697669B00FA871F /* CKSideBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7935E4AF1697669B00FA871F /* CKSideBarController.m */; };
 		7935E5031697669B00FA871F /* CKSideBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7935E4B11697669B00FA871F /* CKSideBarItem.m */; };
@@ -103,9 +101,11 @@
 		79B5EBE21698DED8009D7FB9 /* EXQIDSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B5EBE01698DED8009D7FB9 /* EXQIDSManager.m */; };
 		79B5EBE516990390009D7FB9 /* EXQIDSSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B5EBE416990390009D7FB9 /* EXQIDSSubmission.m */; };
 		79B5EBE616990390009D7FB9 /* EXQIDSSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B5EBE416990390009D7FB9 /* EXQIDSSubmission.m */; };
-		79B5EBEA169905E4009D7FB9 /* EXAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B5EBE9169905E4009D7FB9 /* EXAuthor.m */; };
-		79B5EBEB169905E4009D7FB9 /* EXAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B5EBE9169905E4009D7FB9 /* EXAuthor.m */; };
 		79C024DA16A085A300EC138F /* EXUserComManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7949225516A0586F00351741 /* EXUserComManager.m */; };
+		79C024E716A09BA400EC138F /* EXAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C024E616A09BA400EC138F /* EXAuthor.m */; };
+		79C024EA16A0A60100EC138F /* disclosureArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 79C024E816A0A60100EC138F /* disclosureArrow.png */; };
+		79C024EB16A0A60100EC138F /* disclosureArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79C024E916A0A60100EC138F /* disclosureArrow@2x.png */; };
+		79C024EE16A0A7EB00EC138F /* exoTiledContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C024ED16A0A7EB00EC138F /* exoTiledContentViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,8 +119,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7935E40916975CE700FA871F /* exoTiledContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exoTiledContentViewController.h; sourceTree = "<group>"; };
-		7935E40A16975CE700FA871F /* exoTiledContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exoTiledContentViewController.m; sourceTree = "<group>"; };
 		7935E41116975E6900FA871F /* UIViewAdditions+EX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewAdditions+EX.h"; sourceTree = "<group>"; };
 		7935E41216975E6900FA871F /* UIViewAdditions+EX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewAdditions+EX.m"; sourceTree = "<group>"; };
 		7935E4AE1697669B00FA871F /* CKSideBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CKSideBarController.h; path = Source/CKSideBarController.h; sourceTree = "<group>"; };
@@ -193,26 +191,6 @@
 		7949228216A0795600351741 /* MGTableBoxStyled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGTableBoxStyled.m; sourceTree = "<group>"; };
 		7949229316A0799900351741 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		7949229416A0799900351741 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		7949229A16A079AC00351741 /* CoreText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreText.h; sourceTree = "<group>"; };
-		7949229B16A079AC00351741 /* CTDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTDefines.h; sourceTree = "<group>"; };
-		7949229C16A079AC00351741 /* CTFont.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTFont.h; sourceTree = "<group>"; };
-		7949229D16A079AC00351741 /* CTFontCollection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTFontCollection.h; sourceTree = "<group>"; };
-		7949229E16A079AC00351741 /* CTFontDescriptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTFontDescriptor.h; sourceTree = "<group>"; };
-		7949229F16A079AC00351741 /* CTFontManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTFontManager.h; sourceTree = "<group>"; };
-		794922A016A079AC00351741 /* CTFontManagerErrors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTFontManagerErrors.h; sourceTree = "<group>"; };
-		794922A116A079AC00351741 /* CTFontTraits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTFontTraits.h; sourceTree = "<group>"; };
-		794922A216A079AC00351741 /* CTFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTFrame.h; sourceTree = "<group>"; };
-		794922A316A079AC00351741 /* CTFramesetter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTFramesetter.h; sourceTree = "<group>"; };
-		794922A416A079AC00351741 /* CTGlyphInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTGlyphInfo.h; sourceTree = "<group>"; };
-		794922A516A079AC00351741 /* CTLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTLine.h; sourceTree = "<group>"; };
-		794922A616A079AC00351741 /* CTParagraphStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTParagraphStyle.h; sourceTree = "<group>"; };
-		794922A716A079AC00351741 /* CTRun.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTRun.h; sourceTree = "<group>"; };
-		794922A816A079AC00351741 /* CTRunDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTRunDelegate.h; sourceTree = "<group>"; };
-		794922A916A079AC00351741 /* CTStringAttributes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTStringAttributes.h; sourceTree = "<group>"; };
-		794922AA16A079AC00351741 /* CTTextTab.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTTextTab.h; sourceTree = "<group>"; };
-		794922AB16A079AC00351741 /* CTTypesetter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTTypesetter.h; sourceTree = "<group>"; };
-		794922AC16A079AC00351741 /* SFNTLayoutTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFNTLayoutTypes.h; sourceTree = "<group>"; };
-		794922AD16A079AC00351741 /* SFNTTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFNTTypes.h; sourceTree = "<group>"; };
 		794922AE16A079BF00351741 /* EXTabVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTabVC.h; sourceTree = "<group>"; };
 		794922AF16A079BF00351741 /* EXTabVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXTabVC.m; sourceTree = "<group>"; };
 		79A6E3BE16973E5B00AA68D7 /* Domo Depression.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Domo Depression.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,9 +220,13 @@
 		79B5EBE01698DED8009D7FB9 /* EXQIDSManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXQIDSManager.m; sourceTree = "<group>"; };
 		79B5EBE31699038F009D7FB9 /* EXQIDSSubmission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXQIDSSubmission.h; sourceTree = "<group>"; };
 		79B5EBE416990390009D7FB9 /* EXQIDSSubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXQIDSSubmission.m; sourceTree = "<group>"; };
-		79B5EBE8169905E4009D7FB9 /* EXAuthor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXAuthor.h; sourceTree = "<group>"; };
-		79B5EBE9169905E4009D7FB9 /* EXAuthor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXAuthor.m; sourceTree = "<group>"; };
 		79C024DB16A0862900EC138F /* EXDomoConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXDomoConstants.h; sourceTree = "<group>"; };
+		79C024E516A09BA400EC138F /* EXAuthor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXAuthor.h; sourceTree = "<group>"; };
+		79C024E616A09BA400EC138F /* EXAuthor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXAuthor.m; sourceTree = "<group>"; };
+		79C024E816A0A60100EC138F /* disclosureArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclosureArrow.png; sourceTree = "<group>"; };
+		79C024E916A0A60100EC138F /* disclosureArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosureArrow@2x.png"; sourceTree = "<group>"; };
+		79C024EC16A0A7EA00EC138F /* exoTiledContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exoTiledContentViewController.h; sourceTree = "<group>"; };
+		79C024ED16A0A7EB00EC138F /* exoTiledContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exoTiledContentViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,6 +308,8 @@
 				7935E5D41698882200FA871F /* greyfloral.png */,
 				7935E5D91698882D00FA871F /* crisp_paper_ruffles@2X.png */,
 				7935E5DA1698882E00FA871F /* crisp_paper_ruffles.png */,
+				79C024E816A0A60100EC138F /* disclosureArrow.png */,
+				79C024E916A0A60100EC138F /* disclosureArrow@2x.png */,
 			);
 			name = Imagery;
 			path = Domo/Imagery;
@@ -409,8 +393,8 @@
 		7935E5C41697A16300FA871F /* track */ = {
 			isa = PBXGroup;
 			children = (
-				7935E40916975CE700FA871F /* exoTiledContentViewController.h */,
-				7935E40A16975CE700FA871F /* exoTiledContentViewController.m */,
+				79C024EC16A0A7EA00EC138F /* exoTiledContentViewController.h */,
+				79C024ED16A0A7EB00EC138F /* exoTiledContentViewController.m */,
 				7935E5C51697A1C100FA871F /* EXTrackVC.h */,
 				7935E5C61697A1C100FA871F /* EXTrackVC.m */,
 			);
@@ -510,38 +494,9 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
-		7949229916A079AC00351741 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				7949229A16A079AC00351741 /* CoreText.h */,
-				7949229B16A079AC00351741 /* CTDefines.h */,
-				7949229C16A079AC00351741 /* CTFont.h */,
-				7949229D16A079AC00351741 /* CTFontCollection.h */,
-				7949229E16A079AC00351741 /* CTFontDescriptor.h */,
-				7949229F16A079AC00351741 /* CTFontManager.h */,
-				794922A016A079AC00351741 /* CTFontManagerErrors.h */,
-				794922A116A079AC00351741 /* CTFontTraits.h */,
-				794922A216A079AC00351741 /* CTFrame.h */,
-				794922A316A079AC00351741 /* CTFramesetter.h */,
-				794922A416A079AC00351741 /* CTGlyphInfo.h */,
-				794922A516A079AC00351741 /* CTLine.h */,
-				794922A616A079AC00351741 /* CTParagraphStyle.h */,
-				794922A716A079AC00351741 /* CTRun.h */,
-				794922A816A079AC00351741 /* CTRunDelegate.h */,
-				794922A916A079AC00351741 /* CTStringAttributes.h */,
-				794922AA16A079AC00351741 /* CTTextTab.h */,
-				794922AB16A079AC00351741 /* CTTypesetter.h */,
-				794922AC16A079AC00351741 /* SFNTLayoutTypes.h */,
-				794922AD16A079AC00351741 /* SFNTTypes.h */,
-			);
-			name = Headers;
-			path = System/Library/Frameworks/CoreText.framework/Headers;
-			sourceTree = SDKROOT;
-		};
 		79A6E3B316973E5B00AA68D7 = {
 			isa = PBXGroup;
 			children = (
-				7949229916A079AC00351741 /* Headers */,
 				79A6E3CA16973E5B00AA68D7 /* Domo */,
 				79A6E3EC16973E5B00AA68D7 /* DomoTests */,
 				79A6E3C116973E5B00AA68D7 /* Frameworks */,
@@ -629,8 +584,8 @@
 				79B5EBE31699038F009D7FB9 /* EXQIDSSubmission.h */,
 				79B5EBE416990390009D7FB9 /* EXQIDSSubmission.m */,
 				79A6E3DC16973E5B00AA68D7 /* Feel_Better__Depression.xcdatamodeld */,
-				79B5EBE8169905E4009D7FB9 /* EXAuthor.h */,
-				79B5EBE9169905E4009D7FB9 /* EXAuthor.m */,
+				79C024E516A09BA400EC138F /* EXAuthor.h */,
+				79C024E616A09BA400EC138F /* EXAuthor.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -730,6 +685,8 @@
 				7935E5D71698882300FA871F /* greyfloral.png in Resources */,
 				7935E5DB1698882E00FA871F /* crisp_paper_ruffles@2X.png in Resources */,
 				7935E5DD1698882E00FA871F /* crisp_paper_ruffles.png in Resources */,
+				79C024EA16A0A60100EC138F /* disclosureArrow.png in Resources */,
+				79C024EB16A0A60100EC138F /* disclosureArrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -786,7 +743,6 @@
 				79A6E3D516973E5B00AA68D7 /* EXAppDelegate.m in Sources */,
 				79A6E3DE16973E5B00AA68D7 /* Feel_Better__Depression.xcdatamodeld in Sources */,
 				7935E41416975EC000FA871F /* UIViewAdditions+EX.m in Sources */,
-				7935E41516975ECA00FA871F /* exoTiledContentViewController.m in Sources */,
 				7935E5011697669B00FA871F /* CKSideBarController.m in Sources */,
 				7935E5031697669B00FA871F /* CKSideBarItem.m in Sources */,
 				7935E5491697671B00FA871F /* MNMRadioGroup.m in Sources */,
@@ -796,7 +752,6 @@
 				7935E5D11697A3C700FA871F /* EXImproveVC.m in Sources */,
 				79B5EBE11698DED8009D7FB9 /* EXQIDSManager.m in Sources */,
 				79B5EBE516990390009D7FB9 /* EXQIDSSubmission.m in Sources */,
-				79B5EBEA169905E4009D7FB9 /* EXAuthor.m in Sources */,
 				7949225616A0586F00351741 /* EXUserComManager.m in Sources */,
 				7949228316A0795600351741 /* NSAttributedString+MGTrim.m in Sources */,
 				7949228416A0795600351741 /* NSObject+MGEvents.m in Sources */,
@@ -815,6 +770,7 @@
 				7949229116A0795600351741 /* MGTableBox.m in Sources */,
 				7949229216A0795600351741 /* MGTableBoxStyled.m in Sources */,
 				794922B016A079BF00351741 /* EXTabVC.m in Sources */,
+				79C024E716A09BA400EC138F /* EXAuthor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -823,7 +779,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				79A6E3F416973E5B00AA68D7 /* Feel_Better__DepressionTests.m in Sources */,
-				7935E40B16975CE700FA871F /* exoTiledContentViewController.m in Sources */,
 				7935E41316975E6900FA871F /* UIViewAdditions+EX.m in Sources */,
 				7935E5021697669B00FA871F /* CKSideBarController.m in Sources */,
 				7935E5041697669B00FA871F /* CKSideBarItem.m in Sources */,
@@ -834,9 +789,9 @@
 				7935E5D21697A3C700FA871F /* EXImproveVC.m in Sources */,
 				79B5EBE21698DED8009D7FB9 /* EXQIDSManager.m in Sources */,
 				79B5EBE616990390009D7FB9 /* EXQIDSSubmission.m in Sources */,
-				79B5EBEB169905E4009D7FB9 /* EXAuthor.m in Sources */,
 				794922B116A079BF00351741 /* EXTabVC.m in Sources */,
 				79C024DA16A085A300EC138F /* EXUserComManager.m in Sources */,
+				79C024EE16A0A7EB00EC138F /* exoTiledContentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
