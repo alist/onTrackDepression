@@ -1,24 +1,22 @@
 //
-// Prefix header for all source files of the 'Feel Better: Depression' target in the 'Feel Better: Depression' project
+// Prefix header for all source files
 //
-
-#import <Availability.h>
-
-
-#import "UIViewAdditions+EX.h"
-#import "EXAuthor.h"
 
 #define deviceIsPad ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
 #define ArrayHasItems(array) (array != nil && [array count] > 0)
 #define StringHasText(string) (string != nil && [string length] > 0)
 #define SetHasItems(set) (set != nil && [set count] > 0)
 
-#ifndef __IPHONE_3_0
-#warning "This project uses features only available in iOS SDK 3.0 and later."
-#endif
 
-#ifdef __OBJC__
-	#import <UIKit/UIKit.h>
-	#import <Foundation/Foundation.h>
-	#import <CoreData/CoreData.h>
-#endif
+//vars
+typedef enum{
+	EXDomoAppTabTrack,
+	EXDomoAppTabReview,
+	EXDomoAppTabImprove,
+	EXDomoAppTabSupport
+}EXDomoAppTab;
+
+
+#import <CoreData/CoreData.h>
+
+#import "UIViewAdditions+EX.h"

@@ -12,6 +12,8 @@
 #import "EXAnalyzeVC.h"
 #import "EXImproveVC.h"
 
+#import "EXAuthor.h"
+
 @interface EXAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

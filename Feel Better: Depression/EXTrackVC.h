@@ -9,18 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "exoTiledContentViewController.h"
 #import "MNMRadioGroup.h"
+#import "EXTabVC.h"
 
 typedef enum{
 	EXQuestionnaireTypeNone,
 	EXQuestionnaireTypeQIDS
 } EXQuestionnaireType;
 
-@interface EXTrackVC : UIViewController <exoTiledContentViewControllerContentDelegate, MNMRadioGroupDelegate>
+@interface EXTrackVC : EXTabVC <exoTiledContentViewControllerContentDelegate, MNMRadioGroupDelegate>
 
 @property (nonatomic, assign) EXQuestionnaireType				currentQuestionnaire;
 @property (nonatomic, strong) exoTiledContentViewController *	questionTileController;
-@property (nonatomic, strong) NSManagedObjectContext *			objectContext;
-
--(id)initWithManagedObjectContext:(NSManagedObjectContext*)context;
 
 @end

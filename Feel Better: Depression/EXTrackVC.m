@@ -21,8 +21,7 @@ static const CGRect formQuestionDimensionsLandscape = {{0,0},{400, 200}};
 @synthesize currentQuestionnaire, questionTileController;
 
 -(id)initWithManagedObjectContext:(NSManagedObjectContext*)context{
-	if (self = [super initWithNibName:nil bundle:nil]){
-		self.objectContext = context;
+	if (self = [super initWithManagedObjectContext:context]){
 		[self setTitle:NSLocalizedString(@"Track", @"navigation bar title")];
 		
 		self.qidsManager = [[EXQIDSManager alloc] initWithManagedObjectContext:self.objectContext];
@@ -33,15 +32,7 @@ static const CGRect formQuestionDimensionsLandscape = {{0,0},{400, 200}};
 
 -(void)viewDidLoad{
 	[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"greyFloral.png"]]];
-	
-	self.currentQuestionnaire = EXQuestionnaireTypeQIDS;//	temp
-	
-	CGRect formRect = self.view.bounds;
-	formRect.origin = CGPointMake(0, 85);
-	formRect.size.height -= formRect.origin.y;
-	CGRect formQuestionDimensions = (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]))?(formQuestionDimensionsPortrait):(formQuestionDimensionsLandscape);
-	self.questionTileController = [[exoTiledContentViewController alloc] initWithDisplayFrame:formRect tileContentControllerDelegate:self withCenteredTilesSized:formQuestionDimensions.size andMargins:CGSizeMake(15, 20)];
-	[self.view addSubview:self.questionTileController.view];
+
 	
 	[super viewDidLoad];
 }
