@@ -32,6 +32,7 @@
 	
 	
 	NSArray * VCs = @[self.trackVC, self.analyzeVC,self.improveVC];
+	
 	if (deviceIsPad){
 		self.navSideBarPad	= [[CKSideBarController alloc] init];
 		[self.navSideBarPad setViewControllers:VCs];

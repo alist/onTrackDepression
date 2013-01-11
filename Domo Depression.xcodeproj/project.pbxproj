@@ -62,7 +62,6 @@
 		7935E5DD1698882E00FA871F /* crisp_paper_ruffles.png in Resources */ = {isa = PBXBuildFile; fileRef = 7935E5DA1698882E00FA871F /* crisp_paper_ruffles.png */; };
 		7935E5DE1698882E00FA871F /* crisp_paper_ruffles.png in Resources */ = {isa = PBXBuildFile; fileRef = 7935E5DA1698882E00FA871F /* crisp_paper_ruffles.png */; };
 		7949225616A0586F00351741 /* EXUserComManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7949225516A0586F00351741 /* EXUserComManager.m */; };
-		7949225716A0586F00351741 /* EXUserComManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7949225516A0586F00351741 /* EXUserComManager.m */; };
 		7949228316A0795600351741 /* NSAttributedString+MGTrim.m in Sources */ = {isa = PBXBuildFile; fileRef = 7949226216A0795600351741 /* NSAttributedString+MGTrim.m */; };
 		7949228416A0795600351741 /* NSObject+MGEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 7949226416A0795600351741 /* NSObject+MGEvents.m */; };
 		7949228516A0795600351741 /* UIColor+MGExpanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 7949226616A0795600351741 /* UIColor+MGExpanded.m */; };
@@ -106,6 +105,7 @@
 		79B5EBE616990390009D7FB9 /* EXQIDSSubmission.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B5EBE416990390009D7FB9 /* EXQIDSSubmission.m */; };
 		79B5EBEA169905E4009D7FB9 /* EXAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B5EBE9169905E4009D7FB9 /* EXAuthor.m */; };
 		79B5EBEB169905E4009D7FB9 /* EXAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B5EBE9169905E4009D7FB9 /* EXAuthor.m */; };
+		79C024DA16A085A300EC138F /* EXUserComManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7949225516A0586F00351741 /* EXUserComManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -244,6 +244,7 @@
 		79B5EBE416990390009D7FB9 /* EXQIDSSubmission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXQIDSSubmission.m; sourceTree = "<group>"; };
 		79B5EBE8169905E4009D7FB9 /* EXAuthor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXAuthor.h; sourceTree = "<group>"; };
 		79B5EBE9169905E4009D7FB9 /* EXAuthor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXAuthor.m; sourceTree = "<group>"; };
+		79C024DB16A0862900EC138F /* EXDomoConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXDomoConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,7 +328,7 @@
 				7935E5DA1698882E00FA871F /* crisp_paper_ruffles.png */,
 			);
 			name = Imagery;
-			path = "Feel Better: Depression/Imagery";
+			path = Domo/Imagery;
 			sourceTree = SOURCE_ROOT;
 		};
 		7935E41016975E1800FA871F /* Localizations */ = {
@@ -541,8 +542,8 @@
 			isa = PBXGroup;
 			children = (
 				7949229916A079AC00351741 /* Headers */,
-				79A6E3CA16973E5B00AA68D7 /* Feel Better: Depression */,
-				79A6E3EC16973E5B00AA68D7 /* Feel Better: DepressionTests */,
+				79A6E3CA16973E5B00AA68D7 /* Domo */,
+				79A6E3EC16973E5B00AA68D7 /* DomoTests */,
 				79A6E3C116973E5B00AA68D7 /* Frameworks */,
 				79A6E3BF16973E5B00AA68D7 /* Products */,
 			);
@@ -571,7 +572,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		79A6E3CA16973E5B00AA68D7 /* Feel Better: Depression */ = {
+		79A6E3CA16973E5B00AA68D7 /* Domo */ = {
 			isa = PBXGroup;
 			children = (
 				7935E3A61697530B00FA871F /* External Framworks */,
@@ -579,7 +580,7 @@
 				7935E40C16975DE100FA871F /* Logic */,
 				7935E40D16975DF000FA871F /* Resources */,
 			);
-			path = "Feel Better: Depression";
+			path = Domo;
 			sourceTree = "<group>";
 		};
 		79A6E3CB16973E5B00AA68D7 /* Supporting Files */ = {
@@ -588,18 +589,19 @@
 				79A6E3CC16973E5B00AA68D7 /* Domo Depression-Info.plist */,
 				79A6E3D016973E5B00AA68D7 /* main.m */,
 				79A6E3D216973E5B00AA68D7 /* Domo Depression-Prefix.pch */,
+				79C024DB16A0862900EC138F /* EXDomoConstants.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		79A6E3EC16973E5B00AA68D7 /* Feel Better: DepressionTests */ = {
+		79A6E3EC16973E5B00AA68D7 /* DomoTests */ = {
 			isa = PBXGroup;
 			children = (
 				79A6E3F216973E5B00AA68D7 /* Feel_Better__DepressionTests.h */,
 				79A6E3F316973E5B00AA68D7 /* Feel_Better__DepressionTests.m */,
 				79A6E3ED16973E5B00AA68D7 /* Supporting Files */,
 			);
-			path = "Feel Better: DepressionTests";
+			path = DomoTests;
 			sourceTree = "<group>";
 		};
 		79A6E3ED16973E5B00AA68D7 /* Supporting Files */ = {
@@ -833,8 +835,8 @@
 				79B5EBE21698DED8009D7FB9 /* EXQIDSManager.m in Sources */,
 				79B5EBE616990390009D7FB9 /* EXQIDSSubmission.m in Sources */,
 				79B5EBEB169905E4009D7FB9 /* EXAuthor.m in Sources */,
-				7949225716A0586F00351741 /* EXUserComManager.m in Sources */,
 				794922B116A079BF00351741 /* EXTabVC.m in Sources */,
+				79C024DA16A085A300EC138F /* EXUserComManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -942,8 +944,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "Feel Better: Depression/Domo Depression-Prefix.pch";
-				INFOPLIST_FILE = "Feel Better: Depression/Domo Depression-Info.plist";
+				GCC_PREFIX_HEADER = "Domo/Domo Depression-Prefix.pch";
+				INFOPLIST_FILE = "Domo/Domo Depression-Info.plist";
 				PRODUCT_NAME = "Domo Depression";
 				WRAPPER_EXTENSION = app;
 			};
@@ -953,8 +955,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "Feel Better: Depression/Domo Depression-Prefix.pch";
-				INFOPLIST_FILE = "Feel Better: Depression/Domo Depression-Info.plist";
+				GCC_PREFIX_HEADER = "Domo/Domo Depression-Prefix.pch";
+				INFOPLIST_FILE = "Domo/Domo Depression-Info.plist";
 				PRODUCT_NAME = "Domo Depression";
 				WRAPPER_EXTENSION = app;
 			};
@@ -969,7 +971,7 @@
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Feel Better: Depression/Feel Better: Depression-Prefix.pch";
+				GCC_PREFIX_HEADER = "Domo/Domo Depression-Prefix.pch";
 				INFOPLIST_FILE = "Feel Better: DepressionTests/Domo DepressionTests-Info.plist";
 				PRODUCT_NAME = "Domo DepressionTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -986,7 +988,7 @@
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Feel Better: Depression/Feel Better: Depression-Prefix.pch";
+				GCC_PREFIX_HEADER = "Domo/Domo Depression-Prefix.pch";
 				INFOPLIST_FILE = "Feel Better: DepressionTests/Domo DepressionTests-Info.plist";
 				PRODUCT_NAME = "Domo DepressionTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";

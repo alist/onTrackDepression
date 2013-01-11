@@ -1,5 +1,9 @@
 //
-// Prefix header for all source files
+//  EXDomoConstants.h
+//  Domo Depression
+//
+//  Created by Alexander List on 1/11/13.
+//  Copyright (c) 2013 ExoMachina. All rights reserved.
 //
 
 #define deviceIsPad ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
@@ -10,13 +14,9 @@
 
 //vars
 typedef enum{
-	EXDomoAppTabTrack,
-	EXDomoAppTabReview,
-	EXDomoAppTabImprove,
-	EXDomoAppTabSupport
-}EXDomoAppTab;
+	domoAppTabTrack,
+	domoAppTabReview,
+	domoAppTabImprove,
+	domoAppTabSupport
+}domoAppTab;
 
-
-#import <CoreData/CoreData.h>
-
-#import "UIViewAdditions+EX.h"

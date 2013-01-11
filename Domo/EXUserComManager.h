@@ -28,7 +28,7 @@ static NSString * const EXUserComManagerChangedUIText = @"EXUserComManagerChange
  headerText:
  stylizedText:
  isDomo:Bool
-*/
--(NSArray*) messagesForUIAppTab:(EXDomoAppTab)appTab;
+*/ 
+-(NSArray*) messagesForUIAppTab:(domoAppTab)appTab;
 
-@end
+@end 
