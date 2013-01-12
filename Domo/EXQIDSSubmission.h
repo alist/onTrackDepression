@@ -13,10 +13,9 @@
 @interface EXQIDSSubmission : NSManagedObject
 
 @property (nonatomic, retain) NSDate * dateLastEdited;
-@property (nonatomic, retain) NSDate * dateStarted;
+@property (nonatomic, retain) NSDate * officialDate;
 @property (nonatomic, retain) NSNumber * isCompleted;
 @property (nonatomic, retain) NSString * note;
-@property (nonatomic, retain) NSNumber * qidsValue;
 @property (nonatomic, retain) NSNumber * q0;
 @property (nonatomic, retain) NSNumber * q1;
 @property (nonatomic, retain) NSNumber * q2;
@@ -33,6 +32,10 @@
 @property (nonatomic, retain) NSNumber * q13;
 @property (nonatomic, retain) NSNumber * q14;
 @property (nonatomic, retain) NSNumber * q15;
+@property (nonatomic, retain) NSNumber * qidsSeverity;
+@property (nonatomic, retain) NSNumber * qidsValue;
+@property (nonatomic, retain) NSNumber * wasMissed;
+
 
 @property (nonatomic, retain) NSManagedObject *author;
 

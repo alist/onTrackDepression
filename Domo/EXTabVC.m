@@ -119,7 +119,7 @@
 	[self.detailTable.boxes addObjectsFromArray:detailBoxes];
 
 	// animate
-	[self.detailTable layoutWithSpeed:0.3 completion:nil];
+//	[self.detailTable layoutWithSpeed:0.3 completion:nil];
 	[self.scroller layoutWithSpeed:0.3 completion:nil];
 	
 	// scroll
@@ -158,7 +158,7 @@
 	head.font = self.headerFont;
 
 	// stuff
-	MGLineStyled *line = [MGLineStyled multilineWithText:[dict valueForKey:@"message"] font:nil width:304 padding:UIEdgeInsetsMake(16, 16, 16, 16)];
+	MGLineStyled *line = [MGLineStyled multilineWithText:[dict valueForKey:@"message"] font:nil width:rowSize.width padding:UIEdgeInsetsMake(16, 16, 16, 16)];
 	[section.topLines addObject:line];
 		
 	return section;

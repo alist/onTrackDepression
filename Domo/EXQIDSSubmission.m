@@ -12,10 +12,9 @@
 @implementation EXQIDSSubmission
 
 @dynamic dateLastEdited;
-@dynamic dateStarted;
 @dynamic isCompleted;
+@dynamic officialDate;
 @dynamic note;
-@dynamic qidsValue;
 @dynamic q0;
 @dynamic q1;
 @dynamic q2;
@@ -33,6 +32,9 @@
 @dynamic q14;
 @dynamic q15;
 @dynamic author;
+@dynamic qidsValue;
+@dynamic qidsSeverity;
+@dynamic wasMissed;
 
 
 -(void) setQuestionResponse:(NSNumber*)response forQuesitonNumber:(NSInteger)questionNumber{

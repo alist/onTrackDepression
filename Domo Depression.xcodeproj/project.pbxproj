@@ -106,6 +106,12 @@
 		79C024EA16A0A60100EC138F /* disclosureArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 79C024E816A0A60100EC138F /* disclosureArrow.png */; };
 		79C024EB16A0A60100EC138F /* disclosureArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79C024E916A0A60100EC138F /* disclosureArrow@2x.png */; };
 		79C024EE16A0A7EB00EC138F /* exoTiledContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C024ED16A0A7EB00EC138F /* exoTiledContentViewController.m */; };
+		79C024F516A0EA0600EC138F /* EXQIDSGiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C024F416A0EA0600EC138F /* EXQIDSGiver.m */; };
+		79C024F616A0EA0600EC138F /* EXQIDSGiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C024F416A0EA0600EC138F /* EXQIDSGiver.m */; };
+		79C024FF16A0EC3A00EC138F /* MHPagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C024FE16A0EC3A00EC138F /* MHPagingScrollView.m */; };
+		79C0250016A0EC3A00EC138F /* MHPagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C024FE16A0EC3A00EC138F /* MHPagingScrollView.m */; };
+		79C0250316A0ED0E00EC138F /* EXQIDSQuestionPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C0250216A0ED0E00EC138F /* EXQIDSQuestionPage.m */; };
+		79C0250416A0ED0E00EC138F /* EXQIDSQuestionPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C0250216A0ED0E00EC138F /* EXQIDSQuestionPage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,6 +233,12 @@
 		79C024E916A0A60100EC138F /* disclosureArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosureArrow@2x.png"; sourceTree = "<group>"; };
 		79C024EC16A0A7EA00EC138F /* exoTiledContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exoTiledContentViewController.h; sourceTree = "<group>"; };
 		79C024ED16A0A7EB00EC138F /* exoTiledContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exoTiledContentViewController.m; sourceTree = "<group>"; };
+		79C024F316A0EA0600EC138F /* EXQIDSGiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXQIDSGiver.h; sourceTree = "<group>"; };
+		79C024F416A0EA0600EC138F /* EXQIDSGiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXQIDSGiver.m; sourceTree = "<group>"; };
+		79C024FD16A0EC3A00EC138F /* MHPagingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHPagingScrollView.h; sourceTree = "<group>"; };
+		79C024FE16A0EC3A00EC138F /* MHPagingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHPagingScrollView.m; sourceTree = "<group>"; };
+		79C0250116A0ED0E00EC138F /* EXQIDSQuestionPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXQIDSQuestionPage.h; path = Domo/EXQIDSQuestionPage.h; sourceTree = SOURCE_ROOT; };
+		79C0250216A0ED0E00EC138F /* EXQIDSQuestionPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXQIDSQuestionPage.m; path = Domo/EXQIDSQuestionPage.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +272,7 @@
 		7935E3A61697530B00FA871F /* External Framworks */ = {
 			isa = PBXGroup;
 			children = (
+				79C024FC16A0EC3900EC138F /* MHPagingScrollView */,
 				7949225F16A0795600351741 /* MGBox */,
 				7935E5371697671A00FA871F /* MNMRadioGroup */,
 				7935E4921697669B00FA871F /* CKSideBarController */,
@@ -393,6 +406,10 @@
 		7935E5C41697A16300FA871F /* track */ = {
 			isa = PBXGroup;
 			children = (
+				79C0250116A0ED0E00EC138F /* EXQIDSQuestionPage.h */,
+				79C0250216A0ED0E00EC138F /* EXQIDSQuestionPage.m */,
+				79C024F316A0EA0600EC138F /* EXQIDSGiver.h */,
+				79C024F416A0EA0600EC138F /* EXQIDSGiver.m */,
 				79C024EC16A0A7EA00EC138F /* exoTiledContentViewController.h */,
 				79C024ED16A0A7EB00EC138F /* exoTiledContentViewController.m */,
 				7935E5C51697A1C100FA871F /* EXTrackVC.h */,
@@ -590,6 +607,16 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		79C024FC16A0EC3900EC138F /* MHPagingScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				79C024FD16A0EC3A00EC138F /* MHPagingScrollView.h */,
+				79C024FE16A0EC3A00EC138F /* MHPagingScrollView.m */,
+			);
+			name = MHPagingScrollView;
+			path = MHPagingScrollView/MHPagingScrollView;
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -771,6 +798,9 @@
 				7949229216A0795600351741 /* MGTableBoxStyled.m in Sources */,
 				794922B016A079BF00351741 /* EXTabVC.m in Sources */,
 				79C024E716A09BA400EC138F /* EXAuthor.m in Sources */,
+				79C024F516A0EA0600EC138F /* EXQIDSGiver.m in Sources */,
+				79C024FF16A0EC3A00EC138F /* MHPagingScrollView.m in Sources */,
+				79C0250316A0ED0E00EC138F /* EXQIDSQuestionPage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -792,6 +822,9 @@
 				794922B116A079BF00351741 /* EXTabVC.m in Sources */,
 				79C024DA16A085A300EC138F /* EXUserComManager.m in Sources */,
 				79C024EE16A0A7EB00EC138F /* exoTiledContentViewController.m in Sources */,
+				79C024F616A0EA0600EC138F /* EXQIDSGiver.m in Sources */,
+				79C0250016A0EC3A00EC138F /* MHPagingScrollView.m in Sources */,
+				79C0250416A0ED0E00EC138F /* EXQIDSQuestionPage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

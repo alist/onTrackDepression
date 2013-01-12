@@ -7,3 +7,6 @@
 [submodule "MGBox2"]
 	path = MGBox2
 	url = git@github.com:alist/MGBox2.git
+[submodule "MHPagingScrollView"]
+	path = MHPagingScrollView
+	url = git@github.com:alist/MHPagingScrollView.git
