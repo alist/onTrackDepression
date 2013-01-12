@@ -23,8 +23,15 @@
 		self.delegate = tDelegate;
 		
 		self.headerFont = [UIFont fontWithName:@"HelveticaNeue" size:18];
-		self.rowSize = (CGSize){304, 44};
 		
+		[self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"crisp_paper_ruffles"]]];
+		
+		if (deviceIsPad){
+			self.rowSize = (CGSize){400, 44};
+		}else{
+			self.rowSize = (CGSize){304, 44};
+		}
+				
 		self.primaryQTable = [MGBox boxWithSize:self.bounds.size];
 		[self.primaryQTable setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
 		[self addSubview:self.primaryQTable];
@@ -35,12 +42,18 @@
 
 -(MGBox*) generateQuestionBoxWithTitle:(NSString*)title qNumber:(NSInteger)qNumber responseValues:(NSArray*)responseVals{
 	MGTableBoxStyled *newBox = [MGTableBoxStyled box];
+	[newBox setTopMargin:20];
+	
+	double margin = ceil( (self.size.width- self.rowSize.width)/2);
+	[newBox setLeftMargin:margin];
+	
 	MGLineStyled *head = [MGLineStyled lineWithLeft:title right:nil size:self.rowSize];
 	[newBox.topLines addObject:head];
 	head.font = self.headerFont;
 	
 	for (NSString * response in responseVals){
-		MGLineStyled * responseLine = [MGLineStyled lineWithLeft:response right:nil size:self.rowSize];
+		MGLineStyled * responseLine = [MGLineStyled lineWithLeft:[UIImage imageNamed:@"MNMRadioGroupUnselected"] multilineRight:response width:self.rowSize.width minHeight:self.rowSize.height];
+		[responseLine setRightItemsTextAlignment:NSTextAlignmentRight];
 		[newBox.topLines addObject:responseLine];
 	}
 	
@@ -60,7 +73,7 @@
 	NSArray * pageQuestions = [[qidsManager questions] subarrayWithRange:qRange];
 	
 	for (NSDictionary * question in pageQuestions){
-		[self.primaryQTable.boxes addObject:[self generateQuestionBoxWithTitle:[question valueForKey:@"title"] qNumber:(startQNumber + [pageQuestions indexOfObject:question]) responseValues:[question valueForKey:@"values"]]];
+		[self.primaryQTable.boxes addObject:[self generateQuestionBoxWithTitle:[question valueForKey:@"prompt"] qNumber:(startQNumber + [pageQuestions indexOfObject:question]) responseValues:[question valueForKey:@"values"]]];
 	}
 	
 	self.formInfoFooterCornerText = [NSDateFormatter localizedStringFromDate:[submission officialDate] dateStyle:NSDateFormatterLongStyle timeStyle:NSDateFormatterNoStyle];

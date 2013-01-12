@@ -10,10 +10,35 @@
 
 
 @implementation EXQIDSGiver
-@synthesize qidsManager;
+@synthesize qidsManager, pagingView, activeQIDSSubmission;
+-(id) initWithQIDSManager:(EXQIDSManager *)manager submission:(EXQIDSSubmission*)submission{
+	if (self = [super initWithNibName:nil bundle:nil]){
+		self.modalPresentationStyle = UIModalPresentationPageSheet;
+		self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+		
+		self.qidsManager			= manager;
+		self.activeQIDSSubmission	= submission;
+	}
+	return self;
+}
 
+-(void)viewDidLoad{
+	[super viewDidLoad];
+	[self.view setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
+	
+	self.pagingView = [[MHPagingScrollView alloc] initWithFrame:self.view.bounds];
+	[self.pagingView setPagingDelegate:self];
+	[self.pagingView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
+	[self.view addSubview:self.pagingView];
+	[self.pagingView reloadPages];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+	[super viewDidAppear:animated];
+}
 
 #pragma mark - delegation
+#pragma mark pagecntrl
 - (NSUInteger)numberOfPagesInPagingScrollView:(MHPagingScrollView *)pagingScrollView{
 		
 	return self.pageCount;
@@ -27,10 +52,8 @@
 }
 
 - (UIView *)pagingScrollView:(MHPagingScrollView *)pagingScrollView pageForIndex:(NSUInteger)index{
-	
-	UIView * page = nil;
-	
-	if (self.pageCount < index +1 ){
+		
+	if (index +1 < self.pageCount){
 		
 		EXQIDSQuestionPage * qidsPage = nil;
 		
@@ -38,10 +61,24 @@
 		if ([dequed isKindOfClass:[EXQIDSQuestionPage class]]){
 			qidsPage  = (EXQIDSQuestionPage*)qidsPage;
 		}
+		if (qidsPage == nil){
+			qidsPage = [[EXQIDSQuestionPage alloc] initWithDelegate:self frame:self.view.bounds];
+		}
 		
+		[qidsPage updateViewWithQIDSSubmission:self.activeQIDSSubmission qidsManager:self.qidsManager pageNumber:index];
+		
+		return qidsPage;
+		
+	}else if (index +1 < self.pageCount){
+		return [[UIView alloc] initWithFrame:self.view.bounds];
 	}
 	
 	return nil;
+}
+
+#pragma mark QIDSPage 
+-(void)QIDSQuestionPage:(EXQIDSQuestionPage*)qPage didChangeValueOfQuestionNumber:(NSInteger)qNumber{
+	//if last question in sheet, then autoflip
 }
 
 @end

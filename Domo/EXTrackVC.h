@@ -10,6 +10,7 @@
 #import "exoTiledContentViewController.h"
 #import "MNMRadioGroup.h"
 #import "EXTabVC.h"
+#import "EXQIDSGiver.h"
 
 typedef enum{
 	EXQuestionnaireTypeNone,
@@ -20,5 +21,6 @@ typedef enum{
 
 @property (nonatomic, assign) EXQuestionnaireType				currentQuestionnaire;
 @property (nonatomic, strong) exoTiledContentViewController *	questionTileController;
+@property (nonatomic, strong) EXQIDSGiver *						qidsGiver;
 
 @end

@@ -35,7 +35,13 @@
 	self.title = [QIDSData valueForKey:@"title"];
 	self.prompt = [QIDSData valueForKey:@"prompt"];
 	
+}
 
+-(BOOL) qidsSubmissionsAvailableForAuthor:(EXAuthor*)author{
+	return TRUE;
+}
+-(EXQIDSSubmission*) qidsSubmissionForAuthor:(EXAuthor*)author{
+	return nil;
 }
 
 @end

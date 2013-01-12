@@ -17,6 +17,8 @@
 @class EXQIDSQuestionPage;
 
 @protocol EXQIDSQuestionPageDelegate <NSObject>
+
+//qnumbers are relative to total count of q numbers in form
 -(void)QIDSQuestionPage:(EXQIDSQuestionPage*)qPage didChangeValueOfQuestionNumber:(NSInteger)qNumber;
 @end
 

@@ -18,7 +18,7 @@ static const CGRect formQuestionDimensionsLandscape = {{0,0},{400, 200}};
 @end
 
 @implementation EXTrackVC
-@synthesize currentQuestionnaire, questionTileController;
+@synthesize currentQuestionnaire, questionTileController,qidsGiver = _qidsGiver;
 
 #pragma mark - content 
 -(NSArray*)detailBoxes{
@@ -34,7 +34,9 @@ static const CGRect formQuestionDimensionsLandscape = {{0,0},{400, 200}};
 	MGLineStyled *grids = [MGLineStyled lineWithLeft:NSLocalizedString(@"Start Form Series", @"track tab text for beginning regimine") right:[UIImage imageNamed:@"disclosureArrow"] size:self.rowSize];
 	[layout.topLines addObject:grids];
 	grids.onTap = ^{
-		NSLog(@"Will dispaly qids");
+		if ([self.childViewControllers containsObject:self.qidsGiver] == NO){
+			[self presentViewController:self.qidsGiver animated:TRUE completion:nil];
+		}
 	};
 	
 	return @[layout];
@@ -58,6 +60,13 @@ static const CGRect formQuestionDimensionsLandscape = {{0,0},{400, 200}};
 	[super viewDidLoad];
 }
 
+
+-(EXQIDSGiver*)qidsGiver{
+	if (_qidsGiver == nil){
+		_qidsGiver = [[EXQIDSGiver alloc] initWithQIDSManager:self.qidsManager submission:[self.qidsManager qidsSubmissionForAuthor:[EXAuthor authorForLocalUser]]];
+	}
+	return _qidsGiver;
+}
 
 
 #pragma mark -

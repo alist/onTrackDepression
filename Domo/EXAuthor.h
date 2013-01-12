@@ -22,6 +22,8 @@
 @property (nonatomic, retain) NSDate * nextQIDSDate;
 @property (nonatomic, retain) NSNumber * qidsSpacingInterval;
 @property (nonatomic, retain) NSSet *qidsSubmissions;
+
++(EXAuthor*) authorForLocalUser;
 @end
 
 @interface EXAuthor (CoreDataGeneratedAccessors)

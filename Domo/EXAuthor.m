@@ -8,10 +8,9 @@
 
 #import "EXAuthor.h"
 #import "EXQIDSSubmission.h"
-
+#import "EXAppDelegate.h"
 
 @implementation EXAuthor
-
 @dynamic accessToken;
 @dynamic authorID;
 @dynamic displayName;
@@ -22,4 +21,9 @@
 @dynamic qidsSpacingInterval;
 @dynamic qidsSubmissions;
 
+
+
++(EXAuthor*) authorForLocalUser{
+	return [(EXAppDelegate*)[[UIApplication sharedApplication] delegate] authorForCurrentUser];
+}
 @end
