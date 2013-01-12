@@ -49,6 +49,7 @@
 	MGTableBoxStyled *newBox = [MGTableBoxStyled box];
 	[newBox setTopMargin:30];
 	[newBox setRasterize:TRUE];
+	[newBox setTag:qNumber]; // debugging purposes
 	
 	double margin = ceil( (self.size.width- self.rowSize.width)/2);
 	[newBox setLeftMargin:margin];
@@ -62,7 +63,8 @@
 		[responseLine setTopPadding:5];
 		[responseLine setBottomPadding:5];
 		[responseLine setRightItemsTextAlignment:NSTextAlignmentRight];
-		[newBox.topLines addObject:responseLine];
+		[responseLine setTag:[responseVals indexOfObject:response]];//debug purposes
+		[newBox.middleLines addObject:responseLine];
 		
 		__weak MGLineStyled *responseL = responseLine;
 		responseLine.onTap = ^{
@@ -112,9 +114,24 @@
 
 #pragma mark - interaction
 -(void) tappedLine:(MGLineStyled*)lineBox withQuestionNumber:(NSInteger)qNumber{
+	
+	MGTableBoxStyled *qBox =	(MGTableBoxStyled*)[lineBox parentBox];
+	NSInteger selectionValue = -1;
+	if ([qBox isKindOfClass:[MGTableBoxStyled class]]){
+		assert([qBox tag] == qNumber);
+		selectionValue = [[qBox middleLines] indexOfObject:lineBox];
+		
+		for (MGLineStyled * line in [qBox middleLines]){
+			[line.leftItems removeAllObjects];
+			[line.leftItems addObject:[UIImage imageNamed:@"MNMRadioGroupUnselected"]];
+		}
+	}
+	
 	[lineBox.leftItems removeAllObjects];
 	[lineBox.leftItems addObject:[UIImage imageNamed:@"MNMRadioGroupSelected"]];
 	[self updatePageUI:TRUE];
+
+	[self.delegate qidsQuestionPage:self didChangeValueOfQuestionNumber:qNumber toValue:selectionValue];
 }
 
 @end

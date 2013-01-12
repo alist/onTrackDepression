@@ -44,6 +44,7 @@
 		[self.pageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot-small"]];
 		[self.pageControl setIndicatorMargin:7];
 	}
+	[self.pageControl addTarget:self action:@selector(pageControlChanged:) forControlEvents:UIControlEventValueChanged];
 
 	double margin = ceil( (self.view.size.width- self.pageControl.width)/2);
 	[self.pageControl setOrigin:CGPointMake(margin, self.view.height - self.pageControl.height)];
@@ -72,6 +73,19 @@
 	[self didRotateFromInterfaceOrientation:UIInterfaceOrientationPortrait];
 }
 
+
+#pragma mark interaction
+
+-(void)flipToNextPage{
+	NSUInteger newIndex = self.pagingScrollView.indexOfSelectedPage + 1;
+	if (newIndex <= [self pageCount])
+		[self.pagingScrollView selectPageAtIndex:newIndex animated:YES];
+}
+
+-(void)pageControlChanged:(id)sender{
+	[self.pagingScrollView selectPageAtIndex:self.pageControl.currentPage animated:YES];
+}
+
 -(void)finishLaterButtonPressed:(id)sender{
 	[self dismissModalViewControllerAnimated:TRUE];
 }
@@ -94,6 +108,21 @@
 	[self.pagingScrollView afterRotation];
 }
 
+- (NSInteger) questionsOnPage:(NSInteger)pageNumber{
+	if (pageNumber < self.pageCount -1){ //(what's the last page index?) the last page has no questions
+		if (pageNumber < self.pageCount -2){
+			//middle pages contain max quantity of qs
+			return ((deviceIsPad)?IPAD_MAXQUESTIONS_PER_PAGE:IPHONE_MAXQUESTIONS_PER_PAGE);
+		}else{
+			//last page of questions
+			NSInteger questions = ([[[self qidsManager] questions] count] - (self.pageCount -2)*((deviceIsPad)?IPAD_MAXQUESTIONS_PER_PAGE:IPHONE_MAXQUESTIONS_PER_PAGE));
+			return questions;
+		}
+	}else{
+		return 0;
+	}
+}
+
 #pragma mark - delegation
 
 #pragma mark - UIScrollViewDelegate
@@ -112,7 +141,7 @@
 }
 
 
-#pragma mark pagecntrl
+#pragma mark multipagecntrl
 - (NSUInteger)numberOfPagesInPagingScrollView:(MHPagingScrollView *)pagingScrollView{
 		
 	return self.pageCount;
@@ -150,8 +179,26 @@
 }
 
 #pragma mark QIDSPage 
--(void)QIDSQuestionPage:(EXQIDSQuestionPage*)qPage didChangeValueOfQuestionNumber:(NSInteger)qNumber{
+-(void)qidsQuestionPage:(EXQIDSQuestionPage*)qPage didChangeValueOfQuestionNumber:(NSInteger)qNumber toValue:(NSInteger)value{
+	
+	[self.activeQIDSSubmission setQuestionResponse:@(value) forQuesitonNumber:qNumber];
+	
+	NSInteger maxQPPage = ((deviceIsPad)?IPAD_MAXQUESTIONS_PER_PAGE:IPHONE_MAXQUESTIONS_PER_PAGE);
 	//if last question in sheet, then autoflip
+	NSInteger thisPage =(int)floor(qNumber/(double)maxQPPage);
+	NSInteger zeroIndexedFromPageStart = qNumber - thisPage* maxQPPage;
+	if (zeroIndexedFromPageStart +1 == [self questionsOnPage:thisPage]){
+		
+		BOOL shouldAutoFlip = TRUE;
+		for (int qChecker = thisPage*maxQPPage; qChecker <= qNumber; qChecker ++){
+			if ([self.activeQIDSSubmission questionResponseForQuesitonNumber:qChecker] == nil)
+				shouldAutoFlip = FALSE;
+		}
+		 if (shouldAutoFlip){
+			[self flipToNextPage];
+		 }
+	}
+	
 }
 
 @end

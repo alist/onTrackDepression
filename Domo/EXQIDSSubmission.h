@@ -40,6 +40,6 @@
 @property (nonatomic, retain) NSManagedObject *author;
 
 -(void) setQuestionResponse:(NSNumber*)response forQuesitonNumber:(NSInteger)questionNumber;
--(void) getQuestionResponseForQuesitonNumber:(NSInteger)questionNumber;
+-(NSNumber*) questionResponseForQuesitonNumber:(NSInteger)questionNumber;
 
 @end

@@ -40,8 +40,8 @@
 -(void) setQuestionResponse:(NSNumber*)response forQuesitonNumber:(NSInteger)questionNumber{
 	[self setValue:response forKey:[NSString stringWithFormat:@"Q%i",questionNumber]];
 }
--(void) getQuestionResponseForQuesitonNumber:(NSInteger)questionNumber{
-	[self valueForKey:[NSString stringWithFormat:@"Q%i",questionNumber]];
+-(NSNumber*) questionResponseForQuesitonNumber:(NSInteger)questionNumber{
+	return [self valueForKey:[NSString stringWithFormat:@"Q%i",questionNumber]];
 }
 
 @end
