@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EXTabVC.h"
 
-@interface EXAnalyzeVC : UIViewController
+@interface EXAnalyzeVC : EXTabVC
 
 @end

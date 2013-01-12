@@ -18,7 +18,6 @@
 }
 
 -(void)viewDidLoad{
-	[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"greyFloral.png"]]];
 	
 	[super viewDidLoad];
 }

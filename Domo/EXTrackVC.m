@@ -54,9 +54,6 @@ static const CGRect formQuestionDimensionsLandscape = {{0,0},{400, 200}};
 }
 
 -(void)viewDidLoad{
-	[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"greyFloral.png"]]];
-
-	
 	[super viewDidLoad];
 }
 

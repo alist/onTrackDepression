@@ -46,7 +46,7 @@
 -(void)viewDidLoad{
 	[super viewDidLoad];
 	
-	[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"greyFloral.png"]]];
+	[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"greyfloral"]]];
 	
 	CGSize loadSize = self.view.bounds.size;
 	self.scroller = [MGScrollView scrollerWithSize:loadSize];

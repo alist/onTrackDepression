@@ -11,8 +11,12 @@
 #import "EXQIDSManager.h"
 #import "MGBox.h"
 
-#define IPAD_MAXQUESTIONS_PER_PAGE 3
+#define IPAD_MAXQUESTIONS_PER_PAGE 2
 #define IPHONE_MAXQUESTIONS_PER_PAGE 1
+
+#define IPHONE_TOP_MARGIN 50
+#define IPAD_TOP_MARGIN 80
+#define QUESTION_SPACING 30
 
 @class EXQIDSQuestionPage;
 
