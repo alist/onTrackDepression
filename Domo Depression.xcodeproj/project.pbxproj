@@ -80,6 +80,15 @@
 		7949229816A079AC00351741 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7949229416A0799900351741 /* QuartzCore.framework */; };
 		794922B016A079BF00351741 /* EXTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 794922AF16A079BF00351741 /* EXTabVC.m */; };
 		794922B116A079BF00351741 /* EXTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 794922AF16A079BF00351741 /* EXTabVC.m */; };
+		795463BB16A12D6F00E3926A /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 795463BA16A12D6F00E3926A /* SMPageControl.m */; };
+		795463D816A20F8A00E3926A /* currentPageDot-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 795463D016A20F8A00E3926A /* currentPageDot-small.png */; };
+		795463D916A20F8A00E3926A /* currentPageDot-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 795463D116A20F8A00E3926A /* currentPageDot-small@2x.png */; };
+		795463DA16A20F8A00E3926A /* currentPageDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 795463D216A20F8A00E3926A /* currentPageDot.png */; };
+		795463DB16A20F8A00E3926A /* currentPageDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 795463D316A20F8A00E3926A /* currentPageDot@2x.png */; };
+		795463DC16A20F8A00E3926A /* pageDot-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 795463D416A20F8A00E3926A /* pageDot-small.png */; };
+		795463DD16A20F8A00E3926A /* pageDot-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 795463D516A20F8A00E3926A /* pageDot-small@2x.png */; };
+		795463DE16A20F8A00E3926A /* pageDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 795463D616A20F8A00E3926A /* pageDot.png */; };
+		795463DF16A20F8A00E3926A /* pageDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 795463D716A20F8A00E3926A /* pageDot@2x.png */; };
 		79A6E3C316973E5B00AA68D7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6E3C216973E5B00AA68D7 /* UIKit.framework */; };
 		79A6E3C516973E5B00AA68D7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6E3C416973E5B00AA68D7 /* Foundation.framework */; };
 		79A6E3C716973E5B00AA68D7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6E3C616973E5B00AA68D7 /* CoreGraphics.framework */; };
@@ -199,6 +208,16 @@
 		7949229416A0799900351741 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		794922AE16A079BF00351741 /* EXTabVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTabVC.h; sourceTree = "<group>"; };
 		794922AF16A079BF00351741 /* EXTabVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXTabVC.m; sourceTree = "<group>"; };
+		795463B916A12D6F00E3926A /* SMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMPageControl.h; path = SMPageControl/SMPageControl.h; sourceTree = SOURCE_ROOT; };
+		795463BA16A12D6F00E3926A /* SMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMPageControl.m; path = SMPageControl/SMPageControl.m; sourceTree = SOURCE_ROOT; };
+		795463D016A20F8A00E3926A /* currentPageDot-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "currentPageDot-small.png"; sourceTree = "<group>"; };
+		795463D116A20F8A00E3926A /* currentPageDot-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "currentPageDot-small@2x.png"; sourceTree = "<group>"; };
+		795463D216A20F8A00E3926A /* currentPageDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = currentPageDot.png; sourceTree = "<group>"; };
+		795463D316A20F8A00E3926A /* currentPageDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "currentPageDot@2x.png"; sourceTree = "<group>"; };
+		795463D416A20F8A00E3926A /* pageDot-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pageDot-small.png"; sourceTree = "<group>"; };
+		795463D516A20F8A00E3926A /* pageDot-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pageDot-small@2x.png"; sourceTree = "<group>"; };
+		795463D616A20F8A00E3926A /* pageDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pageDot.png; sourceTree = "<group>"; };
+		795463D716A20F8A00E3926A /* pageDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pageDot@2x.png"; sourceTree = "<group>"; };
 		79A6E3BE16973E5B00AA68D7 /* Domo Depression.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Domo Depression.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79A6E3C216973E5B00AA68D7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		79A6E3C416973E5B00AA68D7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -272,6 +291,7 @@
 		7935E3A61697530B00FA871F /* External Framworks */ = {
 			isa = PBXGroup;
 			children = (
+				795463BD16A12D7100E3926A /* SMPageControl */,
 				79C024FC16A0EC3900EC138F /* MHPagingScrollView */,
 				7949225F16A0795600351741 /* MGBox */,
 				7935E5371697671A00FA871F /* MNMRadioGroup */,
@@ -511,6 +531,32 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
+		795463BD16A12D7100E3926A /* SMPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				795463CF16A20F8A00E3926A /* resources */,
+				795463B916A12D6F00E3926A /* SMPageControl.h */,
+				795463BA16A12D6F00E3926A /* SMPageControl.m */,
+			);
+			name = SMPageControl;
+			sourceTree = "<group>";
+		};
+		795463CF16A20F8A00E3926A /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				795463D016A20F8A00E3926A /* currentPageDot-small.png */,
+				795463D116A20F8A00E3926A /* currentPageDot-small@2x.png */,
+				795463D216A20F8A00E3926A /* currentPageDot.png */,
+				795463D316A20F8A00E3926A /* currentPageDot@2x.png */,
+				795463D416A20F8A00E3926A /* pageDot-small.png */,
+				795463D516A20F8A00E3926A /* pageDot-small@2x.png */,
+				795463D616A20F8A00E3926A /* pageDot.png */,
+				795463D716A20F8A00E3926A /* pageDot@2x.png */,
+			);
+			name = resources;
+			path = SMPageControl/resources;
+			sourceTree = SOURCE_ROOT;
+		};
 		79A6E3B316973E5B00AA68D7 = {
 			isa = PBXGroup;
 			children = (
@@ -714,6 +760,14 @@
 				7935E5DD1698882E00FA871F /* crisp_paper_ruffles.png in Resources */,
 				79C024EA16A0A60100EC138F /* disclosureArrow.png in Resources */,
 				79C024EB16A0A60100EC138F /* disclosureArrow@2x.png in Resources */,
+				795463D816A20F8A00E3926A /* currentPageDot-small.png in Resources */,
+				795463D916A20F8A00E3926A /* currentPageDot-small@2x.png in Resources */,
+				795463DA16A20F8A00E3926A /* currentPageDot.png in Resources */,
+				795463DB16A20F8A00E3926A /* currentPageDot@2x.png in Resources */,
+				795463DC16A20F8A00E3926A /* pageDot-small.png in Resources */,
+				795463DD16A20F8A00E3926A /* pageDot-small@2x.png in Resources */,
+				795463DE16A20F8A00E3926A /* pageDot.png in Resources */,
+				795463DF16A20F8A00E3926A /* pageDot@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -801,6 +855,7 @@
 				79C024F516A0EA0600EC138F /* EXQIDSGiver.m in Sources */,
 				79C024FF16A0EC3A00EC138F /* MHPagingScrollView.m in Sources */,
 				79C0250316A0ED0E00EC138F /* EXQIDSQuestionPage.m in Sources */,
+				795463BB16A12D6F00E3926A /* SMPageControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

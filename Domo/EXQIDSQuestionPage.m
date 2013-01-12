@@ -35,8 +35,10 @@
 		double tableHeight = (deviceIsPad)? 580 : 400;
 		self.primaryQTable = [MGBox boxWithSize:CGSizeMake(self.width, tableHeight)];
 		double margin = ceil( (self.size.width- self.primaryQTable.width)/2);
-		[self.primaryQTable setOrigin:CGPointMake(margin, (deviceIsPad)? IPAD_TOP_MARGIN-QUESTION_SPACING : IPHONE_TOP_MARGIN-QUESTION_SPACING)];
-		[self.primaryQTable setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleHeight];
+
+		double startY = (deviceIsPad)? IPAD_TOP_MARGIN-QUESTION_SPACING : IPHONE_TOP_MARGIN-QUESTION_SPACING;
+		[self.primaryQTable setOrigin:CGPointMake(margin, startY)];
+		[self.primaryQTable setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleTopMargin];
 		[self addSubview:self.primaryQTable];
 	}
 	return self;
@@ -61,6 +63,11 @@
 		[responseLine setBottomPadding:5];
 		[responseLine setRightItemsTextAlignment:NSTextAlignmentRight];
 		[newBox.topLines addObject:responseLine];
+		
+		__weak MGLineStyled *responseL = responseLine;
+		responseLine.onTap = ^{
+			[self tappedLine:responseL withQuestionNumber:qNumber];
+		};
 	}
 	
 	return newBox;
@@ -88,11 +95,11 @@
 		self.formInfoHeaderText = [qidsManager title];
 	}
 	
-	[self updatePageUI];
+	[self updatePageUI:FALSE];
 }
 
--(void) updatePageUI{
-	[self.primaryQTable layoutWithSpeed:0 completion:nil];
+-(void) updatePageUI:(BOOL)animate{
+	[self.primaryQTable layoutWithSpeed:((animate)?.5: 0) completion:nil];
 	//and then do traditional labels, if we include them.
 }
 
@@ -101,6 +108,13 @@
 	self.questionValues = nil;
 	self.formInfoHeaderText = nil;
 	self.formInfoFooterCornerText = nil;
+}
+
+#pragma mark - interaction
+-(void) tappedLine:(MGLineStyled*)lineBox withQuestionNumber:(NSInteger)qNumber{
+	[lineBox.leftItems removeAllObjects];
+	[lineBox.leftItems addObject:[UIImage imageNamed:@"MNMRadioGroupSelected"]];
+	[self updatePageUI:TRUE];
 }
 
 @end

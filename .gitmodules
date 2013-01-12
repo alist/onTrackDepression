@@ -10,3 +10,6 @@
 [submodule "MHPagingScrollView"]
 	path = MHPagingScrollView
 	url = git@github.com:alist/MHPagingScrollView.git
+[submodule "SMPageControl"]
+	path = SMPageControl
+	url = git@github.com:alist/SMPageControl.git

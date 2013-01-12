@@ -14,7 +14,7 @@
 #define IPAD_MAXQUESTIONS_PER_PAGE 2
 #define IPHONE_MAXQUESTIONS_PER_PAGE 1
 
-#define IPHONE_TOP_MARGIN 50
+#define IPHONE_TOP_MARGIN 40
 #define IPAD_TOP_MARGIN 80
 #define QUESTION_SPACING 30
 
@@ -67,8 +67,7 @@
 /*
  Set question range, set questionValues, then call to draw out the UI.
  */
--(void) updatePageUI;
-
+-(void) updatePageUI:(BOOL)animate;
 /*
  Call this before reusing the page to clear all its properties.
  */

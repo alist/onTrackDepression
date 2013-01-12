@@ -35,13 +35,34 @@
 	[self.view addSubview:self.pagingScrollView];
 	[self.pagingScrollView reloadPages];
 
-	self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 0, 240, 36)];
+	self.pageControl = [[SMPageControl alloc] initWithFrame:CGRectMake(0, 0, 320, 36)];
+	if (deviceIsPad){
+		[self.pageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot"]];
+		[self.pageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot"]];
+	}else{
+		[self.pageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot-small"]];
+		[self.pageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot-small"]];
+		[self.pageControl setIndicatorMargin:7];
+	}
+
 	double margin = ceil( (self.view.size.width- self.pageControl.width)/2);
 	[self.pageControl setOrigin:CGPointMake(margin, self.view.height - self.pageControl.height)];
 	[self.pageControl setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin];
 	self.pageControl.numberOfPages = [self pageCount];
 	self.pageControl.currentPage = 0;
 	[self.view addSubview:pageControl];
+	
+	
+	UIButton * finishLaterButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	[finishLaterButton setFrame:CGRectMake(9, 9, 25, 25)];
+	[finishLaterButton setAutoresizingMask:UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin];
+	[finishLaterButton setBackgroundColor:[UIColor clearColor]];
+	[finishLaterButton setTitle:NSLocalizedString(@"X", @"on form-fill-out part of the app") forState:UIControlStateNormal];
+	[[finishLaterButton titleLabel] setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];
+	[finishLaterButton setTitleColor:[UIColor colorWithWhite:.5 alpha:.5] forState:UIControlStateNormal];
+	[finishLaterButton setTitleColor:[UIColor colorWithWhite:1 alpha:1] forState:UIControlStateHighlighted];
+	[finishLaterButton addTarget:self action:@selector(finishLaterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+	[self.view addSubview:finishLaterButton];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -49,6 +70,10 @@
 	[self willAnimateRotationToInterfaceOrientation:self.interfaceOrientation
 										   duration:1];
 	[self didRotateFromInterfaceOrientation:UIInterfaceOrientationPortrait];
+}
+
+-(void)finishLaterButtonPressed:(id)sender{
+	[self dismissModalViewControllerAnimated:TRUE];
 }
 
 

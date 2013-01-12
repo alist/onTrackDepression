@@ -11,12 +11,13 @@
 #import "EXQIDSSubmission.h"
 #import "EXQIDSManager.h"
 #import "MHPagingScrollView.h"
+#import "SMPageControl.h"
 
 @interface EXQIDSGiver : UIViewController <MHPagingScrollViewDelegate,EXQIDSQuestionPageDelegate,UIScrollViewDelegate>
 @property (nonatomic, strong) EXQIDSSubmission *	activeQIDSSubmission;
 @property (nonatomic, strong) EXQIDSManager *		qidsManager;
 @property (nonatomic, strong) MHPagingScrollView *	pagingScrollView;
-@property (nonatomic, strong) UIPageControl *		pageControl;
+@property (nonatomic, strong) SMPageControl *		pageControl;
 
 -(NSInteger) pageCount;
 
