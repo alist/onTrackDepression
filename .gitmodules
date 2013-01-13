@@ -13,3 +13,6 @@
 [submodule "SMPageControl"]
 	path = SMPageControl
 	url = git@github.com:alist/SMPageControl.git
+[submodule "RestKit"]
+	path = RestKit
+	url = git@github.com:alist/RestKit.git

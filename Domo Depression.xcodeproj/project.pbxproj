@@ -89,6 +89,16 @@
 		795463DD16A20F8A00E3926A /* pageDot-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 795463D516A20F8A00E3926A /* pageDot-small@2x.png */; };
 		795463DE16A20F8A00E3926A /* pageDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 795463D616A20F8A00E3926A /* pageDot.png */; };
 		795463DF16A20F8A00E3926A /* pageDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 795463D716A20F8A00E3926A /* pageDot@2x.png */; };
+		7954640516A22DB100E3926A /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 795463EF16A2298200E3926A /* libRestKit.a */; };
+		7954640C16A22DCB00E3926A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7954640616A22DB100E3926A /* CFNetwork.framework */; };
+		7954640D16A22DCB00E3926A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7954640716A22DB200E3926A /* MobileCoreServices.framework */; };
+		7954640E16A22DCB00E3926A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7954640816A22DB200E3926A /* Security.framework */; };
+		7954640F16A22E7600E3926A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7954640616A22DB100E3926A /* CFNetwork.framework */; };
+		7954641016A22E7600E3926A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7954640716A22DB200E3926A /* MobileCoreServices.framework */; };
+		7954641116A22E7600E3926A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7954640816A22DB200E3926A /* Security.framework */; };
+		7954641416A22E8100E3926A /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 795463EF16A2298200E3926A /* libRestKit.a */; };
+		7954641716A2306200E3926A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7954641516A2305200E3926A /* SystemConfiguration.framework */; };
+		7954641816A2306600E3926A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7954641516A2305200E3926A /* SystemConfiguration.framework */; };
 		79A6E3C316973E5B00AA68D7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6E3C216973E5B00AA68D7 /* UIKit.framework */; };
 		79A6E3C516973E5B00AA68D7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6E3C416973E5B00AA68D7 /* Foundation.framework */; };
 		79A6E3C716973E5B00AA68D7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6E3C616973E5B00AA68D7 /* CoreGraphics.framework */; };
@@ -124,6 +134,48 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		795463EE16A2298200E3926A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 795463E416A2298100E3926A /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160D1614564E810060A5C5;
+			remoteInfo = RestKit;
+		};
+		795463F016A2298200E3926A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 795463E416A2298100E3926A /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160D2614564E820060A5C5;
+			remoteInfo = RestKitTests;
+		};
+		795463F216A2298200E3926A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 795463E416A2298100E3926A /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160E62145651060060A5C5;
+			remoteInfo = RestKitFramework;
+		};
+		795463F416A2298200E3926A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 795463E416A2298100E3926A /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160E78145651060060A5C5;
+			remoteInfo = RestKitFrameworkTests;
+		};
+		7954640316A22BE300E3926A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 795463E416A2298100E3926A /* RestKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 25160D1514564E810060A5C5;
+			remoteInfo = RestKit;
+		};
+		7954641216A22E7C00E3926A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 795463E416A2298100E3926A /* RestKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 25160D1514564E810060A5C5;
+			remoteInfo = RestKit;
+		};
 		79A6E3EA16973E5B00AA68D7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 79A6E3B516973E5B00AA68D7 /* Project object */;
@@ -218,6 +270,11 @@
 		795463D516A20F8A00E3926A /* pageDot-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pageDot-small@2x.png"; sourceTree = "<group>"; };
 		795463D616A20F8A00E3926A /* pageDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pageDot.png; sourceTree = "<group>"; };
 		795463D716A20F8A00E3926A /* pageDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pageDot@2x.png"; sourceTree = "<group>"; };
+		795463E416A2298100E3926A /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = SOURCE_ROOT; };
+		7954640616A22DB100E3926A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		7954640716A22DB200E3926A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		7954640816A22DB200E3926A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		7954641516A2305200E3926A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		79A6E3BE16973E5B00AA68D7 /* Domo Depression.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Domo Depression.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79A6E3C216973E5B00AA68D7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		79A6E3C416973E5B00AA68D7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -265,12 +322,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7954641716A2306200E3926A /* SystemConfiguration.framework in Frameworks */,
+				7954641416A22E8100E3926A /* libRestKit.a in Frameworks */,
 				7949229716A079AC00351741 /* CoreText.framework in Frameworks */,
 				7949229816A079AC00351741 /* QuartzCore.framework in Frameworks */,
 				79A6E3C316973E5B00AA68D7 /* UIKit.framework in Frameworks */,
 				79A6E3C516973E5B00AA68D7 /* Foundation.framework in Frameworks */,
 				79A6E3C716973E5B00AA68D7 /* CoreGraphics.framework in Frameworks */,
 				79A6E3C916973E5B00AA68D7 /* CoreData.framework in Frameworks */,
+				7954640F16A22E7600E3926A /* CFNetwork.framework in Frameworks */,
+				7954641016A22E7600E3926A /* MobileCoreServices.framework in Frameworks */,
+				7954641116A22E7600E3926A /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +340,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7954641816A2306600E3926A /* SystemConfiguration.framework in Frameworks */,
+				7954640C16A22DCB00E3926A /* CFNetwork.framework in Frameworks */,
+				7954640D16A22DCB00E3926A /* MobileCoreServices.framework in Frameworks */,
+				7954640E16A22DCB00E3926A /* Security.framework in Frameworks */,
+				7954640516A22DB100E3926A /* libRestKit.a in Frameworks */,
 				79A6E3E616973E5B00AA68D7 /* SenTestingKit.framework in Frameworks */,
 				79A6E3E716973E5B00AA68D7 /* UIKit.framework in Frameworks */,
 				79A6E3E816973E5B00AA68D7 /* Foundation.framework in Frameworks */,
@@ -291,6 +358,7 @@
 		7935E3A61697530B00FA871F /* External Framworks */ = {
 			isa = PBXGroup;
 			children = (
+				795463E416A2298100E3926A /* RestKit.xcodeproj */,
 				795463BD16A12D7100E3926A /* SMPageControl */,
 				79C024FC16A0EC3900EC138F /* MHPagingScrollView */,
 				7949225F16A0795600351741 /* MGBox */,
@@ -557,6 +625,17 @@
 			path = SMPageControl/resources;
 			sourceTree = SOURCE_ROOT;
 		};
+		795463E516A2298100E3926A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				795463EF16A2298200E3926A /* libRestKit.a */,
+				795463F116A2298200E3926A /* RestKitTests.octest */,
+				795463F316A2298200E3926A /* RestKit.framework */,
+				795463F516A2298200E3926A /* RestKitFrameworkTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		79A6E3B316973E5B00AA68D7 = {
 			isa = PBXGroup;
 			children = (
@@ -579,6 +658,10 @@
 		79A6E3C116973E5B00AA68D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7954641516A2305200E3926A /* SystemConfiguration.framework */,
+				7954640616A22DB100E3926A /* CFNetwork.framework */,
+				7954640716A22DB200E3926A /* MobileCoreServices.framework */,
+				7954640816A22DB200E3926A /* Security.framework */,
 				7949229316A0799900351741 /* CoreText.framework */,
 				7949229416A0799900351741 /* QuartzCore.framework */,
 				79A6E3C216973E5B00AA68D7 /* UIKit.framework */,
@@ -677,6 +760,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				7954641316A22E7C00E3926A /* PBXTargetDependency */,
 			);
 			name = "Domo Depression";
 			productName = "Feel Better: Depression";
@@ -695,6 +779,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				7954640416A22BE300E3926A /* PBXTargetDependency */,
 				79A6E3EB16973E5B00AA68D7 /* PBXTargetDependency */,
 			);
 			name = "Domo DepressionTests";
@@ -723,6 +808,12 @@
 			mainGroup = 79A6E3B316973E5B00AA68D7;
 			productRefGroup = 79A6E3BF16973E5B00AA68D7 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 795463E516A2298100E3926A /* Products */;
+					ProjectRef = 795463E416A2298100E3926A /* RestKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				79A6E3BD16973E5B00AA68D7 /* Domo Depression */,
@@ -730,6 +821,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		795463EF16A2298200E3926A /* libRestKit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKit.a;
+			remoteRef = 795463EE16A2298200E3926A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		795463F116A2298200E3926A /* RestKitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RestKitTests.octest;
+			remoteRef = 795463F016A2298200E3926A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		795463F316A2298200E3926A /* RestKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RestKit.framework;
+			remoteRef = 795463F216A2298200E3926A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		795463F516A2298200E3926A /* RestKitFrameworkTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RestKitFrameworkTests.octest;
+			remoteRef = 795463F416A2298200E3926A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		79A6E3BC16973E5B00AA68D7 /* Resources */ = {
@@ -886,6 +1008,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7954640416A22BE300E3926A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RestKit;
+			targetProxy = 7954640316A22BE300E3926A /* PBXContainerItemProxy */;
+		};
+		7954641316A22E7C00E3926A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RestKit;
+			targetProxy = 7954641216A22E7C00E3926A /* PBXContainerItemProxy */;
+		};
 		79A6E3EB16973E5B00AA68D7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 79A6E3BD16973E5B00AA68D7 /* Domo Depression */;
@@ -988,7 +1120,12 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "Domo/Domo Depression-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "Domo/Domo Depression-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "Domo Depression";
 				WRAPPER_EXTENSION = app;
 			};
@@ -999,7 +1136,12 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "Domo/Domo Depression-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "Domo/Domo Depression-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "Domo Depression";
 				WRAPPER_EXTENSION = app;
 			};

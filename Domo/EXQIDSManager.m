@@ -7,6 +7,7 @@
 //
 
 #import "EXQIDSManager.h"
+#import <RestKit/RestKit.h>
 
 @interface EXQIDSManager ()
 
@@ -38,6 +39,7 @@
 }
 
 -(BOOL) qidsSubmissionsAvailableForAuthor:(EXAuthor*)author{
+	
 	return TRUE;
 }
 -(EXQIDSSubmission*) qidsSubmissionForAuthor:(EXAuthor*)author{
