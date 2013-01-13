@@ -36,12 +36,6 @@
 
 
 @property (nonatomic, assign) NSInteger	pageNumber;
-/*
- [{  prompt: NSString_PromptQ0, currentResponse: Integer, values: [NSString_Answer0,NSString_Answer1, etc.]  },Qetc...]
- 
- currentResponse indicates which values have already been checked off. 
- */
-@property (nonatomic, strong) NSArray *	questionValues;
 
 /*
  Set this if you want to display some text in the header of the form page.
@@ -56,7 +50,7 @@
 /*
  Just pass the QIDS, the qids manager, page #, and have a fully-updated view. No nead to call update.
  */
--(void) updateViewWithQIDSSubmission:(EXQIDSSubmission*)submission qidsManager:(EXQIDSManager*)qidsManager pageNumber:(NSInteger)pageNumber;
+-(void) updateViewWithQIDSSubmission:(EXQIDSSubmission*)submission qidsManager:(EXQIDSManager*)qidsManager pageNumber:(NSInteger)pageNumber ;
 
 /*
  hopefully only ever need to call this once!
@@ -76,6 +70,6 @@
 /*
  Used internally to generate boxes to display on screen.
  */
--(MGBox*) generateQuestionBoxWithTitle:(NSString*)title qNumber:(NSInteger)qNumber responseValues:(NSArray*)responseVals;
+-(MGBox*) _generateQuestionBoxWithTitle:(NSString*)title qNumber:(NSInteger)qNumber responseValues:(NSArray*)responseVals selectedValue:(NSNumber*)selectedValue;
 
 @end

@@ -10,7 +10,6 @@
 #import "EXUserComManager.h"
 
 @implementation EXTabVC
-@synthesize objectContext;
 @synthesize rowSize, headerFont;
 @synthesize scroller;
 @synthesize tablesGrid, primaryTable, detailTable;
@@ -20,9 +19,8 @@
 
 #pragma mark - subclass
 
--(id)initWithManagedObjectContext:(NSManagedObjectContext*)context presentedAppTab:(domoAppTab)presentedTab{
+-(id)initWithPresentedAppTab:(domoAppTab)presentedTab{
 	if (self = [super initWithNibName:nil bundle:nil]){
-		self.objectContext = context;
 		[self setTitle:NSLocalizedString(@"EXTab", @"holder value")];
 		
 		self.headerFont = [UIFont fontWithName:@"HelveticaNeue" size:18];
@@ -34,8 +32,8 @@
 	return self;	
 }
 
--(id)initWithManagedObjectContext:(NSManagedObjectContext*)context{
-	if (self = [self initWithManagedObjectContext:context presentedAppTab:domoAppTabNone]){
+-(id)init{
+	if (self = [self initWithPresentedAppTab:domoAppTabNone]){
 		
 	}
 	return self;

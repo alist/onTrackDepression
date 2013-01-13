@@ -199,6 +199,12 @@
 		 }
 	}
 	
+	[self.activeQIDSSubmission.managedObjectContext saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
+		if (error){
+			NSLog(@"Save err for qids %@",[error description]);
+		}
+	}];
+	
 }
 
 @end

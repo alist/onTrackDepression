@@ -16,24 +16,24 @@
         <attribute name="isCompleted" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="officialDate" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
-        <attribute name="q0" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="q1" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="q2" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="q3" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="q4" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="q5" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="q6" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="q7" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="q8" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="q9" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="q10" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="q11" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="q12" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="q13" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="q14" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="q15" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="qidsSeverity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="qidsValue" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="q0" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="q1" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="q2" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="q3" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="q4" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="q5" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="q6" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="q7" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="q8" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="q9" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="q10" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="q11" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="q12" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="q13" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="q14" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="q15" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="qidsSeverity" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="qidsValue" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="wasMissed" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <relationship name="author" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="EXAuthor" inverseName="qidsSubmissions" inverseEntity="EXAuthor" syncable="YES"/>
     </entity>

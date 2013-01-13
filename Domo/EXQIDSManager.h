@@ -12,13 +12,13 @@
 
 @interface EXQIDSManager : NSObject
 
-@property (nonatomic, strong) NSArray *	 questions;
-@property (nonatomic, strong) NSString * version;
-@property (nonatomic, strong) NSString * title;
-@property (nonatomic, strong) NSString * prompt;
-@property (nonatomic, strong) NSManagedObjectContext * objectContext;
+@property (nonatomic, strong) NSArray *		questions;
+@property (nonatomic, strong) NSString *	version;
+@property (nonatomic, strong) NSString *	title;
+@property (nonatomic, strong) NSString *	prompt;
+@property (nonatomic, strong) NSNumber*		formSpacingInterval;
 
--(id) initWithManagedObjectContext:(NSManagedObjectContext*)context;
+-(id) init;
 -(void) loadFormData; //from file
 
 //when one is incomplete before next one is available for completion

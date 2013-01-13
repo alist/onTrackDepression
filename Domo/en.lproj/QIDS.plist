@@ -4,8 +4,8 @@
 <dict>
 	<key>version</key>
 	<string>1.00</string>
-	<key>minGapInterval</key>
-	<integer>86400</integer>
+	<key>formSpacingInterval</key>
+	<integer>172800</integer>
 	<key>title</key>
 	<string>Quick Inventory of Depressive Symptomatology (Self Report) (QIDS-SR 16)</string>
 	<key>prompt</key>

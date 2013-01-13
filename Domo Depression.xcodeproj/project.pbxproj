@@ -125,6 +125,9 @@
 		7954647916A2348300E3926A /* MagicalRecord+Setup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7954645B16A2348300E3926A /* MagicalRecord+Setup.m */; };
 		7954647A16A2348300E3926A /* MagicalRecord+ShorthandSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 7954645D16A2348300E3926A /* MagicalRecord+ShorthandSupport.m */; };
 		7954647B16A2348300E3926A /* MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 7954645F16A2348300E3926A /* MagicalRecord.m */; };
+		7954647C16A3431D00E3926A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7949229316A0799900351741 /* CoreText.framework */; };
+		7954647D16A3431D00E3926A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7949229416A0799900351741 /* QuartzCore.framework */; };
+		7954647E16A3431D00E3926A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6E3C616973E5B00AA68D7 /* CoreGraphics.framework */; };
 		79A6E3C316973E5B00AA68D7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6E3C216973E5B00AA68D7 /* UIKit.framework */; };
 		79A6E3C516973E5B00AA68D7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6E3C416973E5B00AA68D7 /* Foundation.framework */; };
 		79A6E3C716973E5B00AA68D7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6E3C616973E5B00AA68D7 /* CoreGraphics.framework */; };
@@ -420,15 +423,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7954640516A22DB100E3926A /* libRestKit.a in Frameworks */,
 				7954641816A2306600E3926A /* SystemConfiguration.framework in Frameworks */,
 				7954640C16A22DCB00E3926A /* CFNetwork.framework in Frameworks */,
 				7954640D16A22DCB00E3926A /* MobileCoreServices.framework in Frameworks */,
 				7954640E16A22DCB00E3926A /* Security.framework in Frameworks */,
-				7954640516A22DB100E3926A /* libRestKit.a in Frameworks */,
-				79A6E3E616973E5B00AA68D7 /* SenTestingKit.framework in Frameworks */,
+				7954647C16A3431D00E3926A /* CoreText.framework in Frameworks */,
+				7954647D16A3431D00E3926A /* QuartzCore.framework in Frameworks */,
 				79A6E3E716973E5B00AA68D7 /* UIKit.framework in Frameworks */,
 				79A6E3E816973E5B00AA68D7 /* Foundation.framework in Frameworks */,
+				7954647E16A3431D00E3926A /* CoreGraphics.framework in Frameworks */,
 				79A6E3E916973E5B00AA68D7 /* CoreData.framework in Frameworks */,
+				79A6E3E616973E5B00AA68D7 /* SenTestingKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1359,14 +1365,15 @@
 		79A6E3FB16973E5B00AA68D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Feel Better: Depression.app/Feel Better: Depression";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Domo Depression.app/Domo Depression";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Domo/Domo Depression-Prefix.pch";
-				INFOPLIST_FILE = "Feel Better: DepressionTests/Domo DepressionTests-Info.plist";
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
+				INFOPLIST_FILE = "DomoTests/Domo DepressionTests-Info.plist";
 				PRODUCT_NAME = "Domo DepressionTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -1376,14 +1383,15 @@
 		79A6E3FC16973E5B00AA68D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Feel Better: Depression.app/Feel Better: Depression";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Domo Depression.app/Domo Depression";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Domo/Domo Depression-Prefix.pch";
-				INFOPLIST_FILE = "Feel Better: DepressionTests/Domo DepressionTests-Info.plist";
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
+				INFOPLIST_FILE = "DomoTests/Domo DepressionTests-Info.plist";
 				PRODUCT_NAME = "Domo DepressionTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;

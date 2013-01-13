@@ -44,4 +44,12 @@
 	return [self valueForKey:[NSString stringWithFormat:@"Q%i",questionNumber]];
 }
 
+
+-(void)awakeFromInsert{
+	[super awakeFromInsert];
+	
+	[self setIsCompleted:@(FALSE)];
+	[self setDateLastEdited:[NSDate date]];
+}
+
 @end

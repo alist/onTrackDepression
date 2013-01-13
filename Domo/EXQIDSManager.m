@@ -14,12 +14,10 @@
 @end
 
 @implementation EXQIDSManager
-@synthesize objectContext;
 @synthesize questions, version,title, prompt;
 
--(id) initWithManagedObjectContext:(NSManagedObjectContext*)context{
+-(id) init{
 	if (self=[super init]){
-		self.objectContext = context;
 		
 		[self loadFormData];
 	}
@@ -35,6 +33,7 @@
 	self.version = [QIDSData valueForKey:@"version"];
 	self.title = [QIDSData valueForKey:@"title"];
 	self.prompt = [QIDSData valueForKey:@"prompt"];
+	self.formSpacingInterval = [QIDSData valueForKey:@"formSpacingInterval"];
 	
 }
 -(EXQIDSSubmission*) qidsSubmissionForAuthor:(EXAuthor*)author{
@@ -42,7 +41,7 @@
 	
 	NSInteger submissionInterval = [[lastSubmission officialDate] timeIntervalSinceNow];
 	if (submissionInterval > 0){ //offical due in future
-		if ([[lastSubmission isCompleted] boolValue] == TRUE){
+		if ([[lastSubmission isCompleted] boolValue] == FALSE){
 			return lastSubmission;
 		}else{
 			return nil;
@@ -51,7 +50,7 @@
 		//create new one? Yeah, probably!
 		EXQIDSSubmission * newSubmission = [EXQIDSSubmission createInContext:[author managedObjectContext]];
 		[newSubmission setAuthor:author];
-		if (-1*submissionInterval > author.qidsSpacingInterval.intValue){ //-1*timeCompletedInPast > spaceBTW submissions
+		if (-1*submissionInterval > author.qidsSpacingInterval.intValue || [lastSubmission officialDate] == nil){ //-1*timeCompletedInPast > spaceBTW submissions
 			//we're gonna add today's date + the interval
 			[newSubmission setOfficialDate:[NSDate dateWithTimeIntervalSinceNow:author.qidsSpacingInterval.intValue]];
 		}else{

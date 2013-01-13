@@ -11,7 +11,7 @@
 #import "MGTableBoxStyled.h"
 
 @implementation EXQIDSQuestionPage
-@synthesize pageNumber, questionValues, formInfoHeaderText,formInfoFooterCornerText;
+@synthesize pageNumber, formInfoHeaderText,formInfoFooterCornerText;
 @synthesize primaryQTable;
 @synthesize rowSize, headerFont;
 @synthesize delegate;
@@ -45,7 +45,7 @@
 }
 
 
--(MGBox*) generateQuestionBoxWithTitle:(NSString*)title qNumber:(NSInteger)qNumber responseValues:(NSArray*)responseVals{
+-(MGBox*) _generateQuestionBoxWithTitle:(NSString*)title qNumber:(NSInteger)qNumber responseValues:(NSArray*)responseVals selectedValue:(NSNumber*)selectedValue{
 	MGTableBoxStyled *newBox = [MGTableBoxStyled box];
 	[newBox setTopMargin:30];
 	[newBox setRasterize:TRUE];
@@ -58,8 +58,10 @@
 	[newBox.topLines addObject:head];
 	head.font = self.headerFont;
 	
-	for (NSString * response in responseVals){
-		MGLineStyled * responseLine = [MGLineStyled lineWithLeft:[UIImage imageNamed:@"MNMRadioGroupUnselected"] multilineRight:response width:self.rowSize.width minHeight:self.rowSize.height];
+	for (NSString * response in responseVals){		
+		UIImage * selectedImage = (selectedValue && [responseVals indexOfObject:response] == [selectedValue intValue])? [UIImage imageNamed:@"MNMRadioGroupSelected"]:[UIImage imageNamed:@"MNMRadioGroupUnselected"];
+		
+		MGLineStyled * responseLine = [MGLineStyled lineWithLeft:selectedImage multilineRight:response width:self.rowSize.width minHeight:self.rowSize.height];
 		[responseLine setTopPadding:5];
 		[responseLine setBottomPadding:5];
 		[responseLine setRightItemsTextAlignment:NSTextAlignmentRight];
@@ -88,7 +90,11 @@
 	NSArray * pageQuestions = [[qidsManager questions] subarrayWithRange:qRange];
 	
 	for (NSDictionary * question in pageQuestions){
-		[self.primaryQTable.boxes addObject:[self generateQuestionBoxWithTitle:[question valueForKey:@"prompt"] qNumber:(startQNumber + [pageQuestions indexOfObject:question]) responseValues:[question valueForKey:@"values"]]];
+		MGBox * box = [self _generateQuestionBoxWithTitle:[question valueForKey:@"prompt"]
+								qNumber:(startQNumber + [pageQuestions indexOfObject:question])
+								responseValues:[question valueForKey:@"values"]
+								selectedValue:[submission questionResponseForQuesitonNumber:[qidsManager.questions indexOfObject:question]]];
+		[self.primaryQTable.boxes addObject:box];
 	}
 	
 	self.formInfoFooterCornerText = [NSDateFormatter localizedStringFromDate:[submission officialDate] dateStyle:NSDateFormatterLongStyle timeStyle:NSDateFormatterNoStyle];
@@ -107,7 +113,6 @@
 
 -(void) prepareForReuse{
 	[self.primaryQTable.boxes removeAllObjects];
-	self.questionValues = nil;
 	self.formInfoHeaderText = nil;
 	self.formInfoFooterCornerText = nil;
 }

@@ -12,7 +12,6 @@
 #import "MGLineStyled.h"
 
 @interface EXTabVC : UIViewController
-@property (nonatomic, strong) NSManagedObjectContext *			objectContext;
 @property (nonatomic, assign) domoAppTab						presentedTab;
 
 @property (nonatomic, strong) UIFont *							headerFont;
@@ -23,10 +22,10 @@
 
 
 //this one is called by subclass in implementation of initWithManagedObjectContext:.
--(id)initWithManagedObjectContext:(NSManagedObjectContext*)context presentedAppTab:(domoAppTab)presentedTab;
+-(id)initWithPresentedAppTab:(domoAppTab)presentedTab;
 
 //this one is called by users of the class
--(id)initWithManagedObjectContext:(NSManagedObjectContext*)context;
+-(id)init;
 
 -(void)		refreshContent;
 
