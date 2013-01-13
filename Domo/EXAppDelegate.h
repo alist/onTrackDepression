@@ -11,7 +11,7 @@
 #import "EXTrackVC.h"
 #import "EXAnalyzeVC.h"
 #import "EXImproveVC.h"
-
+#import "MagicalRecord.h"
 #import "EXAuthor.h"
 #import "EXUserComManager.h"
 
@@ -19,9 +19,9 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
-@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (readwrite, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+//@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+//@property (readwrite, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 
 @property (strong, nonatomic)	UITabBarController *	navTabBarPod; //possibly JBTabBarController later

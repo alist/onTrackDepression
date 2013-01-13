@@ -16,3 +16,6 @@
 [submodule "RestKit"]
 	path = RestKit
 	url = git@github.com:alist/RestKit.git
+[submodule "MagicalRecord"]
+	path = MagicalRecord
+	url = git@github.com:alist/MagicalRecord.git

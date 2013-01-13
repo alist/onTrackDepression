@@ -21,3 +21,7 @@ typedef enum{
 	domoAppTabSupport
 }domoAppTab;
 
+
+#define MR_SHORTHAND
+#import "CoreData+MagicalRecord.h"
+#import "UIViewAdditions+EX.h"

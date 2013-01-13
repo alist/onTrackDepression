@@ -23,7 +23,6 @@
 
 //when one is incomplete before next one is available for completion
 //or when one is available for completion
--(BOOL) qidsSubmissionsAvailableForAuthor:(EXAuthor*)author;
 -(EXQIDSSubmission*) qidsSubmissionForAuthor:(EXAuthor*)author;
 
 @end

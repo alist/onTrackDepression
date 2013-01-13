@@ -37,13 +37,30 @@
 	self.prompt = [QIDSData valueForKey:@"prompt"];
 	
 }
-
--(BOOL) qidsSubmissionsAvailableForAuthor:(EXAuthor*)author{
-	
-	return TRUE;
-}
 -(EXQIDSSubmission*) qidsSubmissionForAuthor:(EXAuthor*)author{
-	return nil;
+	EXQIDSSubmission * lastSubmission = [EXQIDSSubmission findFirstWithPredicate:[NSPredicate predicateWithFormat:@"author == %@",author] sortedBy:@"officialDate" ascending:TRUE];
+	
+	NSInteger submissionInterval = [[lastSubmission officialDate] timeIntervalSinceNow];
+	if (submissionInterval > 0){ //offical due in future
+		if ([[lastSubmission isCompleted] boolValue] == TRUE){
+			return lastSubmission;
+		}else{
+			return nil;
+		}
+	}else{
+		//create new one? Yeah, probably!
+		EXQIDSSubmission * newSubmission = [EXQIDSSubmission createInContext:[author managedObjectContext]];
+		[newSubmission setAuthor:author];
+		if (-1*submissionInterval > author.qidsSpacingInterval.intValue){ //-1*timeCompletedInPast > spaceBTW submissions
+			//we're gonna add today's date + the interval
+			[newSubmission setOfficialDate:[NSDate dateWithTimeIntervalSinceNow:author.qidsSpacingInterval.intValue]];
+		}else{
+			//otherwise we're gonna add the interval from the last QIDS taken
+			[newSubmission setOfficialDate:[lastSubmission.officialDate dateByAddingTimeInterval:author.qidsSpacingInterval.intValue]];
+		}
+		[[author managedObjectContext] saveOnlySelfWithCompletion:nil];
+		return newSubmission;
+	}
 }
 
 @end
