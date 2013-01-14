@@ -1,8 +1,8 @@
 //
-//  EXQIDSQuestionPage.h
+//  EXQIDSNoteSubmitPage.h
 //  Domo Depression
 //
-//  Created by Alexander List on 1/11/13.
+//  Created by Alexander List on 1/13/13.
 //  Copyright (c) 2013 ExoMachina. All rights reserved.
 //
 
@@ -18,21 +18,25 @@
 #define IPAD_TOP_MARGIN 80
 #define QUESTION_SPACING 30
 
-@class EXQIDSQuestionPage;
+@class EXQIDSNoteSubmitPage;
 
-@protocol EXQIDSQuestionPageDelegate <NSObject>
+@protocol EXQIDSNoteSubmitPageDelegate <NSObject>
 
-//qnumbers are relative to total count of q numbers in form
--(void)qidsQuestionPage:(EXQIDSQuestionPage*)qPage didChangeValueOfQuestionNumber:(NSInteger)qNumber toValue:(NSInteger)value;
+-(void)qidsNoteSubmitPage:(EXQIDSNoteSubmitPage*)qPage didUpdateNoteToText:(NSString*)noteText;
+
+-(void)qidsNoteSubmitPageDidSubmitWithPage:(EXQIDSNoteSubmitPage*)qPage;
 @end
 
-@interface EXQIDSQuestionPage : UIView
 
-@property (nonatomic, weak) id<EXQIDSQuestionPageDelegate> delegate;
+
+@interface EXQIDSNoteSubmitPage : UIView
+@property (nonatomic, weak) id<EXQIDSNoteSubmitPageDelegate> delegate;
 
 @property (nonatomic, strong) MGBox *	primaryQTable;
 @property (nonatomic, strong) UIFont *	headerFont;
+@property (nonatomic, strong) UIFont *	noteFont;
 @property (nonatomic, assign) CGSize	rowSize;
+@property (nonatomic, assign) CGSize	noteEntrySize;
 
 //this page #
 @property (nonatomic, assign) NSInteger	pageNumber;
@@ -56,7 +60,7 @@
  hopefully only ever need to call this once!
  this page should be reused.
  */
--(id)initWithDelegate:(id<EXQIDSQuestionPageDelegate>) delegate frame:(CGRect)frame;
+-(id)initWithDelegate:(id<EXQIDSNoteSubmitPageDelegate>) delegate frame:(CGRect)frame;
 
 /*
  Set question range, set questionValues, then call to draw out the UI.
@@ -66,10 +70,5 @@
  Call this before reusing the page to clear all its properties.
  */
 -(void) prepareForReuse;
-
-/*
- Used internally to generate boxes to display on screen.
- */
--(MGBox*) _generateQuestionBoxWithTitle:(NSString*)title qNumber:(NSInteger)qNumber responseValues:(NSArray*)responseVals selectedValue:(NSNumber*)selectedValue;
 
 @end

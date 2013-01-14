@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "EXQIDSQuestionPage.h"
+#import "EXQIDSNoteSubmitPage.h"
 #import "EXQIDSSubmission.h"
 #import "EXQIDSManager.h"
 #import "MHPagingScrollView.h"
 #import "SMPageControl.h"
 
-@interface EXQIDSGiver : UIViewController <MHPagingScrollViewDelegate,EXQIDSQuestionPageDelegate,UIScrollViewDelegate>
+@interface EXQIDSGiver : UIViewController <MHPagingScrollViewDelegate,EXQIDSNoteSubmitPageDelegate, EXQIDSQuestionPageDelegate,UIScrollViewDelegate>
 @property (nonatomic, strong) EXQIDSSubmission *	activeQIDSSubmission;
 @property (nonatomic, strong) EXQIDSManager *		qidsManager;
 @property (nonatomic, strong) MHPagingScrollView *	pagingScrollView;

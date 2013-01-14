@@ -128,6 +128,8 @@
 		7954647C16A3431D00E3926A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7949229316A0799900351741 /* CoreText.framework */; };
 		7954647D16A3431D00E3926A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7949229416A0799900351741 /* QuartzCore.framework */; };
 		7954647E16A3431D00E3926A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6E3C616973E5B00AA68D7 /* CoreGraphics.framework */; };
+		7954648216A35A3D00E3926A /* EXQIDSNoteSubmitPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7954648116A35A3C00E3926A /* EXQIDSNoteSubmitPage.m */; };
+		7954648316A35A3D00E3926A /* EXQIDSNoteSubmitPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7954648116A35A3C00E3926A /* EXQIDSNoteSubmitPage.m */; };
 		79A6E3C316973E5B00AA68D7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6E3C216973E5B00AA68D7 /* UIKit.framework */; };
 		79A6E3C516973E5B00AA68D7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6E3C416973E5B00AA68D7 /* Foundation.framework */; };
 		79A6E3C716973E5B00AA68D7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6E3C616973E5B00AA68D7 /* CoreGraphics.framework */; };
@@ -358,6 +360,9 @@
 		7954645F16A2348300E3926A /* MagicalRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagicalRecord.m; sourceTree = "<group>"; };
 		7954646016A2348300E3926A /* MagicalRecordShorthand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalRecordShorthand.h; sourceTree = "<group>"; };
 		7954646116A2348300E3926A /* CoreData+MagicalRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreData+MagicalRecord.h"; sourceTree = "<group>"; };
+		7954647F16A356A400E3926A /* Domo Depression.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Domo Depression.entitlements"; sourceTree = SOURCE_ROOT; };
+		7954648016A35A3C00E3926A /* EXQIDSNoteSubmitPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXQIDSNoteSubmitPage.h; sourceTree = "<group>"; };
+		7954648116A35A3C00E3926A /* EXQIDSNoteSubmitPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXQIDSNoteSubmitPage.m; sourceTree = "<group>"; };
 		79A6E3BE16973E5B00AA68D7 /* Domo Depression.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Domo Depression.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79A6E3C216973E5B00AA68D7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		79A6E3C416973E5B00AA68D7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -581,6 +586,8 @@
 		7935E5C41697A16300FA871F /* track */ = {
 			isa = PBXGroup;
 			children = (
+				7954648016A35A3C00E3926A /* EXQIDSNoteSubmitPage.h */,
+				7954648116A35A3C00E3926A /* EXQIDSNoteSubmitPage.m */,
 				79C0250116A0ED0E00EC138F /* EXQIDSQuestionPage.h */,
 				79C0250216A0ED0E00EC138F /* EXQIDSQuestionPage.m */,
 				79C024F316A0EA0600EC138F /* EXQIDSGiver.h */,
@@ -876,6 +883,7 @@
 		79A6E3CB16973E5B00AA68D7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7954647F16A356A400E3926A /* Domo Depression.entitlements */,
 				79A6E3CC16973E5B00AA68D7 /* Domo Depression-Info.plist */,
 				79A6E3D016973E5B00AA68D7 /* main.m */,
 				79A6E3D216973E5B00AA68D7 /* Domo Depression-Prefix.pch */,
@@ -1193,6 +1201,7 @@
 				7954647916A2348300E3926A /* MagicalRecord+Setup.m in Sources */,
 				7954647A16A2348300E3926A /* MagicalRecord+ShorthandSupport.m in Sources */,
 				7954647B16A2348300E3926A /* MagicalRecord.m in Sources */,
+				7954648216A35A3D00E3926A /* EXQIDSNoteSubmitPage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1217,6 +1226,7 @@
 				79C024F616A0EA0600EC138F /* EXQIDSGiver.m in Sources */,
 				79C0250016A0EC3A00EC138F /* MHPagingScrollView.m in Sources */,
 				79C0250416A0ED0E00EC138F /* EXQIDSQuestionPage.m in Sources */,
+				7954648316A35A3D00E3926A /* EXQIDSNoteSubmitPage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1333,6 +1343,7 @@
 		79A6E3F816973E5B00AA68D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Domo Depression.entitlements";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "Domo/Domo Depression-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
@@ -1349,6 +1360,7 @@
 		79A6E3F916973E5B00AA68D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Domo Depression.entitlements";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "Domo/Domo Depression-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";

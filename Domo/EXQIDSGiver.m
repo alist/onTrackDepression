@@ -58,7 +58,7 @@
 	[finishLaterButton setFrame:CGRectMake(9, 9, 25, 25)];
 	[finishLaterButton setAutoresizingMask:UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin];
 	[finishLaterButton setBackgroundColor:[UIColor clearColor]];
-	[finishLaterButton setTitle:NSLocalizedString(@"X", @"on form-fill-out part of the app") forState:UIControlStateNormal];
+	[finishLaterButton setTitle:@"X" forState:UIControlStateNormal];
 	[[finishLaterButton titleLabel] setFont:[UIFont fontWithName:@"HelveticaNeue" size:15]];
 	[finishLaterButton setTitleColor:[UIColor colorWithWhite:.5 alpha:.5] forState:UIControlStateNormal];
 	[finishLaterButton setTitleColor:[UIColor colorWithWhite:1 alpha:1] forState:UIControlStateHighlighted];
@@ -171,8 +171,13 @@
 		
 		return qidsPage;
 		
-	}else if (index +1 < self.pageCount){
-		return [[UIView alloc] initWithFrame:self.view.bounds];
+	}else if (index +1 == self.pageCount){
+		//last page
+		EXQIDSNoteSubmitPage* submitPage = [[EXQIDSNoteSubmitPage alloc] initWithDelegate:self frame:self.view.bounds];
+		
+		[submitPage updateViewWithQIDSSubmission:self.activeQIDSSubmission qidsManager:self.qidsManager pageNumber:index];
+
+		return submitPage;
 	}
 	
 	return nil;
@@ -204,6 +209,15 @@
 			NSLog(@"Save err for qids %@",[error description]);
 		}
 	}];
+	
+}
+
+#pragma QIDSSubmitPage 
+-(void)qidsNoteSubmitPage:(EXQIDSNoteSubmitPage*)qPage didUpdateNoteToText:(NSString*)noteText{
+	
+}
+
+-(void)qidsNoteSubmitPageDidSubmitWithPage:(EXQIDSNoteSubmitPage*)qPage{
 	
 }
 

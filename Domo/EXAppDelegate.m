@@ -24,7 +24,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	[MagicalRecord setupCoreDataStackWithiCloudContainer:@"DomoDepressionCoreData" localStoreNamed:@"Domo_Depression.sqlite"]; //I think we need to bundle a store
+	[MagicalRecord setupCoreDataStackWithiCloudContainer:@"com.exomachina.domodepression.ubiquitycoredata" localStoreNamed:@"Domo_Depression.sqlite"]; //I think we need to bundle a store
 	self.managedObjectContext = [NSManagedObjectContext MR_defaultContext];
 	
 	self.qidsManager = [[EXQIDSManager alloc] init];
