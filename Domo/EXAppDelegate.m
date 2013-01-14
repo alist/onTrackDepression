@@ -24,7 +24,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	[MagicalRecord setupCoreDataStackWithiCloudContainer:@"com.exomachina.domodepression.ubiquitycoredata" localStoreNamed:@"Domo_Depression.sqlite"]; //I think we need to bundle a store
+//	[MagicalRecord setupCoreDataStackWithiCloudContainer:@"A7426L9B95.com.exomachina.domodepression.ubiquitycoredata" localStoreNamed:@"Domo_Depression.sqlite"];
+	[MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Domo_Depression.sqlite"];
 	self.managedObjectContext = [NSManagedObjectContext MR_defaultContext];
 	
 	self.qidsManager = [[EXQIDSManager alloc] init];
@@ -115,6 +116,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application{
 	// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+	[[self managedObjectContext] saveToPersistentStoreAndWait];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -126,6 +128,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application{
+	[MagicalRecord cleanUp];
 }
 
 @end

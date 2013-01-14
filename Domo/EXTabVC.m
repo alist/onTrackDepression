@@ -121,7 +121,8 @@
 	[self.scroller layoutWithSpeed:0.3 completion:nil];
 	
 	// scroll
-	[self.scroller scrollToView:[primaryBoxes objectAtIndex:0] withMargin:8];
+	if ([primaryBoxes count] > 0)
+		[self.scroller scrollToView:[primaryBoxes objectAtIndex:0] withMargin:8];
 }
 
 -(NSArray*)	headerPrimaryMessageBoxes{

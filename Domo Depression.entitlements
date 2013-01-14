@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.developer.ubiquity-container-identifiers</key>
 	<array>
-		<string>$(TeamIdentifierPrefix)com.exomachina.domodepression.ubiquitycoredata</string>
+		<string>A7426L9B95.com.exomachina.domodepression.ubiquitycoredata</string>
 	</array>
 	<key>keychain-access-groups</key>
 	<array>

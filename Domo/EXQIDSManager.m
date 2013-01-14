@@ -38,7 +38,7 @@
 	
 }
 -(EXQIDSSubmission*) qidsSubmissionForAuthor:(EXAuthor*)author{
-	EXQIDSSubmission * lastSubmission = [EXQIDSSubmission findFirstWithPredicate:[NSPredicate predicateWithFormat:@"author == %@",author] sortedBy:@"dueDate" ascending:TRUE];
+	EXQIDSSubmission * lastSubmission = [EXQIDSSubmission findFirstWithPredicate:[NSPredicate predicateWithFormat:@"author == %@",author] sortedBy:@"dueDate" ascending:FALSE];
 	
 	NSInteger submissionInterval = [[lastSubmission dueDate] timeIntervalSinceNow];
 	if (submissionInterval > 0){ //offical due in future
@@ -84,7 +84,7 @@
 	}
 	totalScore += sleepQualityScore + weightMaintenanceScore + psychomotorScore;
 	
-	severityIndex = (double)totalScore/ 6.75; //to normalize < 5
+	severityIndex = (double)totalScore/ 5.5; //to normalize < 5
 	
 	NSDate * date = [NSDate date];
 	[submission setCompletionDate:date];

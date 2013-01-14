@@ -36,10 +36,13 @@ static const CGRect formQuestionDimensionsLandscape = {{0,0},{400, 200}};
 		
 		EXQIDSSubmission * submission = [self.qidsManager qidsSubmissionForAuthor:[EXAuthor authorForLocalUser]];
 		
+		NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+		[formatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"EEEE MMd" options:0 locale:[NSLocale currentLocale]]];
+		
 		if ([submission dateLastEdited] == nil){
-			qidsCalloutText = [NSString stringWithFormat:NSLocalizedString(@"Begin QIDS for %@", @"defines when form is due on track page"),[NSDateFormatter localizedStringFromDate:[submission dueDate] dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterNoStyle]];
+			qidsCalloutText = [NSString stringWithFormat:NSLocalizedString(@"Begin QIDS for %@", @"defines when form is due on track page"),[formatter stringFromDate:[submission dueDate]]];
 		}else{
-			qidsCalloutText = [NSString stringWithFormat:NSLocalizedString(@"Continue QIDS for %@", @"defines when form is due on track page"),[NSDateFormatter localizedStringFromDate:[submission dueDate] dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterNoStyle]];
+			qidsCalloutText = [NSString stringWithFormat:NSLocalizedString(@"Continue QIDS for %@", @"defines when form is due on track page"),[formatter stringFromDate:[submission dueDate]]];
 		}
 	}
 	
