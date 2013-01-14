@@ -10,6 +10,7 @@
 #import "EXQIDSSubmission.h"
 #import "EXQIDSManager.h"
 #import "MGBox.h"
+#import "MGButton.h"
 
 #define IPAD_MAXQUESTIONS_PER_PAGE 2
 #define IPHONE_MAXQUESTIONS_PER_PAGE 1
@@ -37,6 +38,9 @@
 @property (nonatomic, strong) UIFont *	noteFont;
 @property (nonatomic, assign) CGSize	rowSize;
 @property (nonatomic, assign) CGSize	noteEntrySize;
+
+//the button
+@property (nonatomic, strong) MGButton * submitButtonBox;
 
 //this page #
 @property (nonatomic, assign) NSInteger	pageNumber;
@@ -70,5 +74,6 @@
  Call this before reusing the page to clear all its properties.
  */
 -(void) prepareForReuse;
+
 
 @end

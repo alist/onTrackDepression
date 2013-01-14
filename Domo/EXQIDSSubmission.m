@@ -11,9 +11,9 @@
 
 @implementation EXQIDSSubmission
 
+@dynamic completionDate;
 @dynamic dateLastEdited;
-@dynamic isCompleted;
-@dynamic officialDate;
+@dynamic dueDate;
 @dynamic note;
 @dynamic q0;
 @dynamic q1;
@@ -38,6 +38,7 @@
 
 
 -(void) setQuestionResponse:(NSNumber*)response forQuesitonNumber:(NSInteger)questionNumber{
+	[self setDateLastEdited:[NSDate date]];
 	[self setValue:response forKey:[NSString stringWithFormat:@"Q%i",questionNumber]];
 }
 -(NSNumber*) questionResponseForQuesitonNumber:(NSInteger)questionNumber{
@@ -47,9 +48,16 @@
 
 -(void)awakeFromInsert{
 	[super awakeFromInsert];
+}
+
+-(BOOL) isComplete{
 	
-	[self setIsCompleted:@(FALSE)];
-	[self setDateLastEdited:[NSDate date]];
+	for (int i = 0; i <= 15; i++){
+		if ([self questionResponseForQuesitonNumber:i] == nil)
+			return FALSE;
+	}
+	
+	return TRUE;
 }
 
 @end

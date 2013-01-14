@@ -11,6 +11,11 @@
 #import "MGTableBoxStyled.h"
 #import "MGButton.h"
 
+@interface EXQIDSNoteSubmitPage ()
+-(MGTableBoxStyled*) _noteBox;
+
+@end
+
 @implementation EXQIDSNoteSubmitPage
 @synthesize pageNumber, formInfoHeaderText,formInfoFooterCornerText;
 @synthesize primaryQTable;
@@ -48,57 +53,65 @@
 	return self;
 }
 
+-(MGTableBoxStyled*) _noteBox{
+	 //text input box
+	 MGTableBoxStyled *noteBox = [MGTableBoxStyled box];
+	 [noteBox setTopMargin:30];
+	 [noteBox setRasterize:TRUE];
+	 
+	 double margin = ceil( (self.size.width- self.rowSize.width)/2);
+	 [noteBox setLeftMargin:margin];
+	 
+	 MGLineStyled *head = [MGLineStyled lineWithLeft:NSLocalizedString(@"Standout causes?", @"qids form note-entry prompt") right:nil size:self.rowSize];
+	 head.font = self.headerFont;
+	 
+	 [noteBox.topLines addObject:head];
+	 
+	 UITextView * textInput = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, noteEntrySize.width, noteEntrySize.height)];
+	 [textInput setBackgroundColor:[UIColor colorWithWhite:.9 alpha:1]];
+	 [textInput setFont:self.noteFont];
+	 [textInput setTextColor:[UIColor colorWithWhite:.05 alpha:1]];
+	 //	[textInput setContentInset:UIEdgeInsetsMake(0, 10, 10, 10)];
+	 [textInput setText:@"hello test!"];
+	 
+	 __weak MGLineStyled *noteEntryBox = [MGLineStyled lineWithSize:textInput.size];
+	 noteEntryBox.asyncLayoutOnce = ^{
+	 dispatch_async(dispatch_get_main_queue(), ^{
+	 [noteEntryBox addSubview:textInput];
+	 });
+	 };
+	 
+	 [noteBox.middleLines addObject:noteEntryBox];
+
+	return noteBox;
+}
+
 -(void) updateViewWithQIDSSubmission:(EXQIDSSubmission*)submission qidsManager:(EXQIDSManager*)qidsManager pageNumber:(NSInteger)tPageNumber{
 	
 	[self prepareForReuse];
 	
 	self.pageNumber = tPageNumber;
-	
-	
-	//text input box
-	MGTableBoxStyled *noteBox = [MGTableBoxStyled box];
-	[noteBox setTopMargin:30];
-	[noteBox setRasterize:TRUE];
+		 
+//	[self.primaryQTable.boxes addObject:[self _noteBox]];
 	
 	double margin = ceil( (self.size.width- self.rowSize.width)/2);
-	[noteBox setLeftMargin:margin];
-	
-	MGLineStyled *head = [MGLineStyled lineWithLeft:NSLocalizedString(@"Standout causes?", @"qids form note-entry prompt") right:nil size:self.rowSize];
-	head.font = self.headerFont;
-	
-	[noteBox.topLines addObject:head];
-	
-	UITextView * textInput = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, noteEntrySize.width, noteEntrySize.height)];
-	[textInput setBackgroundColor:[UIColor colorWithWhite:.9 alpha:1]];
-	[textInput setFont:self.noteFont];
-	[textInput setTextColor:[UIColor colorWithWhite:.05 alpha:1]];
-//	[textInput setContentInset:UIEdgeInsetsMake(0, 10, 10, 10)];
-	[textInput setText:@"hello test!"];
-	
-	__weak MGLineStyled *noteEntryBox = [MGLineStyled lineWithSize:textInput.size];
-	noteEntryBox.asyncLayoutOnce = ^{
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[noteEntryBox addSubview:textInput];
-		});
-	};
-	
-	[noteBox.middleLines addObject:noteEntryBox];
-	
-	[self.primaryQTable.boxes addObject:noteBox];
-	
+		
 	//submit box
-	MGButton * submitButtonBox = [MGButton buttonWithType:UIButtonTypeCustom];
-	[submitButtonBox setFrame:CGRectMake(0, 0, self.rowSize.width, self.rowSize.height *3)];
-	[submitButtonBox setTopMargin:50];
-	[submitButtonBox setTitle:NSLocalizedString(@"Complete!", @"finish button on last page of form-fill-out part of the app") forState:UIControlStateNormal];
-	[submitButtonBox setTitleColor:[UIColor colorWithWhite:.5 alpha:.5] forState:UIControlStateNormal];
-	[submitButtonBox setTitleColor:[UIColor colorWithWhite:1 alpha:1] forState:UIControlStateHighlighted];
-	[submitButtonBox.layer setBorderWidth:1];
-	[submitButtonBox setLeftMargin:margin];
-//	[submitButton addTarget:self action:@selector(finishLaterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-	[self.primaryQTable.boxes addObject:submitButtonBox];
+	self.submitButtonBox = [MGButton buttonWithType:UIButtonTypeCustom];
+	[self.submitButtonBox setFrame:CGRectMake(0, 0, self.rowSize.width, self.rowSize.height *3)];
+	[self.submitButtonBox setTopMargin:50];
+	[self.submitButtonBox setTitle:NSLocalizedString(@"Complete!", @"finish button on last page of form-fill-out part of the app") forState:UIControlStateNormal];
+	[self.submitButtonBox setTitleColor:[UIColor colorWithWhite:.5 alpha:.5] forState:UIControlStateNormal];
+	[self.submitButtonBox setTitleColor:[UIColor colorWithWhite:1 alpha:1] forState:UIControlStateHighlighted];
+	[self.submitButtonBox.layer setBorderWidth:1];
+	[self.submitButtonBox setLeftMargin:margin];
+	[self.submitButtonBox addTarget:self action:@selector(submitPressed:) forControlEvents:UIControlEventTouchUpInside];
 	
-	self.formInfoFooterCornerText = [NSDateFormatter localizedStringFromDate:[submission officialDate] dateStyle:NSDateFormatterLongStyle timeStyle:NSDateFormatterNoStyle];
+	[self.submitButtonBox setEnabled:[submission isComplete]];
+	
+	[self.primaryQTable.boxes addObject:self.submitButtonBox];
+	
+	self.formInfoFooterCornerText = [NSDateFormatter localizedStringFromDate:[submission dueDate] dateStyle:NSDateFormatterLongStyle timeStyle:NSDateFormatterNoStyle];
 	
 	if (self.pageNumber == 0){
 		self.formInfoHeaderText = [qidsManager title];
@@ -118,7 +131,9 @@
 	self.formInfoFooterCornerText = nil;
 }
 
-
-
+#pragma mark - interactions
+-(void) submitPressed:(id)sender{
+	[self.delegate qidsNoteSubmitPageDidSubmitWithPage:self];
+}
 
 @end

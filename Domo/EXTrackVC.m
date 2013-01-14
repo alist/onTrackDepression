@@ -7,7 +7,6 @@
 //
 
 #import "EXTrackVC.h"
-#import "MNMRadioGroupValue.h"
 #import "EXQIDSManager.h"
 
 static const CGRect formQuestionDimensionsPortrait = {{0,0},{325, 250}};
@@ -17,7 +16,7 @@ static const CGRect formQuestionDimensionsLandscape = {{0,0},{400, 200}};
 @end
 
 @implementation EXTrackVC
-@synthesize currentQuestionnaire, questionTileController,qidsGiver = _qidsGiver;
+@synthesize currentQuestionnaire,qidsGiver = _qidsGiver;
 
 #pragma mark - content 
 -(NSArray*)detailBoxes{
@@ -30,7 +29,21 @@ static const CGRect formQuestionDimensionsLandscape = {{0,0},{400, 200}};
 	head.font = self.headerFont;
 	
 	//need to add author
-	MGLineStyled *grids = [MGLineStyled lineWithLeft:NSLocalizedString(@"Start Form Series", @"track tab text for beginning regimine") right:[UIImage imageNamed:@"disclosureArrow"] size:self.rowSize];
+	NSString * qidsCalloutText = nil;
+	if ([[[EXAuthor authorForLocalUser] qidsSubmissions] count] == 0){
+		qidsCalloutText = NSLocalizedString(@"Start First QIDS Form", @"track tab text for beginning regimine");
+	}else {
+		
+		EXQIDSSubmission * submission = [self.qidsManager qidsSubmissionForAuthor:[EXAuthor authorForLocalUser]];
+		
+		if ([submission dateLastEdited] == nil){
+			qidsCalloutText = [NSString stringWithFormat:NSLocalizedString(@"Begin QIDS for %@", @"defines when form is due on track page"),[NSDateFormatter localizedStringFromDate:[submission dueDate] dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterNoStyle]];
+		}else{
+			qidsCalloutText = [NSString stringWithFormat:NSLocalizedString(@"Continue QIDS for %@", @"defines when form is due on track page"),[NSDateFormatter localizedStringFromDate:[submission dueDate] dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterNoStyle]];
+		}
+	}
+	
+	MGLineStyled *grids = [MGLineStyled lineWithLeft:qidsCalloutText right:[UIImage imageNamed:@"disclosureArrow"] size:self.rowSize];
 	[layout.topLines addObject:grids];
 	grids.onTap = ^{
 		if ([self.childViewControllers containsObject:self.qidsGiver] == NO){
@@ -51,15 +64,22 @@ static const CGRect formQuestionDimensionsLandscape = {{0,0},{400, 200}};
 
 }
 
+-(void) viewDidAppear:(BOOL)animated{
+	[super viewDidAppear:animated];
+	[self refreshContent];
+}
+
 -(void)viewDidLoad{
 	[super viewDidLoad];
 }
 
 
 -(EXQIDSGiver*)qidsGiver{
+	
 	if (_qidsGiver == nil){
-		_qidsGiver = [[EXQIDSGiver alloc] initWithQIDSManager:self.qidsManager submission:[self.qidsManager qidsSubmissionForAuthor:[EXAuthor authorForLocalUser]]];
+		_qidsGiver = [[EXQIDSGiver alloc] initWithQIDSManager:self.qidsManager];
 	}
+	[_qidsGiver setActiveQIDSSubmission:[self.qidsManager qidsSubmissionForAuthor:[EXAuthor authorForLocalUser]]];
 	return _qidsGiver;
 }
 

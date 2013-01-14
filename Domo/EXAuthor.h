@@ -19,7 +19,6 @@
 @property (nonatomic, retain) NSDate * firstQIDSDate;
 @property (nonatomic, retain) NSNumber * isOnboarding;
 @property (nonatomic, retain) NSDate * lastQIDSDate;
-@property (nonatomic, retain) NSDate * nextQIDSDate;
 @property (nonatomic, retain) NSNumber * qidsSpacingInterval;
 @property (nonatomic, retain) NSSet *qidsSubmissions;
 

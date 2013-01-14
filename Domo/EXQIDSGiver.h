@@ -22,5 +22,7 @@
 
 -(NSInteger) pageCount;
 
--(id) initWithQIDSManager:(EXQIDSManager *)manager submission:(EXQIDSSubmission*)submission;
+-(id) initWithQIDSManager:(EXQIDSManager *)manager;
+
+-(void) dismissForm;
 @end

@@ -7,15 +7,14 @@
         <attribute name="firstQIDSDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="isOnboarding" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="lastQIDSDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="nextQIDSDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="qidsSpacingInterval" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
         <relationship name="qidsSubmissions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="EXQIDSSubmission" inverseName="author" inverseEntity="EXQIDSSubmission" syncable="YES"/>
     </entity>
     <entity name="EXQIDSSubmission" representedClassName="EXQIDSSubmission" syncable="YES">
+        <attribute name="completionDate" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="dateLastEdited" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="isCompleted" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="dueDate" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="officialDate" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="q0" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="q1" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="q2" optional="YES" attributeType="Integer 16" syncable="YES"/>
@@ -32,13 +31,13 @@
         <attribute name="q13" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="q14" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="q15" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="qidsSeverity" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="qidsSeverity" optional="YES" attributeType="Double" syncable="YES"/>
         <attribute name="qidsValue" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="wasMissed" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <relationship name="author" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="EXAuthor" inverseName="qidsSubmissions" inverseEntity="EXAuthor" syncable="YES"/>
     </entity>
     <elements>
-        <element name="EXAuthor" positionX="160" positionY="192" width="128" height="180"/>
-        <element name="EXQIDSSubmission" positionX="160" positionY="192" width="128" height="405"/>
+        <element name="EXAuthor" positionX="0" positionY="0" width="128" height="165"/>
+        <element name="EXQIDSSubmission" positionX="0" positionY="0" width="128" height="405"/>
     </elements>
 </model>

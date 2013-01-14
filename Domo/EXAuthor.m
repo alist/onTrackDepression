@@ -17,7 +17,6 @@
 @dynamic firstQIDSDate;
 @dynamic isOnboarding;
 @dynamic lastQIDSDate;
-@dynamic nextQIDSDate;
 @dynamic qidsSpacingInterval;
 @dynamic qidsSubmissions;
 

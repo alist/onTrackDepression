@@ -97,7 +97,7 @@
 		[self.primaryQTable.boxes addObject:box];
 	}
 	
-	self.formInfoFooterCornerText = [NSDateFormatter localizedStringFromDate:[submission officialDate] dateStyle:NSDateFormatterLongStyle timeStyle:NSDateFormatterNoStyle];
+	self.formInfoFooterCornerText = [NSDateFormatter localizedStringFromDate:[submission dueDate] dateStyle:NSDateFormatterLongStyle timeStyle:NSDateFormatterNoStyle];
 	
 	if (self.pageNumber == 0){
 		self.formInfoHeaderText = [qidsManager title];

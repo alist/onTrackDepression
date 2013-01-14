@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "exoTiledContentViewController.h"
 #import "EXTabVC.h"
 #import "EXQIDSGiver.h"
 
@@ -16,10 +15,9 @@ typedef enum{
 	EXQuestionnaireTypeQIDS
 } EXQuestionnaireType;
 
-@interface EXTrackVC : EXTabVC <exoTiledContentViewControllerContentDelegate>
+@interface EXTrackVC : EXTabVC
 
 @property (nonatomic, assign) EXQuestionnaireType				currentQuestionnaire;
-@property (nonatomic, strong) exoTiledContentViewController *	questionTileController;
 @property (nonatomic, strong) EXQIDSGiver *						qidsGiver;
 @property (nonatomic, strong) EXQIDSManager	*					qidsManager;
 

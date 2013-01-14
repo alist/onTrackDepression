@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-
+#import "EXAuthor.h"
 
 @interface EXQIDSSubmission : NSManagedObject
 
+@property (nonatomic, retain) NSDate * completionDate;
 @property (nonatomic, retain) NSDate * dateLastEdited;
-@property (nonatomic, retain) NSDate * officialDate;
-@property (nonatomic, retain) NSNumber * isCompleted;
+@property (nonatomic, retain) NSDate * dueDate;
 @property (nonatomic, retain) NSString * note;
 @property (nonatomic, retain) NSNumber * q0;
 @property (nonatomic, retain) NSNumber * q1;
@@ -37,9 +37,11 @@
 @property (nonatomic, retain) NSNumber * wasMissed;
 
 
-@property (nonatomic, retain) NSManagedObject *author;
+@property (nonatomic, retain) EXAuthor *author;
 
 -(void) setQuestionResponse:(NSNumber*)response forQuesitonNumber:(NSInteger)questionNumber;
 -(NSNumber*) questionResponseForQuesitonNumber:(NSInteger)questionNumber;
+
+-(BOOL) isComplete;
 
 @end

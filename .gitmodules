@@ -1,9 +1,6 @@
 [submodule "CKSideBarController"]
 	path = CKSideBarController
 	url = git@github.com:alist/CKSideBarController.git
-[submodule "MNMRadioGroupDemo"]
-	path = MNMRadioGroupDemo
-	url = git@github.com:alist/MNMRadioGroupDemo.git
 [submodule "MGBox2"]
 	path = MGBox2
 	url = git@github.com:alist/MGBox2.git

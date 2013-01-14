@@ -5,7 +5,7 @@
 	<key>version</key>
 	<string>1.00</string>
 	<key>formSpacingInterval</key>
-	<integer>172800</integer>
+	<integer>604800</integer>
 	<key>title</key>
 	<string>Quick Inventory of Depressive Symptomatology (Self Report) (QIDS-SR 16)</string>
 	<key>prompt</key>

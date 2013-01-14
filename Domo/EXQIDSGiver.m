@@ -10,14 +10,13 @@
 
 
 @implementation EXQIDSGiver
-@synthesize qidsManager, pagingScrollView, activeQIDSSubmission, pageControl;
--(id) initWithQIDSManager:(EXQIDSManager *)manager submission:(EXQIDSSubmission*)submission{
+@synthesize qidsManager, pagingScrollView, activeQIDSSubmission = _activeQIDSSubmission, pageControl;
+-(id) initWithQIDSManager:(EXQIDSManager *)manager{
 	if (self = [super initWithNibName:nil bundle:nil]){
 		self.modalPresentationStyle = UIModalPresentationFullScreen;
 		self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
 		
 		self.qidsManager			= manager;
-		self.activeQIDSSubmission	= submission;
 	}
 	return self;
 }
@@ -73,6 +72,14 @@
 	[self didRotateFromInterfaceOrientation:UIInterfaceOrientationPortrait];
 }
 
+-(void) setActiveQIDSSubmission:(EXQIDSSubmission *)activeQIDSSubmission{
+	if (_activeQIDSSubmission != activeQIDSSubmission){
+		_activeQIDSSubmission = activeQIDSSubmission;
+		
+		[self.pagingScrollView selectPageAtIndex:0 animated:NO];
+	}
+}
+
 
 #pragma mark interaction
 
@@ -87,9 +94,17 @@
 }
 
 -(void)finishLaterButtonPressed:(id)sender{
-	[self dismissModalViewControllerAnimated:TRUE];
+	[self dismissForm];
 }
 
+
+-(void) dismissForm{
+	[self.activeQIDSSubmission.managedObjectContext saveOnlySelfWithCompletion:^(BOOL success, NSError *error){
+		if (error)
+			NSLog(@"Save err for qids %@",[error description]);
+	}];
+	[self dismissModalViewControllerAnimated:TRUE];
+}
 
 #pragma mark - View Controller Rotation
 
@@ -203,22 +218,23 @@
 			[self flipToNextPage];
 		 }
 	}
-	
-	[self.activeQIDSSubmission.managedObjectContext saveOnlySelfWithCompletion:^(BOOL success, NSError *error) {
-		if (error){
-			NSLog(@"Save err for qids %@",[error description]);
-		}
-	}];
-	
+		
 }
 
 #pragma QIDSSubmitPage 
 -(void)qidsNoteSubmitPage:(EXQIDSNoteSubmitPage*)qPage didUpdateNoteToText:(NSString*)noteText{
-	
+	NSLog(@"Not implemented for note txt: %@",noteText);
 }
 
 -(void)qidsNoteSubmitPageDidSubmitWithPage:(EXQIDSNoteSubmitPage*)qPage{
+	[self.activeQIDSSubmission.managedObjectContext saveOnlySelfWithCompletion:^(BOOL success, NSError *error){
+		if (error)
+			NSLog(@"Save err for qids %@",[error description]);
+	}];
 	
+	if ([self.qidsManager submitQIDSAsComplete:self.activeQIDSSubmission]){
+		[self dismissForm];
+	}
 }
 
 @end

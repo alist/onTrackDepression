@@ -7,6 +7,7 @@
 //
 
 #import "EXQIDSManager.h"
+#import "EXAuthor.h"
 #import <RestKit/RestKit.h>
 
 @interface EXQIDSManager ()
@@ -37,29 +38,67 @@
 	
 }
 -(EXQIDSSubmission*) qidsSubmissionForAuthor:(EXAuthor*)author{
-	EXQIDSSubmission * lastSubmission = [EXQIDSSubmission findFirstWithPredicate:[NSPredicate predicateWithFormat:@"author == %@",author] sortedBy:@"officialDate" ascending:TRUE];
+	EXQIDSSubmission * lastSubmission = [EXQIDSSubmission findFirstWithPredicate:[NSPredicate predicateWithFormat:@"author == %@",author] sortedBy:@"dueDate" ascending:TRUE];
 	
-	NSInteger submissionInterval = [[lastSubmission officialDate] timeIntervalSinceNow];
+	NSInteger submissionInterval = [[lastSubmission dueDate] timeIntervalSinceNow];
 	if (submissionInterval > 0){ //offical due in future
-		if ([[lastSubmission isCompleted] boolValue] == FALSE){
+		if ([lastSubmission completionDate] == nil){
 			return lastSubmission;
-		}else{
-			return nil;
 		}
-	}else{
-		//create new one? Yeah, probably!
-		EXQIDSSubmission * newSubmission = [EXQIDSSubmission createInContext:[author managedObjectContext]];
-		[newSubmission setAuthor:author];
-		if (-1*submissionInterval > author.qidsSpacingInterval.intValue || [lastSubmission officialDate] == nil){ //-1*timeCompletedInPast > spaceBTW submissions
-			//we're gonna add today's date + the interval
-			[newSubmission setOfficialDate:[NSDate dateWithTimeIntervalSinceNow:author.qidsSpacingInterval.intValue]];
-		}else{
-			//otherwise we're gonna add the interval from the last QIDS taken
-			[newSubmission setOfficialDate:[lastSubmission.officialDate dateByAddingTimeInterval:author.qidsSpacingInterval.intValue]];
-		}
-		[[author managedObjectContext] saveOnlySelfWithCompletion:nil];
-		return newSubmission;
 	}
+	
+	//create new one? Yeah, probably!
+	EXQIDSSubmission * newSubmission = [EXQIDSSubmission createInContext:[author managedObjectContext]];
+	[newSubmission setAuthor:author];
+	[newSubmission setDueDate:[NSDate dateWithTimeIntervalSinceNow:author.qidsSpacingInterval.intValue]];
+	[[author managedObjectContext] saveOnlySelfWithCompletion:nil];
+	
+	return newSubmission;
+}
+
+-(BOOL) submitQIDSAsComplete:(EXQIDSSubmission*)submission{
+	int sleepQualityScore = 0;
+	int weightMaintenanceScore = 0;
+	int psychomotorScore = 0;
+	int totalScore = 0;
+	double severityIndex = 0;
+	
+	for (int qIt = 0; qIt < [self.questions count]; qIt++){
+		NSNumber * score = [submission questionResponseForQuesitonNumber:qIt];
+		if (score == nil)
+			return FALSE;
+		
+		if (qIt < 4){
+			sleepQualityScore = MAX(sleepQualityScore, [score intValue]);
+		}else if (qIt < 5){
+			totalScore += [score intValue];
+		}else if (qIt < 8){
+			weightMaintenanceScore = MAX(sleepQualityScore, [score intValue]);
+		}else if (qIt < 14){
+			totalScore += [score intValue];
+		}else if (qIt < 16){
+			psychomotorScore = MAX(sleepQualityScore, [score intValue]);
+		}else{
+			NSLog(@"Whoops-- did we add questions? %i",qIt);
+		}
+	}
+	totalScore += sleepQualityScore + weightMaintenanceScore + psychomotorScore;
+	
+	severityIndex = (double)totalScore/ 6.75; //to normalize < 5
+	
+	NSDate * date = [NSDate date];
+	[submission setCompletionDate:date];
+	[submission setQidsSeverity:@(severityIndex)];
+	[submission setQidsValue:@(totalScore)];
+	
+	if ([[submission author] firstQIDSDate] == nil){
+		[[submission author] setFirstQIDSDate:date];
+	}
+	[[submission author] setLastQIDSDate:date];
+	
+	[[submission managedObjectContext] saveOnlySelfWithCompletion:nil];
+	
+	return TRUE;
 }
 
 @end

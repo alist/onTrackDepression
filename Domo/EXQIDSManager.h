@@ -25,4 +25,10 @@
 //or when one is available for completion
 -(EXQIDSSubmission*) qidsSubmissionForAuthor:(EXAuthor*)author;
 
+//		Enter the highest score on any 1 of the 4 sleep items (items 0 thru 3).
+//		Enter the highest score on any 1 of the 4 weight items (items 5 thru 8).
+//		Enter the highest score on either of the 2 psychomotor items (14 thru 15).
+//		There will be one score for each of the nine MDD symptom domains.
+-(BOOL) submitQIDSAsComplete:(EXQIDSSubmission*)submission;
+
 @end
