@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CKSideBarController.h"
 #import "EXTrackVC.h"
-#import "EXAnalyzeVC.h"
+#import "EXReviewVC.h"
 #import "EXImproveVC.h"
 #import "MagicalRecord.h"
 #import "EXAuthor.h"
@@ -28,7 +28,7 @@
 @property (strong, nonatomic)	UITabBarController *	navTabBarPod; //possibly JBTabBarController later
 @property (strong, nonatomic)	CKSideBarController *	navSideBarPad;
 @property (strong, nonatomic)	EXTrackVC *				trackVC;
-@property (strong, nonatomic)	EXAnalyzeVC *			analyzeVC;
+@property (strong, nonatomic)	EXReviewVC *			analyzeVC;
 @property (strong, nonatomic)	EXImproveVC *			improveVC;
 
 

@@ -10,6 +10,9 @@
 #import "EXQIDSSubmission.h"
 #import "EXAuthor.h"
 
+//posts notificaiton with objectID of EXQIDSSubmission as notification object
+static NSString * const newQIDSSubmittedNotification = @"newQIDSSubmittedNotification";
+
 @interface EXQIDSManager : NSObject
 
 @property (nonatomic, strong) NSArray *		questions;

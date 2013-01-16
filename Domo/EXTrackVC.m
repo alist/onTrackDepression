@@ -25,8 +25,8 @@ static const CGRect formQuestionDimensionsLandscape = {{0,0},{400, 200}};
 	
 	// header
 	MGLineStyled *head = [MGLineStyled lineWithLeft:NSLocalizedString(@"Tracking Mood", @"track tab header for tracking options") right:nil size:self.rowSize];
-	[layout.topLines addObject:head];
 	head.font = self.headerFont;
+	[layout.topLines addObject:head];
 	
 	//need to add author
 	NSString * qidsCalloutText = nil;

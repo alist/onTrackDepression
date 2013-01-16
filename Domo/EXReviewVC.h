@@ -8,7 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "EXTabVC.h"
+#import "CorePlot-CocoaTouch.h"
+#import "EskBarPlot.h"
+#import "EskLinePlot.h"
 
-@interface EXAnalyzeVC : EXTabVC
+@interface EXReviewVC : EXTabVC{
+	EskLinePlot *linePlot;
+}
+@property (nonatomic, retain) CPTGraphHostingView *lineHostingView;
 
 @end

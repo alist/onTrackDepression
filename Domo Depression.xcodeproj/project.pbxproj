@@ -35,8 +35,8 @@
 		7935E55916978DA300FA871F /* QIDS.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7935E55B16978DA300FA871F /* QIDS.plist */; };
 		7935E5C71697A1C100FA871F /* EXTrackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7935E5C61697A1C100FA871F /* EXTrackVC.m */; };
 		7935E5C81697A1C100FA871F /* EXTrackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7935E5C61697A1C100FA871F /* EXTrackVC.m */; };
-		7935E5CD1697A39E00FA871F /* EXAnalyzeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7935E5CC1697A39E00FA871F /* EXAnalyzeVC.m */; };
-		7935E5CE1697A39E00FA871F /* EXAnalyzeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7935E5CC1697A39E00FA871F /* EXAnalyzeVC.m */; };
+		7935E5CD1697A39E00FA871F /* EXReviewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7935E5CC1697A39E00FA871F /* EXReviewVC.m */; };
+		7935E5CE1697A39E00FA871F /* EXReviewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7935E5CC1697A39E00FA871F /* EXReviewVC.m */; };
 		7935E5D11697A3C700FA871F /* EXImproveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7935E5D01697A3C700FA871F /* EXImproveVC.m */; };
 		7935E5D21697A3C700FA871F /* EXImproveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7935E5D01697A3C700FA871F /* EXImproveVC.m */; };
 		7935E5D51698882300FA871F /* greyfloral@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 7935E5D31698882200FA871F /* greyfloral@2X.png */; };
@@ -72,6 +72,22 @@
 		794F6F5316A4586200F29BB6 /* MNMRadioGroupSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794F6F4F16A4586200F29BB6 /* MNMRadioGroupSelected@2x.png */; };
 		794F6F5416A4586200F29BB6 /* MNMRadioGroupUnselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 794F6F5016A4586200F29BB6 /* MNMRadioGroupUnselected.png */; };
 		794F6F5516A4586200F29BB6 /* MNMRadioGroupUnselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794F6F5116A4586200F29BB6 /* MNMRadioGroupUnselected@2x.png */; };
+		794F711A16A4D7DB00F29BB6 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 794F711716A4D7B000F29BB6 /* libCorePlot-CocoaTouch.a */; };
+		794F711D16A4D7EC00F29BB6 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 794F711716A4D7B000F29BB6 /* libCorePlot-CocoaTouch.a */; };
+		794F716516A75AD800F29BB6 /* EskPlotTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F716016A75AD800F29BB6 /* EskPlotTheme.m */; };
+		794F716616A75AD800F29BB6 /* EskBarPlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F716216A75AD800F29BB6 /* EskBarPlot.m */; };
+		794F716716A75AD800F29BB6 /* EskLinePlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F716416A75AD800F29BB6 /* EskLinePlot.m */; };
+		794F716816A75B7700F29BB6 /* EskPlotTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F716016A75AD800F29BB6 /* EskPlotTheme.m */; };
+		794F716916A75B7700F29BB6 /* EskBarPlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F716216A75AD800F29BB6 /* EskBarPlot.m */; };
+		794F716A16A75B7700F29BB6 /* EskLinePlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F716416A75AD800F29BB6 /* EskLinePlot.m */; };
+		794F717E16A75D5700F29BB6 /* Ingleby_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794F717A16A75D5700F29BB6 /* Ingleby_bold.ttf */; };
+		794F717F16A75D5700F29BB6 /* Ingleby_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794F717A16A75D5700F29BB6 /* Ingleby_bold.ttf */; };
+		794F718016A75D5700F29BB6 /* Ingleby_bold_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794F717B16A75D5700F29BB6 /* Ingleby_bold_italic.ttf */; };
+		794F718116A75D5700F29BB6 /* Ingleby_bold_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794F717B16A75D5700F29BB6 /* Ingleby_bold_italic.ttf */; };
+		794F718216A75D5700F29BB6 /* Ingleby_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794F717C16A75D5700F29BB6 /* Ingleby_italic.ttf */; };
+		794F718316A75D5700F29BB6 /* Ingleby_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794F717C16A75D5700F29BB6 /* Ingleby_italic.ttf */; };
+		794F718416A75D5700F29BB6 /* Ingleby_regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794F717D16A75D5700F29BB6 /* Ingleby_regular.ttf */; };
+		794F718516A75D5700F29BB6 /* Ingleby_regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794F717D16A75D5700F29BB6 /* Ingleby_regular.ttf */; };
 		795463BB16A12D6F00E3926A /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 795463BA16A12D6F00E3926A /* SMPageControl.m */; };
 		795463D816A20F8A00E3926A /* currentPageDot-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 795463D016A20F8A00E3926A /* currentPageDot-small.png */; };
 		795463D916A20F8A00E3926A /* currentPageDot-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 795463D116A20F8A00E3926A /* currentPageDot-small@2x.png */; };
@@ -156,6 +172,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		794F711616A4D7B000F29BB6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 794F710D16A4D7AC00F29BB6 /* CorePlot-CocoaTouch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BC9B83470FB8A0A40035D8DA;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
+		794F711816A4D7D000F29BB6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 794F710D16A4D7AC00F29BB6 /* CorePlot-CocoaTouch.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BC9B83460FB8A0A40035D8DA;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
+		794F711B16A4D7E800F29BB6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 794F710D16A4D7AC00F29BB6 /* CorePlot-CocoaTouch.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BC9B83460FB8A0A40035D8DA;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
 		795463EE16A2298200E3926A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 795463E416A2298100E3926A /* RestKit.xcodeproj */;
@@ -226,8 +263,8 @@
 		7935E55A16978DA300FA871F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/QIDS.plist; sourceTree = "<group>"; };
 		7935E5C51697A1C100FA871F /* EXTrackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTrackVC.h; sourceTree = "<group>"; };
 		7935E5C61697A1C100FA871F /* EXTrackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXTrackVC.m; sourceTree = "<group>"; };
-		7935E5CB1697A39E00FA871F /* EXAnalyzeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXAnalyzeVC.h; sourceTree = "<group>"; };
-		7935E5CC1697A39E00FA871F /* EXAnalyzeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXAnalyzeVC.m; sourceTree = "<group>"; };
+		7935E5CB1697A39E00FA871F /* EXReviewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXReviewVC.h; sourceTree = "<group>"; };
+		7935E5CC1697A39E00FA871F /* EXReviewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXReviewVC.m; sourceTree = "<group>"; };
 		7935E5CF1697A3C700FA871F /* EXImproveVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXImproveVC.h; sourceTree = "<group>"; };
 		7935E5D01697A3C700FA871F /* EXImproveVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXImproveVC.m; sourceTree = "<group>"; };
 		7935E5D31698882200FA871F /* greyfloral@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greyfloral@2X.png"; sourceTree = "<group>"; };
@@ -278,7 +315,18 @@
 		794F6F4F16A4586200F29BB6 /* MNMRadioGroupSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MNMRadioGroupSelected@2x.png"; sourceTree = "<group>"; };
 		794F6F5016A4586200F29BB6 /* MNMRadioGroupUnselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MNMRadioGroupUnselected.png; sourceTree = "<group>"; };
 		794F6F5116A4586200F29BB6 /* MNMRadioGroupUnselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MNMRadioGroupUnselected@2x.png"; sourceTree = "<group>"; };
-		794F6F5616A4721700F29BB6 /* Domo_Depression1.01.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = Domo_Depression1.01.xcdatamodel; sourceTree = "<group>"; };
+		794F6F5616A4721700F29BB6 /* Domo_Depression1.01.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Domo_Depression1.01.xcdatamodel; sourceTree = "<group>"; };
+		794F710D16A4D7AC00F29BB6 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "core-plot/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		794F715F16A75AD800F29BB6 /* EskPlotTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EskPlotTheme.h; sourceTree = "<group>"; };
+		794F716016A75AD800F29BB6 /* EskPlotTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EskPlotTheme.m; sourceTree = "<group>"; };
+		794F716116A75AD800F29BB6 /* EskBarPlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EskBarPlot.h; sourceTree = "<group>"; };
+		794F716216A75AD800F29BB6 /* EskBarPlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EskBarPlot.m; sourceTree = "<group>"; };
+		794F716316A75AD800F29BB6 /* EskLinePlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EskLinePlot.h; sourceTree = "<group>"; };
+		794F716416A75AD800F29BB6 /* EskLinePlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EskLinePlot.m; sourceTree = "<group>"; };
+		794F717A16A75D5700F29BB6 /* Ingleby_bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ingleby_bold.ttf; sourceTree = "<group>"; };
+		794F717B16A75D5700F29BB6 /* Ingleby_bold_italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ingleby_bold_italic.ttf; sourceTree = "<group>"; };
+		794F717C16A75D5700F29BB6 /* Ingleby_italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ingleby_italic.ttf; sourceTree = "<group>"; };
+		794F717D16A75D5700F29BB6 /* Ingleby_regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ingleby_regular.ttf; sourceTree = "<group>"; };
 		795463B916A12D6F00E3926A /* SMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMPageControl.h; path = SMPageControl/SMPageControl.h; sourceTree = SOURCE_ROOT; };
 		795463BA16A12D6F00E3926A /* SMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMPageControl.m; path = SMPageControl/SMPageControl.m; sourceTree = SOURCE_ROOT; };
 		795463D016A20F8A00E3926A /* currentPageDot-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "currentPageDot-small.png"; sourceTree = "<group>"; };
@@ -396,6 +444,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				794F711A16A4D7DB00F29BB6 /* libCorePlot-CocoaTouch.a in Frameworks */,
 				7954641716A2306200E3926A /* SystemConfiguration.framework in Frameworks */,
 				7954641416A22E8100E3926A /* libRestKit.a in Frameworks */,
 				7949229716A079AC00351741 /* CoreText.framework in Frameworks */,
@@ -414,6 +463,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				794F711D16A4D7EC00F29BB6 /* libCorePlot-CocoaTouch.a in Frameworks */,
 				7954640516A22DB100E3926A /* libRestKit.a in Frameworks */,
 				7954641816A2306600E3926A /* SystemConfiguration.framework in Frameworks */,
 				7954640C16A22DCB00E3926A /* CFNetwork.framework in Frameworks */,
@@ -435,6 +485,7 @@
 		7935E3A61697530B00FA871F /* External Framworks */ = {
 			isa = PBXGroup;
 			children = (
+				794F710D16A4D7AC00F29BB6 /* CorePlot-CocoaTouch.xcodeproj */,
 				795463E416A2298100E3926A /* RestKit.xcodeproj */,
 				7954642616A2348200E3926A /* MagicalRecord */,
 				795463BD16A12D7100E3926A /* SMPageControl */,
@@ -461,6 +512,7 @@
 		7935E40D16975DF000FA871F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				794F717916A75D5700F29BB6 /* fonts */,
 				7935E41016975E1800FA871F /* Localizations */,
 				7935E40F16975E1500FA871F /* Imagery */,
 			);
@@ -565,8 +617,9 @@
 		7935E5C91697A34A00FA871F /* review */ = {
 			isa = PBXGroup;
 			children = (
-				7935E5CB1697A39E00FA871F /* EXAnalyzeVC.h */,
-				7935E5CC1697A39E00FA871F /* EXAnalyzeVC.m */,
+				7935E5CB1697A39E00FA871F /* EXReviewVC.h */,
+				7935E5CC1697A39E00FA871F /* EXReviewVC.m */,
+				794F715E16A759BD00F29BB6 /* Ken Wong core plot */,
 			);
 			name = review;
 			sourceTree = "<group>";
@@ -653,6 +706,38 @@
 				7949226C16A0795600351741 /* UIView+MGEasyFrame.m */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		794F710E16A4D7AC00F29BB6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				794F711716A4D7B000F29BB6 /* libCorePlot-CocoaTouch.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		794F715E16A759BD00F29BB6 /* Ken Wong core plot */ = {
+			isa = PBXGroup;
+			children = (
+				794F715F16A75AD800F29BB6 /* EskPlotTheme.h */,
+				794F716016A75AD800F29BB6 /* EskPlotTheme.m */,
+				794F716116A75AD800F29BB6 /* EskBarPlot.h */,
+				794F716216A75AD800F29BB6 /* EskBarPlot.m */,
+				794F716316A75AD800F29BB6 /* EskLinePlot.h */,
+				794F716416A75AD800F29BB6 /* EskLinePlot.m */,
+			);
+			name = "Ken Wong core plot";
+			sourceTree = "<group>";
+		};
+		794F717916A75D5700F29BB6 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				794F717A16A75D5700F29BB6 /* Ingleby_bold.ttf */,
+				794F717B16A75D5700F29BB6 /* Ingleby_bold_italic.ttf */,
+				794F717C16A75D5700F29BB6 /* Ingleby_italic.ttf */,
+				794F717D16A75D5700F29BB6 /* Ingleby_regular.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 		795463BD16A12D7100E3926A /* SMPageControl */ = {
@@ -919,6 +1004,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				794F711916A4D7D000F29BB6 /* PBXTargetDependency */,
 				7954641316A22E7C00E3926A /* PBXTargetDependency */,
 			);
 			name = "Domo Depression";
@@ -938,6 +1024,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				794F711C16A4D7E800F29BB6 /* PBXTargetDependency */,
 				7954640416A22BE300E3926A /* PBXTargetDependency */,
 				79A6E3EB16973E5B00AA68D7 /* PBXTargetDependency */,
 			);
@@ -963,11 +1050,16 @@
 			knownRegions = (
 				en,
 				"pt-BR",
+				English,
 			);
 			mainGroup = 79A6E3B316973E5B00AA68D7;
 			productRefGroup = 79A6E3BF16973E5B00AA68D7 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 794F710E16A4D7AC00F29BB6 /* Products */;
+					ProjectRef = 794F710D16A4D7AC00F29BB6 /* CorePlot-CocoaTouch.xcodeproj */;
+				},
 				{
 					ProductGroup = 795463E516A2298100E3926A /* Products */;
 					ProjectRef = 795463E416A2298100E3926A /* RestKit.xcodeproj */;
@@ -982,6 +1074,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		794F711716A4D7B000F29BB6 /* libCorePlot-CocoaTouch.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libCorePlot-CocoaTouch.a";
+			remoteRef = 794F711616A4D7B000F29BB6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		795463EF16A2298200E3926A /* libRestKit.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1049,6 +1148,10 @@
 				794F6F5316A4586200F29BB6 /* MNMRadioGroupSelected@2x.png in Resources */,
 				794F6F5416A4586200F29BB6 /* MNMRadioGroupUnselected.png in Resources */,
 				794F6F5516A4586200F29BB6 /* MNMRadioGroupUnselected@2x.png in Resources */,
+				794F717E16A75D5700F29BB6 /* Ingleby_bold.ttf in Resources */,
+				794F718016A75D5700F29BB6 /* Ingleby_bold_italic.ttf in Resources */,
+				794F718216A75D5700F29BB6 /* Ingleby_italic.ttf in Resources */,
+				794F718416A75D5700F29BB6 /* Ingleby_regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1071,6 +1174,10 @@
 				7935E5D81698882300FA871F /* greyfloral.png in Resources */,
 				7935E5DC1698882E00FA871F /* crisp_paper_ruffles@2X.png in Resources */,
 				7935E5DE1698882E00FA871F /* crisp_paper_ruffles.png in Resources */,
+				794F717F16A75D5700F29BB6 /* Ingleby_bold.ttf in Resources */,
+				794F718116A75D5700F29BB6 /* Ingleby_bold_italic.ttf in Resources */,
+				794F718316A75D5700F29BB6 /* Ingleby_italic.ttf in Resources */,
+				794F718516A75D5700F29BB6 /* Ingleby_regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1104,7 +1211,7 @@
 				7935E5011697669B00FA871F /* CKSideBarController.m in Sources */,
 				7935E5031697669B00FA871F /* CKSideBarItem.m in Sources */,
 				7935E5C71697A1C100FA871F /* EXTrackVC.m in Sources */,
-				7935E5CD1697A39E00FA871F /* EXAnalyzeVC.m in Sources */,
+				7935E5CD1697A39E00FA871F /* EXReviewVC.m in Sources */,
 				7935E5D11697A3C700FA871F /* EXImproveVC.m in Sources */,
 				79B5EBE11698DED8009D7FB9 /* EXQIDSManager.m in Sources */,
 				79B5EBE516990390009D7FB9 /* EXQIDSSubmission.m in Sources */,
@@ -1158,6 +1265,9 @@
 				7954647A16A2348300E3926A /* MagicalRecord+ShorthandSupport.m in Sources */,
 				7954647B16A2348300E3926A /* MagicalRecord.m in Sources */,
 				7954648216A35A3D00E3926A /* EXQIDSNoteSubmitPage.m in Sources */,
+				794F716816A75B7700F29BB6 /* EskPlotTheme.m in Sources */,
+				794F716916A75B7700F29BB6 /* EskBarPlot.m in Sources */,
+				794F716A16A75B7700F29BB6 /* EskLinePlot.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1170,7 +1280,7 @@
 				7935E5021697669B00FA871F /* CKSideBarController.m in Sources */,
 				7935E5041697669B00FA871F /* CKSideBarItem.m in Sources */,
 				7935E5C81697A1C100FA871F /* EXTrackVC.m in Sources */,
-				7935E5CE1697A39E00FA871F /* EXAnalyzeVC.m in Sources */,
+				7935E5CE1697A39E00FA871F /* EXReviewVC.m in Sources */,
 				7935E5D21697A3C700FA871F /* EXImproveVC.m in Sources */,
 				79B5EBE21698DED8009D7FB9 /* EXQIDSManager.m in Sources */,
 				79B5EBE616990390009D7FB9 /* EXQIDSSubmission.m in Sources */,
@@ -1180,12 +1290,25 @@
 				79C0250016A0EC3A00EC138F /* MHPagingScrollView.m in Sources */,
 				79C0250416A0ED0E00EC138F /* EXQIDSQuestionPage.m in Sources */,
 				7954648316A35A3D00E3926A /* EXQIDSNoteSubmitPage.m in Sources */,
+				794F716516A75AD800F29BB6 /* EskPlotTheme.m in Sources */,
+				794F716616A75AD800F29BB6 /* EskBarPlot.m in Sources */,
+				794F716716A75AD800F29BB6 /* EskLinePlot.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		794F711916A4D7D000F29BB6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CorePlot-CocoaTouch";
+			targetProxy = 794F711816A4D7D000F29BB6 /* PBXContainerItemProxy */;
+		};
+		794F711C16A4D7E800F29BB6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CorePlot-CocoaTouch";
+			targetProxy = 794F711B16A4D7E800F29BB6 /* PBXContainerItemProxy */;
+		};
 		7954640416A22BE300E3926A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = RestKit;

@@ -37,7 +37,7 @@
 	
 	self.trackVC	= [[EXTrackVC alloc] init];
 	[self.trackVC setQidsManager:qidsManager];
-	self.analyzeVC	= [[EXAnalyzeVC alloc] init];
+	self.analyzeVC	= [[EXReviewVC alloc] init];
 	self.improveVC	= [[EXImproveVC alloc] init];
 	
 	

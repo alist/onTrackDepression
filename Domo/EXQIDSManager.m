@@ -98,6 +98,8 @@
 	
 	[[submission managedObjectContext] saveOnlySelfWithCompletion:nil];
 	
+	[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:newQIDSSubmittedNotification object:[submission objectID]]];
+	
 	return TRUE;
 }
 

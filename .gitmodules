@@ -16,3 +16,6 @@
 [submodule "MagicalRecord"]
 	path = MagicalRecord
 	url = git@github.com:alist/MagicalRecord.git
+[submodule "core-plot"]
+	path = core-plot
+	url = git@github.com:alist/core-plot.git
