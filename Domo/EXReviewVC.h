@@ -8,13 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "EXTabVC.h"
-#import "CorePlot-CocoaTouch.h"
-#import "EskBarPlot.h"
-#import "EskLinePlot.h"
+#import "EXQIDSChart.h"
+#import "EXQIDSChartDatasource.h"
+#import "EXQIDSSubmission.h"
 
-@interface EXReviewVC : EXTabVC{
-	EskLinePlot *linePlot;
-}
-@property (nonatomic, retain) CPTGraphHostingView *lineHostingView;
+@interface EXReviewVC : EXTabVC <EXQIDSChartDelegate>
+@property (nonatomic, retain) EXQIDSChart *qidsChart;
+@property (nonatomic, strong) EXQIDSSubmission * activeQIDSSubmission;
 
 @end

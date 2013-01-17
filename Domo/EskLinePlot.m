@@ -38,158 +38,148 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [sampleData release];
-    [sampleYears release];
-    [linePlot release];
-    [touchPlot release];
-    [super dealloc];
-}
 
 - (void)renderInLayer:(CPTGraphHostingView *)layerHostingView withTheme:(CPTTheme *)theme
-{
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
-    CGRect bounds = layerHostingView.bounds;
-    
-    // Create the graph and assign the hosting view.
-    graph = [[CPTXYGraph alloc] initWithFrame:bounds];
-    layerHostingView.hostedGraph = graph;
-    [graph applyTheme:theme];
-    
-    graph.plotAreaFrame.masksToBorder = NO;
-    
-    // chang the chart layer orders so the axis line is on top of the bar in the chart.
-    NSArray *chartLayers = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:CPTGraphLayerTypePlots],
-                                                            [NSNumber numberWithInt:CPTGraphLayerTypeMajorGridLines], 
-                                                            [NSNumber numberWithInt:CPTGraphLayerTypeMinorGridLines],  
-                                                            [NSNumber numberWithInt:CPTGraphLayerTypeAxisLines], 
-                                                            [NSNumber numberWithInt:CPTGraphLayerTypeAxisLabels], 
-                                                            [NSNumber numberWithInt:CPTGraphLayerTypeAxisTitles], 
-                                                            nil];
-    graph.topDownLayerOrder = chartLayers;    
-    [chartLayers release];
-    
-    
-    // Add plot space for horizontal bar charts
-    graph.paddingLeft = 90.0;
-	graph.paddingTop = 50.0;
-	graph.paddingRight = 20.0;
-	graph.paddingBottom = 60.0;
-    
-    // Setup plot space
-    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
-    plotSpace.allowsUserInteraction = YES;
-    plotSpace.delegate = self;
-    plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-0.1f) length:CPTDecimalFromFloat(6.2f)];//a bit more on right than needed
-    plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0.0f) length:CPTDecimalFromFloat(30.0f)];
+{    
+	@autoreleasepool {
+		
+		
+		CGRect bounds = layerHostingView.bounds;
+		
+		// Create the graph and assign the hosting view.
+		graph = [[CPTXYGraph alloc] initWithFrame:bounds];
+		layerHostingView.hostedGraph = graph;
+		[graph applyTheme:theme];
+		
+		graph.plotAreaFrame.masksToBorder = NO;
+		
+		// chang the chart layer orders so the axis line is on top of the bar in the chart.
+		NSArray *chartLayers = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:CPTGraphLayerTypePlots],
+																[NSNumber numberWithInt:CPTGraphLayerTypeMajorGridLines], 
+																[NSNumber numberWithInt:CPTGraphLayerTypeMinorGridLines],  
+																[NSNumber numberWithInt:CPTGraphLayerTypeAxisLines], 
+																[NSNumber numberWithInt:CPTGraphLayerTypeAxisLabels], 
+																[NSNumber numberWithInt:CPTGraphLayerTypeAxisTitles], 
+																nil];
+		graph.topDownLayerOrder = chartLayers;    
+		
+		
+		// Add plot space for horizontal bar charts
+//		graph.paddingLeft = 90.0;
+//		graph.paddingTop = 50.0;
+//		graph.paddingRight = 20.0;
+//		graph.paddingBottom = 60.0;
+		
+		// Setup plot space
+		CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
+		plotSpace.allowsUserInteraction = YES;
+		plotSpace.delegate = self;
+		plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-0.1f) length:CPTDecimalFromFloat(6.2f)];//a bit more on right than needed
+		plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0.0f) length:CPTDecimalFromFloat(30.0f)];
 
-    
-    // Setup grid line style
-    CPTMutableLineStyle *majorXGridLineStyle = [CPTMutableLineStyle lineStyle];
-    majorXGridLineStyle.lineWidth = 1.0f;
-    majorXGridLineStyle.lineColor = [[CPTColor grayColor] colorWithAlphaComponent:0.25f];
-    
-    // Setup x-Axis.
-	CPTXYAxisSet *axisSet = (CPTXYAxisSet *)graph.axisSet;
-    CPTXYAxis *x = axisSet.xAxis;
-    x.labelingPolicy = CPTAxisLabelingPolicyNone;
-    x.majorGridLineStyle = majorXGridLineStyle;
-    x.majorIntervalLength = CPTDecimalFromString(@"1");
-    x.minorTicksPerInterval = 1;
+		
+		// Setup grid line style
+		CPTMutableLineStyle *majorXGridLineStyle = [CPTMutableLineStyle lineStyle];
+		majorXGridLineStyle.lineWidth = 1.0f;
+		majorXGridLineStyle.lineColor = [[CPTColor grayColor] colorWithAlphaComponent:0.25f];
+		
+		// Setup x-Axis.
+		CPTXYAxisSet *axisSet = (CPTXYAxisSet *)graph.axisSet;
+		CPTXYAxis *x = axisSet.xAxis;
+		x.labelingPolicy = CPTAxisLabelingPolicyNone;
+		x.majorGridLineStyle = majorXGridLineStyle;
+		x.majorIntervalLength = CPTDecimalFromString(@"1");
+		x.minorTicksPerInterval = 1;
 
-    x.orthogonalCoordinateDecimal = CPTDecimalFromString(@"0");
-    x.title = @"scores by weeks ago";
-    x.timeOffset = 30.0f;
- 	NSArray *exclusionRanges = [NSArray arrayWithObjects:[CPTPlotRange plotRangeWithLocation:CPTDecimalFromInt(0) length:CPTDecimalFromInt(0)], nil];
-	x.labelExclusionRanges = exclusionRanges;
-    
-    // Use custom x-axis label so it will display year 2010, 2011, 2012, ... instead of 1, 2, 3, 4
-    NSMutableArray *labels = [[NSMutableArray alloc] initWithCapacity:[sampleYears count]];
-    int idx = 0;
-    for (NSString *year in sampleYears)
-    {
-        CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:year textStyle:x.labelTextStyle];
-        label.tickLocation = CPTDecimalFromInt(idx);
-        label.offset = 5.0f;
-        [labels addObject:label];
-        [label release];
-        idx++;
-    }
-    x.axisLabels = [NSSet setWithArray:labels];
-    [labels release];
-    
-    // Setup y-Axis.
-    CPTMutableLineStyle *majorYGridLineStyle = [CPTMutableLineStyle lineStyle];
-    majorYGridLineStyle.lineWidth = 1.0f;
-    majorYGridLineStyle.dashPattern =  [NSArray arrayWithObjects:[NSNumber numberWithFloat:5.0f], [NSNumber numberWithFloat:5.0f], nil];
-    majorYGridLineStyle.lineColor = [[CPTColor lightGrayColor] colorWithAlphaComponent:0.25];
-    
-    
-    CPTXYAxis *y = axisSet.yAxis;
-    y.majorGridLineStyle = majorYGridLineStyle;
-    y.majorIntervalLength = CPTDecimalFromString(@"5");
-    y.minorTicksPerInterval = 1;
-    y.orthogonalCoordinateDecimal = CPTDecimalFromString(@"0");
-    y.title = nil;// @"Consumer Spending";
-    NSArray *yExlusionRanges = [NSArray arrayWithObjects:
-                                [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0.0) length:CPTDecimalFromFloat(0.0)],
-                                nil];
-    y.labelExclusionRanges = yExlusionRanges;
-    
-    // Create a high plot area
-	CPTScatterPlot *highPlot = [[[CPTScatterPlot alloc] init] autorelease];
-    highPlot.identifier = kHighPlot;
-    
-	BOOL greyMode = TRUE;
+		x.orthogonalCoordinateDecimal = CPTDecimalFromString(@"0");
+		x.title = @"scores by weeks ago";
+		x.timeOffset = 30.0f;
+		NSArray *exclusionRanges = [NSArray arrayWithObjects:[CPTPlotRange plotRangeWithLocation:CPTDecimalFromInt(0) length:CPTDecimalFromInt(0)], nil];
+		x.labelExclusionRanges = exclusionRanges;
+		
+		// Use custom x-axis label so it will display year 2010, 2011, 2012, ... instead of 1, 2, 3, 4
+		NSMutableArray *labels = [[NSMutableArray alloc] initWithCapacity:[sampleYears count]];
+		int idx = 0;
+		for (NSString *year in sampleYears)
+		{
+			CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:year textStyle:x.labelTextStyle];
+			label.tickLocation = CPTDecimalFromInt(idx);
+			label.offset = 5.0f;
+			[labels addObject:label];
+			idx++;
+		}
+		x.axisLabels = [NSSet setWithArray:labels];
+		
+		// Setup y-Axis.
+		CPTMutableLineStyle *majorYGridLineStyle = [CPTMutableLineStyle lineStyle];
+		majorYGridLineStyle.lineWidth = 1.0f;
+		majorYGridLineStyle.dashPattern =  [NSArray arrayWithObjects:[NSNumber numberWithFloat:5.0f], [NSNumber numberWithFloat:5.0f], nil];
+		majorYGridLineStyle.lineColor = [[CPTColor lightGrayColor] colorWithAlphaComponent:0.25];
+		
+		
+		CPTXYAxis *y = axisSet.yAxis;
+		y.majorGridLineStyle = majorYGridLineStyle;
+		y.majorIntervalLength = CPTDecimalFromString(@"5");
+		y.minorTicksPerInterval = 1;
+		y.orthogonalCoordinateDecimal = CPTDecimalFromString(@"0");
+		y.title = nil;// @"Consumer Spending";
+		NSArray *yExlusionRanges = [NSArray arrayWithObjects:
+									[CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0.0) length:CPTDecimalFromFloat(0.0)],
+									nil];
+		y.labelExclusionRanges = yExlusionRanges;
+		
+		// Create a high plot area
+		CPTScatterPlot *highPlot = [[CPTScatterPlot alloc] init];
+		highPlot.identifier = kHighPlot;
+		
+		BOOL greyMode = FALSE;
 
-    CPTMutableLineStyle *highLineStyle = [[highPlot.dataLineStyle mutableCopy] autorelease];
-	highLineStyle.lineWidth = 2.f;
-//    highLineStyle.interpolation = CPTScatterPlotInterpolationCurved;
-	if (greyMode){
-		highLineStyle.lineColor = [CPTColor colorWithCGColor:[[UIColor colorWithWhite:.4 alpha:.1] CGColor]];
-	}else{
-		highLineStyle.lineColor = [CPTColor colorWithComponentRed:0.50f green:0.67f blue:0.65f alpha:1.0f];
+		CPTMutableLineStyle *highLineStyle = [highPlot.dataLineStyle mutableCopy];
+		highLineStyle.lineWidth = 2.f;
+	//    highLineStyle.interpolation = CPTScatterPlotInterpolationCurved;
+		if (greyMode){
+			highLineStyle.lineColor = [CPTColor colorWithCGColor:[[UIColor colorWithWhite:.4 alpha:.1] CGColor]];
+		}else{
+			highLineStyle.lineColor = [CPTColor colorWithComponentRed:0.50f green:0.67f blue:0.65f alpha:1.0f];
+		}
+		highPlot.dataLineStyle = highLineStyle;
+
+		highPlot.dataSource = self;
+		highPlot.delegate = self;
+		highPlot.plotSymbolMarginForHitDetection = 15.0f;
+		CPTPlotSymbol *plotSymbol = [CPTPlotSymbol ellipsePlotSymbol];
+		plotSymbol.fill               = [CPTFill fillWithColor:[CPTColor colorWithCGColor:[[UIColor colorWithWhite:.9 alpha:1] CGColor]]];
+		plotSymbol.size               = CGSizeMake(4.0, 4.0);
+		highPlot.plotSymbol = plotSymbol;
+		
+		
+		
+		CPTFill *areaFill = nil;
+		
+		if (greyMode){
+			areaFill = 	[CPTFill fillWithColor:[CPTColor colorWithCGColor:[[UIColor colorWithWhite:.4 alpha:.4] CGColor]]];
+		}else{
+			areaFill = [CPTFill fillWithColor:[CPTColor colorWithComponentRed:0.50f green:0.67f blue:0.65f alpha:0.4f]];
+		}
+		
+		highPlot.areaFill = areaFill;
+		highPlot.areaBaseValue = CPTDecimalFromString(@"0");
+		[graph addPlot:highPlot];
+
+		
+		// Create the Savings Marker Plot
+		selectedCoordination = 2;
+		
+	//    touchPlot = [[[CPTScatterPlot alloc] initWithFrame:CGRectNull] autorelease];
+	//    touchPlot.identifier = kLinePlot;
+	//    touchPlot.dataSource = self;
+	//    touchPlot.delegate = self;
+	//    [self applyTouchPlotColor];
+	//    [graph addPlot:touchPlot];
+		
+	
+    
 	}
-    highPlot.dataLineStyle = highLineStyle;
-
-    highPlot.dataSource = self;
-	highPlot.delegate = self;
-	highPlot.plotSymbolMarginForHitDetection = 15.0f;
-	CPTPlotSymbol *plotSymbol = [CPTPlotSymbol ellipsePlotSymbol];
-    plotSymbol.fill               = [CPTFill fillWithColor:[CPTColor colorWithCGColor:[[UIColor colorWithWhite:.9 alpha:1] CGColor]]];
-    plotSymbol.size               = CGSizeMake(4.0, 4.0);
-    highPlot.plotSymbol = plotSymbol;
-	
-	
-	
-    CPTFill *areaFill = nil;
-	
-	if (greyMode){
-		areaFill = 	[CPTFill fillWithColor:[CPTColor colorWithCGColor:[[UIColor colorWithWhite:.4 alpha:.4] CGColor]]];
-	}else{
-		areaFill = [CPTFill fillWithColor:[CPTColor colorWithComponentRed:0.50f green:0.67f blue:0.65f alpha:0.4f]];
-	}
-	
-    highPlot.areaFill = areaFill;
-    highPlot.areaBaseValue = CPTDecimalFromString(@"0");
-    [graph addPlot:highPlot];
-
-    
-    // Create the Savings Marker Plot
-    selectedCoordination = 2;
-    
-//    touchPlot = [[[CPTScatterPlot alloc] initWithFrame:CGRectNull] autorelease];
-//    touchPlot.identifier = kLinePlot;
-//    touchPlot.dataSource = self;
-//    touchPlot.delegate = self;
-//    [self applyTouchPlotColor];
-//    [graph addPlot:touchPlot];
-	
-	
-    
-    [pool drain];
 
 }
 

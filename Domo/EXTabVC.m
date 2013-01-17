@@ -9,13 +9,18 @@
 #import "EXTabVC.h"
 #import "EXUserComManager.h"
 
-@implementation EXTabVC
+@implementation EXTabVC{
+	BOOL appearedOnce;
+}
 @synthesize rowSize, headerFont;
 @synthesize scroller;
 @synthesize tablesGrid, primaryTable, detailTable;
 
-#define IPHONE_TABLES_GRID     (CGSize){320, 0}
-#define IPAD_TABLES_GRID       (CGSize){624, 0}
+#define IPHONE_TABLES_GRID_PORTRAIT     (CGSize){320, 0}
+#define IPHONE_TABLES_GRID_LANDSCAPE    (CGSize){320, 0}
+#define IPAD_TABLES_GRID_PORTRAIT       (CGSize){680	, 0}
+#define IPAD_TABLES_GRID_LANDSCAPE		(CGSize){930	, 0}
+
 
 #pragma mark - subclass
 
@@ -27,6 +32,8 @@
 		self.rowSize = (CGSize){304, 44};
 		
 		self.presentedTab = presentedTab;
+		
+		appearedOnce = FALSE;
 		
 	}
 	return self;	
@@ -55,7 +62,7 @@
 	[self.view addSubview:self.scroller];
 	
 	
-	CGSize tablesGridSize = deviceIsPad ? IPAD_TABLES_GRID: IPHONE_TABLES_GRID;
+	CGSize tablesGridSize = deviceIsPad ? IPAD_TABLES_GRID_PORTRAIT: IPHONE_TABLES_GRID_PORTRAIT;
 	tablesGrid = [MGBox boxWithSize:tablesGridSize];
 	tablesGrid.contentLayoutMode = MGLayoutGridStyle;
 	[self.scroller.boxes addObject:tablesGrid];
@@ -77,9 +84,13 @@
 //this code is from MGBoxDemo and seems to work to refresh size quanitites after first load of view (before the boxes could horrizontal scroll)
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
-	[self willAnimateRotationToInterfaceOrientation:self.interfaceOrientation
-										   duration:1];
-	[self didRotateFromInterfaceOrientation:UIInterfaceOrientationPortrait];
+	
+	if (!appearedOnce){
+		[self willAnimateRotationToInterfaceOrientation:self.interfaceOrientation
+											   duration:1];
+		[self didRotateFromInterfaceOrientation:UIInterfaceOrientationPortrait];
+		appearedOnce = TRUE;
+	}
 }
 
 #pragma mark rotate
@@ -90,7 +101,11 @@
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)orient
                                          duration:(NSTimeInterval)duration {
 //	
-//	BOOL portrait = UIInterfaceOrientationIsPortrait(orient);
+	BOOL isPortrait = UIInterfaceOrientationIsPortrait(orient);
+	
+	tablesGrid.size = deviceIsPad ?
+	isPortrait? IPAD_TABLES_GRID_PORTRAIT : IPAD_TABLES_GRID_LANDSCAPE :
+	isPortrait? IPHONE_TABLES_GRID_PORTRAIT : IPHONE_TABLES_GRID_LANDSCAPE;
 	
 	//update the objects to displaay here
 	// relayout the sections
@@ -103,8 +118,32 @@
 
 #pragma mark - content
 -(void) refreshContent{
-	[self.primaryTable.boxes removeAllObjects];
+	
+	[self refreshDetailContent:FALSE];
+	[self refreshPrimaryContent:FALSE];
+	
+
+	// animate
+	[self.scroller layoutWithSpeed:0.3 completion:nil];
+	
+	// scroll
+	if ([self.primaryTable.boxes count] > 0)
+		[self.scroller scrollToView:[self.primaryTable.boxes objectAtIndex:0] withMargin:8];
+}
+
+-(void) refreshDetailContent:(BOOL)layout{
 	[self.detailTable.boxes removeAllObjects];
+	
+	NSMutableArray * detailBoxes = [NSMutableArray array];
+	[detailBoxes addObjectsFromArray:[self detailBoxes]];
+	[self.detailTable.boxes addObjectsFromArray:detailBoxes];
+	
+	if (layout)
+		[self.detailTable layoutWithSpeed:0.3 completion:nil];
+}
+
+-(void) refreshPrimaryContent:(BOOL)layout{
+	[self.primaryTable.boxes removeAllObjects];
 	
 	NSMutableArray * primaryBoxes = [NSMutableArray array];
 	[primaryBoxes addObjectsFromArray:[self headerPrimaryMessageBoxes]];
@@ -112,17 +151,8 @@
 	[primaryBoxes addObjectsFromArray:[self footerPrimaryMessageBoxes]];
 	[self.primaryTable.boxes addObjectsFromArray:primaryBoxes];
 	
-	NSMutableArray * detailBoxes = [NSMutableArray array];
-	[detailBoxes addObjectsFromArray:[self detailBoxes]];
-	[self.detailTable.boxes addObjectsFromArray:detailBoxes];
-
-	// animate
-//	[self.detailTable layoutWithSpeed:0.3 completion:nil];
-	[self.scroller layoutWithSpeed:0.3 completion:nil];
-	
-	// scroll
-	if ([primaryBoxes count] > 0)
-		[self.scroller scrollToView:[primaryBoxes objectAtIndex:0] withMargin:8];
+	if (layout)
+		[self.primaryTable layoutWithSpeed:0.3 completion:nil];
 }
 
 -(NSArray*)	headerPrimaryMessageBoxes{
@@ -163,44 +193,6 @@
 	return section;
 }
 
-
-- (void)loadAnimatedLayoutSection {
-	
-	// empty self.detailTable out
-	[self.detailTable.boxes removeAllObjects];
-	
-	// make the section
-	MGTableBoxStyled *section = MGTableBoxStyled.box;
-	[self.detailTable.boxes addObject:section];
-	
-	// header
-	MGLineStyled *head = [MGLineStyled lineWithLeft:@"Animated Layout" right:nil
-											   size:self.rowSize];
-	[section.topLines addObject:head];
-	head.font = self.headerFont;
-	
-	id waffle = @"**MGBox** and **MGScrollView** provide **layout** and "
-	"**layoutWithSpeed:completion:** methods.\n\n"
-	"**layout** automatically positions all child boxes according to their "
-	"**margin**, **padding**, and **boxLayoutMode** values.\n\n"
-	"**layoutWithSpeed:completion:** does the same, with the addition of "
-	"fading in new boxes, fading out removed boxes, and animating existing "
-	"boxes from old position to new.\n\n"
-	"This allows effortless animation of changes to grids, tables, "
-	"table sections, or any arbitrary tree of **MGBLayoutBox** objects.|mush";
-	
-	// stuff
-	MGLineStyled *line = [MGLineStyled multilineWithText:waffle font:nil width:304
-												 padding:UIEdgeInsetsMake(16, 16, 16, 16)];
-	[section.topLines addObject:line];
-	
-	// animate
-	[self.detailTable layoutWithSpeed:0.3 completion:nil];
-	[self.scroller layoutWithSpeed:0.3 completion:nil];
-	
-	// scroll
-	[self.scroller scrollToView:section withMargin:8];
-}
 
 
 

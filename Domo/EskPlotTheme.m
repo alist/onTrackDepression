@@ -63,10 +63,10 @@
     yLabelTextStyle.fontName = @"Ingleby";
     
     CPTXYAxis *x = axisSet.xAxis;
-	CPTMutableTextStyle *whiteTextStyle = [[[CPTMutableTextStyle alloc] init] autorelease];
+	CPTMutableTextStyle *whiteTextStyle = [[CPTMutableTextStyle alloc] init];
 	whiteTextStyle.color = [CPTColor blackColor];
 	whiteTextStyle.fontSize = 14.0;
-	CPTMutableTextStyle *minorTickWhiteTextStyle = [[[CPTMutableTextStyle alloc] init] autorelease];
+	CPTMutableTextStyle *minorTickWhiteTextStyle = [[CPTMutableTextStyle alloc] init] ;
 	minorTickWhiteTextStyle.color = [CPTColor blackColor];
 	minorTickWhiteTextStyle.fontSize = 12.0;
 	
@@ -110,7 +110,6 @@
 
     y.labelFormatter = currencyFormatter;
     
-    [currencyFormatter release];
 }
 
 

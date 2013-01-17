@@ -27,7 +27,14 @@
 //this one is called by users of the class
 -(id)init;
 
+
+//calls layoutWithSpeed on scroller
+//calls refresh detail and primary but doesnt layout them
 -(void)		refreshContent;
+
+-(void) refreshDetailContent:(BOOL)layout;
+
+-(void) refreshPrimaryContent:(BOOL)layout;
 
 //these come from UserComManager
 -(NSArray*)	headerPrimaryMessageBoxes;

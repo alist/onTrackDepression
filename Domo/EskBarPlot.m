@@ -42,12 +42,12 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [sampleData release];
-    [sampleProduct release];
-    [super dealloc];
-}
+//- (void)dealloc
+//{
+//    [sampleData release];
+//    [sampleProduct release];
+//    [super dealloc];
+//}
 
 - (void)renderInLayer:(CPTGraphHostingView *)layerHostingView withTheme:(CPTTheme *)theme
 {
@@ -75,7 +75,6 @@
                                                             [NSNumber numberWithInt:CPTGraphLayerTypeAxisTitles], nil];
     
     graph.topDownLayerOrder = chartLayers;
-    [chartLayers release];
     
     
 	// Add plot space for horizontal bar charts
@@ -104,11 +103,9 @@
         label.tickLocation = CPTDecimalFromInt(idx);
         label.offset = 5.0f;
         [labels addObject:label];
-        [label release];
         idx++;
     }
     x.axisLabels = [NSSet setWithArray:labels];
-    [labels release];
     
     // Setting up y-axis
 	CPTXYAxis *y = axisSet.yAxis;

@@ -103,4 +103,12 @@
 	return TRUE;
 }
 
+
+-(EXQIDSSubmission*) lastCompletedQIDSSubmissionForAuthor:(EXAuthor*)author{
+	EXQIDSSubmission * lastSubmission = [EXQIDSSubmission findFirstWithPredicate:[NSPredicate predicateWithFormat:@"author == %@ AND completionDate != nil",author] sortedBy:@"dueDate" ascending:FALSE];
+	
+	return lastSubmission;
+
+}
+
 @end

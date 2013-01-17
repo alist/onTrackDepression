@@ -88,6 +88,10 @@
 		794F718316A75D5700F29BB6 /* Ingleby_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794F717C16A75D5700F29BB6 /* Ingleby_italic.ttf */; };
 		794F718416A75D5700F29BB6 /* Ingleby_regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794F717D16A75D5700F29BB6 /* Ingleby_regular.ttf */; };
 		794F718516A75D5700F29BB6 /* Ingleby_regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794F717D16A75D5700F29BB6 /* Ingleby_regular.ttf */; };
+		794F718816A7600200F29BB6 /* EXQIDSChartDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F718716A7600100F29BB6 /* EXQIDSChartDatasource.m */; };
+		794F718916A7600200F29BB6 /* EXQIDSChartDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F718716A7600100F29BB6 /* EXQIDSChartDatasource.m */; };
+		794F718C16A760D500F29BB6 /* EXQIDSChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F718B16A760D300F29BB6 /* EXQIDSChart.m */; };
+		794F718D16A760D500F29BB6 /* EXQIDSChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F718B16A760D300F29BB6 /* EXQIDSChart.m */; };
 		795463BB16A12D6F00E3926A /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 795463BA16A12D6F00E3926A /* SMPageControl.m */; };
 		795463D816A20F8A00E3926A /* currentPageDot-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 795463D016A20F8A00E3926A /* currentPageDot-small.png */; };
 		795463D916A20F8A00E3926A /* currentPageDot-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 795463D116A20F8A00E3926A /* currentPageDot-small@2x.png */; };
@@ -327,6 +331,10 @@
 		794F717B16A75D5700F29BB6 /* Ingleby_bold_italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ingleby_bold_italic.ttf; sourceTree = "<group>"; };
 		794F717C16A75D5700F29BB6 /* Ingleby_italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ingleby_italic.ttf; sourceTree = "<group>"; };
 		794F717D16A75D5700F29BB6 /* Ingleby_regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ingleby_regular.ttf; sourceTree = "<group>"; };
+		794F718616A7600100F29BB6 /* EXQIDSChartDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXQIDSChartDatasource.h; sourceTree = "<group>"; };
+		794F718716A7600100F29BB6 /* EXQIDSChartDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXQIDSChartDatasource.m; sourceTree = "<group>"; };
+		794F718A16A760D200F29BB6 /* EXQIDSChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXQIDSChart.h; sourceTree = "<group>"; };
+		794F718B16A760D300F29BB6 /* EXQIDSChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXQIDSChart.m; sourceTree = "<group>"; };
 		795463B916A12D6F00E3926A /* SMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMPageControl.h; path = SMPageControl/SMPageControl.h; sourceTree = SOURCE_ROOT; };
 		795463BA16A12D6F00E3926A /* SMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMPageControl.m; path = SMPageControl/SMPageControl.m; sourceTree = SOURCE_ROOT; };
 		795463D016A20F8A00E3926A /* currentPageDot-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "currentPageDot-small.png"; sourceTree = "<group>"; };
@@ -619,6 +627,10 @@
 			children = (
 				7935E5CB1697A39E00FA871F /* EXReviewVC.h */,
 				7935E5CC1697A39E00FA871F /* EXReviewVC.m */,
+				794F718616A7600100F29BB6 /* EXQIDSChartDatasource.h */,
+				794F718716A7600100F29BB6 /* EXQIDSChartDatasource.m */,
+				794F718A16A760D200F29BB6 /* EXQIDSChart.h */,
+				794F718B16A760D300F29BB6 /* EXQIDSChart.m */,
 				794F715E16A759BD00F29BB6 /* Ken Wong core plot */,
 			);
 			name = review;
@@ -1268,6 +1280,8 @@
 				794F716816A75B7700F29BB6 /* EskPlotTheme.m in Sources */,
 				794F716916A75B7700F29BB6 /* EskBarPlot.m in Sources */,
 				794F716A16A75B7700F29BB6 /* EskLinePlot.m in Sources */,
+				794F718816A7600200F29BB6 /* EXQIDSChartDatasource.m in Sources */,
+				794F718C16A760D500F29BB6 /* EXQIDSChart.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1293,6 +1307,8 @@
 				794F716516A75AD800F29BB6 /* EskPlotTheme.m in Sources */,
 				794F716616A75AD800F29BB6 /* EskBarPlot.m in Sources */,
 				794F716716A75AD800F29BB6 /* EskLinePlot.m in Sources */,
+				794F718916A7600200F29BB6 /* EXQIDSChartDatasource.m in Sources */,
+				794F718D16A760D500F29BB6 /* EXQIDSChart.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

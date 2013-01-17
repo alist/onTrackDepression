@@ -34,4 +34,5 @@ static NSString * const newQIDSSubmittedNotification = @"newQIDSSubmittedNotific
 //		There will be one score for each of the nine MDD symptom domains.
 -(BOOL) submitQIDSAsComplete:(EXQIDSSubmission*)submission;
 
+-(EXQIDSSubmission*) lastCompletedQIDSSubmissionForAuthor:(EXAuthor*)author;
 @end
