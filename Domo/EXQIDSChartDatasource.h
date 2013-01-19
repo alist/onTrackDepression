@@ -12,4 +12,6 @@
 
 @interface EXQIDSChartDatasource : NSObject
 @property (nonatomic, strong)EXAuthor * currentAuthor;
+
+-(NSArray*) QIDSSubmissionsForStartDate:(NSDate*)startDate endDate:(NSDate*)endDate;
 @end

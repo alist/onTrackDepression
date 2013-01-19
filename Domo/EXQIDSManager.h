@@ -11,7 +11,7 @@
 #import "EXAuthor.h"
 
 //posts notificaiton with objectID of EXQIDSSubmission as notification object
-static NSString * const newQIDSSubmittedNotification = @"newQIDSSubmittedNotification";
+//static NSString * const newQIDSSubmittedNotification = @"newQIDSSubmittedNotification";
 
 @interface EXQIDSManager : NSObject
 

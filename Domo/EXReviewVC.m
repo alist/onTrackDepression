@@ -12,21 +12,30 @@
 #import "EXQIDSManager.h"
 
 #define CHART_MARGIN_IPAD 10
-#define CHART_SIZE_IPAD_PORTRAIT (CGSize){500, 435}
+#define CHART_SIZE_IPAD_PORTRAIT (CGSize){550, 435}
 #define CHART_SIZE_IPAD_LANDSCAPE (CGSize){620, 435}
 
 #define CHART_MARGIN_POD 10
 #define CHART_SIZE_POD_PORTRAIT (CGSize){200, 320}
 #define CHART_SIZE_POD_LANDSCAPE (CGSize){200, 320}
 
+#define DETAIL_MARGIN_IPAD 37
+#define DETAIL_MARGIN_POD 37
+
+@interface EXReviewVC ()
+//because we have the primaryTable.sizingMode = MGResizingShrinkWrap;
+@property (strong, nonatomic) MGLineStyled *qidsGraphHeader;
+@end
+
 @implementation EXReviewVC
 @synthesize qidsChart = _qidsChart;
 @synthesize activeQIDSSubmission;
+@synthesize qidsGraphHeader;
 
 #pragma mark - content
 -(NSArray*)detailBoxes{
 	MGTableBox * layout = [MGTableBoxStyled boxWithSize:self.rowSize];
-	[layout setLeftMargin:(deviceIsPad)?CHART_MARGIN_IPAD:CHART_MARGIN_POD];
+	[layout setLeftMargin:(deviceIsPad)?DETAIL_MARGIN_IPAD:DETAIL_MARGIN_POD];
 
 	MGLineStyled *head = [MGLineStyled lineWithLeft:NSLocalizedString(@"QIDS Detail", @"header for extended QIDS detail") right:nil size:self.rowSize];
 	head.font = self.headerFont;
@@ -47,7 +56,7 @@
 	MGLineStyled *valueSeverityLine = [MGLineStyled lineWithLeft:NSLocalizedString(@"severity: ", @"qids severity label on qids detail") right:[NSString stringWithFormat:NSLocalizedString(@"%i/4", @"qids severity value display on qids detail"),self.activeQIDSSubmission.qidsSeverity.intValue] size:self.rowSize];
 	valueSeverityLine.font = self.headerFont;
 	[valueSeverityLine  setBackgroundColor:[UIColor clearColor]];
-	[layout.middleLines addObject:layout];
+	[layout.middleLines addObject:valueSeverityLine];
 
 	
 	return @[layout];
@@ -58,9 +67,9 @@
 	MGTableBox * layout = MGTableBox.box;
 	[layout setLeftMargin:(deviceIsPad)?CHART_MARGIN_IPAD:CHART_MARGIN_POD];
 	
-	MGLineStyled *head = [MGLineStyled lineWithLeft:NSLocalizedString(@"Review Progress", @"review tab header for reviewing progress on graph") right:nil size:CGSizeMake(CHART_SIZE_IPAD_PORTRAIT.width ,self.rowSize.height)];
-	head.font = self.headerFont;
-	[layout.topLines addObject:head];
+	self.qidsGraphHeader = [MGLineStyled lineWithLeft:NSLocalizedString(@"Review Progress", @"review tab header for reviewing progress on graph") right:nil size:CGSizeMake(CHART_SIZE_IPAD_PORTRAIT.width ,self.rowSize.height)];
+	self.qidsGraphHeader.font = self.headerFont;
+	[layout.topLines addObject:self.qidsGraphHeader];
 	
 	__weak MGLineStyled *chartDisplayBox = [MGLineStyled lineWithSize:(deviceIsPad)?CHART_SIZE_IPAD_PORTRAIT:CHART_SIZE_POD_PORTRAIT];
 	chartDisplayBox.asyncLayout = ^{
@@ -91,9 +100,12 @@
 	//
 	BOOL isPortrait = UIInterfaceOrientationIsPortrait(orient);
 	
-	self.primaryTable.size = deviceIsPad ?
+	CGSize newPrimaryTableSize = deviceIsPad ?
 	isPortrait? CHART_SIZE_IPAD_PORTRAIT : CHART_SIZE_IPAD_LANDSCAPE :
 	isPortrait? CHART_SIZE_POD_PORTRAIT : CHART_SIZE_POD_LANDSCAPE;
+	
+	self.primaryTable.width = newPrimaryTableSize.width;
+	self.qidsGraphHeader.width = newPrimaryTableSize.width;
 	
 	self.qidsChart.size = deviceIsPad ?
 	isPortrait? CHART_SIZE_IPAD_PORTRAIT : CHART_SIZE_IPAD_LANDSCAPE :
@@ -109,6 +121,8 @@
 	if (self = [super initWithPresentedAppTab:domoAppTabReview]){
 		[self setTitle:NSLocalizedString(@"Review", @"navigation bar title")];
 		self.rowSize =  (CGSize){225, 44};
+		
+		self.activeQIDSSubmission = [[[EXQIDSManager alloc] init] lastCompletedQIDSSubmissionForAuthor:[EXAuthor authorForLocalUser]];
 	}
 	return self;
 }
@@ -117,16 +131,8 @@
 	if (_qidsChart == nil){
 		_qidsChart = [[EXQIDSChart alloc] initWithFrame:CGRectMake(0, 0, deviceIsPad? CHART_SIZE_IPAD_PORTRAIT.width: CHART_SIZE_POD_PORTRAIT.width, deviceIsPad?CHART_SIZE_IPAD_PORTRAIT.height:CHART_SIZE_POD_PORTRAIT.height)];
 		[_qidsChart setDelegate:self];
-		
-		self.activeQIDSSubmission = [[[EXQIDSManager alloc] init] lastCompletedQIDSSubmissionForAuthor:[EXAuthor authorForLocalUser]];
 	}
 	return _qidsChart;
-}
-
--(void)viewDidLoad{
-	[super viewDidLoad];
-	
-	
 }
 
 #pragma mark - EXQIDSChartDelegate

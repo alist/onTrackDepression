@@ -15,27 +15,34 @@
 @implementation EskLinePlot
 
 @synthesize delegate;
-@synthesize sampleData, sampleYears;
+@synthesize displayedWeeks, displayedDataSeries,displayedDataBySeries;
 
-- (id)init
+- (id)initWithDelegate:(id<EskLinePlotDelegate>)theDelegate
 {
     self = [super init];
     if (self) 
     {
+		
+		self.delegate = theDelegate;
         // setting up the sample data here.
-        sampleData = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:24],
-                                                      [NSNumber numberWithInt:20],
-                                                      [NSNumber numberWithInt:15],
-                                                      [NSNumber numberWithInt:19],
-                                                      [NSNumber numberWithInt:13],
-                                                      [NSNumber numberWithInt:10],
-                                                      [NSNumber numberWithInt:3], nil];
-        
-        sampleYears = [[NSArray alloc] initWithObjects:@"7", @"6", @"5", @"4", @"3", @"2", @"1", nil];
-        
-    }
+        displayedWeeks = [[NSArray alloc] initWithObjects:@"7", @"6", @"5", @"4", @"3", @"2", @"1", nil];
+		
+		[self reloadData];
+		
+	}
     
     return self;
+}
+
+-(void) reloadData{
+	self.displayedDataSeries = [delegate displayedSeriesForPlot:self];
+	self.displayedDataBySeries = [NSMutableDictionary dictionaryWithCapacity:[self.displayedDataSeries count]];
+	
+	for (NSNumber * series in self.displayedDataSeries){
+		NSArray * seriesData = [delegate dataForSeries:series forPlot:self];
+		[self.displayedDataBySeries setObject:seriesData forKey:series];
+	}
+	
 }
 
 
@@ -98,9 +105,9 @@
 		x.labelExclusionRanges = exclusionRanges;
 		
 		// Use custom x-axis label so it will display year 2010, 2011, 2012, ... instead of 1, 2, 3, 4
-		NSMutableArray *labels = [[NSMutableArray alloc] initWithCapacity:[sampleYears count]];
+		NSMutableArray *labels = [[NSMutableArray alloc] initWithCapacity:[displayedWeeks count]];
 		int idx = 0;
-		for (NSString *year in sampleYears)
+		for (NSString *year in displayedWeeks)
 		{
 			CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:year textStyle:x.labelTextStyle];
 			label.tickLocation = CPTDecimalFromInt(idx);
@@ -169,15 +176,6 @@
 		
 		// Create the Savings Marker Plot
 		selectedCoordination = 2;
-		
-	//    touchPlot = [[[CPTScatterPlot alloc] initWithFrame:CGRectNull] autorelease];
-	//    touchPlot.identifier = kLinePlot;
-	//    touchPlot.dataSource = self;
-	//    touchPlot.delegate = self;
-	//    [self applyTouchPlotColor];
-	//    [graph addPlot:touchPlot];
-		
-	
     
 	}
 
@@ -259,9 +257,9 @@
     {
         x = 0;
     }
-    else if (x > [sampleData count])
+    else if (x > [[self.displayedDataBySeries objectForKey:[self.displayedDataSeries objectAtIndex:0]] count])
     {
-        x = [sampleData count];
+        x = [[self.displayedDataBySeries objectForKey:[self.displayedDataSeries objectAtIndex:0]] count];
     }
     
     if (touchPlotSelected) 
@@ -295,13 +293,7 @@
 
 - (void)scatterPlot:(CPTScatterPlot *)plot plotSymbolWasSelectedAtRecordIndex:(NSUInteger)index
 {
-    if ([(NSString *)plot.identifier isEqualToString:kLinePlot]) 
-    {
-        touchPlotSelected = YES;
-        [self applyHighLightPlotColor:plot];
-        if ([delegate respondsToSelector:@selector(linePlot:indexLocation:)])
-            [delegate linePlot:self indexLocation:index];
-    } else if ([(NSString *)plot.identifier isEqualToString:kHighPlot]){
+	if ([(NSString *)plot.identifier isEqualToString:kHighPlot]){
 		if ([delegate respondsToSelector:@selector(linePlot:indexLocation:)])
             [delegate linePlot:self indexLocation:index];
 	}
@@ -314,13 +306,11 @@
 
 - (NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot 
 {
-    if ([(NSString *)plot.identifier isEqualToString:kLinePlot]) 
+    if ([(NSString *)plot.identifier isEqualToString:kHighPlot]) 
     {
-        return kNumberOfMarkerPlotSymbols;
+        return [[self.displayedDataBySeries objectForKey:[self.displayedDataSeries objectAtIndex:0]] count];
     }
-    else {
-        return [sampleData count];
-    }
+	return 0;
 }
 
 - (NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index 
@@ -330,34 +320,14 @@
     {
         if ( fieldEnum == CPTScatterPlotFieldY ) 
         {
-            num = [sampleData objectAtIndex:index];
+            num = [[self.displayedDataBySeries objectForKey:[self.displayedDataSeries objectAtIndex:0]] objectAtIndex:index];
         } 
         else if (fieldEnum == CPTScatterPlotFieldX) 
         {
             num = [NSNumber numberWithInt:index];
         }
     }
-    else if ([(NSString *)plot.identifier isEqualToString:kLinePlot]) 
-    {
-        if ( fieldEnum == CPTScatterPlotFieldY ) 
-        {
-            switch (index) {
-                case 0:
-                    num = [NSNumber numberWithInt:0];
-                    break;
-                case 2:
-                    num = [NSNumber numberWithInt:9700];
-                    break;
-                default:
-                    num = [sampleData objectAtIndex:selectedCoordination];
-                    break;
-            }
-        } 
-        else if (fieldEnum == CPTScatterPlotFieldX) 
-        {
-            num = [NSNumber numberWithInt:selectedCoordination];
-        }
-    }
+
     return num;
 }
 

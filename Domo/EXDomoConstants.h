@@ -11,6 +11,7 @@
 #define StringHasText(string) (string != nil && [string length] > 0)
 #define SetHasItems(set) (set != nil && [set count] > 0)
 
+static NSString * const newQIDSSubmittedNotification = @"newQIDSSubmittedNotification";
 
 //vars
 typedef enum{
