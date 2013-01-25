@@ -1436,6 +1436,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Domo Depression.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "Domo/Domo Depression-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1448,6 +1449,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "Domo Depression";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

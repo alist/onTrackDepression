@@ -48,6 +48,8 @@
 		[self.navSideBarPad setViewControllers:VCs];
 		[self.window setRootViewController:self.navSideBarPad];
 
+		[self.navSideBarPad setSelectedIndex:1];
+
 	}else{
 		self.navTabBarPod	= [[UITabBarController alloc] init];
 		[self.navTabBarPod setViewControllers:VCs];		

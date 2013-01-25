@@ -15,5 +15,6 @@
 @interface EXReviewVC : EXTabVC <EXQIDSChartDelegate>
 @property (nonatomic, retain) EXQIDSChart *qidsChart;
 @property (nonatomic, strong) EXQIDSSubmission * activeQIDSSubmission;
+@property (nonatomic, assign) BOOL dataNeedsRefresh;
 
 @end

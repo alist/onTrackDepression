@@ -69,7 +69,7 @@ static const CGRect formQuestionDimensionsLandscape = {{0,0},{400, 200}};
 
 -(void) viewDidAppear:(BOOL)animated{
 	[super viewDidAppear:animated];
-	[self refreshContent];
+	[self refreshGridContent];
 }
 
 -(void)viewDidLoad{

@@ -10,11 +10,11 @@
 #import "EXUserComManager.h"
 
 @implementation EXTabVC{
-	BOOL appearedOnce;
 }
 @synthesize rowSize, headerFont;
 @synthesize scroller;
 @synthesize tablesGrid, primaryTable, detailTable;
+@synthesize appearedOnce;
 
 #define IPHONE_TABLES_GRID_PORTRAIT     (CGSize){320, 0}
 #define IPHONE_TABLES_GRID_LANDSCAPE    (CGSize){320, 0}
@@ -33,7 +33,7 @@
 		
 		self.presentedTab = presentedTab;
 		
-		appearedOnce = FALSE;
+		self.appearedOnce = FALSE;
 		
 	}
 	return self;	
@@ -77,7 +77,8 @@
 	[tablesGrid.boxes addObject:self.detailTable];
 	self.detailTable.sizingMode = MGResizingShrinkWrap;
 	
-	[self refreshContent];
+	[self refreshGridContent];
+	
 }
 
 
@@ -86,10 +87,11 @@
 	[super viewDidAppear:animated];
 	
 	if (!appearedOnce){
+		appearedOnce = TRUE;
+
 		[self willAnimateRotationToInterfaceOrientation:self.interfaceOrientation
 											   duration:1];
 		[self didRotateFromInterfaceOrientation:UIInterfaceOrientationPortrait];
-		appearedOnce = TRUE;
 	}
 }
 
@@ -117,7 +119,7 @@
 }
 
 #pragma mark - content
--(void) refreshContent{
+-(void) refreshGridContent{
 	
 	[self refreshDetailContent:FALSE];
 	[self refreshPrimaryContent:FALSE];

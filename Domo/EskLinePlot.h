@@ -26,7 +26,9 @@
 }
 
 @property (nonatomic, strong) id<EskLinePlotDelegate> delegate;
-@property (nonatomic, strong) NSArray *	displayedWeeks;
+
+//loc = weeks in past; len = additional weeks in past starting at loc
+@property (nonatomic, assign) NSRange	displayedWeekRange;
 
 //{series <NSNumber>: array[datapoints for series]} each datapoint array elements of 2 element array--> containing[0]-> the timestamp for datapoint in days past, [1]-> y value for that point in the series
 @property (nonatomic, strong) NSMutableDictionary * displayedDataBySeries;
@@ -55,7 +57,7 @@
 //BUT
 //V1 has simple array of NSNumbers
 //dataSeries is integer representing which chart is displayed
--(NSArray*) dataForSeries:(NSNumber*)dataSeries forPlot:(EskLinePlot*)plot;
+-(NSArray*) dataForSeries:(NSNumber*)dataSeries forPlot:(EskLinePlot*)plot forWeekRange:(NSRange)weekRange;
 
 //returns integer NSNumber array of displayed data series
 -(NSArray*) displayedSeriesForPlot:(EskLinePlot*)plot;

@@ -15,20 +15,16 @@
 @implementation EskLinePlot
 
 @synthesize delegate;
-@synthesize displayedWeeks, displayedDataSeries,displayedDataBySeries;
+@synthesize displayedWeekRange, displayedDataSeries,displayedDataBySeries;
 
 - (id)initWithDelegate:(id<EskLinePlotDelegate>)theDelegate
 {
     self = [super init];
-    if (self) 
-    {
+    if (self) {
 		
 		self.delegate = theDelegate;
-        // setting up the sample data here.
-        displayedWeeks = [[NSArray alloc] initWithObjects:@"7", @"6", @"5", @"4", @"3", @"2", @"1", nil];
-		
-		[self reloadData];
-		
+        self.displayedWeekRange = NSMakeRange(0, 7);
+				
 	}
     
     return self;
@@ -39,7 +35,7 @@
 	self.displayedDataBySeries = [NSMutableDictionary dictionaryWithCapacity:[self.displayedDataSeries count]];
 	
 	for (NSNumber * series in self.displayedDataSeries){
-		NSArray * seriesData = [delegate dataForSeries:series forPlot:self];
+		NSArray * seriesData = [delegate dataForSeries:series forPlot:self forWeekRange:self.displayedWeekRange];
 		[self.displayedDataBySeries setObject:seriesData forKey:series];
 	}
 	
@@ -70,18 +66,12 @@
 																nil];
 		graph.topDownLayerOrder = chartLayers;    
 		
-		
-		// Add plot space for horizontal bar charts
-//		graph.paddingLeft = 90.0;
-//		graph.paddingTop = 50.0;
-//		graph.paddingRight = 20.0;
-//		graph.paddingBottom = 60.0;
-		
+
 		// Setup plot space
 		CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
 		plotSpace.allowsUserInteraction = YES;
 		plotSpace.delegate = self;
-		plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-0.1f) length:CPTDecimalFromFloat(6.2f)];//a bit more on right than needed
+		plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-0.1f) length:CPTDecimalFromFloat(6.2f)];//a bit more on right than zero
 		plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0.0f) length:CPTDecimalFromFloat(30.0f)];
 
 		
@@ -99,21 +89,18 @@
 		x.minorTicksPerInterval = 1;
 
 		x.orthogonalCoordinateDecimal = CPTDecimalFromString(@"0");
-		x.title = @"scores by weeks ago";
+//		x.title = @"scores by weeks ago";
 		x.timeOffset = 30.0f;
 		NSArray *exclusionRanges = [NSArray arrayWithObjects:[CPTPlotRange plotRangeWithLocation:CPTDecimalFromInt(0) length:CPTDecimalFromInt(0)], nil];
 		x.labelExclusionRanges = exclusionRanges;
 		
 		// Use custom x-axis label so it will display year 2010, 2011, 2012, ... instead of 1, 2, 3, 4
-		NSMutableArray *labels = [[NSMutableArray alloc] initWithCapacity:[displayedWeeks count]];
-		int idx = 0;
-		for (NSString *year in displayedWeeks)
-		{
-			CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:year textStyle:x.labelTextStyle];
-			label.tickLocation = CPTDecimalFromInt(idx);
+		NSMutableArray *labels = [[NSMutableArray alloc] initWithCapacity:self.displayedWeekRange.length];
+		for (int i = self.displayedWeekRange.location; i < self.displayedWeekRange.location + self.displayedWeekRange.length; i++){
+			CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%i",i] textStyle:x.labelTextStyle];
+			label.tickLocation = CPTDecimalFromInt(i);
 			label.offset = 5.0f;
 			[labels addObject:label];
-			idx++;
 		}
 		x.axisLabels = [NSSet setWithArray:labels];
 		
@@ -318,13 +305,14 @@
     NSNumber *num = nil;
     if ( [(NSString *)plot.identifier isEqualToString:kHighPlot] )
     {
-        if ( fieldEnum == CPTScatterPlotFieldY ) 
+		NSDictionary * recordDict = [[self.displayedDataBySeries objectForKey:[self.displayedDataSeries objectAtIndex:0]] objectAtIndex:index];
+        if ( fieldEnum == CPTScatterPlotFieldY )
         {
-            num = [[self.displayedDataBySeries objectForKey:[self.displayedDataSeries objectAtIndex:0]] objectAtIndex:index];
+            num = [recordDict objectForKey:@"value"];
         } 
         else if (fieldEnum == CPTScatterPlotFieldX) 
         {
-            num = [NSNumber numberWithInt:index];
+            num = [recordDict objectForKey:@"weekspast"];
         }
     }
 

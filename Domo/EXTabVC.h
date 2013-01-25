@@ -19,6 +19,7 @@
 
 @property (nonatomic, strong) MGScrollView *scroller;
 @property (nonatomic, strong) MGBox *tablesGrid, *primaryTable, *detailTable;
+@property (nonatomic, assign) BOOL appearedOnce;
 
 
 //this one is called by subclass in implementation of initWithManagedObjectContext:.
@@ -30,7 +31,7 @@
 
 //calls layoutWithSpeed on scroller
 //calls refresh detail and primary but doesnt layout them
--(void)		refreshContent;
+-(void)		refreshGridContent;
 
 -(void) refreshDetailContent:(BOOL)layout;
 

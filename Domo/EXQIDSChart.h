@@ -21,9 +21,12 @@
 @interface EXQIDSChart : CPTGraphHostingView <EskLinePlotDelegate>
 -(id) initWithFrame:(CGRect)frame;
 
+-(void) reloadData;
+
 @property (nonatomic, retain) EXQIDSChartDatasource * datasource;
 @property (nonatomic, weak) id<EXQIDSChartDelegate> delegate;
-
+@property (nonatomic, strong) NSDate * displayedDataStartDate;
+@property (nonatomic, assign) NSTimeInterval displayedDataTimeLength; //in seconds
 
 
 ///eventually we'll have an entrie line plot array or dictionary to house all the plots, and the plot will be colored if just one, and grey if there are overlayed plots

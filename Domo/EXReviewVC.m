@@ -31,6 +31,7 @@
 @synthesize qidsChart = _qidsChart;
 @synthesize activeQIDSSubmission;
 @synthesize qidsGraphHeader;
+@synthesize dataNeedsRefresh;
 
 #pragma mark - content
 -(NSArray*)detailBoxes{
@@ -67,7 +68,7 @@
 	MGTableBox * layout = MGTableBox.box;
 	[layout setLeftMargin:(deviceIsPad)?CHART_MARGIN_IPAD:CHART_MARGIN_POD];
 	
-	self.qidsGraphHeader = [MGLineStyled lineWithLeft:NSLocalizedString(@"Review Progress", @"review tab header for reviewing progress on graph") right:nil size:CGSizeMake(CHART_SIZE_IPAD_PORTRAIT.width ,self.rowSize.height)];
+	self.qidsGraphHeader = [MGLineStyled lineWithLeft:NSLocalizedString(@"Review Progress by weeks ago", @"review tab header for reviewing progress on graph") right:nil size:CGSizeMake(CHART_SIZE_IPAD_PORTRAIT.width ,self.rowSize.height)];
 	self.qidsGraphHeader.font = self.headerFont;
 	[layout.topLines addObject:self.qidsGraphHeader];
 	
@@ -88,15 +89,28 @@
 
 }
 
+-(void) viewWillAppear:(BOOL)animated{
+	[super viewWillAppear:animated];
+	
+	if (self.dataNeedsRefresh){
+		self.dataNeedsRefresh = FALSE;
+		[self.qidsChart reloadData];
+	}
+}
+
 -(void) refreshContent{
 	if (_qidsChart)
 		[self.qidsChart removeFromSuperview];
+
+	[super refreshGridContent];
 	
-	[super refreshContent];
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)orient
                                          duration:(NSTimeInterval)duration {
+	if (self.appearedOnce == FALSE)
+		return;
+	
 	//
 	BOOL isPortrait = UIInterfaceOrientationIsPortrait(orient);
 	
@@ -122,9 +136,26 @@
 		[self setTitle:NSLocalizedString(@"Review", @"navigation bar title")];
 		self.rowSize =  (CGSize){225, 44};
 		
+		self.dataNeedsRefresh = TRUE;
+		
 		self.activeQIDSSubmission = [[[EXQIDSManager alloc] init] lastCompletedQIDSSubmissionForAuthor:[EXAuthor authorForLocalUser]];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_dataUpdated:) name:newQIDSSubmittedNotification object:nil];
 	}
 	return self;
+}
+
+
+-(void)_dataUpdated:(id)sender{
+	self.dataNeedsRefresh = TRUE;
+	
+	if ([self.view isDescendantOfView:[[UIApplication sharedApplication] keyWindow]]){
+		self.dataNeedsRefresh = FALSE;
+		[self.qidsChart reloadData];
+	}
+}
+
+-(void)dealloc{
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(EXQIDSChart*) qidsChart{
