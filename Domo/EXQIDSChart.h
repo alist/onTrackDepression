@@ -16,6 +16,9 @@
 
 @protocol EXQIDSChartDelegate <NSObject>
 -(void) qidsChart:(EXQIDSChart*)chart didSelectQIDSSubmission:(EXQIDSSubmission*)submission;
+
+-(void) reloadSeriesDisplayFromQIDSChart:(EXQIDSChart*)chart;
+
 @end
 
 @interface EXQIDSChart : CPTGraphHostingView <EskLinePlotDelegate>
@@ -29,6 +32,15 @@
 @property (nonatomic, assign) NSTimeInterval displayedDataTimeLength; //in seconds
 
 
+//nsarray of prioritized series ID NSNumbers
+@property (nonatomic, strong) NSMutableArray *	displayedSeries;
+
+//array of {title: (localized)NSString, objKey: NSString, color: UIColor}
+@property(nonatomic, strong) NSArray *	seriesOptions;
+
 ///eventually we'll have an entrie line plot array or dictionary to house all the plots, and the plot will be colored if just one, and grey if there are overlayed plots
 @property (nonatomic, retain) EskLinePlot * linePlot;
+
+//will place in order of seriesOptions array to have appropiate layout
+-(void) toggleSeriesDisplay:(NSUInteger)series;
 @end
