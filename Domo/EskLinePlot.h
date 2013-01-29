@@ -11,7 +11,21 @@
 #import <Foundation/Foundation.h>
 #import "CorePlot-CocoaTouch.h"
 
-@protocol EskLinePlotDelegate;
+@class EskLinePlot;
+
+// Delegate to notify the view controller that the location of the line has changed.
+@protocol EskLinePlotDelegate <NSObject>
+
+- (void)linePlot:(EskLinePlot *)plot indexLocation:(NSUInteger)index;
+
+//array of tuples
+-(NSArray*) dataForSeries:(NSNumber*)dataSeries forPlot:(EskLinePlot*)plot forWeekRange:(NSRange)weekRange;
+
+//returns integer NSNumber array of displayed data series
+-(NSArray*) displayedSeriesForPlot:(EskLinePlot*)plot;
+
+@end
+
 
 //this plot overlays multiple line plots
 
@@ -19,10 +33,16 @@
 {
   @private
     CPTGraph *graph;
-    CPTScatterPlot *linePlot;
+    //should make this an array of plots
+	CPTScatterPlot *linePlot;
+	
+	
+	//get rid of this: /rid
     CPTScatterPlot *touchPlot;
     NSUInteger selectedCoordination;
     BOOL touchPlotSelected;
+	//^ rid
+	
 }
 
 @property (nonatomic, strong) id<EskLinePlotDelegate> delegate;
@@ -47,19 +67,3 @@
 
 @end
 
-
-// Delegate to notify the view controller that the location of the line has changed.
-@protocol EskLinePlotDelegate <NSObject> 
-
-- (void)linePlot:(EskLinePlot *)plot indexLocation:(NSUInteger)index;
-
-//array of tuples
-//BUT
-//V1 has simple array of NSNumbers
-//dataSeries is integer representing which chart is displayed
--(NSArray*) dataForSeries:(NSNumber*)dataSeries forPlot:(EskLinePlot*)plot forWeekRange:(NSRange)weekRange;
-
-//returns integer NSNumber array of displayed data series
--(NSArray*) displayedSeriesForPlot:(EskLinePlot*)plot;
-
-@end

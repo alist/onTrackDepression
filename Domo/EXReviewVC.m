@@ -12,7 +12,7 @@
 #import "EXQIDSManager.h"
 
 #define CHART_MARGIN_IPAD 10
-#define CHART_SIZE_IPAD_PORTRAIT (CGSize){550, 440}
+#define CHART_SIZE_IPAD_PORTRAIT (CGSize){550, 435}
 #define CHART_SIZE_IPAD_LANDSCAPE (CGSize){620, 435}
 
 #define CHART_MARGIN_POD 10
@@ -117,6 +117,7 @@
 	[layout.topLines addObject:self.qidsGraphHeader];
 	
 	__weak MGLineStyled *chartDisplayBox = [MGLineStyled lineWithSize:(deviceIsPad)?CHART_SIZE_IPAD_PORTRAIT:CHART_SIZE_POD_PORTRAIT];
+	[chartDisplayBox setBottomMargin:13];
 	chartDisplayBox.asyncLayout = ^{
 		int64_t delayInSeconds = .01;
 		dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
