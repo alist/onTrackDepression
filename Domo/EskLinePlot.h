@@ -36,13 +36,7 @@
     //should make this an array of plots
 	CPTScatterPlot *linePlot;
 	
-	
-	//get rid of this: /rid
-    CPTScatterPlot *touchPlot;
-    NSUInteger selectedCoordination;
-    BOOL touchPlotSelected;
-	//^ rid
-	
+		
 }
 
 @property (nonatomic, strong) id<EskLinePlotDelegate> delegate;

@@ -161,8 +161,6 @@
 		[graph addPlot:highPlot];
 
 		
-		// Create the Savings Marker Plot
-		selectedCoordination = 2;
     
 	}
 
@@ -182,13 +180,11 @@
     touchPlotSymbol.size = CGSizeMake(15.0f, 15.0f); 
     
     
-    touchPlot.plotSymbol = touchPlotSymbol;
     
     CPTMutableLineStyle *touchLineStyle = [CPTMutableLineStyle lineStyle];
     touchLineStyle.lineColor = [CPTColor orangeColor];
     touchLineStyle.lineWidth = 5.0f;
     
-    touchPlot.dataLineStyle = touchLineStyle;
     
 }
 
@@ -249,14 +245,6 @@
         x = [[self.displayedDataBySeries objectForKey:[self.displayedDataSeries objectAtIndex:0]] count];
     }
     
-    if (touchPlotSelected) 
-    {
-        selectedCoordination = x;
-        if ([delegate respondsToSelector:@selector(linePlot:indexLocation:)])
-            [delegate linePlot:self indexLocation:x];
-        [touchPlot reloadData];
-    } 
-
     
     return YES;
 }
@@ -271,7 +259,6 @@
 {
     // Restore the vertical line plot to its initial color.
     [self applyTouchPlotColor];
-    touchPlotSelected = NO;
     return YES;
 }
 
