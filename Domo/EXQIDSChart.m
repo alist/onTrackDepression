@@ -59,11 +59,28 @@
 	if ( _seriesOptions == nil){
 		NSMutableArray * options = [NSMutableArray array];
 		[options addObject:@{@"title":NSLocalizedString(@"QIDS Score", @"series options selection"), @"objkey":@"qidsValue", @"color": [UIColor colorWithRed:0.22f green:0.55f blue:0.71f alpha:1.0f]}];
-		[options addObject:@{@"title":NSLocalizedString(@"severity", @"series options selection"), @"objkey":@"qidsSeverity", @"color": [UIColor colorWithRed:.2 green:0 blue:.5 alpha:.7]}];
-		[options addObject:@{@"title":NSLocalizedString(@"waking up", @"series options selection"), @"objkey":@"q1", @"color": [UIColor colorWithRed:0 green:.7 blue:.1 alpha:.7]}];
+		[options addObject:@{@"title":NSLocalizedString(@"concentration", @"series options selection"), @"objkey":@"q9", @"color": [UIColor colorWithRed:.2 green:0 blue:.5 alpha:.7], @"stacks":@(YES)}];
+		[options addObject:@{@"title":NSLocalizedString(@"energy level", @"series options selection"), @"objkey":@"q13", @"color": [UIColor colorWithRed:0 green:.7 blue:.1 alpha:.7], @"stacks":@(YES)}];
+		[options addObject:@{@"title":NSLocalizedString(@"general interest", @"series options selection"), @"objkey":@"q12", @"color": [UIColor colorWithRed:.8 green:0 blue:.1 alpha:.7], @"stacks":@(YES)}];
 		_seriesOptions = options;
 	}
 	return _seriesOptions;
+}
+
+-(NSNumber*) stackedValueForSubmission:(EXQIDSSubmission*)submission forSeriesNumber:(NSNumber*)seriesNum{
+	NSDictionary * options = [self.seriesOptions objectAtIndex:[seriesNum intValue]];
+	double cumulative = [[submission valueForKey:[options valueForKey:@"objkey"]] doubleValue];
+	if ([[options valueForKey:@"stacks"] boolValue] == YES){
+		for (NSNumber * otherSeries in self.displayedSeries){
+			if ([otherSeries isEqualToNumber:seriesNum] == FALSE && [otherSeries intValue] < [seriesNum intValue]){
+				NSDictionary * otherSeriesOptions = [self.seriesOptions objectAtIndex:[otherSeries intValue]];
+				if ([[otherSeriesOptions valueForKey:@"stacks"] boolValue] == YES){
+					cumulative += [[submission valueForKey:[otherSeriesOptions valueForKey:@"objkey"]] doubleValue];
+				}
+			}
+		}
+	}
+	return @(cumulative);
 }
 
 #pragma mark - EskLinePlotDelegate
@@ -82,18 +99,20 @@
 	NSArray * qidsSubmissions = [datasource QIDSSubmissionsBetweenOlderDate:self.displayedDataStartDate newerDate:[self.displayedDataStartDate dateByAddingTimeInterval:self.displayedDataTimeLength]];
 	NSMutableArray * submissionValueArray = [NSMutableArray array];
 	
-	NSNumber * (^extractValueBlock)(EXQIDSSubmission * a) = nil;
-	NSString* dataKeypath = [[[self seriesOptions] objectAtIndex:[dataSeries intValue]] valueForKey:@"objkey"];
-	if (dataKeypath){
-		extractValueBlock = ^NSNumber * (EXQIDSSubmission * a){
-			return [a valueForKey:dataKeypath];
-		};
-	}
+//	NSNumber * (^extractValueBlock)(EXQIDSSubmission * a) = nil;
+//	NSString* dataKeypath = [[[self seriesOptions] objectAtIndex:[dataSeries intValue]] valueForKey:@"objkey"];
+//	if (dataKeypath){
+//		extractValueBlock = ^NSNumber * (EXQIDSSubmission * a){
+//			return [a valueForKey:dataKeypath];
+//		};
+//	}
 	
 	for (EXQIDSSubmission * qids in qidsSubmissions){
 		double weeksPast = [[qids completionDate] timeIntervalSinceNow] * -1 * 1.0/(60*60*24*7);
 		
-		[submissionValueArray addObject:@{@"value" : extractValueBlock(qids), @"weekspast": @(weeksPast)}];
+		NSNumber * scaledValue = [self stackedValueForSubmission:qids forSeriesNumber:dataSeries];
+		
+		[submissionValueArray addObject:@{@"value" : scaledValue, @"weekspast": @(weeksPast)}];
 	}
 	
 	return submissionValueArray;

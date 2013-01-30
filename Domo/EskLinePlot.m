@@ -123,7 +123,7 @@
 		y.labelExclusionRanges = yExlusionRanges;
 		
 		NSMutableArray * plots = [NSMutableArray array];
-		for (NSNumber * seriesNum in self.displayedDataSeries){
+		for (NSNumber * seriesNum in [self.displayedDataSeries reverseObjectEnumerator]){
 			CPTScatterPlot *highPlot = [[CPTScatterPlot alloc] init];
 			highPlot.identifier = seriesNum;
 			
@@ -298,7 +298,7 @@
 	NSDictionary * recordDict = [[self.displayedDataBySeries objectForKey:plotIdent] objectAtIndex:index];
 	if ( fieldEnum == CPTScatterPlotFieldY )
 	{
-		//do the piling onto of others besides index 0 -- make special function to do it
+		//autostacked in qidsChart
 		num = [recordDict objectForKey:@"value"];
 	} 
 	else if (fieldEnum == CPTScatterPlotFieldX) 

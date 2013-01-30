@@ -10,6 +10,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CorePlot-CocoaTouch.h"
+#import "EXQIDSSubmission.h"
 
 @class EskLinePlot;
 
@@ -25,6 +26,7 @@
 -(NSArray*) displayedSeriesForPlot:(EskLinePlot*)plot;
 
 -(UIColor*) colorFordisplayedSeriesNumber:(NSNumber*)seriesNum forPlot:(EskLinePlot*)plot;
+
 @end
 
 

@@ -43,4 +43,8 @@
 
 //will place in order of seriesOptions array to have appropiate layout
 -(void) toggleSeriesDisplay:(NSUInteger)series;
+
+
+//stacks the value for the series if it and those it's stacking-accross are stackable
+-(NSNumber*) stackedValueForSubmission:(EXQIDSSubmission*)submission forSeriesNumber:(NSNumber*)seriesNum;
 @end
