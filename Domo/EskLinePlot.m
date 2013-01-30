@@ -71,7 +71,7 @@
 		CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
 		plotSpace.allowsUserInteraction = YES;
 		plotSpace.delegate = self;
-		plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-0.1f) length:CPTDecimalFromFloat(6.2f)];//a bit more on right than zero
+		plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-0.1f) length:CPTDecimalFromFloat((float)self.displayedWeekRange.length - 1.0f + 0.2f)];//a bit more on right than zero
 		plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0.0f) length:CPTDecimalFromFloat(30.0f)];
 
 		
@@ -123,7 +123,7 @@
 		y.labelExclusionRanges = yExlusionRanges;
 		
 		NSMutableArray * plots = [NSMutableArray array];
-		for (NSNumber * seriesNum in [self.displayedDataSeries reverseObjectEnumerator]){
+		for (NSNumber * seriesNum in self.displayedDataSeries ){
 			CPTScatterPlot *highPlot = [[CPTScatterPlot alloc] init];
 			highPlot.identifier = seriesNum;
 			

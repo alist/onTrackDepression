@@ -26,7 +26,7 @@
 		
 		self.displayedSeries = [@[@(0)] mutableCopy];
 		self.linePlot = [[EskLinePlot alloc] initWithDelegate:self];
-		[self.linePlot setDisplayedWeekRange:NSMakeRange(0, 7)];
+		[self.linePlot setDisplayedWeekRange:NSMakeRange(0, 3)];
 		
 		[linePlot renderInLayer:self withTheme:defaultTheme];
 		
@@ -43,7 +43,7 @@
 	//reload plot
 	CPTGraphHostingView * plotView = self;
 	[UIView animateWithDuration:.1 animations:^{
-		plotView.alpha = 0;
+		plotView.alpha = .5;
 	} completion:^(BOOL finished) {
 		if (finished){
 			[linePlot renderInLayer:plotView withTheme:defaultTheme];
@@ -72,7 +72,7 @@
 	double cumulative = [[submission valueForKey:[options valueForKey:@"objkey"]] doubleValue];
 	if ([[options valueForKey:@"stacks"] boolValue] == YES){
 		for (NSNumber * otherSeries in self.displayedSeries){
-			if ([otherSeries isEqualToNumber:seriesNum] == FALSE && [otherSeries intValue] < [seriesNum intValue]){
+			if ([otherSeries isEqualToNumber:seriesNum] == FALSE && [otherSeries intValue] > [seriesNum intValue]){
 				NSDictionary * otherSeriesOptions = [self.seriesOptions objectAtIndex:[otherSeries intValue]];
 				if ([[otherSeriesOptions valueForKey:@"stacks"] boolValue] == YES){
 					cumulative += [[submission valueForKey:[otherSeriesOptions valueForKey:@"objkey"]] doubleValue];
