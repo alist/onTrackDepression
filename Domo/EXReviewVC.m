@@ -181,7 +181,7 @@
 		[self setTitle:NSLocalizedString(@"Review", @"navigation bar title")];
 		self.rowSize =  (CGSize){225, 44};
 		
-		self.dataNeedsRefresh = TRUE;
+		self.dataNeedsRefresh = FALSE; //automatically fresh on first run
 		
 		self.activeQIDSSubmission = [[[EXQIDSManager alloc] init] lastCompletedQIDSSubmissionForAuthor:[EXAuthor authorForLocalUser]];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_dataUpdated:) name:newQIDSSubmittedNotification object:nil];

@@ -8,14 +8,13 @@
 
 #import "EskLinePlot.h"
 
-#define kHighPlot @"HighPlot"
-#define kLinePlot @"LinePlot"
-#define kNumberOfMarkerPlotSymbols 3
+//#define kHighPlot @"HighPlot"
 
 @implementation EskLinePlot
 
 @synthesize delegate;
 @synthesize displayedWeekRange, displayedDataSeries,displayedDataBySeries;
+@synthesize seriesScatterPlots;
 
 - (id)initWithDelegate:(id<EskLinePlotDelegate>)theDelegate
 {
@@ -24,6 +23,8 @@
 		
 		self.delegate = theDelegate;
         self.displayedWeekRange = NSMakeRange(0, 7);
+		
+		[self reloadData];
 				
 	}
     
@@ -45,7 +46,6 @@
 - (void)renderInLayer:(CPTGraphHostingView *)layerHostingView withTheme:(CPTTheme *)theme
 {    
 	@autoreleasepool {
-		
 		
 		CGRect bounds = layerHostingView.bounds;
 		
@@ -122,45 +122,52 @@
 									nil];
 		y.labelExclusionRanges = yExlusionRanges;
 		
-		// Create a high plot area
-		CPTScatterPlot *highPlot = [[CPTScatterPlot alloc] init];
-		highPlot.identifier = kHighPlot;
-		
-		BOOL greyMode = FALSE;
+		NSMutableArray * plots = [NSMutableArray array];
+		for (NSNumber * seriesNum in self.displayedDataSeries){
+			CPTScatterPlot *highPlot = [[CPTScatterPlot alloc] init];
+			highPlot.identifier = seriesNum;
+			
+			BOOL greyMode = FALSE;
+			
+			CPTMutableLineStyle *highLineStyle = [highPlot.dataLineStyle mutableCopy];
+			highLineStyle.lineWidth = 2.f;
+			//    highLineStyle.interpolation = CPTScatterPlotInterpolationCurved;
+			if (greyMode){
+				highLineStyle.lineColor = [CPTColor colorWithCGColor:[[UIColor colorWithWhite:.4 alpha:.1] CGColor]];
+			}else{
+				highLineStyle.lineColor = [CPTColor colorWithCGColor:[[[self delegate] colorFordisplayedSeriesNumber:seriesNum forPlot:self] CGColor]];
+			}
+			highPlot.dataLineStyle = highLineStyle;
+			
+			highPlot.dataSource = self;
+			highPlot.delegate = self;
+			
+			if ([self.displayedDataSeries indexOfObject:seriesNum] == 0){
+				highPlot.plotSymbolMarginForHitDetection = 15.0f;
+				CPTPlotSymbol *plotSymbol = [CPTPlotSymbol ellipsePlotSymbol];
+				plotSymbol.fill               = [CPTFill fillWithColor:[CPTColor colorWithCGColor:[[UIColor colorWithWhite:.9 alpha:1] CGColor]]];
+				plotSymbol.size               = CGSizeMake(4.0, 4.0);
+				highPlot.plotSymbol = plotSymbol;
+			}
 
-		CPTMutableLineStyle *highLineStyle = [highPlot.dataLineStyle mutableCopy];
-		highLineStyle.lineWidth = 2.f;
-	//    highLineStyle.interpolation = CPTScatterPlotInterpolationCurved;
-		if (greyMode){
-			highLineStyle.lineColor = [CPTColor colorWithCGColor:[[UIColor colorWithWhite:.4 alpha:.1] CGColor]];
-		}else{
-			highLineStyle.lineColor = [CPTColor colorWithComponentRed:0.50f green:0.67f blue:0.65f alpha:1.0f];
+			
+			CPTFill *areaFill = nil;
+			
+			if (greyMode){
+				areaFill = 	[CPTFill fillWithColor:[CPTColor colorWithCGColor:[[UIColor colorWithWhite:.4 alpha:.4] CGColor]]];
+			}else{
+				//areaFill = [CPTFill fillWithColor:[CPTColor colorWithComponentRed:0.50f green:0.67f blue:0.65f alpha:0.4f]];
+				UIColor * color = [[[self delegate] colorFordisplayedSeriesNumber:seriesNum forPlot:self] colorWithAlphaComponent:.4];
+				areaFill = [CPTFill fillWithColor:[CPTColor colorWithCGColor:[color CGColor]]];
+
+			}
+			
+			highPlot.areaFill = areaFill;
+			highPlot.areaBaseValue = CPTDecimalFromString(@"0");
+			[graph addPlot:highPlot];
+			[plots addObject:highPlot];
 		}
-		highPlot.dataLineStyle = highLineStyle;
-
-		highPlot.dataSource = self;
-		highPlot.delegate = self;
-		highPlot.plotSymbolMarginForHitDetection = 15.0f;
-		CPTPlotSymbol *plotSymbol = [CPTPlotSymbol ellipsePlotSymbol];
-		plotSymbol.fill               = [CPTFill fillWithColor:[CPTColor colorWithCGColor:[[UIColor colorWithWhite:.9 alpha:1] CGColor]]];
-		plotSymbol.size               = CGSizeMake(4.0, 4.0);
-		highPlot.plotSymbol = plotSymbol;
-		
-		
-		
-		CPTFill *areaFill = nil;
-		
-		if (greyMode){
-			areaFill = 	[CPTFill fillWithColor:[CPTColor colorWithCGColor:[[UIColor colorWithWhite:.4 alpha:.4] CGColor]]];
-		}else{
-			areaFill = [CPTFill fillWithColor:[CPTColor colorWithComponentRed:0.50f green:0.67f blue:0.65f alpha:0.4f]];
-		}
-		
-		highPlot.areaFill = areaFill;
-		highPlot.areaBaseValue = CPTDecimalFromString(@"0");
-		[graph addPlot:highPlot];
-
-		
+		self.seriesScatterPlots = plots;
     
 	}
 
@@ -267,10 +274,9 @@
 
 - (void)scatterPlot:(CPTScatterPlot *)plot plotSymbolWasSelectedAtRecordIndex:(NSUInteger)index
 {
-	if ([(NSString *)plot.identifier isEqualToString:kHighPlot]){
+//	if ([(NSNumber *)plot.identifier isEqualToNumber:@(0)]){
 		if ([delegate respondsToSelector:@selector(linePlot:indexLocation:)])
             [delegate linePlot:self indexLocation:index];
-	}
 }
 
 
@@ -280,28 +286,25 @@
 
 - (NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot 
 {
-    if ([(NSString *)plot.identifier isEqualToString:kHighPlot]) 
-    {
-        return [[self.displayedDataBySeries objectForKey:[self.displayedDataSeries objectAtIndex:0]] count];
-    }
-	return 0;
+	NSNumber * plotIdent = (NSNumber*) plot.identifier;
+	return [[self.displayedDataBySeries objectForKey:plotIdent] count];
 }
 
 - (NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index 
 {
+	NSNumber * plotIdent = (NSNumber*) plot.identifier;
+
     NSNumber *num = nil;
-    if ( [(NSString *)plot.identifier isEqualToString:kHighPlot] )
-    {
-		NSDictionary * recordDict = [[self.displayedDataBySeries objectForKey:[self.displayedDataSeries objectAtIndex:0]] objectAtIndex:index];
-        if ( fieldEnum == CPTScatterPlotFieldY )
-        {
-            num = [recordDict objectForKey:@"value"];
-        } 
-        else if (fieldEnum == CPTScatterPlotFieldX) 
-        {
-            num = [recordDict objectForKey:@"weekspast"];
-        }
-    }
+	NSDictionary * recordDict = [[self.displayedDataBySeries objectForKey:plotIdent] objectAtIndex:index];
+	if ( fieldEnum == CPTScatterPlotFieldY )
+	{
+		//do the piling onto of others besides index 0 -- make special function to do it
+		num = [recordDict objectForKey:@"value"];
+	} 
+	else if (fieldEnum == CPTScatterPlotFieldX) 
+	{
+		num = [recordDict objectForKey:@"weekspast"];
+	}
 
     return num;
 }

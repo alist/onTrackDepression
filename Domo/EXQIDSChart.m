@@ -10,7 +10,9 @@
 #import "EXQIDSManager.h"
 #import "EXQIDSSubmission.h"
 
-@implementation EXQIDSChart
+@implementation EXQIDSChart{
+	EskPlotTheme *defaultTheme;
+}
 @synthesize datasource,delegate;
 @synthesize linePlot;
 @synthesize displayedDataStartDate, displayedDataTimeLength;
@@ -20,7 +22,7 @@
 	if (self= [super initWithFrame:frame]){
 		self.datasource = [[EXQIDSChartDatasource alloc] init];
 		
-		EskPlotTheme *defaultTheme = [[EskPlotTheme alloc] init];
+		defaultTheme = [[EskPlotTheme alloc] init];
 		
 		self.displayedSeries = [@[@(0)] mutableCopy];
 		self.linePlot = [[EskLinePlot alloc] initWithDelegate:self];
@@ -34,7 +36,22 @@
 
 -(void) reloadData{
 	
+	
+	
 	[self.linePlot reloadData];
+
+	//reload plot
+	CPTGraphHostingView * plotView = self;
+	[UIView animateWithDuration:.1 animations:^{
+		plotView.alpha = 0;
+	} completion:^(BOOL finished) {
+		if (finished){
+			[linePlot renderInLayer:plotView withTheme:defaultTheme];
+		}
+		[UIView animateWithDuration:.3 animations:^{
+			plotView.alpha = 1;
+		}];
+	}];
 }
 
 
@@ -62,24 +79,31 @@
 	self.displayedDataStartDate = [NSDate dateWithTimeIntervalSinceNow:(-1*displayedDataStartInterval)];
 	self.displayedDataTimeLength = displayedTimeInterval;
 	
-	if ([dataSeries intValue] == 0){
+	NSArray * qidsSubmissions = [datasource QIDSSubmissionsBetweenOlderDate:self.displayedDataStartDate newerDate:[self.displayedDataStartDate dateByAddingTimeInterval:self.displayedDataTimeLength]];
+	NSMutableArray * submissionValueArray = [NSMutableArray array];
+	
+	NSNumber * (^extractValueBlock)(EXQIDSSubmission * a) = nil;
+	NSString* dataKeypath = [[[self seriesOptions] objectAtIndex:[dataSeries intValue]] valueForKey:@"objkey"];
+	if (dataKeypath){
+		extractValueBlock = ^NSNumber * (EXQIDSSubmission * a){
+			return [a valueForKey:dataKeypath];
+		};
+	}
+	
+	for (EXQIDSSubmission * qids in qidsSubmissions){
+		double weeksPast = [[qids completionDate] timeIntervalSinceNow] * -1 * 1.0/(60*60*24*7);
 		
-		NSArray * qidsSubmissions = [datasource QIDSSubmissionsBetweenOlderDate:self.displayedDataStartDate newerDate:[self.displayedDataStartDate dateByAddingTimeInterval:self.displayedDataTimeLength]];
-		
-		
-		NSMutableArray * qidsValueArray = [NSMutableArray array];
-		
-		for (EXQIDSSubmission * qids in qidsSubmissions){
-			double weeksPast = [[qids completionDate] timeIntervalSinceNow] * -1 * 1.0/(60*60*24*7);
-			
-			[qidsValueArray addObject:@{@"value" : [qids qidsValue], @"weekspast": @(weeksPast)}];
-		}
-		
-        return qidsValueArray;
-        
+		[submissionValueArray addObject:@{@"value" : extractValueBlock(qids), @"weekspast": @(weeksPast)}];
+	}
+	
+	return submissionValueArray;
 
-	}	
 	return nil;
+}
+
+-(UIColor*) colorFordisplayedSeriesNumber:(NSNumber*)seriesNum forPlot:(EskLinePlot*)plot{
+	NSDictionary* options =  [self.seriesOptions objectAtIndex:seriesNum.intValue];
+	return [options valueForKey:@"color"];
 }
 
 //returns integer NSNumber array of displayed data series
@@ -107,6 +131,7 @@
 	}
 	
 	[self.delegate reloadSeriesDisplayFromQIDSChart:self];
+	[self reloadData];
 }
 
 

@@ -24,6 +24,7 @@
 //returns integer NSNumber array of displayed data series
 -(NSArray*) displayedSeriesForPlot:(EskLinePlot*)plot;
 
+-(UIColor*) colorFordisplayedSeriesNumber:(NSNumber*)seriesNum forPlot:(EskLinePlot*)plot;
 @end
 
 
@@ -33,13 +34,15 @@
 {
   @private
     CPTGraph *graph;
-    //should make this an array of plots
-	CPTScatterPlot *linePlot;
+	
+	// array of	CPTScatterPlot *
 	
 		
 }
 
 @property (nonatomic, strong) id<EskLinePlotDelegate> delegate;
+
+@property (nonatomic, strong)	NSArray * seriesScatterPlots;
 
 //loc = weeks in past; len = additional weeks in past starting at loc
 @property (nonatomic, assign) NSRange	displayedWeekRange;
