@@ -135,7 +135,13 @@
 			if (greyMode){
 				highLineStyle.lineColor = [CPTColor colorWithCGColor:[[UIColor colorWithWhite:.4 alpha:.1] CGColor]];
 			}else{
-				highLineStyle.lineColor = [CPTColor colorWithCGColor:[[[self delegate] colorFordisplayedSeriesNumber:seriesNum forPlot:self] CGColor]];
+				if ([self.displayedDataSeries indexOfObject:seriesNum]  == 0){ //only line on top layer
+					highLineStyle.lineColor = [CPTColor colorWithCGColor:[[[self delegate] colorFordisplayedSeriesNumber:seriesNum forPlot:self] CGColor]];
+				}else{
+					highLineStyle.lineColor = [CPTColor colorWithCGColor:[UIColor.clearColor CGColor]];
+//					highLineStyle.lineColor = [CPTColor colorWithCGColor:[[[[self delegate] colorFordisplayedSeriesNumber:seriesNum forPlot:self] colorWithAlphaComponent:.2] CGColor]];
+
+				}
 			}
 			highPlot.dataLineStyle = highLineStyle;
 			
