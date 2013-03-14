@@ -75,10 +75,8 @@
 		794F711A16A4D7DB00F29BB6 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 794F711716A4D7B000F29BB6 /* libCorePlot-CocoaTouch.a */; };
 		794F711D16A4D7EC00F29BB6 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 794F711716A4D7B000F29BB6 /* libCorePlot-CocoaTouch.a */; };
 		794F716516A75AD800F29BB6 /* EskPlotTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F716016A75AD800F29BB6 /* EskPlotTheme.m */; };
-		794F716616A75AD800F29BB6 /* EskBarPlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F716216A75AD800F29BB6 /* EskBarPlot.m */; };
 		794F716716A75AD800F29BB6 /* EskLinePlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F716416A75AD800F29BB6 /* EskLinePlot.m */; };
 		794F716816A75B7700F29BB6 /* EskPlotTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F716016A75AD800F29BB6 /* EskPlotTheme.m */; };
-		794F716916A75B7700F29BB6 /* EskBarPlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F716216A75AD800F29BB6 /* EskBarPlot.m */; };
 		794F716A16A75B7700F29BB6 /* EskLinePlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F716416A75AD800F29BB6 /* EskLinePlot.m */; };
 		794F718816A7600200F29BB6 /* EXQIDSChartDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F718716A7600100F29BB6 /* EXQIDSChartDatasource.m */; };
 		794F718916A7600200F29BB6 /* EXQIDSChartDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F718716A7600100F29BB6 /* EXQIDSChartDatasource.m */; };
@@ -317,8 +315,6 @@
 		794F710D16A4D7AC00F29BB6 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "core-plot/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		794F715F16A75AD800F29BB6 /* EskPlotTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EskPlotTheme.h; sourceTree = "<group>"; };
 		794F716016A75AD800F29BB6 /* EskPlotTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EskPlotTheme.m; sourceTree = "<group>"; };
-		794F716116A75AD800F29BB6 /* EskBarPlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EskBarPlot.h; sourceTree = "<group>"; };
-		794F716216A75AD800F29BB6 /* EskBarPlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EskBarPlot.m; sourceTree = "<group>"; };
 		794F716316A75AD800F29BB6 /* EskLinePlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EskLinePlot.h; sourceTree = "<group>"; };
 		794F716416A75AD800F29BB6 /* EskLinePlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EskLinePlot.m; sourceTree = "<group>"; };
 		794F718616A7600100F29BB6 /* EXQIDSChartDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXQIDSChartDatasource.h; sourceTree = "<group>"; };
@@ -727,8 +723,6 @@
 			children = (
 				794F715F16A75AD800F29BB6 /* EskPlotTheme.h */,
 				794F716016A75AD800F29BB6 /* EskPlotTheme.m */,
-				794F716116A75AD800F29BB6 /* EskBarPlot.h */,
-				794F716216A75AD800F29BB6 /* EskBarPlot.m */,
 				794F716316A75AD800F29BB6 /* EskLinePlot.h */,
 				794F716416A75AD800F29BB6 /* EskLinePlot.m */,
 			);
@@ -1262,7 +1256,6 @@
 				7954647B16A2348300E3926A /* MagicalRecord.m in Sources */,
 				7954648216A35A3D00E3926A /* EXQIDSNoteSubmitPage.m in Sources */,
 				794F716816A75B7700F29BB6 /* EskPlotTheme.m in Sources */,
-				794F716916A75B7700F29BB6 /* EskBarPlot.m in Sources */,
 				794F716A16A75B7700F29BB6 /* EskLinePlot.m in Sources */,
 				794F718816A7600200F29BB6 /* EXQIDSChartDatasource.m in Sources */,
 				794F718C16A760D500F29BB6 /* EXQIDSChart.m in Sources */,
@@ -1289,7 +1282,6 @@
 				79C0250416A0ED0E00EC138F /* EXQIDSQuestionPage.m in Sources */,
 				7954648316A35A3D00E3926A /* EXQIDSNoteSubmitPage.m in Sources */,
 				794F716516A75AD800F29BB6 /* EskPlotTheme.m in Sources */,
-				794F716616A75AD800F29BB6 /* EskBarPlot.m in Sources */,
 				794F716716A75AD800F29BB6 /* EskLinePlot.m in Sources */,
 				794F718916A7600200F29BB6 /* EXQIDSChartDatasource.m in Sources */,
 				794F718D16A760D500F29BB6 /* EXQIDSChart.m in Sources */,

@@ -10,7 +10,7 @@
 
 
 #define DEV_STATE_RESET 1
-#define DEV_GEN_DATA  0
+#define DEV_GEN_DATA  1
 
 #ifdef RELEASE
 #ifdef DEV_STATE_RESET

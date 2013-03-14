@@ -55,8 +55,14 @@
 	self.analyzeVC	= [[EXReviewVC alloc] init];
 	self.improveVC	= [[EXImproveVC alloc] init];
 	
+	UINavigationController * trackNavVC = [[UINavigationController alloc] initWithRootViewController:self.trackVC];
+	UINavigationController * analyzeNavVC = [[UINavigationController alloc] initWithRootViewController:self.analyzeVC];
 	
-	NSArray * VCs = @[self.trackVC, self.analyzeVC,self.improveVC];
+	[[trackNavVC navigationBar] setTintColor:[UIColor colorWithRed:1 green:0 blue:.3 alpha:1]];
+	[[analyzeNavVC navigationBar] setTintColor:[UIColor colorWithRed:1 green:0 blue:.3 alpha:1]];
+	
+	NSArray * VCs = @[trackNavVC, analyzeNavVC];
+	
 	
 	if (deviceIsPad){
 		self.navSideBarPad	= [[CKSideBarController alloc] init];

@@ -61,6 +61,7 @@ static const CGRect formQuestionDimensionsLandscape = {{0,0},{400, 200}};
 -(id)init{
 	if (self = [super initWithPresentedAppTab:domoAppTabTrack]){
 		[self setTitle:NSLocalizedString(@"Track", @"navigation bar title")];
+		self.navigationItem.title = NSLocalizedString(@"onTrack: Depression", @"review tab header for entire page");
 		
 	}
 	return self;

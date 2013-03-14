@@ -95,7 +95,14 @@
 		// Use custom x-axis label so it will display year 2010, 2011, 2012, ... instead of 1, 2, 3, 4
 		NSMutableArray *labels = [[NSMutableArray alloc] initWithCapacity:[delegate weekRangeForPlot:self].length];
 		for (int i = [delegate weekRangeForPlot:self].location; i < [delegate weekRangeForPlot:self].location + [delegate weekRangeForPlot:self].length; i++){
-			CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%i",i] textStyle:x.labelTextStyle];
+			
+			
+			CPTAxisLabel *label = nil;
+			if (i == 0){
+				label = [[CPTAxisLabel alloc] initWithText:NSLocalizedString(@"today", @"today string") textStyle:x.labelTextStyle];
+			}else{
+				label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%i",i] textStyle:x.labelTextStyle];
+			}
 			label.tickLocation = CPTDecimalFromInt(i);
 			label.offset = 5.0f;
 			[labels addObject:label];

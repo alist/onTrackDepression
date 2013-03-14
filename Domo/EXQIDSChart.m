@@ -39,7 +39,7 @@
 }
 
 -(void) reloadData{
-	NSInteger weekRange = (int) ceil([self.datasource secondsSinceFirstQIDSSubmission] * -1 /(7 * 24 * 60 * 60)) +1;
+	NSInteger weekRange =  MAX((int) ceil([self.datasource secondsSinceFirstQIDSSubmission] * -1 /(7 * 24 * 60 * 60)) +1, 2);
 	self.displayedWeekRange = NSMakeRange(0, weekRange);
 	
 	
@@ -103,15 +103,7 @@
 	
 	NSArray * qidsSubmissions = [datasource QIDSSubmissionsBetweenOlderDate:self.displayedDataStartDate newerDate:[self.displayedDataStartDate dateByAddingTimeInterval:self.displayedDataTimeLength]];
 	NSMutableArray * submissionValueArray = [NSMutableArray array];
-	
-//	NSNumber * (^extractValueBlock)(EXQIDSSubmission * a) = nil;
-//	NSString* dataKeypath = [[[self seriesOptions] objectAtIndex:[dataSeries intValue]] valueForKey:@"objkey"];
-//	if (dataKeypath){
-//		extractValueBlock = ^NSNumber * (EXQIDSSubmission * a){
-//			return [a valueForKey:dataKeypath];
-//		};
-//	}
-	
+		
 	for (EXQIDSSubmission * qids in qidsSubmissions){
 		double weeksPast = [[qids completionDate] timeIntervalSinceNow] * -1 * 1.0/(60*60*24*7);
 		

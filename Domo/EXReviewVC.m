@@ -111,11 +111,7 @@
 	
 	MGTableBox * layout = MGTableBox.box;
 	[layout setLeftMargin:(deviceIsPad)?CHART_MARGIN_IPAD:CHART_MARGIN_POD];
-	
-	self.qidsGraphHeader = [MGLineStyled lineWithLeft:NSLocalizedString(@"Review Progress by weeks ago", @"review tab header for reviewing progress on graph") right:nil size:CGSizeMake(CHART_SIZE_IPAD_PORTRAIT.width ,self.rowSize.height)];
-	self.qidsGraphHeader.font = self.headerFont;
-	[layout.topLines addObject:self.qidsGraphHeader];
-	
+		
 	__weak MGLineStyled *chartDisplayBox = [MGLineStyled lineWithSize:(deviceIsPad)?CHART_SIZE_IPAD_PORTRAIT:CHART_SIZE_POD_PORTRAIT];
 	[chartDisplayBox setBottomMargin:13];
 	chartDisplayBox.asyncLayout = ^{
@@ -179,6 +175,8 @@
 -(id)init{
 	if (self = [super initWithPresentedAppTab:domoAppTabReview]){
 		[self setTitle:NSLocalizedString(@"Review", @"navigation bar title")];
+		self.navigationItem.title = NSLocalizedString(@"progress by weeks ago", @"review tab header for reviewing progress on graph");
+		
 		self.rowSize =  (CGSize){225, 44};
 		
 		self.dataNeedsRefresh = FALSE; //automatically fresh on first run
