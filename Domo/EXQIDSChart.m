@@ -39,7 +39,8 @@
 }
 
 -(void) reloadData{
-	
+	NSInteger weekRange = (int) ceil([self.datasource secondsSinceFirstQIDSSubmission] * -1 /(7 * 24 * 60 * 60)) +1;
+	self.displayedWeekRange = NSMakeRange(0, weekRange);
 	
 	
 	[self.linePlot reloadData];

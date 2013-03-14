@@ -27,17 +27,20 @@
     static NSString * storeName = @"onTrack-depression.sqlite";
 	//	[MagicalRecord setupCoreDataStackWithiCloudContainer:@"A7426L9B95.com.exomachina.domodepression.ubiquitycoredata" localStoreNamed:storeName];
     
-	#ifdef DEV_STATE_RESET
+	#if DEV_STATE_RESET == 1
     NSURL *url = [NSPersistentStore MR_urlForStoreName:storeName];
-    [[NSFileManager new] removeItemAtURL:url error:nil];
+	NSError * deleteErr = nil;
+    [[NSFileManager new] removeItemAtURL:url error:&deleteErr];
+	if (deleteErr)
+		NSLog(@"db didn't exist or something %@",deleteErr);
 	#endif
     
 	[MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:storeName];
 	self.managedObjectContext = [NSManagedObjectContext MR_defaultContext];
 	
 	self.qidsManager = [[EXQIDSManager alloc] init];
-	#ifdef DEV_STATE_RESET
-	#ifdef DEV_GEN_DATA
+	#if DEV_STATE_RESET == 1
+	#if DEV_GEN_DATA == 1
 	[self.qidsManager generateDataSetForAuthor:self.authorForCurrentUser];
 	#endif
 	#endif

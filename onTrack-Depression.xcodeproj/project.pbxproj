@@ -80,14 +80,6 @@
 		794F716816A75B7700F29BB6 /* EskPlotTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F716016A75AD800F29BB6 /* EskPlotTheme.m */; };
 		794F716916A75B7700F29BB6 /* EskBarPlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F716216A75AD800F29BB6 /* EskBarPlot.m */; };
 		794F716A16A75B7700F29BB6 /* EskLinePlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F716416A75AD800F29BB6 /* EskLinePlot.m */; };
-		794F717E16A75D5700F29BB6 /* Ingleby_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794F717A16A75D5700F29BB6 /* Ingleby_bold.ttf */; };
-		794F717F16A75D5700F29BB6 /* Ingleby_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794F717A16A75D5700F29BB6 /* Ingleby_bold.ttf */; };
-		794F718016A75D5700F29BB6 /* Ingleby_bold_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794F717B16A75D5700F29BB6 /* Ingleby_bold_italic.ttf */; };
-		794F718116A75D5700F29BB6 /* Ingleby_bold_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794F717B16A75D5700F29BB6 /* Ingleby_bold_italic.ttf */; };
-		794F718216A75D5700F29BB6 /* Ingleby_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794F717C16A75D5700F29BB6 /* Ingleby_italic.ttf */; };
-		794F718316A75D5700F29BB6 /* Ingleby_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794F717C16A75D5700F29BB6 /* Ingleby_italic.ttf */; };
-		794F718416A75D5700F29BB6 /* Ingleby_regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794F717D16A75D5700F29BB6 /* Ingleby_regular.ttf */; };
-		794F718516A75D5700F29BB6 /* Ingleby_regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794F717D16A75D5700F29BB6 /* Ingleby_regular.ttf */; };
 		794F718816A7600200F29BB6 /* EXQIDSChartDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F718716A7600100F29BB6 /* EXQIDSChartDatasource.m */; };
 		794F718916A7600200F29BB6 /* EXQIDSChartDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F718716A7600100F29BB6 /* EXQIDSChartDatasource.m */; };
 		794F718C16A760D500F29BB6 /* EXQIDSChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 794F718B16A760D300F29BB6 /* EXQIDSChart.m */; };
@@ -327,10 +319,6 @@
 		794F716216A75AD800F29BB6 /* EskBarPlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EskBarPlot.m; sourceTree = "<group>"; };
 		794F716316A75AD800F29BB6 /* EskLinePlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EskLinePlot.h; sourceTree = "<group>"; };
 		794F716416A75AD800F29BB6 /* EskLinePlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EskLinePlot.m; sourceTree = "<group>"; };
-		794F717A16A75D5700F29BB6 /* Ingleby_bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ingleby_bold.ttf; sourceTree = "<group>"; };
-		794F717B16A75D5700F29BB6 /* Ingleby_bold_italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ingleby_bold_italic.ttf; sourceTree = "<group>"; };
-		794F717C16A75D5700F29BB6 /* Ingleby_italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ingleby_italic.ttf; sourceTree = "<group>"; };
-		794F717D16A75D5700F29BB6 /* Ingleby_regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ingleby_regular.ttf; sourceTree = "<group>"; };
 		794F718616A7600100F29BB6 /* EXQIDSChartDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXQIDSChartDatasource.h; sourceTree = "<group>"; };
 		794F718716A7600100F29BB6 /* EXQIDSChartDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXQIDSChartDatasource.m; sourceTree = "<group>"; };
 		794F718A16A760D200F29BB6 /* EXQIDSChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXQIDSChart.h; sourceTree = "<group>"; };
@@ -744,10 +732,6 @@
 		794F717916A75D5700F29BB6 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				794F717A16A75D5700F29BB6 /* Ingleby_bold.ttf */,
-				794F717B16A75D5700F29BB6 /* Ingleby_bold_italic.ttf */,
-				794F717C16A75D5700F29BB6 /* Ingleby_italic.ttf */,
-				794F717D16A75D5700F29BB6 /* Ingleby_regular.ttf */,
 			);
 			path = fonts;
 			sourceTree = "<group>";
@@ -1160,10 +1144,6 @@
 				794F6F5316A4586200F29BB6 /* MNMRadioGroupSelected@2x.png in Resources */,
 				794F6F5416A4586200F29BB6 /* MNMRadioGroupUnselected.png in Resources */,
 				794F6F5516A4586200F29BB6 /* MNMRadioGroupUnselected@2x.png in Resources */,
-				794F717E16A75D5700F29BB6 /* Ingleby_bold.ttf in Resources */,
-				794F718016A75D5700F29BB6 /* Ingleby_bold_italic.ttf in Resources */,
-				794F718216A75D5700F29BB6 /* Ingleby_italic.ttf in Resources */,
-				794F718416A75D5700F29BB6 /* Ingleby_regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1186,10 +1166,6 @@
 				7935E5D81698882300FA871F /* greyfloral.png in Resources */,
 				7935E5DC1698882E00FA871F /* crisp_paper_ruffles@2X.png in Resources */,
 				7935E5DE1698882E00FA871F /* crisp_paper_ruffles.png in Resources */,
-				794F717F16A75D5700F29BB6 /* Ingleby_bold.ttf in Resources */,
-				794F718116A75D5700F29BB6 /* Ingleby_bold_italic.ttf in Resources */,
-				794F718316A75D5700F29BB6 /* Ingleby_italic.ttf in Resources */,
-				794F718516A75D5700F29BB6 /* Ingleby_regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
