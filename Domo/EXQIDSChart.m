@@ -25,7 +25,7 @@
 		defaultTheme = [[EskPlotTheme alloc] init];
 		
 		
-		NSInteger weekRange = (int) ceil([self.datasource secondsSinceFirstQIDSSubmission] * -1 /(7 * 24 * 60 * 60)) +1;
+		NSInteger weekRange =  MAX((int) ceil([self.datasource secondsSinceFirstQIDSSubmission] * -1 /(7 * 24 * 60 * 60)) +1, 2);
 
 		self.displayedWeekRange = NSMakeRange(0, weekRange);
 		
