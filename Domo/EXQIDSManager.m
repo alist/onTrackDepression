@@ -10,6 +10,10 @@
 #import "EXAuthor.h"
 #import <RestKit/RestKit.h>
 
+
+#define EXQIDSManager_Generated_QIDS_Count 100
+#define EXQIDSManager_Generated_QIDS_Time_Spacing 18*60*60
+
 @interface EXQIDSManager ()
 
 @end
@@ -57,6 +61,28 @@
 }
 
 -(BOOL) submitQIDSAsComplete:(EXQIDSSubmission*)submission{
+	
+	BOOL complete = [self processQIDSSubmissionForComplete:submission];
+	if (!complete)
+		return FALSE;
+	
+	NSDate * date = [NSDate date];
+
+	[submission setCompletionDate:date];
+
+	if ([[submission author] firstQIDSDate] == nil){
+		[[submission author] setFirstQIDSDate:date];
+	}
+	[[submission author] setLastQIDSDate:date];
+	
+	[[submission managedObjectContext] saveOnlySelfWithCompletion:nil];
+	
+	[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:newQIDSSubmittedNotification object:[submission objectID]]];
+	
+	return TRUE;
+}
+
+-(BOOL)processQIDSSubmissionForComplete:(EXQIDSSubmission*)submission{
 	int sleepQualityScore = 0;
 	int weightMaintenanceScore = 0;
 	int psychomotorScore = 0;
@@ -86,20 +112,9 @@
 	
 	severityIndex = (double)totalScore/ 5.5; //to normalize < 5
 	
-	NSDate * date = [NSDate date];
-	[submission setCompletionDate:date];
 	[submission setQidsSeverity:@(severityIndex)];
 	[submission setQidsValue:@(totalScore)];
-	
-	if ([[submission author] firstQIDSDate] == nil){
-		[[submission author] setFirstQIDSDate:date];
-	}
-	[[submission author] setLastQIDSDate:date];
-	
-	[[submission managedObjectContext] saveOnlySelfWithCompletion:nil];
-	
-	[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:newQIDSSubmittedNotification object:[submission objectID]]];
-	
+
 	return TRUE;
 }
 
@@ -109,6 +124,26 @@
 	
 	return lastSubmission;
 
+}
+
+-(void) generateDataSetForAuthor:(EXAuthor*)author{
+
+	for (int i= 0; i< EXQIDSManager_Generated_QIDS_Count; i++) {
+		EXQIDSSubmission * newSubmission = [EXQIDSSubmission createInContext:[author managedObjectContext]];
+		[newSubmission setAuthor:author];
+		for (NSInteger q = 0; q < self.questions.count; q++){
+			int response =   arc4random()%4;
+			[newSubmission setQuestionResponse:@(response) forQuesitonNumber:q];
+		}
+		[self processQIDSSubmissionForComplete:newSubmission];
+	
+		double timeInterval = (double)(EXQIDSManager_Generated_QIDS_Time_Spacing * -1 * i);
+		NSDate * qidsDate = [NSDate dateWithTimeIntervalSinceNow:timeInterval];
+		[newSubmission setDueDate:qidsDate];
+		[newSubmission setCompletionDate:qidsDate];
+	}
+	[[author managedObjectContext] saveOnlySelfWithCompletion:nil];
+	
 }
 
 @end

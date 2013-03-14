@@ -1435,7 +1435,6 @@
 		79A6E3F816973E5B00AA68D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Domo Depression.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "Domo/Domo Depression-Prefix.pch";
@@ -1444,6 +1443,7 @@
 					"./**",
 				);
 				INFOPLIST_FILE = "Domo/Domo Depression-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -1457,7 +1457,6 @@
 		79A6E3F916973E5B00AA68D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Domo Depression.entitlements";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "Domo/Domo Depression-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1465,6 +1464,7 @@
 					"./**",
 				);
 				INFOPLIST_FILE = "Domo/Domo Depression-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

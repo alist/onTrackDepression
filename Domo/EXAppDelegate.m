@@ -24,11 +24,23 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//	[MagicalRecord setupCoreDataStackWithiCloudContainer:@"A7426L9B95.com.exomachina.domodepression.ubiquitycoredata" localStoreNamed:@"Domo_Depression.sqlite"];
-	[MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Domo_Depression.sqlite"];
+    static NSString * storeName = @"onTrack-depression.sqlite";
+	//	[MagicalRecord setupCoreDataStackWithiCloudContainer:@"A7426L9B95.com.exomachina.domodepression.ubiquitycoredata" localStoreNamed:storeName];
+    
+	#ifdef DEV_STATE_RESET
+    NSURL *url = [NSPersistentStore MR_urlForStoreName:storeName];
+    [[NSFileManager new] removeItemAtURL:url error:nil];
+	#endif
+    
+	[MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:storeName];
 	self.managedObjectContext = [NSManagedObjectContext MR_defaultContext];
 	
 	self.qidsManager = [[EXQIDSManager alloc] init];
+	#ifdef DEV_STATE_RESET
+	#ifdef DEV_GEN_DATA
+	[self.qidsManager generateDataSetForAuthor:self.authorForCurrentUser];
+	#endif
+	#endif
 	
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	

@@ -177,6 +177,7 @@
 -(MGBox*)boxFromMessageDict:(NSDictionary*)dict{
 	// make the section
 	MGTableBoxStyled *section = MGTableBoxStyled.box;
+	[section setBackgroundColor:[UIColor clearColor]];
 	
 	UIImageView * sourceImageView = nil;
 	if ([dict objectForKey:@"imageURI"]){
