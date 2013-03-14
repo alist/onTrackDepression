@@ -1055,7 +1055,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = ExoMachina;
 			};
-			buildConfigurationList = 79A6E3B816973E5B00AA68D7 /* Build configuration list for PBXProject "Domo Depression" */;
+			buildConfigurationList = 79A6E3B816973E5B00AA68D7 /* Build configuration list for PBXProject "onTrack-Depression" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1519,7 +1519,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		79A6E3B816973E5B00AA68D7 /* Build configuration list for PBXProject "Domo Depression" */ = {
+		79A6E3B816973E5B00AA68D7 /* Build configuration list for PBXProject "onTrack-Depression" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				79A6E3F516973E5B00AA68D7 /* Debug */,

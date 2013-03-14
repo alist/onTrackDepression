@@ -43,4 +43,15 @@
 	return submissions;
 }
 
+-(NSTimeInterval) secondsSinceFirstQIDSSubmission{
+
+	
+	EXQIDSSubmission * submission = [EXQIDSSubmission findFirstWithPredicate:[NSPredicate predicateWithFormat:@"completionDate != nil"] sortedBy:@"completionDate" ascending:TRUE];
+	
+	NSTimeInterval secondsSince = [[submission completionDate] timeIntervalSinceNow];
+
+	return secondsSince;
+	
+}
+
 @end

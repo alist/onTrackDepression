@@ -27,6 +27,7 @@
 
 -(UIColor*) colorFordisplayedSeriesNumber:(NSNumber*)seriesNum forPlot:(EskLinePlot*)plot;
 
+-(NSRange) weekRangeForPlot:(EskLinePlot*)plot;
 @end
 
 
@@ -46,8 +47,6 @@
 
 @property (nonatomic, strong)	NSArray * seriesScatterPlots;
 
-//loc = weeks in past; len = additional weeks in past starting at loc
-@property (nonatomic, assign) NSRange	displayedWeekRange;
 
 //{series <NSNumber>: array[datapoints for series]} each datapoint array elements of 2 element array--> containing[0]-> the timestamp for datapoint in days past, [1]-> y value for that point in the series
 @property (nonatomic, strong) NSMutableDictionary * displayedDataBySeries;

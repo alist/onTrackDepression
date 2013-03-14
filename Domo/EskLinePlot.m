@@ -13,7 +13,7 @@
 @implementation EskLinePlot
 
 @synthesize delegate;
-@synthesize displayedWeekRange, displayedDataSeries,displayedDataBySeries;
+@synthesize displayedDataSeries,displayedDataBySeries;
 @synthesize seriesScatterPlots;
 
 - (id)initWithDelegate:(id<EskLinePlotDelegate>)theDelegate
@@ -21,9 +21,7 @@
     self = [super init];
     if (self) {
 		
-		self.delegate = theDelegate;
-        self.displayedWeekRange = NSMakeRange(0, 7);
-		
+		self.delegate = theDelegate;		
 		[self reloadData];
 				
 	}
@@ -36,7 +34,7 @@
 	self.displayedDataBySeries = [NSMutableDictionary dictionaryWithCapacity:[self.displayedDataSeries count]];
 	
 	for (NSNumber * series in self.displayedDataSeries){
-		NSArray * seriesData = [delegate dataForSeries:series forPlot:self forWeekRange:self.displayedWeekRange];
+		NSArray * seriesData = [delegate dataForSeries:series forPlot:self forWeekRange:[delegate weekRangeForPlot:self]];
 		[self.displayedDataBySeries setObject:seriesData forKey:series];
 	}
 	
@@ -71,7 +69,7 @@
 		CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
 		plotSpace.allowsUserInteraction = YES;
 		plotSpace.delegate = self;
-		plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-0.1f) length:CPTDecimalFromFloat((float)self.displayedWeekRange.length - 1.0f + 0.2f)];//a bit more on right than zero
+		plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-0.1f) length:CPTDecimalFromFloat((float)[delegate weekRangeForPlot:self].length - 1.0f + 0.2f)];//a bit more on right than zero
 		plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0.0f) length:CPTDecimalFromFloat(30.0f)];
 
 		
@@ -95,8 +93,8 @@
 		x.labelExclusionRanges = exclusionRanges;
 		
 		// Use custom x-axis label so it will display year 2010, 2011, 2012, ... instead of 1, 2, 3, 4
-		NSMutableArray *labels = [[NSMutableArray alloc] initWithCapacity:self.displayedWeekRange.length];
-		for (int i = self.displayedWeekRange.location; i < self.displayedWeekRange.location + self.displayedWeekRange.length; i++){
+		NSMutableArray *labels = [[NSMutableArray alloc] initWithCapacity:[delegate weekRangeForPlot:self].length];
+		for (int i = [delegate weekRangeForPlot:self].location; i < [delegate weekRangeForPlot:self].location + [delegate weekRangeForPlot:self].length; i++){
 			CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%i",i] textStyle:x.labelTextStyle];
 			label.tickLocation = CPTDecimalFromInt(i);
 			label.offset = 5.0f;

@@ -28,8 +28,14 @@
 
 @property (nonatomic, retain) EXQIDSChartDatasource * datasource;
 @property (nonatomic, weak) id<EXQIDSChartDelegate> delegate;
+
+//loc = weeks in past; len = additional weeks in past starting at loc
+@property (nonatomic, assign) NSRange	displayedWeekRange;
+
+//set automatically don't modify
 @property (nonatomic, strong) NSDate * displayedDataStartDate;
 @property (nonatomic, assign) NSTimeInterval displayedDataTimeLength; //in seconds
+
 
 
 //nsarray of prioritized series ID NSNumbers

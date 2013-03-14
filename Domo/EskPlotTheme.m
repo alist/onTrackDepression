@@ -19,52 +19,54 @@
 
 -(void)applyThemeToAxisSet:(CPTXYAxisSet *)axisSet 
 {
+	CPTColor * offBlack = [CPTColor blackColor];
+	
     CPTMutableTextStyle *titleText = [CPTMutableTextStyle textStyle];
     titleText.color = [CPTColor blackColor];
     titleText.fontSize = 18;
-    titleText.fontName = @"Ingleby-BoldItalic";
+    titleText.fontName = @"Times New Roman";
     
     CPTMutableLineStyle *majorLineStyle = [CPTMutableLineStyle lineStyle];
     majorLineStyle.lineCap = kCGLineCapRound;
-    majorLineStyle.lineColor = [CPTColor blackColor];
-    majorLineStyle.lineWidth = 3.0;
+    majorLineStyle.lineColor = offBlack;
+    majorLineStyle.lineWidth = 1.0;
     
     CPTMutableLineStyle *minorLineStyle = [CPTMutableLineStyle lineStyle];
-    minorLineStyle.lineColor = [CPTColor blackColor];
+    minorLineStyle.lineColor = offBlack;
     minorLineStyle.lineWidth = 3.0;
     
     CPTMutableLineStyle *majorTickLineStyle = [CPTMutableLineStyle lineStyle];
-    majorTickLineStyle.lineWidth = 3.0f;
-    majorTickLineStyle.lineColor = [CPTColor blackColor];
+    majorTickLineStyle.lineWidth = 1.0f;
+    majorTickLineStyle.lineColor = offBlack;
     
     CPTMutableLineStyle *minorTickLineStyle = [CPTMutableLineStyle lineStyle];
-    minorTickLineStyle.lineWidth = 3.0f;
-    minorTickLineStyle.lineColor = [CPTColor blackColor];
+    minorTickLineStyle.lineWidth = 0.0f;
+    minorTickLineStyle.lineColor = offBlack;
     
     // Create grid line styles
     CPTMutableLineStyle *majorGridLineStyle = [CPTMutableLineStyle lineStyle];
     majorGridLineStyle.lineWidth = 1.0f;
-    majorGridLineStyle.lineColor = [[CPTColor blackColor] colorWithAlphaComponent:0.25];
+    majorGridLineStyle.lineColor = [offBlack colorWithAlphaComponent:0.25];
     
     CPTMutableLineStyle *minorGridLineStyle = [CPTMutableLineStyle lineStyle];
     minorGridLineStyle.lineWidth = 1.0f;
-    minorGridLineStyle.lineColor = [[CPTColor blackColor] colorWithAlphaComponent:0.15];    
+    minorGridLineStyle.lineColor = [offBlack colorWithAlphaComponent:0.15];    
     //minorGridLineStyle.dashPattern = [NSArray arrayWithObjects:[NSNumber numberWithFloat:5.0f], [NSNumber numberWithFloat:5.0f], nil];
     
 	
     CPTMutableTextStyle *xLabelTextStyle = [CPTMutableTextStyle textStyle];
-    xLabelTextStyle.color = [CPTColor blackColor];
+    xLabelTextStyle.color = offBlack;
     xLabelTextStyle.fontSize = 16;
-    xLabelTextStyle.fontName = @"Ingleby";
+    xLabelTextStyle.fontName = @"Times New Roman";
     
     CPTMutableTextStyle *yLabelTextStyle = [CPTMutableTextStyle textStyle];
-    yLabelTextStyle.color = [CPTColor blackColor];
+    yLabelTextStyle.color = offBlack;
     yLabelTextStyle.fontSize = 16;
-    yLabelTextStyle.fontName = @"Ingleby";
+    yLabelTextStyle.fontName = @"Times New Roman";
     
     CPTXYAxis *x = axisSet.xAxis;
 	CPTMutableTextStyle *whiteTextStyle = [[CPTMutableTextStyle alloc] init];
-	whiteTextStyle.color = [CPTColor blackColor];
+	whiteTextStyle.color = offBlack;
 	whiteTextStyle.fontSize = 14.0;
 	CPTMutableTextStyle *minorTickWhiteTextStyle = [[CPTMutableTextStyle alloc] init] ;
 	minorTickWhiteTextStyle.color = [CPTColor blackColor];

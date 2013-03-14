@@ -1,4 +1,4 @@
-//
+ //
 //  EXQIDSChart.m
 //  Domo Depression
 //
@@ -24,9 +24,13 @@
 		
 		defaultTheme = [[EskPlotTheme alloc] init];
 		
+		
+		NSInteger weekRange = (int) ceil([self.datasource secondsSinceFirstQIDSSubmission] * -1 /(7 * 24 * 60 * 60)) +1;
+
+		self.displayedWeekRange = NSMakeRange(0, weekRange);
+		
 		self.displayedSeries = [@[@(0)] mutableCopy];
 		self.linePlot = [[EskLinePlot alloc] initWithDelegate:self];
-		[self.linePlot setDisplayedWeekRange:NSMakeRange(0, 3)];
 		
 		[linePlot renderInLayer:self withTheme:defaultTheme];
 		
@@ -116,8 +120,6 @@
 	}
 	
 	return submissionValueArray;
-
-	return nil;
 }
 
 -(UIColor*) colorFordisplayedSeriesNumber:(NSNumber*)seriesNum forPlot:(EskLinePlot*)plot{
@@ -151,6 +153,10 @@
 	
 	[self.delegate reloadSeriesDisplayFromQIDSChart:self];
 	[self reloadData];
+}
+
+-(NSRange) weekRangeForPlot:(EskLinePlot*)plot{
+	return self.displayedWeekRange;
 }
 
 

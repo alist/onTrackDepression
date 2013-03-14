@@ -14,4 +14,6 @@
 @property (nonatomic, strong)EXAuthor * currentAuthor;
 
 -(NSArray*) QIDSSubmissionsBetweenOlderDate:(NSDate*)olderDate newerDate:(NSDate*)newerDate;
+
+-(NSTimeInterval) secondsSinceFirstQIDSSubmission;
 @end
