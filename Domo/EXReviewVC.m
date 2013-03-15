@@ -10,6 +10,7 @@
 #import "MGTableBoxStyled.h"
 #import "MGLineStyled.h"
 #import "EXQIDSManager.h"
+#import "EXSingleQIDSInspectorVC.h"
 
 #define CHART_MARGIN_IPAD 10
 #define CHART_SIZE_IPAD_PORTRAIT (CGSize){550, 435}
@@ -170,7 +171,6 @@
 
 }
 
-
 #pragma mark - setup
 -(id)init{
 	if (self = [super initWithPresentedAppTab:domoAppTabReview]){
@@ -208,8 +208,18 @@
 	return _qidsChart;
 }
 
+-(UIPopoverController*) extendedDataPopover{
+	if (_extendedDataPopover == nil){
+		EXSingleQIDSInspectorVC * singleQIDSInspector = [[EXSingleQIDSInspectorVC alloc] init];
+		_extendedDataPopover = [[UIPopoverController alloc] initWithContentViewController:singleQIDSInspector];
+		[_extendedDataPopover setPopoverContentSize:singleQIDSInspector.view.size];
+	}
+	return _extendedDataPopover;
+}
+
 #pragma mark - EXQIDSChartDelegate
 -(void) qidsChart:(EXQIDSChart*)chart didSelectQIDSSubmission:(EXQIDSSubmission*)submission{
+	[[self extendedDataPopover] presentPopoverFromRect:chart.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:FALSE];
 	self.activeQIDSSubmission = submission;
 	[self refreshDetailContent:TRUE];
 }

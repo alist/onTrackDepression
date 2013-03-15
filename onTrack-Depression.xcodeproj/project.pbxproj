@@ -165,6 +165,10 @@
 		79C0250016A0EC3A00EC138F /* MHPagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C024FE16A0EC3A00EC138F /* MHPagingScrollView.m */; };
 		79C0250316A0ED0E00EC138F /* EXQIDSQuestionPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C0250216A0ED0E00EC138F /* EXQIDSQuestionPage.m */; };
 		79C0250416A0ED0E00EC138F /* EXQIDSQuestionPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C0250216A0ED0E00EC138F /* EXQIDSQuestionPage.m */; };
+		79E46BA016F2CE3700BEF1DB /* EXSingleQIDSInspectorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E46B9E16F2CE3700BEF1DB /* EXSingleQIDSInspectorVC.m */; };
+		79E46BA116F2CE3700BEF1DB /* EXSingleQIDSInspectorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79E46B9F16F2CE3700BEF1DB /* EXSingleQIDSInspectorVC.xib */; };
+		79E46BB116F2D9BA00BEF1DB /* lightpaperfibers.png in Resources */ = {isa = PBXBuildFile; fileRef = 79E46BAF16F2D9BA00BEF1DB /* lightpaperfibers.png */; };
+		79E46BB216F2D9BA00BEF1DB /* lightpaperfibers@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79E46BB016F2D9BA00BEF1DB /* lightpaperfibers@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -433,6 +437,11 @@
 		79C024FE16A0EC3A00EC138F /* MHPagingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHPagingScrollView.m; sourceTree = "<group>"; };
 		79C0250116A0ED0E00EC138F /* EXQIDSQuestionPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXQIDSQuestionPage.h; path = Domo/EXQIDSQuestionPage.h; sourceTree = SOURCE_ROOT; };
 		79C0250216A0ED0E00EC138F /* EXQIDSQuestionPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXQIDSQuestionPage.m; path = Domo/EXQIDSQuestionPage.m; sourceTree = SOURCE_ROOT; };
+		79E46B9D16F2CE3700BEF1DB /* EXSingleQIDSInspectorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXSingleQIDSInspectorVC.h; sourceTree = "<group>"; };
+		79E46B9E16F2CE3700BEF1DB /* EXSingleQIDSInspectorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXSingleQIDSInspectorVC.m; sourceTree = "<group>"; };
+		79E46B9F16F2CE3700BEF1DB /* EXSingleQIDSInspectorVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EXSingleQIDSInspectorVC.xib; sourceTree = "<group>"; };
+		79E46BAF16F2D9BA00BEF1DB /* lightpaperfibers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lightpaperfibers.png; sourceTree = "<group>"; };
+		79E46BB016F2D9BA00BEF1DB /* lightpaperfibers@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lightpaperfibers@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -617,10 +626,8 @@
 			children = (
 				7935E5CB1697A39E00FA871F /* EXReviewVC.h */,
 				7935E5CC1697A39E00FA871F /* EXReviewVC.m */,
-				794F718616A7600100F29BB6 /* EXQIDSChartDatasource.h */,
-				794F718716A7600100F29BB6 /* EXQIDSChartDatasource.m */,
-				794F718A16A760D200F29BB6 /* EXQIDSChart.h */,
-				794F718B16A760D300F29BB6 /* EXQIDSChart.m */,
+				79E46B9C16F2CDEF00BEF1DB /* data-inspectors */,
+				79E46B9B16F2CDDF00BEF1DB /* chart */,
 				794F715E16A759BD00F29BB6 /* Ken Wong core plot */,
 			);
 			name = review;
@@ -986,6 +993,29 @@
 			path = MHPagingScrollView/MHPagingScrollView;
 			sourceTree = SOURCE_ROOT;
 		};
+		79E46B9B16F2CDDF00BEF1DB /* chart */ = {
+			isa = PBXGroup;
+			children = (
+				794F718616A7600100F29BB6 /* EXQIDSChartDatasource.h */,
+				794F718716A7600100F29BB6 /* EXQIDSChartDatasource.m */,
+				794F718A16A760D200F29BB6 /* EXQIDSChart.h */,
+				794F718B16A760D300F29BB6 /* EXQIDSChart.m */,
+			);
+			name = chart;
+			sourceTree = "<group>";
+		};
+		79E46B9C16F2CDEF00BEF1DB /* data-inspectors */ = {
+			isa = PBXGroup;
+			children = (
+				79E46BAF16F2D9BA00BEF1DB /* lightpaperfibers.png */,
+				79E46BB016F2D9BA00BEF1DB /* lightpaperfibers@2x.png */,
+				79E46B9D16F2CE3700BEF1DB /* EXSingleQIDSInspectorVC.h */,
+				79E46B9E16F2CE3700BEF1DB /* EXSingleQIDSInspectorVC.m */,
+				79E46B9F16F2CE3700BEF1DB /* EXSingleQIDSInspectorVC.xib */,
+			);
+			name = "data-inspectors";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1146,6 +1176,9 @@
 				794F6F5516A4586200F29BB6 /* MNMRadioGroupUnselected@2x.png in Resources */,
 				7961185616F2629500FC8029 /* sidebar-texture.png in Resources */,
 				7961185716F2629500FC8029 /* sidebar-texture@2x.png in Resources */,
+				79E46BA116F2CE3700BEF1DB /* EXSingleQIDSInspectorVC.xib in Resources */,
+				79E46BB116F2D9BA00BEF1DB /* lightpaperfibers.png in Resources */,
+				79E46BB216F2D9BA00BEF1DB /* lightpaperfibers@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1259,6 +1292,7 @@
 				794F716A16A75B7700F29BB6 /* EskLinePlot.m in Sources */,
 				794F718816A7600200F29BB6 /* EXQIDSChartDatasource.m in Sources */,
 				794F718C16A760D500F29BB6 /* EXQIDSChart.m in Sources */,
+				79E46BA016F2CE3700BEF1DB /* EXSingleQIDSInspectorVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

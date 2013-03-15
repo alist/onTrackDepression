@@ -17,4 +17,6 @@
 @property (nonatomic, strong) EXQIDSSubmission * activeQIDSSubmission;
 @property (nonatomic, assign) BOOL dataNeedsRefresh;
 
+@property (nonatomic, strong) UIPopoverController * extendedDataPopover;
+
 @end
