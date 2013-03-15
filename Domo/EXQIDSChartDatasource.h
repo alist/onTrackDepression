@@ -13,7 +13,13 @@
 @interface EXQIDSChartDatasource : NSObject
 @property (nonatomic, strong)EXAuthor * currentAuthor;
 
--(NSArray*) QIDSSubmissionsBetweenOlderDate:(NSDate*)olderDate newerDate:(NSDate*)newerDate;
+
+//after calling this lastFetchedQIDSSubmissions is set to resultant
+-(NSArray*) QIDSSubmissionsToDisplayBetweenOlderDate:(NSDate*)olderDate newerDate:(NSDate*)newerDate;
 
 -(NSTimeInterval) secondsSinceFirstQIDSSubmission;
+
+-(EXQIDSSubmission*)displayedQIDSSubmissionAtIndex:(NSInteger) displayIndex;
+
+@property (nonatomic, strong) NSArray* lastFetchedQIDSSubmissions;
 @end

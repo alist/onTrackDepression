@@ -246,48 +246,40 @@
 // This method is call when user touch & drag on the plot space.
 - (BOOL)plotSpace:(CPTPlotSpace *)space shouldHandlePointingDeviceDraggedEvent:(id)event atPoint:(CGPoint)point
 {
-    // Convert the touch point to plot area frame location
-    CGPoint pointInPlotArea = [graph convertPoint:point toLayer:graph.plotAreaFrame];
-    
-    NSDecimal newPoint[2];
-    [graph.defaultPlotSpace plotPoint:newPoint forPlotAreaViewPoint:pointInPlotArea];
-    NSDecimalRound(&newPoint[0], &newPoint[0], 0, NSRoundPlain);
-    int x = [[NSDecimalNumber decimalNumberWithDecimal:newPoint[0]] intValue];
-    
-    if (x < 0)
-    {
-        x = 0;
-    }
-    else if (x > [[self.displayedDataBySeries objectForKey:[self.displayedDataSeries objectAtIndex:0]] count])
-    {
-        x = [[self.displayedDataBySeries objectForKey:[self.displayedDataSeries objectAtIndex:0]] count];
-    }
-    
+//    // Convert the touch point to plot area frame location
+//    CGPoint pointInPlotArea = [graph convertPoint:point toLayer:graph.plotAreaFrame];
+	
     
     return YES;
 }
 
 - (BOOL)plotSpace:(CPTPlotSpace *)space shouldHandlePointingDeviceDownEvent:(id)event 
-          atPoint:(CGPoint)point
-{
+          atPoint:(CGPoint)point{
     return YES;
 }
 
 - (BOOL)plotSpace:(CPTPlotSpace *)space shouldHandlePointingDeviceUpEvent:(id)event atPoint:(CGPoint)point
 {
-    // Restore the vertical line plot to its initial color.
-    [self applyTouchPlotColor];
     return YES;
 }
-
+-(CGPoint) lastTouchPoint{
+	
+	CPTScatterPlot * scatterPlot = ([self.seriesScatterPlots count] > 0)? (CPTScatterPlot*)[self.seriesScatterPlots objectAtIndex:0] : nil;
+	CGPoint point = [scatterPlot lastInteractionPoint];
+	double height = [graph frame].size.height;
+	point.y = height - point.y;
+	point.x += 8;
+	
+	return point;
+}
 #pragma mark - 
 #pragma mark Scatter plot delegate methods
 
 - (void)scatterPlot:(CPTScatterPlot *)plot plotSymbolWasSelectedAtRecordIndex:(NSUInteger)index
 {
 //	if ([(NSNumber *)plot.identifier isEqualToNumber:@(0)]){
-		if ([delegate respondsToSelector:@selector(linePlot:indexLocation:)])
-            [delegate linePlot:self indexLocation:index];
+		if ([delegate respondsToSelector:@selector(linePlotSelected:indexLocation:)])
+            [delegate linePlotSelected:self indexLocation:index];
 }
 
 

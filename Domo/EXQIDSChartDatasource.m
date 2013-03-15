@@ -30,7 +30,7 @@
 
 
 
--(NSArray*) QIDSSubmissionsBetweenOlderDate:(NSDate*)olderDate newerDate:(NSDate*)newerDate{
+-(NSArray*) QIDSSubmissionsToDisplayBetweenOlderDate:(NSDate*)olderDate newerDate:(NSDate*)newerDate{
 #pragma MARK TODO: #optimize by pre-fetching
 	
 	NSFetchRequest * submissionRequest = [EXQIDSSubmission createFetchRequest];
@@ -40,12 +40,22 @@
 	
 	NSArray * submissions = [EXQIDSSubmission executeFetchRequest:submissionRequest];
 	
+	_lastFetchedQIDSSubmissions = submissions;
+	
 	return submissions;
+}
+
+-(EXQIDSSubmission*)displayedQIDSSubmissionAtIndex:(NSInteger) displayIndex{
+	
+	if ([_lastFetchedQIDSSubmissions count] > displayIndex){
+		return [_lastFetchedQIDSSubmissions objectAtIndex:displayIndex];
+	}
+	
+	return nil;
 }
 
 -(NSTimeInterval) secondsSinceFirstQIDSSubmission{
 
-	
 	EXQIDSSubmission * submission = [EXQIDSSubmission findFirstWithPredicate:[NSPredicate predicateWithFormat:@"completionDate != nil"] sortedBy:@"completionDate" ascending:TRUE];
 	
 	NSTimeInterval secondsSince = [[submission completionDate] timeIntervalSinceNow];

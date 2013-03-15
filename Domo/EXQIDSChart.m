@@ -90,8 +90,9 @@
 
 #pragma mark - EskLinePlotDelegate
 
-- (void)linePlot:(EskLinePlot *)plot indexLocation:(NSUInteger)index{
-	[[self delegate] qidsChart:self didSelectQIDSSubmission:[[[EXQIDSManager alloc]init] lastCompletedQIDSSubmissionForAuthor:[EXAuthor authorForLocalUser]]];
+- (void)linePlotSelected:(EskLinePlot *)plot indexLocation:(NSUInteger)index{
+	CGPoint plotPoint = [plot lastTouchPoint];
+	[[self delegate] qidsChart:self didSelectQIDSSubmission:[self.datasource displayedQIDSSubmissionAtIndex:index] atPoint:plotPoint];
 }
 
 -(NSArray*) dataForSeries:(NSNumber*)dataSeries forPlot:(EskLinePlot*)plot forWeekRange:(NSRange)weekRange{
@@ -101,7 +102,7 @@
 	self.displayedDataStartDate = [NSDate dateWithTimeIntervalSinceNow:(-1*displayedDataStartInterval)];
 	self.displayedDataTimeLength = displayedTimeInterval;
 	
-	NSArray * qidsSubmissions = [datasource QIDSSubmissionsBetweenOlderDate:self.displayedDataStartDate newerDate:[self.displayedDataStartDate dateByAddingTimeInterval:self.displayedDataTimeLength]];
+	NSArray * qidsSubmissions = [datasource QIDSSubmissionsToDisplayBetweenOlderDate:self.displayedDataStartDate newerDate:[self.displayedDataStartDate dateByAddingTimeInterval:self.displayedDataTimeLength]];
 	NSMutableArray * submissionValueArray = [NSMutableArray array];
 		
 	for (EXQIDSSubmission * qids in qidsSubmissions){

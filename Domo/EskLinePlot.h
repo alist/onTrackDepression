@@ -17,7 +17,7 @@
 // Delegate to notify the view controller that the location of the line has changed.
 @protocol EskLinePlotDelegate <NSObject>
 
-- (void)linePlot:(EskLinePlot *)plot indexLocation:(NSUInteger)index;
+- (void)linePlotSelected:(EskLinePlot *)plot indexLocation:(NSUInteger)index;
 
 //array of tuples
 -(NSArray*) dataForSeries:(NSNumber*)dataSeries forPlot:(EskLinePlot*)plot forWeekRange:(NSRange)weekRange;
@@ -37,14 +37,13 @@
 {
   @private
     CPTGraph *graph;
-	
-	// array of	CPTScatterPlot *
-	
+		
 		
 }
 
 @property (nonatomic, strong) id<EskLinePlotDelegate> delegate;
 
+//CPTScatterPlot(s)
 @property (nonatomic, strong)	NSArray * seriesScatterPlots;
 
 
@@ -53,6 +52,9 @@
 
 //integers of data-series in the order of display, where series 0 = total value, and should appear at index 0
 @property (nonatomic, strong) NSArray * displayedDataSeries;
+
+
+-(CGPoint) lastTouchPoint;
 
 //will reload displayed series of stacking charts
 -(void) reloadData;

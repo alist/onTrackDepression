@@ -15,7 +15,7 @@
 @class EXQIDSChart, EXQIDSSubmission;
 
 @protocol EXQIDSChartDelegate <NSObject>
--(void) qidsChart:(EXQIDSChart*)chart didSelectQIDSSubmission:(EXQIDSSubmission*)submission;
+-(void) qidsChart:(EXQIDSChart*)chart didSelectQIDSSubmission:(EXQIDSSubmission*)submission atPoint:(CGPoint)selectionPoint;
 
 -(void) reloadSeriesDisplayFromQIDSChart:(EXQIDSChart*)chart;
 
