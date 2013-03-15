@@ -11,6 +11,7 @@
 #import "EXQIDSChart.h"
 #import "EXQIDSChartDatasource.h"
 #import "EXQIDSSubmission.h"
+#import "EXSingleQIDSInspectorVC.h"
 
 @interface EXReviewVC : EXTabVC <EXQIDSChartDelegate>
 @property (nonatomic, retain) EXQIDSChart *qidsChart;
@@ -18,5 +19,5 @@
 @property (nonatomic, assign) BOOL dataNeedsRefresh;
 
 @property (nonatomic, strong) UIPopoverController * extendedDataPopover;
-
+@property (nonatomic, strong) EXSingleQIDSInspectorVC* singleQIDSInspectorVC;
 @end

@@ -14,6 +14,14 @@
 
 @implementation EXSingleQIDSInspectorVC
 
+
+-(void) updateWithQIDSSubmission: (EXQIDSSubmission*)submission{
+	NSNumberFormatter * qidsValueNumberFormatter = [NSNumberFormatter new];
+	[qidsValueNumberFormatter setMaximumFractionDigits:0];
+	[self.qidsValueLabel setText:[qidsValueNumberFormatter stringFromNumber:[submission qidsValue]]];
+}
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -35,4 +43,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload {
+	[self setQidsValueLabel:nil];
+	[self setQidsSeverityLabel:nil];
+	[self setQidsSubmissionFeedbackLabel:nil];
+	[self setQidsMaxValueLabel:nil];
+	[super viewDidUnload];
+}
 @end
