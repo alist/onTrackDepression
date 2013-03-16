@@ -136,11 +136,17 @@
 			[newSubmission setQuestionResponse:@(response) forQuesitonNumber:q];
 		}
 		[self processQIDSSubmissionForComplete:newSubmission];
-	
+		
 		double timeInterval = (double)(EXQIDSManager_Generated_QIDS_Time_Spacing * -1 * i);
 		NSDate * qidsDate = [NSDate dateWithTimeIntervalSinceNow:timeInterval];
 		[newSubmission setDueDate:qidsDate];
 		[newSubmission setCompletionDate:qidsDate];
+		
+		//gen random text
+		NSArray const * randomStrings = @[@"",@"This is a short feedback.",@"rend.", @"This feedback gets a pretty long vibe to it when you really check it out-- it's pretty nice. But I like it too!",@"Here\n is a test of \n newlines"];
+		NSInteger feedbackInt = arc4random()%[randomStrings count];
+		[newSubmission setNote:[randomStrings objectAtIndex:feedbackInt]];
+		
 	}
 	[[author managedObjectContext] saveOnlySelfWithCompletion:nil];
 	

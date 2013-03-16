@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *qidsSeverityLabel;
 @property (strong, nonatomic) IBOutlet UILabel *qidsSubmissionFeedbackLabel;
+@property (strong, nonatomic) IBOutlet UILabel *qidsFeedbackQuotesLabel;
 
 -(void) updateWithQIDSSubmission: (EXQIDSSubmission*)submission;
 

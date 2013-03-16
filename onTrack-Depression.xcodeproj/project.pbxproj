@@ -399,7 +399,7 @@
 		7954648116A35A3C00E3926A /* EXQIDSNoteSubmitPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXQIDSNoteSubmitPage.m; sourceTree = "<group>"; };
 		7961185416F2629400FC8029 /* sidebar-texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sidebar-texture.png"; sourceTree = "<group>"; };
 		7961185516F2629400FC8029 /* sidebar-texture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sidebar-texture@2x.png"; sourceTree = "<group>"; };
-		79A6E3BE16973E5B00AA68D7 /* Domo Depression.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Domo Depression.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		79A6E3BE16973E5B00AA68D7 /* onTrack Depression.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "onTrack Depression.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79A6E3C216973E5B00AA68D7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		79A6E3C416973E5B00AA68D7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		79A6E3C616973E5B00AA68D7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -895,7 +895,7 @@
 		79A6E3BF16973E5B00AA68D7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				79A6E3BE16973E5B00AA68D7 /* Domo Depression.app */,
+				79A6E3BE16973E5B00AA68D7 /* onTrack Depression.app */,
 				79A6E3E416973E5B00AA68D7 /* Domo DepressionTests.octest */,
 			);
 			name = Products;
@@ -1035,7 +1035,7 @@
 			);
 			name = "Domo Depression";
 			productName = "Feel Better: Depression";
-			productReference = 79A6E3BE16973E5B00AA68D7 /* Domo Depression.app */;
+			productReference = 79A6E3BE16973E5B00AA68D7 /* onTrack Depression.app */;
 			productType = "com.apple.product-type.application";
 		};
 		79A6E3E316973E5B00AA68D7 /* Domo DepressionTests */ = {
@@ -1445,7 +1445,7 @@
 		79A6E3F816973E5B00AA68D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alexander List (76TLAY9W6F)";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "Domo/Domo Depression-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1453,13 +1453,13 @@
 					"./**",
 				);
 				INFOPLIST_FILE = "Domo/Domo Depression-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "Domo Depression";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PRODUCT_NAME = "onTrack Depression";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "31037F38-0E64-420A-9B1E-B0C028112D9C";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1474,12 +1474,12 @@
 					"./**",
 				);
 				INFOPLIST_FILE = "Domo/Domo Depression-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "Domo Depression";
+				PRODUCT_NAME = "onTrack Depression";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

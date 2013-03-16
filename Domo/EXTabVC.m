@@ -12,14 +12,12 @@
 @implementation EXTabVC{
 }
 @synthesize rowSize, headerFont;
-@synthesize scroller;
-@synthesize tablesGrid, primaryTable, detailTable;
 @synthesize appearedOnce;
 
 #define IPHONE_TABLES_GRID_PORTRAIT     (CGSize){320, 0}
 #define IPHONE_TABLES_GRID_LANDSCAPE    (CGSize){320, 0}
-#define IPAD_TABLES_GRID_PORTRAIT       (CGSize){680	, 0}
-#define IPAD_TABLES_GRID_LANDSCAPE		(CGSize){930	, 0}
+#define IPAD_TABLES_GRID_PORTRAIT       (CGSize){680, 0}
+#define IPAD_TABLES_GRID_LANDSCAPE		(CGSize){930, 0}
 
 
 #pragma mark - subclass
@@ -53,31 +51,31 @@
 	
 	[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"greyfloral"]]];
 	
-	CGSize loadSize = self.view.bounds.size;
-	self.scroller = [MGScrollView scrollerWithSize:loadSize];
-	[self.scroller setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
-	// setup the main scroller (using a grid layout)
-	self.scroller.contentLayoutMode = MGLayoutGridStyle;
-	self.scroller.bottomPadding = 8;
-	[self.view addSubview:self.scroller];
+//	CGSize loadSize = self.view.bounds.size;
+//	self.scroller = [MGScrollView scrollerWithSize:loadSize];
+//	[self.scroller setAutoresizingMask:UIViewAutoresizingNone];
+//	// setup the main scroller (using a grid layout)
+//	self.scroller.contentLayoutMode = MGLayoutGridStyle;
+//	self.scroller.bottomPadding = 8;
+//	[self.view addSubview:self.scroller];
 	
 	
-	CGSize tablesGridSize = deviceIsPad ? IPAD_TABLES_GRID_PORTRAIT: IPHONE_TABLES_GRID_PORTRAIT;
-	tablesGrid = [MGBox boxWithSize:tablesGridSize];
-	tablesGrid.contentLayoutMode = MGLayoutGridStyle;
-	[self.scroller.boxes addObject:tablesGrid];
+//	CGSize tablesGridSize = deviceIsPad ? IPAD_TABLES_GRID_PORTRAIT: IPHONE_TABLES_GRID_PORTRAIT;
+//	tablesGrid = [MGBox boxWithSize:tablesGridSize];
+//	tablesGrid.contentLayoutMode = MGLayoutGridStyle;
+//	[self.scroller.boxes addObject:tablesGrid];
 	
 	// the features table
-	self.primaryTable = [MGBox box];
-	[tablesGrid.boxes addObject:self.primaryTable];
-	self.primaryTable.sizingMode = MGResizingShrinkWrap;
+//	self.primaryTable = [MGBox box];
+//	[tablesGrid.boxes addObject:self.primaryTable];
+//	self.primaryTable.sizingMode = MGResizingShrinkWrap;
+//	
+//	// the subsections table
+//	self.detailTable = [MGBox box];
+//	[tablesGrid.boxes addObject:self.detailTable];
+//	self.detailTable.sizingMode = MGResizingShrinkWrap;
 	
-	// the subsections table
-	self.detailTable = [MGBox box];
-	[tablesGrid.boxes addObject:self.detailTable];
-	self.detailTable.sizingMode = MGResizingShrinkWrap;
-	
-	[self refreshGridContent];
+//	[self refreshGridContent];
 	
 }
 
@@ -102,16 +100,16 @@
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)orient
                                          duration:(NSTimeInterval)duration {
+////	
+//	BOOL isPortrait = UIInterfaceOrientationIsPortrait(orient);
 //	
-	BOOL isPortrait = UIInterfaceOrientationIsPortrait(orient);
-	
-	tablesGrid.size = deviceIsPad ?
-	isPortrait? IPAD_TABLES_GRID_PORTRAIT : IPAD_TABLES_GRID_LANDSCAPE :
-	isPortrait? IPHONE_TABLES_GRID_PORTRAIT : IPHONE_TABLES_GRID_LANDSCAPE;
-	
-	//update the objects to displaay here
-	// relayout the sections
-	[self.scroller layoutWithSpeed:duration completion:nil];
+//	tablesGrid.size = deviceIsPad ?
+//	isPortrait? IPAD_TABLES_GRID_PORTRAIT : IPAD_TABLES_GRID_LANDSCAPE :
+//	isPortrait? IPHONE_TABLES_GRID_PORTRAIT : IPHONE_TABLES_GRID_LANDSCAPE;
+//	
+//	//update the objects to displaay here
+//	// relayout the sections
+//	[self.scroller layoutWithSpeed:duration completion:nil];
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)orient {
@@ -119,60 +117,60 @@
 }
 
 #pragma mark - content
--(void) refreshGridContent{
-	
-	[self refreshDetailContent:FALSE];
-	[self refreshPrimaryContent:FALSE];
-	
-
-	// animate
-	[self.scroller layoutWithSpeed:0.3 completion:nil];
-	
-	// scroll
-	if ([self.primaryTable.boxes count] > 0)
-		[self.scroller scrollToView:[self.primaryTable.boxes objectAtIndex:0] withMargin:8];
-}
-
--(void) refreshDetailContent:(BOOL)layout{
-	[self.detailTable.boxes removeAllObjects];
-	
-	NSMutableArray * detailBoxes = [NSMutableArray array];
-	[detailBoxes addObjectsFromArray:[self detailBoxes]];
-	[self.detailTable.boxes addObjectsFromArray:detailBoxes];
-	
-	if (layout)
-		[self.detailTable layoutWithSpeed:0.3 completion:nil];
-}
-
--(void) refreshPrimaryContent:(BOOL)layout{
-	[self.primaryTable.boxes removeAllObjects];
-	
-	NSMutableArray * primaryBoxes = [NSMutableArray array];
-	[primaryBoxes addObjectsFromArray:[self headerPrimaryMessageBoxes]];
-	[primaryBoxes addObjectsFromArray:[self primaryContentBoxes]];
-	[primaryBoxes addObjectsFromArray:[self footerPrimaryMessageBoxes]];
-	[self.primaryTable.boxes addObjectsFromArray:primaryBoxes];
-	
-	if (layout)
-		[self.primaryTable layoutWithSpeed:0.3 completion:nil];
-}
-
--(NSArray*)	headerPrimaryMessageBoxes{
-	NSMutableArray * boxes = [NSMutableArray array];
-	for (NSDictionary * messageDict in[[EXUserComManager sharedUserComManager]  messagesForUIAppTab:self.presentedTab]){
-		[boxes addObject:[self boxFromMessageDict:messageDict]];
-	}
-	return boxes;
-}
--(NSArray*)	footerPrimaryMessageBoxes{
-	return nil;
-}
--(NSArray*)	primaryContentBoxes{
-	return nil;
-}
--(NSArray*)	detailBoxes{
-	return nil;
-}
+//-(void) refreshGridContent{
+//	
+//	[self refreshDetailContent:FALSE];
+//	[self refreshPrimaryContent:FALSE];
+//	
+//
+//	// animate
+//	[self.scroller layoutWithSpeed:0.3 completion:nil];
+//	
+//	// scroll
+//	if ([self.primaryTable.boxes count] > 0)
+//		[self.scroller scrollToView:[self.primaryTable.boxes objectAtIndex:0] withMargin:8];
+//}
+//
+//-(void) refreshDetailContent:(BOOL)layout{
+//	[self.detailTable.boxes removeAllObjects];
+//	
+//	NSMutableArray * detailBoxes = [NSMutableArray array];
+//	[detailBoxes addObjectsFromArray:[self detailBoxes]];
+//	[self.detailTable.boxes addObjectsFromArray:detailBoxes];
+//	
+//	if (layout)
+//		[self.detailTable layoutWithSpeed:0.3 completion:nil];
+//}
+//
+//-(void) refreshPrimaryContent:(BOOL)layout{
+//	[self.primaryTable.boxes removeAllObjects];
+//	
+//	NSMutableArray * primaryBoxes = [NSMutableArray array];
+//	[primaryBoxes addObjectsFromArray:[self headerPrimaryMessageBoxes]];
+//	[primaryBoxes addObjectsFromArray:[self primaryContentBoxes]];
+//	[primaryBoxes addObjectsFromArray:[self footerPrimaryMessageBoxes]];
+//	[self.primaryTable.boxes addObjectsFromArray:primaryBoxes];
+//	
+//	if (layout)
+//		[self.primaryTable layoutWithSpeed:0.3 completion:nil];
+//}
+//
+//-(NSArray*)	headerPrimaryMessageBoxes{
+//	NSMutableArray * boxes = [NSMutableArray array];
+//	for (NSDictionary * messageDict in[[EXUserComManager sharedUserComManager]  messagesForUIAppTab:self.presentedTab]){
+//		[boxes addObject:[self boxFromMessageDict:messageDict]];
+//	}
+//	return boxes;
+//}
+//-(NSArray*)	footerPrimaryMessageBoxes{
+//	return nil;
+//}
+//-(NSArray*)	primaryContentBoxes{
+//	return nil;
+//}
+//-(NSArray*)	detailBoxes{
+//	return nil;
+//}
 
 -(MGBox*)boxFromMessageDict:(NSDictionary*)dict{
 	// make the section

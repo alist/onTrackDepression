@@ -17,8 +17,6 @@
 @property (nonatomic, strong) UIFont *							headerFont;
 @property (nonatomic, assign) CGSize							rowSize;
 
-@property (nonatomic, strong) MGScrollView *scroller;
-@property (nonatomic, strong) MGBox *tablesGrid, *primaryTable, *detailTable;
 @property (nonatomic, assign) BOOL appearedOnce;
 
 
@@ -29,25 +27,4 @@
 -(id)init;
 
 
-//calls layoutWithSpeed on scroller
-//calls refresh detail and primary but doesnt layout them
--(void)		refreshGridContent;
-
--(void) refreshDetailContent:(BOOL)layout;
-
--(void) refreshPrimaryContent:(BOOL)layout;
-
-//these come from UserComManager
--(NSArray*)	headerPrimaryMessageBoxes;
-
-//these come from app tab controller
--(NSArray*)	footerPrimaryMessageBoxes;
-
-//these come from app tab controller
-//-- eg, the FIQR display
--(NSArray*)	primaryContentBoxes;
-
-//these come from UserComManager
-//-- eg, the FIQR prompt box
--(NSArray*)	detailBoxes;
 @end

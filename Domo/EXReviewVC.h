@@ -18,6 +18,17 @@
 @property (nonatomic, strong) EXQIDSSubmission * activeQIDSSubmission;
 @property (nonatomic, assign) BOOL dataNeedsRefresh;
 
+@property (nonatomic, strong) MGBox * superTableBox;
+@property (nonatomic, strong) MGBox * chartBox;
+@property (nonatomic, strong) MGBox * optionsGrid;
+
+-(void) refreshEverything;
+
+-(void) refreshChartBox;
+-(void) refreshOptionsGrid;
+
+-(NSArray *)optionsBoxes;
+
 @property (nonatomic, strong) UIPopoverController * extendedDataPopover;
 @property (nonatomic, strong) EXSingleQIDSInspectorVC* singleQIDSInspectorVC;
 @end
