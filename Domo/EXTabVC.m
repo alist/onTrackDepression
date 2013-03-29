@@ -27,6 +27,7 @@
 		[self setTitle:NSLocalizedString(@"EXTab", @"holder value")];
 		
 		self.headerFont = [UIFont fontWithName:@"HelveticaNeue" size:18];
+		self.defaultFont = [UIFont fontWithName:@"HelveticaNeue" size:14];
 		self.rowSize = (CGSize){304, 44};
 		
 		self.presentedTab = presentedTab;

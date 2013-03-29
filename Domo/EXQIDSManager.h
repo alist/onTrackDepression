@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSString *	title;
 @property (nonatomic, strong) NSString *	prompt;
 @property (nonatomic, strong) NSNumber*		formSpacingInterval;
+@property (nonatomic, strong) NSString *	completionSubmissionPrompt;
 
 -(id) init;
 -(void) loadFormData; //from file

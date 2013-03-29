@@ -70,6 +70,7 @@
 	[self willAnimateRotationToInterfaceOrientation:self.interfaceOrientation
 										   duration:1];
 	[self didRotateFromInterfaceOrientation:UIInterfaceOrientationPortrait];
+	
 }
 
 -(void) setActiveQIDSSubmission:(EXQIDSSubmission *)activeQIDSSubmission{
@@ -223,7 +224,7 @@
 
 #pragma QIDSSubmitPage 
 -(void)qidsNoteSubmitPage:(EXQIDSNoteSubmitPage*)qPage didUpdateNoteToText:(NSString*)noteText{
-	NSLog(@"Not implemented for note txt: %@",noteText);
+	[self.activeQIDSSubmission setNote:noteText];
 }
 
 -(void)qidsNoteSubmitPageDidSubmitWithPage:(EXQIDSNoteSubmitPage*)qPage{

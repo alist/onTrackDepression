@@ -10,6 +10,9 @@
 	<string>Quick Inventory of Depressive Symptomatology (Self Report) (QIDS-SR 16)</string>
 	<key>prompt</key>
 	<string>Please circle the one response to each item that best describes you for the past seven days.</string>
+	<key>completionSubmissionPrompt</key>
+	<string>This is the end of the QIDS. 
+If you&apos;d like, type any thoughts you&apos;d use to remember the week. Otherwise, about a week from now would be a good time for the next QIDS!</string>
 	<key>questions</key>
 	<array>
 		<dict>

@@ -132,8 +132,6 @@
 		7954647E16A3431D00E3926A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6E3C616973E5B00AA68D7 /* CoreGraphics.framework */; };
 		7954648216A35A3D00E3926A /* EXQIDSNoteSubmitPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7954648116A35A3C00E3926A /* EXQIDSNoteSubmitPage.m */; };
 		7954648316A35A3D00E3926A /* EXQIDSNoteSubmitPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7954648116A35A3C00E3926A /* EXQIDSNoteSubmitPage.m */; };
-		7961185616F2629500FC8029 /* sidebar-texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 7961185416F2629400FC8029 /* sidebar-texture.png */; };
-		7961185716F2629500FC8029 /* sidebar-texture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7961185516F2629400FC8029 /* sidebar-texture@2x.png */; };
 		79A6E3C316973E5B00AA68D7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6E3C216973E5B00AA68D7 /* UIKit.framework */; };
 		79A6E3C516973E5B00AA68D7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6E3C416973E5B00AA68D7 /* Foundation.framework */; };
 		79A6E3C716973E5B00AA68D7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A6E3C616973E5B00AA68D7 /* CoreGraphics.framework */; };
@@ -169,6 +167,10 @@
 		79E46BA116F2CE3700BEF1DB /* EXSingleQIDSInspectorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79E46B9F16F2CE3700BEF1DB /* EXSingleQIDSInspectorVC.xib */; };
 		79E46BB116F2D9BA00BEF1DB /* lightpaperfibers.png in Resources */ = {isa = PBXBuildFile; fileRef = 79E46BAF16F2D9BA00BEF1DB /* lightpaperfibers.png */; };
 		79E46BB216F2D9BA00BEF1DB /* lightpaperfibers@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79E46BB016F2D9BA00BEF1DB /* lightpaperfibers@2x.png */; };
+		79EB6B1F17050C5800F7FFDA /* submissionButton-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 79EB6B1B17050C5800F7FFDA /* submissionButton-disabled.png */; };
+		79EB6B2017050C5800F7FFDA /* submissionButton-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79EB6B1C17050C5800F7FFDA /* submissionButton-disabled@2x.png */; };
+		79EB6B2117050C5800F7FFDA /* submissionButton-enabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 79EB6B1D17050C5800F7FFDA /* submissionButton-enabled.png */; };
+		79EB6B2217050C5800F7FFDA /* submissionButton-enabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79EB6B1E17050C5800F7FFDA /* submissionButton-enabled@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -397,8 +399,6 @@
 		7954647F16A356A400E3926A /* Domo Depression.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Domo Depression.entitlements"; sourceTree = SOURCE_ROOT; };
 		7954648016A35A3C00E3926A /* EXQIDSNoteSubmitPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXQIDSNoteSubmitPage.h; sourceTree = "<group>"; };
 		7954648116A35A3C00E3926A /* EXQIDSNoteSubmitPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXQIDSNoteSubmitPage.m; sourceTree = "<group>"; };
-		7961185416F2629400FC8029 /* sidebar-texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sidebar-texture.png"; sourceTree = "<group>"; };
-		7961185516F2629400FC8029 /* sidebar-texture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sidebar-texture@2x.png"; sourceTree = "<group>"; };
 		79A6E3BE16973E5B00AA68D7 /* onTrack Depression.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "onTrack Depression.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79A6E3C216973E5B00AA68D7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		79A6E3C416973E5B00AA68D7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -442,6 +442,10 @@
 		79E46B9F16F2CE3700BEF1DB /* EXSingleQIDSInspectorVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EXSingleQIDSInspectorVC.xib; sourceTree = "<group>"; };
 		79E46BAF16F2D9BA00BEF1DB /* lightpaperfibers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lightpaperfibers.png; sourceTree = "<group>"; };
 		79E46BB016F2D9BA00BEF1DB /* lightpaperfibers@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lightpaperfibers@2x.png"; sourceTree = "<group>"; };
+		79EB6B1B17050C5800F7FFDA /* submissionButton-disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submissionButton-disabled.png"; sourceTree = "<group>"; };
+		79EB6B1C17050C5800F7FFDA /* submissionButton-disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submissionButton-disabled@2x.png"; sourceTree = "<group>"; };
+		79EB6B1D17050C5800F7FFDA /* submissionButton-enabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submissionButton-enabled.png"; sourceTree = "<group>"; };
+		79EB6B1E17050C5800F7FFDA /* submissionButton-enabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submissionButton-enabled@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -536,6 +540,10 @@
 		7935E40F16975E1500FA871F /* Imagery */ = {
 			isa = PBXGroup;
 			children = (
+				79EB6B1B17050C5800F7FFDA /* submissionButton-disabled.png */,
+				79EB6B1C17050C5800F7FFDA /* submissionButton-disabled@2x.png */,
+				79EB6B1D17050C5800F7FFDA /* submissionButton-enabled.png */,
+				79EB6B1E17050C5800F7FFDA /* submissionButton-enabled@2x.png */,
 				794F6F4E16A4586200F29BB6 /* MNMRadioGroupSelected.png */,
 				794F6F4F16A4586200F29BB6 /* MNMRadioGroupSelected@2x.png */,
 				794F6F5016A4586200F29BB6 /* MNMRadioGroupUnselected.png */,
@@ -579,8 +587,6 @@
 		7935E4B21697669B00FA871F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7961185416F2629400FC8029 /* sidebar-texture.png */,
-				7961185516F2629400FC8029 /* sidebar-texture@2x.png */,
 				7935E4B31697669B00FA871F /* default-tabbar-icon.png */,
 				7935E4B41697669B00FA871F /* default-tabbar-icon@2x.png */,
 				7935E4B51697669B00FA871F /* rough_diagonal.png */,
@@ -1174,11 +1180,13 @@
 				794F6F5316A4586200F29BB6 /* MNMRadioGroupSelected@2x.png in Resources */,
 				794F6F5416A4586200F29BB6 /* MNMRadioGroupUnselected.png in Resources */,
 				794F6F5516A4586200F29BB6 /* MNMRadioGroupUnselected@2x.png in Resources */,
-				7961185616F2629500FC8029 /* sidebar-texture.png in Resources */,
-				7961185716F2629500FC8029 /* sidebar-texture@2x.png in Resources */,
 				79E46BA116F2CE3700BEF1DB /* EXSingleQIDSInspectorVC.xib in Resources */,
 				79E46BB116F2D9BA00BEF1DB /* lightpaperfibers.png in Resources */,
 				79E46BB216F2D9BA00BEF1DB /* lightpaperfibers@2x.png in Resources */,
+				79EB6B1F17050C5800F7FFDA /* submissionButton-disabled.png in Resources */,
+				79EB6B2017050C5800F7FFDA /* submissionButton-disabled@2x.png in Resources */,
+				79EB6B2117050C5800F7FFDA /* submissionButton-enabled.png in Resources */,
+				79EB6B2217050C5800F7FFDA /* submissionButton-enabled@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

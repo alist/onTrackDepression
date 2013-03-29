@@ -268,7 +268,7 @@
 	CGPoint point = [scatterPlot lastInteractionPoint];
 	double height = [graph frame].size.height;
 	point.y = height - point.y;
-	point.x += 8;
+//	point.x += 8;
 	
 	return point;
 }

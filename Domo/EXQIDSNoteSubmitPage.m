@@ -12,7 +12,7 @@
 #import "MGButton.h"
 
 @interface EXQIDSNoteSubmitPage ()
--(MGTableBoxStyled*) _noteBox;
+@property (nonatomic, strong) UITextView * displayedTextInput;
 
 @end
 
@@ -35,14 +35,15 @@
 		
 		if (deviceIsPad){
 			self.rowSize = (CGSize){400, 50};
-			self.noteEntrySize = CGSizeMake(self.rowSize.width, 100);
+			self.noteEntrySize = CGSizeMake(self.rowSize.width, 60);
 		}else{
 			self.rowSize = (CGSize){304, 40};
 			self.noteEntrySize = CGSizeMake(self.rowSize.width, 50);
 		}
 		
 		double tableHeight = (deviceIsPad)? 580 : 400;
-		self.primaryQTable = [MGBox boxWithSize:CGSizeMake(self.width, tableHeight)];
+		double tableWidth = self.width;
+		self.primaryQTable = [MGBox boxWithSize:CGSizeMake(tableWidth, tableHeight)];
 		double margin = ceil( (self.size.width- self.primaryQTable.width)/2);
 		
 		double startY = (deviceIsPad)? IPAD_TOP_MARGIN-QUESTION_SPACING : IPHONE_TOP_MARGIN-QUESTION_SPACING;
@@ -53,37 +54,40 @@
 	return self;
 }
 
--(MGTableBoxStyled*) _noteBox{
-	 //text input box
-	 MGTableBoxStyled *noteBox = [MGTableBoxStyled box];
-	 [noteBox setTopMargin:30];
-	 [noteBox setRasterize:TRUE];
-	 
-	 double margin = ceil( (self.size.width- self.rowSize.width)/2);
-	 [noteBox setLeftMargin:margin];
-	 
-	 MGLineStyled *head = [MGLineStyled lineWithLeft:NSLocalizedString(@"Standout causes?", @"qids form note-entry prompt") right:nil size:self.rowSize];
-	 head.font = self.headerFont;
-	 
-	 [noteBox.topLines addObject:head];
-	 
-	 UITextView * textInput = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, noteEntrySize.width, noteEntrySize.height)];
-	 [textInput setBackgroundColor:[UIColor colorWithWhite:.9 alpha:1]];
-	 [textInput setFont:self.noteFont];
-	 [textInput setTextColor:[UIColor colorWithWhite:.05 alpha:1]];
-	 //	[textInput setContentInset:UIEdgeInsetsMake(0, 10, 10, 10)];
-	 [textInput setText:@"hello test!"];
-	 
-	 __weak MGLineStyled *noteEntryBox = [MGLineStyled lineWithSize:textInput.size];
-	 noteEntryBox.asyncLayoutOnce = ^{
-	 dispatch_async(dispatch_get_main_queue(), ^{
-	 [noteEntryBox addSubview:textInput];
-	 });
-	 };
-	 
-	 [noteBox.middleLines addObject:noteEntryBox];
+-(MGTableBoxStyled*) noteBox{
+	
+	if (_noteBox == nil){
+		//text input box
+		MGTableBoxStyled *theNoteBox = [MGTableBoxStyled box];
+		[theNoteBox setTopMargin:30];
+		[theNoteBox setLeftPadding:0];
+		[theNoteBox setRasterize:TRUE];
+		 
+		MGLineStyled *head = [MGLineStyled lineWithLeft:NSLocalizedString(@"Thoughts to remember?", @"qids form note-entry prompt") right:nil size:self.rowSize];
+		head.font = self.headerFont;
 
-	return noteBox;
+		[theNoteBox.topLines addObject:head];
+
+		UITextView * textInput = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, noteEntrySize.width, noteEntrySize.height)];
+		[textInput setBackgroundColor:[UIColor colorWithWhite:.9 alpha:1]];
+		[textInput setFont:self.noteFont];
+		[textInput setTextColor:[UIColor colorWithWhite:.05 alpha:1]];
+		[textInput setDelegate:self];
+		self.displayedTextInput = textInput;
+		
+		__weak MGLineStyled *noteEntryBox = [MGLineStyled lineWithSize:textInput.size];
+		noteEntryBox.asyncLayoutOnce = ^{
+		dispatch_async(dispatch_get_main_queue(), ^{
+		[noteEntryBox addSubview:textInput];
+		});
+		};
+
+		[theNoteBox.middleLines addObject:noteEntryBox];
+
+		_noteBox = theNoteBox;
+	}
+
+	return _noteBox;
 }
 
 -(void) updateViewWithQIDSSubmission:(EXQIDSSubmission*)submission qidsManager:(EXQIDSManager*)qidsManager pageNumber:(NSInteger)tPageNumber{
@@ -91,20 +95,41 @@
 	[self prepareForReuse];
 	
 	self.pageNumber = tPageNumber;
-		 
-//	[self.primaryQTable.boxes addObject:[self _noteBox]];
+		 	
+	double promptWidth = ceil(self.primaryQTable.width * .9);
+	double promptMargin = ceil( (self.primaryQTable.width- promptWidth)/2);
 	
+	MGLineStyled * submitPromptLabel = [MGLineStyled multilineWithText:qidsManager.completionSubmissionPrompt font:self.headerFont width:promptWidth padding:UIEdgeInsetsMake(10, 10, 10, 10)];
+	[submitPromptLabel setBackgroundColor:[UIColor clearColor]];
+	[submitPromptLabel setLeftMargin:promptMargin];
+	[submitPromptLabel setLeftItemsTextAlignment:NSTextAlignmentCenter];
+	
+	[self.primaryQTable.boxes addObject:submitPromptLabel];
+
+	MGBox * theNoteBox = [self noteBox];
+	[self.displayedTextInput setText:[submission note]];
 	double margin = ceil( (self.size.width- self.rowSize.width)/2);
+	[theNoteBox setLeftMargin:margin];
+	[self.primaryQTable.boxes addObject:theNoteBox];
 		
 	//submit box
+	UIImage * submissionButtonEnabledImage = [UIImage imageNamed:@"submissionButton-enabled.png"];
+	UIImage * submissionButtonDisabledImage = [UIImage imageNamed:@"submissionButton-disabled.png"];
+	double submitMargin = ceil( (self.size.width- submissionButtonEnabledImage.size.width)/2);
 	self.submitButtonBox = [MGButton buttonWithType:UIButtonTypeCustom];
-	[self.submitButtonBox setFrame:CGRectMake(0, 0, self.rowSize.width, self.rowSize.height *3)];
+	CGRect buttonRect = CGRectZero;
+	buttonRect.size = submissionButtonEnabledImage.size;
+	[self.submitButtonBox setFrame:buttonRect];
 	[self.submitButtonBox setTopMargin:50];
-	[self.submitButtonBox setTitle:NSLocalizedString(@"Complete!", @"finish button on last page of form-fill-out part of the app") forState:UIControlStateNormal];
-	[self.submitButtonBox setTitleColor:[UIColor colorWithWhite:.5 alpha:.5] forState:UIControlStateNormal];
+	[self.submitButtonBox setTitle:NSLocalizedString(@"All done!", @"finish button on last page of form-fill-out part of the app") forState:UIControlStateNormal];
+	[self.submitButtonBox setTitle:NSLocalizedString(@"Not quite done!", @"finish button on last page of form-fill-out part of the app when user didn't finish") forState:UIControlStateDisabled];
+	[self.submitButtonBox setTitleColor:[UIColor colorWithWhite:.4 alpha:.9] forState:UIControlStateNormal];
+	[self.submitButtonBox setTitleColor:[UIColor colorWithWhite:.5 alpha:.5] forState:UIControlStateDisabled];
 	[self.submitButtonBox setTitleColor:[UIColor colorWithWhite:1 alpha:1] forState:UIControlStateHighlighted];
-	[self.submitButtonBox.layer setBorderWidth:1];
-	[self.submitButtonBox setLeftMargin:margin];
+	[self.submitButtonBox setBackgroundImage:submissionButtonEnabledImage forState:UIControlStateNormal];
+	[self.submitButtonBox setBackgroundImage:submissionButtonDisabledImage forState:UIControlStateHighlighted];
+	[self.submitButtonBox setBackgroundImage:submissionButtonDisabledImage forState:UIControlStateDisabled];
+	[self.submitButtonBox setLeftMargin:submitMargin];
 	[self.submitButtonBox addTarget:self action:@selector(submitPressed:) forControlEvents:UIControlEventTouchUpInside];
 	
 	[self.submitButtonBox setEnabled:[submission isComplete]];
@@ -136,4 +161,7 @@
 	[self.delegate qidsNoteSubmitPageDidSubmitWithPage:self];
 }
 
+- (void)textViewDidChange:(UITextView *)textView{
+	[self.delegate qidsNoteSubmitPage:self didUpdateNoteToText:textView.text];
+}
 @end

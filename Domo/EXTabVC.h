@@ -15,6 +15,8 @@
 @property (nonatomic, assign) domoAppTab						presentedTab;
 
 @property (nonatomic, strong) UIFont *							headerFont;
+@property (nonatomic, strong) UIFont *							defaultFont;
+
 @property (nonatomic, assign) CGSize							rowSize;
 
 @property (nonatomic, assign) BOOL appearedOnce;

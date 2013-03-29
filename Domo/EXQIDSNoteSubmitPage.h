@@ -10,6 +10,7 @@
 #import "EXQIDSSubmission.h"
 #import "EXQIDSManager.h"
 #import "MGBox.h"
+#import "MGTableBoxStyled.h"
 #import "MGButton.h"
 
 #define IPAD_MAXQUESTIONS_PER_PAGE 2
@@ -30,7 +31,7 @@
 
 
 
-@interface EXQIDSNoteSubmitPage : UIView
+@interface EXQIDSNoteSubmitPage : UIView <UITextViewDelegate>
 @property (nonatomic, weak) id<EXQIDSNoteSubmitPageDelegate> delegate;
 
 @property (nonatomic, strong) MGBox *	primaryQTable;
@@ -41,6 +42,13 @@
 
 //the button
 @property (nonatomic, strong) MGButton * submitButtonBox;
+
+//the note box
+@property (nonatomic, strong) MGTableBoxStyled* noteBox;
+
+@property (nonatomic, strong) UITextView * noteEntryTextView;
+
+@property (nonatomic, strong) UILabel * completionNoticeLabel;
 
 //this page #
 @property (nonatomic, assign) NSInteger	pageNumber;

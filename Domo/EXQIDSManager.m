@@ -39,6 +39,7 @@
 	self.title = [QIDSData valueForKey:@"title"];
 	self.prompt = [QIDSData valueForKey:@"prompt"];
 	self.formSpacingInterval = [QIDSData valueForKey:@"formSpacingInterval"];
+	self.completionSubmissionPrompt = [QIDSData valueForKey:@"completionSubmissionPrompt"];
 	
 }
 -(EXQIDSSubmission*) qidsSubmissionForAuthor:(EXAuthor*)author{

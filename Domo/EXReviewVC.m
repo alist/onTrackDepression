@@ -275,6 +275,9 @@
 
 #pragma mark - EXQIDSChartDelegate
 -(void) qidsChart:(EXQIDSChart*)chart didSelectQIDSSubmission:(EXQIDSSubmission*)submission atPoint:(CGPoint)selectionPoint{
+	
+	selectionPoint = [self.view convertPoint:selectionPoint fromView:chart];
+	
 	[self.singleQIDSInspectorVC updateWithQIDSSubmission:submission];
 	[_extendedDataPopover setPopoverContentSize:self.singleQIDSInspectorVC.view.size animated:TRUE];
 	[[self extendedDataPopover] presentPopoverFromRect:CGRectMake(selectionPoint.x, selectionPoint.y,1,1) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:FALSE];
