@@ -130,15 +130,26 @@ static const double rowHeight = 44;
 	[feedBackSection setLeftMargin:feedbackItemMargin];
 	
 	// header
-	MGLineStyled *feedbackHead = [MGLineStyled lineWithLeft:NSLocalizedString(@"Be in touch", @"header for be-in touch") right:nil size:CGSizeMake(infoFeedbackGridItemSizePAD.width, rowHeight)];
+	MGLineStyled *feedbackHead = [MGLineStyled lineWithLeft:NSLocalizedString(@"Be in touch!", @"header for be-in touch") right:nil size:CGSizeMake(infoFeedbackGridItemSizePAD.width, rowHeight)];
 	feedbackHead.font = self.headerFont;
 	[feedBackSection.topLines addObject:feedbackHead];
 	
 	// stuff
-    MGLineStyled * contactButton = [MGLineStyled ]
     
-	MGLineStyled *feedbackLine = [MGLineStyled multilineWithText:NSLocalizedString(@"It's our goal to make and develop and discover the most effective techniques for promoting self-improvement of mood and depression..", @"be-in touch description text") font:nil width:infoFeedbackGridItemSizePAD.width padding:UIEdgeInsetsMake(16, 16, 16, 16)];
-	[feedBackSection.topLines addObject:feedbackLine];
+	MGLineStyled *feedbackLine = [MGLineStyled lineWithLeft:NSLocalizedString(@"Anonymously via Domo.io", @"be-in touch description text domo") right:[UIImage imageNamed:@"disclosureArrow"] size:CGSizeMake(infoFeedbackGridItemSizePAD.width, rowHeight)];
+    feedbackLine.onTap = ^{
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://oh.domo.io/fibroapp"]];
+    };
+    [feedBackSection.topLines addObject:feedbackLine];
+
+    MGLineStyled *feedbackLine2 = [MGLineStyled lineWithLeft:NSLocalizedString(@"Via email", @"be-in touch description text email") right:[UIImage imageNamed:@"disclosureArrow"] size:CGSizeMake(infoFeedbackGridItemSizePAD.width, rowHeight)];
+    feedbackLine2.onTap = ^{
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto:hello@exomachina.com"]];
+    };
+    [feedBackSection.topLines addObject:feedbackLine2];
+
+
+
 	
 	return @[goalSection, feedBackSection];
 
@@ -171,7 +182,8 @@ static const double rowHeight = 44;
 	if (self = [super initWithPresentedAppTab:domoAppTabTrack]){
 		[self setTitle:NSLocalizedString(@"Track", @"navigation bar title")];
 		self.navigationItem.title = NSLocalizedString(@"onTrack: Depression", @"review tab header for entire page");
-		
+		self.tabBarItem.image = [UIImage imageNamed:@"trackIcon.png"];
+        
 	}
 	return self;
 

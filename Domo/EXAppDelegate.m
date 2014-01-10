@@ -53,7 +53,7 @@
 	self.trackVC	= [[EXTrackVC alloc] init];
 	[self.trackVC setQidsManager:qidsManager];
 	self.analyzeVC	= [[EXReviewVC alloc] init];
-	self.improveVC	= [[EXImproveVC alloc] init];
+//	self.improveVC	= [[EXImproveVC alloc] init];
 	
 	UINavigationController * trackNavVC = [[UINavigationController alloc] initWithRootViewController:self.trackVC];
 	UINavigationController * analyzeNavVC = [[UINavigationController alloc] initWithRootViewController:self.analyzeVC];

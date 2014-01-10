@@ -237,7 +237,8 @@
 	if (self = [super initWithPresentedAppTab:domoAppTabReview]){
 		[self setTitle:NSLocalizedString(@"Review", @"navigation bar title")];
 		self.navigationItem.title = NSLocalizedString(@"progress by weeks ago", @"review tab header for reviewing progress on graph");
-		
+		self.tabBarItem.image = [UIImage imageNamed:@"reviewIcon.png"];
+        
 		self.rowSize =  (CGSize){225, 44};
 		
 		self.dataNeedsRefresh = FALSE; //automatically fresh on first run

@@ -11,7 +11,7 @@
 #import "MGTableBoxStyled.h"
 #import "MGLineStyled.h"
 
-@interface EXTabVC : UIViewController
+@interface EXTabVC : UIViewController 
 @property (nonatomic, assign) domoAppTab						presentedTab;
 
 @property (nonatomic, strong) UIFont *							headerFont;
