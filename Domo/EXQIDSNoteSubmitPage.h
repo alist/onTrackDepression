@@ -13,12 +13,7 @@
 #import "MGTableBoxStyled.h"
 #import "MGButton.h"
 
-#define IPAD_MAXQUESTIONS_PER_PAGE 2
-#define IPHONE_MAXQUESTIONS_PER_PAGE 1
 
-#define IPHONE_TOP_MARGIN 40
-#define IPAD_TOP_MARGIN 80
-#define QUESTION_SPACING 30
 
 @class EXQIDSNoteSubmitPage;
 

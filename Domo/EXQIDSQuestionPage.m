@@ -37,6 +37,10 @@
 		double margin = ceil( (self.size.width- self.primaryQTable.width)/2);
 
 		double startY = (deviceIsPad)? IPAD_TOP_MARGIN-QUESTION_SPACING : IPHONE_TOP_MARGIN-QUESTION_SPACING;
+        if (IS_OS_7_OR_LATER){
+            startY = startY + EXTRA_IOS7_SPACING;
+        }
+
 		[self.primaryQTable setOrigin:CGPointMake(margin, startY)];
 		[self.primaryQTable setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleTopMargin];
 		[self addSubview:self.primaryQTable];

@@ -59,8 +59,27 @@
 	UINavigationController * analyzeNavVC = [[UINavigationController alloc] initWithRootViewController:self.analyzeVC];
 	
 	[[trackNavVC navigationBar] setTintColor:[UIColor colorWithRed:1 green:0 blue:.3 alpha:1]];
+
 	[[analyzeNavVC navigationBar] setTintColor:[UIColor colorWithRed:1 green:0 blue:.3 alpha:1]];
 	
+    if (IS_OS_7_OR_LATER){
+        [[trackNavVC navigationBar] setBarTintColor:[UIColor colorWithRed:1 green:0 blue:.3 alpha:1]];
+        [[analyzeNavVC navigationBar] setBarTintColor:[UIColor colorWithRed:1 green:0 blue:.3 alpha:1]];
+
+        
+        [[UINavigationBar appearance] setTitleTextAttributes:@{
+                                                               UITextAttributeTextColor: [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0],
+                                                               UITextAttributeTextShadowColor: [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8],
+                                                               UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0, 0)],
+                                                               UITextAttributeFont: [UIFont fontWithName:@"Arial-Bold" size:0.0],
+                                                               }];
+        
+        trackNavVC.navigationBar.translucent = NO;
+        analyzeNavVC.navigationBar.translucent = NO;
+
+    }
+    
+    
 	NSArray * VCs = @[trackNavVC, analyzeNavVC];
 	
 	

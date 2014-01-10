@@ -55,6 +55,10 @@
 	
 	UIButton * finishLaterButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	[finishLaterButton setFrame:CGRectMake(9, 9, 25, 25)];
+    if (IS_OS_7_OR_LATER){
+        finishLaterButton.origin = CGPointMake(finishLaterButton.origin.x, finishLaterButton.origin.y + EXTRA_IOS7_SPACING);
+    }
+    
 	[finishLaterButton setAutoresizingMask:UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin];
 	[finishLaterButton setBackgroundColor:[UIColor clearColor]];
 	[finishLaterButton setTitle:@"X" forState:UIControlStateNormal];

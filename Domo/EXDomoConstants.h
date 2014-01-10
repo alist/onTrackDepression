@@ -21,11 +21,22 @@
 #endif
 #endif
 
+//for question display
+#define IPAD_MAXQUESTIONS_PER_PAGE 2
+#define IPHONE_MAXQUESTIONS_PER_PAGE 1
+
+#define IPHONE_TOP_MARGIN 40
+#define IPAD_TOP_MARGIN 80
+#define QUESTION_SPACING 30
+#define EXTRA_IOS7_SPACING 10
+
 
 #define deviceIsPad ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
 #define ArrayHasItems(array) (array != nil && [array count] > 0)
 #define StringHasText(string) (string != nil && [string length] > 0)
 #define SetHasItems(set) (set != nil && [set count] > 0)
+
+#define IS_OS_7_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
 
 static NSString * const newQIDSSubmittedNotification = @"newQIDSSubmittedNotification";
 
