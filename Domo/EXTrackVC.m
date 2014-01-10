@@ -70,7 +70,7 @@ static const double rowHeight = 44;
 	[promptBox.topLines addObject:head];
 	
 	
-	MGLineStyled * qidsDescription = [MGLineStyled multilineWithText:NSLocalizedString(@"The QIDS (SR-16) is validated form used by therapists and clinicians for determining and tracking depression levels over time.\n\nYou may find it useful to track your own mood levels- once a week was what it was designed for.", @"QIDS Description") font:self.defaultFont width:treatmentPromptSizePAD.width padding:UIEdgeInsetsMake(16, 16, 16, 16)];
+	MGLineStyled * qidsDescription = [MGLineStyled multilineWithText:NSLocalizedString(@"The QIDS (SR-16) is validated form used by therapists and clinicians for determining and tracking depression levels over time.\n\nYou may find it useful to track your own mood levels- once a week is what it's designed for.", @"QIDS Description") font:self.defaultFont width:treatmentPromptSizePAD.width padding:UIEdgeInsetsMake(16, 16, 16, 16)];
 	[qidsDescription setMinHeight:(treatmentPromptSizePAD.height - rowHeight*2)];
 	
 	[[promptBox topLines] addObject:qidsDescription];
@@ -115,12 +115,12 @@ static const double rowHeight = 44;
 	
 	MGTableBoxStyled *goalSection = [MGTableBoxStyled boxWithSize:infoFeedbackGridItemSizePAD];
 	// header
-	MGLineStyled *goalHead = [MGLineStyled lineWithLeft:NSLocalizedString(@"Be in touch", @"header for be-in touch") right:nil size:CGSizeMake(infoFeedbackGridItemSizePAD.width, rowHeight)];
+	MGLineStyled *goalHead = [MGLineStyled lineWithLeft:NSLocalizedString(@"Our goal", @"header for our goal") right:nil size:CGSizeMake(infoFeedbackGridItemSizePAD.width, rowHeight)];
 	goalHead.font = self.headerFont;
 	[goalSection.topLines addObject:goalHead];
 	
 	// stuff
-	MGLineStyled *goalLine = [MGLineStyled multilineWithText:NSLocalizedString(@"It's our goal to make and develop and discover the most effective techniques for promoting self-improvement of mood and depression.\nPlease be in-touch if you have any feedback at all, we'd love to hear from you.", @"be-in touch description text") font:nil width:infoFeedbackGridItemSizePAD.width padding:UIEdgeInsetsMake(16, 16, 16, 16)];
+	MGLineStyled *goalLine = [MGLineStyled multilineWithText:NSLocalizedString(@"It's our goal to make and develop and discover the most effective techniques for promoting self-improvement of mood and depression.", @"be-in touch description text") font:nil width:infoFeedbackGridItemSizePAD.width padding:UIEdgeInsetsMake(16, 16, 16, 16)];
 	[goalSection.topLines addObject:goalLine];
 
 	

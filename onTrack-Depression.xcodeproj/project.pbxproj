@@ -171,6 +171,7 @@
 		79EB6B2017050C5800F7FFDA /* submissionButton-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79EB6B1C17050C5800F7FFDA /* submissionButton-disabled@2x.png */; };
 		79EB6B2117050C5800F7FFDA /* submissionButton-enabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 79EB6B1D17050C5800F7FFDA /* submissionButton-enabled.png */; };
 		79EB6B2217050C5800F7FFDA /* submissionButton-enabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79EB6B1E17050C5800F7FFDA /* submissionButton-enabled@2x.png */; };
+		79EB6B241705144400F7FFDA /* 16-line-chart.png in Resources */ = {isa = PBXBuildFile; fileRef = 79EB6B231705144400F7FFDA /* 16-line-chart.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -446,6 +447,7 @@
 		79EB6B1C17050C5800F7FFDA /* submissionButton-disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submissionButton-disabled@2x.png"; sourceTree = "<group>"; };
 		79EB6B1D17050C5800F7FFDA /* submissionButton-enabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submissionButton-enabled.png"; sourceTree = "<group>"; };
 		79EB6B1E17050C5800F7FFDA /* submissionButton-enabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submissionButton-enabled@2x.png"; sourceTree = "<group>"; };
+		79EB6B231705144400F7FFDA /* 16-line-chart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "16-line-chart.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -540,6 +542,7 @@
 		7935E40F16975E1500FA871F /* Imagery */ = {
 			isa = PBXGroup;
 			children = (
+				79EB6B231705144400F7FFDA /* 16-line-chart.png */,
 				79EB6B1B17050C5800F7FFDA /* submissionButton-disabled.png */,
 				79EB6B1C17050C5800F7FFDA /* submissionButton-disabled@2x.png */,
 				79EB6B1D17050C5800F7FFDA /* submissionButton-enabled.png */,
@@ -1074,6 +1077,11 @@
 				CLASSPREFIX = EX;
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = ExoMachina;
+				TargetAttributes = {
+					79A6E3BD16973E5B00AA68D7 = {
+						DevelopmentTeam = A7426L9B95;
+					};
+				};
 			};
 			buildConfigurationList = 79A6E3B816973E5B00AA68D7 /* Build configuration list for PBXProject "onTrack-Depression" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1187,6 +1195,7 @@
 				79EB6B2017050C5800F7FFDA /* submissionButton-disabled@2x.png in Resources */,
 				79EB6B2117050C5800F7FFDA /* submissionButton-enabled.png in Resources */,
 				79EB6B2217050C5800F7FFDA /* submissionButton-enabled@2x.png in Resources */,
+				79EB6B241705144400F7FFDA /* 16-line-chart.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1453,7 +1462,8 @@
 		79A6E3F816973E5B00AA68D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alexander List (76TLAY9W6F)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "Domo/Domo Depression-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1467,7 +1477,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "onTrack Depression";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "31037F38-0E64-420A-9B1E-B0C028112D9C";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7202B8E0-6171-46AF-BAA8-DA67A9F54B13";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1475,6 +1486,8 @@
 		79A6E3F916973E5B00AA68D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "Domo/Domo Depression-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1488,6 +1501,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "onTrack Depression";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
