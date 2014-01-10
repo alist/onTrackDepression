@@ -239,6 +239,8 @@
 		self.navigationItem.title = NSLocalizedString(@"progress by weeks ago", @"review tab header for reviewing progress on graph");
 		self.tabBarItem.image = [UIImage imageNamed:@"reviewIcon.png"];
         
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Send Report to Doctor", @"report prompt string") style:UIBarButtonItemStylePlain target:self action:@selector(sendReportButtonPressed:)];
+        
 		self.rowSize =  (CGSize){225, 44};
 		
 		self.dataNeedsRefresh = FALSE; //automatically fresh on first run
@@ -251,7 +253,7 @@
 
 -(void)viewDidLoad{
 	[super viewDidLoad];
-	
+    
 	CGSize superTableBoxSize = deviceIsPad ? IPAD_TABLES_GRID_PORTRAIT: IPHONE_TABLES_GRID_PORTRAIT;
 	self.superTableBox = [MGBox boxWithSize:superTableBoxSize];
 	self.superTableBox.contentLayoutMode = MGLayoutTableStyle;
@@ -264,7 +266,7 @@
 	CGPoint boxOrigin = CGPointMake(floor(self.view.width/2 - self.superTableBox.width/2), 0);
 	[self.superTableBox setOrigin:boxOrigin];
 	[self.view addSubview:self.superTableBox];
-	
+    
 	[self refreshEverything];
 	
 }
@@ -289,6 +291,11 @@
 	[self refreshOptionsGrid];
 	// animate
 	[self.superTableBox layoutWithSpeed:0.3 completion:nil];
+}
+
+#pragma mark buttonsNjunk
+-(void)sendReportButtonPressed:(id)sender{
+    
 }
 
 

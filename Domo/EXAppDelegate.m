@@ -57,12 +57,11 @@
 	
 	UINavigationController * trackNavVC = [[UINavigationController alloc] initWithRootViewController:self.trackVC];
 	UINavigationController * analyzeNavVC = [[UINavigationController alloc] initWithRootViewController:self.analyzeVC];
-	
-	[[trackNavVC navigationBar] setTintColor:[UIColor colorWithRed:1 green:0 blue:.3 alpha:1]];
-
-	[[analyzeNavVC navigationBar] setTintColor:[UIColor colorWithRed:1 green:0 blue:.3 alpha:1]];
-	
+		
+    
     if (IS_OS_7_OR_LATER){
+        [self.window setValue:[UIColor whiteColor] forKey:@"tintColor"];
+
         [[trackNavVC navigationBar] setBarTintColor:[UIColor colorWithRed:1 green:0 blue:.3 alpha:1]];
         [[analyzeNavVC navigationBar] setBarTintColor:[UIColor colorWithRed:1 green:0 blue:.3 alpha:1]];
 
@@ -77,6 +76,10 @@
         trackNavVC.navigationBar.translucent = NO;
         analyzeNavVC.navigationBar.translucent = NO;
 
+    }else{
+        [[trackNavVC navigationBar] setTintColor:[UIColor colorWithRed:1 green:0 blue:.3 alpha:1]];
+        
+        [[analyzeNavVC navigationBar] setTintColor:[UIColor colorWithRed:1 green:0 blue:.3 alpha:1]];
     }
     
     
