@@ -135,7 +135,9 @@ static const double rowHeight = 44;
 	[feedBackSection.topLines addObject:feedbackHead];
 	
 	// stuff
-	MGLineStyled *feedbackLine = [MGLineStyled multilineWithText:NSLocalizedString(@"It's our goal to make and develop and discover the most effective techniques for promoting self-improvement of mood and depression.\nPlease be in-touch if you have any feedback at all, we'd love to hear from you.", @"be-in touch description text") font:nil width:infoFeedbackGridItemSizePAD.width padding:UIEdgeInsetsMake(16, 16, 16, 16)];
+    MGLineStyled * contactButton = [MGLineStyled ]
+    
+	MGLineStyled *feedbackLine = [MGLineStyled multilineWithText:NSLocalizedString(@"It's our goal to make and develop and discover the most effective techniques for promoting self-improvement of mood and depression..", @"be-in touch description text") font:nil width:infoFeedbackGridItemSizePAD.width padding:UIEdgeInsetsMake(16, 16, 16, 16)];
 	[feedBackSection.topLines addObject:feedbackLine];
 	
 	return @[goalSection, feedBackSection];
