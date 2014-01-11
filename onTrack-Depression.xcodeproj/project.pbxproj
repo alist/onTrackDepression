@@ -11,6 +11,7 @@
 		7909FB1E1880A29D00B6C63A /* reviewIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7909FB1A1880A29D00B6C63A /* reviewIcon@2x.png */; };
 		7909FB1F1880A29D00B6C63A /* trackIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7909FB1B1880A29D00B6C63A /* trackIcon.png */; };
 		7909FB201880A29D00B6C63A /* trackIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7909FB1C1880A29D00B6C63A /* trackIcon@2x.png */; };
+		7909FB2B1880B77100B6C63A /* EXReportMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7909FB2A1880B77100B6C63A /* EXReportMaker.m */; };
 		7935E41316975E6900FA871F /* UIViewAdditions+EX.m in Sources */ = {isa = PBXBuildFile; fileRef = 7935E41216975E6900FA871F /* UIViewAdditions+EX.m */; };
 		7935E41416975EC000FA871F /* UIViewAdditions+EX.m in Sources */ = {isa = PBXBuildFile; fileRef = 7935E41216975E6900FA871F /* UIViewAdditions+EX.m */; };
 		7935E5011697669B00FA871F /* CKSideBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7935E4AF1697669B00FA871F /* CKSideBarController.m */; };
@@ -255,6 +256,8 @@
 		7909FB1A1880A29D00B6C63A /* reviewIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reviewIcon@2x.png"; sourceTree = "<group>"; };
 		7909FB1B1880A29D00B6C63A /* trackIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trackIcon.png; sourceTree = "<group>"; };
 		7909FB1C1880A29D00B6C63A /* trackIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackIcon@2x.png"; sourceTree = "<group>"; };
+		7909FB291880B77100B6C63A /* EXReportMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXReportMaker.h; sourceTree = "<group>"; };
+		7909FB2A1880B77100B6C63A /* EXReportMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXReportMaker.m; sourceTree = "<group>"; };
 		7935E41116975E6900FA871F /* UIViewAdditions+EX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewAdditions+EX.h"; sourceTree = "<group>"; };
 		7935E41216975E6900FA871F /* UIViewAdditions+EX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewAdditions+EX.m"; sourceTree = "<group>"; };
 		7935E4AE1697669B00FA871F /* CKSideBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CKSideBarController.h; path = Source/CKSideBarController.h; sourceTree = "<group>"; };
@@ -499,6 +502,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7909FB281880B73700B6C63A /* ReportMaker */ = {
+			isa = PBXGroup;
+			children = (
+				7909FB291880B77100B6C63A /* EXReportMaker.h */,
+				7909FB2A1880B77100B6C63A /* EXReportMaker.m */,
+			);
+			name = ReportMaker;
+			sourceTree = "<group>";
+		};
 		7935E3A61697530B00FA871F /* External Framworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -642,6 +654,7 @@
 		7935E5C91697A34A00FA871F /* review */ = {
 			isa = PBXGroup;
 			children = (
+				7909FB281880B73700B6C63A /* ReportMaker */,
 				7935E5CB1697A39E00FA871F /* EXReviewVC.h */,
 				7935E5CC1697A39E00FA871F /* EXReviewVC.m */,
 				79E46B9C16F2CDEF00BEF1DB /* data-inspectors */,
@@ -1288,6 +1301,7 @@
 				79C024E716A09BA400EC138F /* EXAuthor.m in Sources */,
 				79C024F516A0EA0600EC138F /* EXQIDSGiver.m in Sources */,
 				79C024FF16A0EC3A00EC138F /* MHPagingScrollView.m in Sources */,
+				7909FB2B1880B77100B6C63A /* EXReportMaker.m in Sources */,
 				79C0250316A0ED0E00EC138F /* EXQIDSQuestionPage.m in Sources */,
 				795463BB16A12D6F00E3926A /* SMPageControl.m in Sources */,
 				7954646216A2348300E3926A /* MagicalImportFunctions.m in Sources */,

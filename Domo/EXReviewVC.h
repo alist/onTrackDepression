@@ -12,6 +12,7 @@
 #import "EXQIDSChartDatasource.h"
 #import "EXQIDSSubmission.h"
 #import "EXSingleQIDSInspectorVC.h"
+#import "EXReportMaker.h"
 
 @interface EXReviewVC : EXTabVC <EXQIDSChartDelegate>
 @property (nonatomic, retain) EXQIDSChart *qidsChart;
@@ -21,6 +22,7 @@
 @property (nonatomic, strong) MGBox * superTableBox;
 @property (nonatomic, strong) MGBox * chartBox;
 @property (nonatomic, strong) MGBox * optionsGrid;
+@property (nonatomic, strong) EXReportMaker * reportMaker;
 
 -(void) refreshEverything;
 
@@ -28,6 +30,9 @@
 -(void) refreshOptionsGrid;
 
 -(NSArray *)optionsBoxes;
+
+-(void) exportReport;
+
 
 @property (nonatomic, strong) UIPopoverController * extendedDataPopover;
 @property (nonatomic, strong) EXSingleQIDSInspectorVC* singleQIDSInspectorVC;

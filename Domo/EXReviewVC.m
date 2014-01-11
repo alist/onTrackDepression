@@ -271,7 +271,7 @@
 	
 }
 -(void)dealloc{
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	[[NSNotificationCenter defaultCenter] removeObserver:self]; 
 }
 
 
@@ -295,8 +295,52 @@
 
 #pragma mark buttonsNjunk
 -(void)sendReportButtonPressed:(id)sender{
-    
+    [self exportReport];
 }
+
+-(void) exportReport{
+    
+    UIGraphicsBeginImageContext(self.qidsChart.bounds.size);
+	
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	CGContextSaveGState(context);
+	CGContextSetAllowsAntialiasing(context, true);
+	
+    [self.qidsChart.layer renderInContext:context];
+    
+	UIImage *qidsLayerImage = UIGraphicsGetImageFromCurrentImageContext();
+	CGContextSetAllowsAntialiasing(context, false);
+	CGContextRestoreGState(context);
+	UIGraphicsEndImageContext();
+    
+    // UIImageView of self
+    UIGraphicsBeginImageContextWithOptions(self.optionsGrid.size, NO, 0);
+    [[UIBezierPath bezierPathWithRoundedRect:self.optionsGrid.bounds
+                                cornerRadius:self.optionsGrid.layer.cornerRadius] addClip];
+    [self.optionsGrid.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *optionsImage =  UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    
+    self.reportMaker = [[EXReportMaker alloc] initWithMessage:nil substitutionDictionary:nil imagesToAttach:@[qidsLayerImage,optionsImage]];
+    [self.reportMaker renderToPDF];
+    
+    NSString * resultsDateString = [NSString stringWithFormat:NSLocalizedString(@"Dear Doctor, \n\nHere is my QIDS report from %@.\n\nBest regards and many thanks.", @"resultsDateString"), [NSDateFormatter localizedStringFromDate:[NSDate date] dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle]];
+    UIActivityViewController * activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[resultsDateString, [NSData dataWithContentsOfFile:self.reportMaker.pdfPath]] applicationActivities:nil];
+    
+    [activityVC setCompletionHandler:^(NSString *activityType, BOOL completed){
+        [self dismissViewControllerAnimated:FALSE completion:nil];
+    }];
+    
+    [self presentViewController:activityVC animated:TRUE completion:^{
+        self.reportMaker = nil;
+    }];
+    
+//    UIWebView *test = [[UIWebView alloc] initWithFrame:self.view.bounds];
+//    [test loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.reportMaker.pdfPath]]];
+//    [self.view addSubview: test];
+}
+
 
 
 @end
