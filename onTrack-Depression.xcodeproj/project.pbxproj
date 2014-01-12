@@ -176,6 +176,7 @@
 		79EB6B2017050C5800F7FFDA /* submissionButton-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79EB6B1C17050C5800F7FFDA /* submissionButton-disabled@2x.png */; };
 		79EB6B2117050C5800F7FFDA /* submissionButton-enabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 79EB6B1D17050C5800F7FFDA /* submissionButton-enabled.png */; };
 		79EB6B2217050C5800F7FFDA /* submissionButton-enabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79EB6B1E17050C5800F7FFDA /* submissionButton-enabled@2x.png */; };
+		D8E719C418821FC2008B12C7 /* QIDS_form.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8E719C218821FC2008B12C7 /* QIDS_form.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -457,6 +458,7 @@
 		79EB6B1C17050C5800F7FFDA /* submissionButton-disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submissionButton-disabled@2x.png"; sourceTree = "<group>"; };
 		79EB6B1D17050C5800F7FFDA /* submissionButton-enabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submissionButton-enabled.png"; sourceTree = "<group>"; };
 		79EB6B1E17050C5800F7FFDA /* submissionButton-enabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submissionButton-enabled@2x.png"; sourceTree = "<group>"; };
+		D8E719C318821FC2008B12C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/QIDS_form.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -589,6 +591,7 @@
 		7935E41016975E1800FA871F /* Localizations */ = {
 			isa = PBXGroup;
 			children = (
+				D8E719C218821FC2008B12C7 /* QIDS_form.plist */,
 				79A6E3CD16973E5B00AA68D7 /* InfoPlist.strings */,
 				7935E55316978C8C00FA871F /* Localizable.strings */,
 				7935E55B16978DA300FA871F /* QIDS.plist */,
@@ -1199,6 +1202,7 @@
 				7935E5D71698882300FA871F /* greyfloral.png in Resources */,
 				7935E5DB1698882E00FA871F /* crisp_paper_ruffles@2X.png in Resources */,
 				7935E5DD1698882E00FA871F /* crisp_paper_ruffles.png in Resources */,
+				D8E719C418821FC2008B12C7 /* QIDS_form.plist in Resources */,
 				79C024EA16A0A60100EC138F /* disclosureArrow.png in Resources */,
 				79C024EB16A0A60100EC138F /* disclosureArrow@2x.png in Resources */,
 				795463D816A20F8A00E3926A /* currentPageDot-small.png in Resources */,
@@ -1428,6 +1432,14 @@
 				79A6E4871697450A00AA68D7 /* pt-BR */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D8E719C218821FC2008B12C7 /* QIDS_form.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D8E719C318821FC2008B12C7 /* en */,
+			);
+			name = QIDS_form.plist;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
