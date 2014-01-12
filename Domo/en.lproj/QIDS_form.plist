@@ -180,10 +180,9 @@ This app can&apos;t do that (yet)! Please talk to a professional whose job is to
 				</dict>
 				<dict>
 					<key>choice</key>
-					<string>I awaken more than once a night and stay awake for 20 minutes or more, more than half the time (4 days or more out of the past 7 days). 
-I awaken more than once a night and stay awake for 20 minutes or more, more than half the 
-I awaken more than once a night and stay awake for 20 minutes or more, more than half the time (4 days or more out of the past 7 days).
-</string>
+					<string>I awaken more than once a night and stay awake for 20 minutes or more, more than half the time (4 days or more out of the past 7 days). </string>
+					<key>code</key>
+					<integer>3</integer>
 				</dict>
 			</array>
 		</dict>
@@ -207,13 +206,13 @@ I awaken more than once a night and stay awake for 20 minutes or more, more than
 				</dict>
 				<dict>
 					<key>choice</key>
-					<string>I almost always awaken at least one hour or so before I need to, but I go back to sleep eventually. </string>
+					<string>I almost always awaken at least one hour or so before I need to, but I go back to sleep eventually.</string>
 					<key>code</key>
 					<integer>2</integer>
 				</dict>
 				<dict>
 					<key>choice</key>
-					<string>I awaken at least one hour before I need to, and can’t go back to sleep. </string>
+					<string>I awaken at least one hour before I need to, and can’t go back to sleep.</string>
 					<key>code</key>
 					<integer>3</integer>
 				</dict>

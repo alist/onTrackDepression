@@ -108,7 +108,8 @@
 		if (error)
 			NSLog(@"Save err for qids %@",[error description]);
 	}];
-	[self dismissModalViewControllerAnimated:TRUE];
+	// [self dismissModalViewControllerAnimated:TRUE];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - View Controller Rotation

@@ -41,6 +41,8 @@
 @property (nonatomic, strong) NSString*	formInfoFooterCornerText;
 
 /*
+ This is the method that generates the questions and put into view!!!
+ 
  Just pass the QIDS, the qids manager, page #, and have a fully-updated view. No nead to call update.
  */
 -(void) updateViewWithQIDSSubmission:(EXQIDSSubmission*)submission qidsManager:(EXQIDSManager*)qidsManager pageNumber:(NSInteger)pageNumber ;
@@ -61,8 +63,14 @@
 -(void) prepareForReuse;
 
 /*
+ shows one question inside one box
  Used internally to generate boxes to display on screen.
  */
--(MGBox*) _generateQuestionBoxWithTitle:(NSString*)title qNumber:(NSInteger)qNumber responseValues:(NSArray*)responseVals selectedValue:(NSNumber*)selectedValue;
+
+
+/*-(MGBox*) _generateQuestionBoxWithTitle:(NSString*)title qNumber:(NSInteger)qNumber responseValues:(NSArray*)responseVals selectedValue:(NSNumber*)selectedValue;
+*/
+
+-(MGBox*) _generateQuestionBoxWithTitle:(NSString*)title qNumber:(NSInteger)qNumber responses:(NSDictionary*)responses selectedValue:(NSNumber*)selectedValue;
 
 @end

@@ -15,15 +15,16 @@
 
 @interface EXQIDSManager : NSObject
 
-@property (nonatomic, strong) NSArray *		questions;
-@property (nonatomic, strong) NSString *	version;
-@property (nonatomic, strong) NSString *	title;
-@property (nonatomic, strong) NSString *	prompt;
-@property (nonatomic, strong) NSNumber*		formSpacingInterval;
-@property (nonatomic, strong) NSString *	completionSubmissionPrompt;
+@property (nonatomic, strong) NSArray *      questions;
+@property (nonatomic, strong) NSDictionary * itemtypes; //added by aho Jan 2014
+@property (nonatomic, strong) NSString *	 version;
+@property (nonatomic, strong) NSString *	 title;
+@property (nonatomic, strong) NSString *	 prompt;
+@property (nonatomic, strong) NSNumber*		 formSpacingInterval;
+@property (nonatomic, strong) NSString *	 completionSubmissionPrompt;
 
 -(id) init;
--(void) loadFormData; //from file
+-(void) loadFormData; //reads in questions and itemtypes from plist file, name of plist hard coded for now
 
 //when one is incomplete before next one is available for completion
 //or when one is available for completion

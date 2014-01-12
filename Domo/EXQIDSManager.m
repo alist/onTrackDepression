@@ -30,11 +30,19 @@
 }
 
 -(void) loadFormData{
-	NSDictionary *QIDSData = [[NSDictionary alloc]
+	/* old version commented out Jan 2014 by aho
+     
+     NSDictionary *QIDSData = [[NSDictionary alloc]
 							 initWithContentsOfFile:
 							 [[NSBundle mainBundle] pathForResource:@"QIDS" ofType:@"plist"]];
+     */
+    
+    NSDictionary *QIDSData = [[NSDictionary alloc]
+                              initWithContentsOfFile:
+                              [[NSBundle mainBundle] pathForResource:@"QIDS_form" ofType:@"plist"]];
 	
 	self.questions = [QIDSData valueForKey:@"questions"];
+    self.itemtypes = [QIDSData valueForKey:@"itemtypes"]; // added by aho 2014
 	self.version = [QIDSData valueForKey:@"version"];
 	self.title = [QIDSData valueForKey:@"title"];
 	self.prompt = [QIDSData valueForKey:@"prompt"];
@@ -90,6 +98,7 @@
 	int totalScore = 0;
 	double severityIndex = 0;
 	
+    // QIDS scoring
 	for (int qIt = 0; qIt < [self.questions count]; qIt++){
 		NSNumber * score = [submission questionResponseForQuesitonNumber:qIt];
 		if (score == nil)
