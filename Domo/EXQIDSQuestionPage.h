@@ -16,7 +16,7 @@
 @protocol EXQIDSQuestionPageDelegate <NSObject>
 
 //qnumbers are relative to total count of q numbers in form
--(void)qidsQuestionPage:(EXQIDSQuestionPage*)qPage didChangeValueOfQuestionNumber:(NSInteger)qNumber toValue:(NSInteger)value;
+-(void)qidsQuestionPage:(EXQIDSQuestionPage*)qPage didChangeValueOfQuestionNumber:(NSInteger)qNumber toValue:(NSString*)value;
 @end
 
 @interface EXQIDSQuestionPage : UIView
@@ -62,15 +62,14 @@
  */
 -(void) prepareForReuse;
 
+
 /*
  shows one question inside one box
  Used internally to generate boxes to display on screen.
  */
-
+-(MGBox*) _generateQuestionBoxWithTitle:(NSString*)title qNumber:(NSInteger)qNumber responses:(NSDictionary*)responses selectedValue:(NSNumber*)selectedValue;
 
 /*-(MGBox*) _generateQuestionBoxWithTitle:(NSString*)title qNumber:(NSInteger)qNumber responseValues:(NSArray*)responseVals selectedValue:(NSNumber*)selectedValue;
-*/
-
--(MGBox*) _generateQuestionBoxWithTitle:(NSString*)title qNumber:(NSInteger)qNumber responses:(NSDictionary*)responses selectedValue:(NSNumber*)selectedValue;
+ */
 
 @end

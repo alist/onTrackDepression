@@ -204,10 +204,24 @@
 	return nil;
 }
 
+
+
+#pragma translation between UI and data coding
+
+
+
 #pragma mark QIDSPage 
--(void)qidsQuestionPage:(EXQIDSQuestionPage*)qPage didChangeValueOfQuestionNumber:(NSInteger)qNumber toValue:(NSInteger)value{
+-(void)qidsQuestionPage:(EXQIDSQuestionPage*)qPage didChangeValueOfQuestionNumber:(NSInteger)qNumber toValue:(NSString*)value{
 	
-	[self.activeQIDSSubmission setQuestionResponse:@(value) forQuesitonNumber:qNumber];
+    // this uses a simplistic value setting for each response and thus supports storing the selected choice for display purpose only, needs to be changed to support customized values for each possible response
+    
+    // will screw up the UI
+    // [self.activeQIDSSubmission setQuestionResponse:@(value) forQuesitonNumber:qNumber];
+    // retranslate
+    
+	[self.activeQIDSSubmission setQuestionResponse:value forQuesitonNumber:qNumber];
+    
+    // [self.activeQIDSSubmission setQuestionResponse:@(0) forQuesitonNumber:qNumber];
 	
 	NSInteger maxQPPage = ((deviceIsPad)?IPAD_MAXQUESTIONS_PER_PAGE:IPHONE_MAXQUESTIONS_PER_PAGE);
 	//if last question in sheet, then autoflip

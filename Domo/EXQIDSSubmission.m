@@ -37,11 +37,13 @@
 @dynamic wasMissed;
 
 
--(void) setQuestionResponse:(NSNumber*)response forQuesitonNumber:(NSInteger)questionNumber{
+-(void) setQuestionResponse:(NSString*)response forQuesitonNumber:(NSInteger)questionNumber{
 	[self setDateLastEdited:[NSDate date]];
 	[self setValue:response forKey:[NSString stringWithFormat:@"Q%i",questionNumber]];
+    
 }
--(NSNumber*) questionResponseForQuesitonNumber:(NSInteger)questionNumber{
+
+-(NSString*) questionResponseForQuesitonNumber:(NSInteger)questionNumber{
 	return [self valueForKey:[NSString stringWithFormat:@"Q%i",questionNumber]];
 }
 

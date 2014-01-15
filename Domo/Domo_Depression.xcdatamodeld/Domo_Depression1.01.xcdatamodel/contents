@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="1.01" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="11G63b" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="1.01" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3400" systemVersion="13B42" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="EXAuthor" representedClassName="EXAuthor" syncable="YES">
         <attribute name="accessToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="authorID" attributeType="String" indexed="YES" syncable="YES"/>
@@ -15,29 +15,29 @@
         <attribute name="dateLastEdited" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="dueDate" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="q0" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="q1" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="q2" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="q3" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="q4" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="q5" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="q6" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="q7" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="q8" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="q9" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="q10" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="q11" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="q12" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="q13" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="q14" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="q15" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="q0" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q6" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q7" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q8" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q9" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q10" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q11" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q12" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q13" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q14" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="q15" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="qidsSeverity" optional="YES" attributeType="Double" syncable="YES"/>
         <attribute name="qidsValue" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="wasMissed" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <relationship name="author" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="EXAuthor" inverseName="qidsSubmissions" inverseEntity="EXAuthor" syncable="YES"/>
     </entity>
     <elements>
-        <element name="EXAuthor" positionX="0" positionY="0" width="128" height="165"/>
-        <element name="EXQIDSSubmission" positionX="0" positionY="0" width="128" height="405"/>
+        <element name="EXAuthor" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="EXQIDSSubmission" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

@@ -100,7 +100,8 @@
 	
     // QIDS scoring
 	for (int qIt = 0; qIt < [self.questions count]; qIt++){
-		NSNumber * score = [submission questionResponseForQuesitonNumber:qIt];
+		NSNumber * score;
+        score = [[NSNumber alloc] initWithInt:[[submission questionResponseForQuesitonNumber:qIt] intValue]];
 		if (score == nil)
 			return FALSE;
 		
@@ -142,8 +143,8 @@
 		EXQIDSSubmission * newSubmission = [EXQIDSSubmission createInContext:[author managedObjectContext]];
 		[newSubmission setAuthor:author];
 		for (NSInteger q = 0; q < self.questions.count; q++){
-			int response =   arc4random()%4;
-			[newSubmission setQuestionResponse:@(response) forQuesitonNumber:q];
+			NSString* response = [[NSString alloc] initWithFormat:@"%i", arc4random()%4];
+			[newSubmission setQuestionResponse:response forQuesitonNumber:q];
 		}
 		[self processQIDSSubmissionForComplete:newSubmission];
 		

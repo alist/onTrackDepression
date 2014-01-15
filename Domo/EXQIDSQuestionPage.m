@@ -84,8 +84,9 @@
 	
 	return newBox;
 }
-
 */
+
+
 
 
 //extended on Jan 2014 aho to support itemtype
@@ -116,7 +117,7 @@
 		UIImage * selectedImage = (selectedValue && [choices indexOfObject:choice] == [selectedValue intValue])? [UIImage imageNamed:@"MNMRadioGroupSelected"]:[UIImage imageNamed:@"MNMRadioGroupUnselected"];
 		NSString * choiceText = [choice valueForKey:@"choice"];
     
-        NSLog(@"choiceText --> %@", [choiceText description]);
+        NSLog(@"choiceText --> %@", [choiceText description]); //debug purposes
         
 		MGLineStyled * responseLine = [MGLineStyled lineWithLeft:selectedImage multilineRight:choiceText width:self.rowSize.width minHeight:self.rowSize.height];
 		[responseLine setTopPadding:5];
@@ -124,10 +125,10 @@
 		[responseLine setRightItemsTextAlignment:NSTextAlignmentRight];
 		[responseLine setTag:[choices indexOfObject:choice]];//debug purposes
 		[newBox.middleLines addObject:responseLine];
-		
+        
 		__weak MGLineStyled *responseL = responseLine;
 		responseLine.onTap = ^{
-			[self tappedLine:responseL withQuestionNumber:qNumber];
+			[self tappedLine:responseL withQuestionNumber:qNumber withChoices:choices]; //added choice to tappedLine to allow translation from selectedValue to choice or code
 		};
         
     };
@@ -135,6 +136,7 @@
 	
 	return newBox;
 }
+ 
 
 -(void) updateViewWithQIDSSubmission:(EXQIDSSubmission*)submission qidsManager:(EXQIDSManager*)qidsManager pageNumber:(NSInteger)tPageNumber{
 	
@@ -152,9 +154,11 @@
 	
 	for (NSDictionary * question in pageQuestions){
         
+        
         // new code that uses the itemtypes specified in plist
         
         NSInteger qNumber=(startQNumber + [pageQuestions indexOfObject:question]);
+        
         MGBox * box = [self _generateQuestionBoxWithTitle:[question valueForKey:@"prompt"]
                                                   qNumber:qNumber
                                        responses:[formItemtypes valueForKey:[question valueForKey:@"itemtype"]] //retrieves all possible responses for this one question
@@ -184,7 +188,7 @@
 }
 
 #pragma mark - interaction
--(void) tappedLine:(MGLineStyled*)lineBox withQuestionNumber:(NSInteger)qNumber{
+-(void) tappedLine:(MGLineStyled*)lineBox withQuestionNumber:(NSInteger)qNumber withChoices:(NSArray *)choices{
 	
 	MGTableBoxStyled *qBox =	(MGTableBoxStyled*)[lineBox parentBox];
 	NSInteger selectionValue = -1;
@@ -201,8 +205,22 @@
 	[lineBox.leftItems removeAllObjects];
 	[lineBox.leftItems addObject:[UIImage imageNamed:@"MNMRadioGroupSelected"]];
 	[self updatePageUI:TRUE];
+    
 
-	[self.delegate qidsQuestionPage:self didChangeValueOfQuestionNumber:qNumber toValue:selectionValue];
+    // translate selectionValue to code, for purpose of storage
+    // NSLog(@"selectionValue --> %i", selectionValue);
+    // NSLog(@"selectedCode --> %@", [[[choices objectAtIndex:selectionValue] valueForKey:@"code"] description]);
+    //NSLog(@"selectedChoice --> %@", [[[choices objectAtIndex:selectionValue] valueForKey:@"choice"] description]);
+    
+    NSString *savedValue;
+    if ([[[choices objectAtIndex:selectionValue] valueForKey:@"code"] description])
+    {savedValue=[[[choices objectAtIndex:selectionValue] valueForKey:@"code"] description];}
+    else
+     {savedValue=[[[choices objectAtIndex:selectionValue] valueForKey:@"choice"] description];}
+   
+    // NSLog(@"savedValue --> %@", savedValue);
+    
+	[self.delegate qidsQuestionPage:self didChangeValueOfQuestionNumber:qNumber toValue:savedValue];
 }
 
 @end
