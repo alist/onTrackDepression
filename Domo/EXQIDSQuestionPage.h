@@ -67,7 +67,7 @@
  shows one question inside one box
  Used internally to generate boxes to display on screen.
  */
--(MGBox*) _generateQuestionBoxWithTitle:(NSString*)title qNumber:(NSInteger)qNumber responses:(NSDictionary*)responses selectedValue:(NSNumber*)selectedValue;
+-(MGBox*) _generateQuestionBoxWithTitle:(NSString*)title qNumber:(NSInteger)qNumber responses:(NSDictionary*)responses selectedValue:(NSString*)selectedValue;
 
 /*-(MGBox*) _generateQuestionBoxWithTitle:(NSString*)title qNumber:(NSInteger)qNumber responseValues:(NSArray*)responseVals selectedValue:(NSNumber*)selectedValue;
  */

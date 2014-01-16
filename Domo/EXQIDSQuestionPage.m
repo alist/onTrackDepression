@@ -87,10 +87,8 @@
 */
 
 
-
-
 //extended on Jan 2014 aho to support itemtype
--(MGBox*) _generateQuestionBoxWithTitle:(NSString*)title qNumber:(NSInteger)qNumber responses:(NSDictionary*)responses selectedValue:(NSNumber*)selectedValue{
+-(MGBox*) _generateQuestionBoxWithTitle:(NSString*)title qNumber:(NSInteger)qNumber responses:(NSDictionary*)responses selectedValue:(NSString*)selectedValue{
 	MGTableBoxStyled *newBox = [MGTableBoxStyled box];
 	[newBox setTopMargin:30];
 	[newBox setRasterize:TRUE];
@@ -113,9 +111,17 @@
     NSArray * choices = [responses valueForKey:@"choices"];
     
 	for (NSDictionary * choice in choices){
-
-		UIImage * selectedImage = (selectedValue && [choices indexOfObject:choice] == [selectedValue intValue])? [UIImage imageNamed:@"MNMRadioGroupSelected"]:[UIImage imageNamed:@"MNMRadioGroupUnselected"];
-		NSString * choiceText = [choice valueForKey:@"choice"];
+        UIImage * selectedImage;
+        NSString * choiceText = [choice valueForKey:@"choice"];
+        // changed to support matching to code or choice
+        if ([choice valueForKey:@"code"])
+        {
+		selectedImage = (selectedValue && [[choice valueForKey:@"code"] isEqualToString:selectedValue])? [UIImage imageNamed:@"MNMRadioGroupSelected"]:[UIImage imageNamed:@"MNMRadioGroupUnselected"];
+        } else
+        {
+        selectedImage = (selectedValue && [choiceText isEqualToString:selectedValue])? [UIImage imageNamed:@"MNMRadioGroupSelected"]:[UIImage imageNamed:@"MNMRadioGroupUnselected"];
+        }
+		
     
         NSLog(@"choiceText --> %@", [choiceText description]); //debug purposes
         
@@ -207,11 +213,12 @@
 	[self updatePageUI:TRUE];
     
 
-    // translate selectionValue to code, for purpose of storage
     // NSLog(@"selectionValue --> %i", selectionValue);
     // NSLog(@"selectedCode --> %@", [[[choices objectAtIndex:selectionValue] valueForKey:@"code"] description]);
     //NSLog(@"selectedChoice --> %@", [[[choices objectAtIndex:selectionValue] valueForKey:@"choice"] description]);
     
+    
+    // translate selectionValue to code, for purpose of storage, stores choice if no code used
     NSString *savedValue;
     if ([[[choices objectAtIndex:selectionValue] valueForKey:@"code"] description])
     {savedValue=[[[choices objectAtIndex:selectionValue] valueForKey:@"code"] description];}

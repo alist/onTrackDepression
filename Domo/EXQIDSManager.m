@@ -110,11 +110,13 @@
 		}else if (qIt < 5){
 			totalScore += [score intValue];
 		}else if (qIt < 8){
-			weightMaintenanceScore = MAX(sleepQualityScore, [score intValue]);
+			weightMaintenanceScore = MAX(weightMaintenanceScore, [score intValue]); // fixed error in weightscore calc - was using sleepqualityscore
 		}else if (qIt < 14){
 			totalScore += [score intValue];
 		}else if (qIt < 16){
-			psychomotorScore = MAX(sleepQualityScore, [score intValue]);
+			psychomotorScore = MAX(psychomotorScore, [score intValue]);
+            // fixed error in psychomotorscore calc - was using sleepqualityscore
+
 		}else{
 			NSLog(@"Whoops-- did we add questions? %i",qIt);
 		}
@@ -143,6 +145,7 @@
 		EXQIDSSubmission * newSubmission = [EXQIDSSubmission createInContext:[author managedObjectContext]];
 		[newSubmission setAuthor:author];
 		for (NSInteger q = 0; q < self.questions.count; q++){
+            // changed by aho to support switch to saving nsstring instead of int
 			NSString* response = [[NSString alloc] initWithFormat:@"%i", arc4random()%4];
 			[newSubmission setQuestionResponse:response forQuesitonNumber:q];
 		}
